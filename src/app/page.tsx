@@ -2,18 +2,21 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Users, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown } from 'lucide-react';
+import { Search, Users, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X } from 'lucide-react';
 
 export default function Home() {
   const [isAnnual, setIsAnnual] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
   const faqs = [
-    { q: "¿Cómo se validan las reseñas?", a: "Solo permitimos reseñas de usuarios que han contratado realmente el servicio a través de la plataforma o mediante invitaciones directas de clientes verificados." },
+    { q: "¿Cómo se validan las reseñas?", a: "La validación la hace tu propio círculo de confianza. Esa es la esencia de dconfy: olvídate de las reseñas falsas o anónimas de internet. Así garantizamos que cada valoración sea 100% auténtica y basada en la experiencia real de la gente en la que ya confías." },
     { q: "¿Puedo cancelar mi suscripción en cualquier momento?", a: "Sí, no hay compromiso de permanencia. Puedes cancelar tu plan cuando quieras y seguirás teniendo acceso hasta que termine tu ciclo de facturación actual." },
-    { q: "¿Cómo funciona la facturación?", a: "Puedes elegir facturación mensual o anual. El cobro se realiza automáticamente en tu tarjeta al inicio de cada ciclo." },
+    { q: "¿Cómo funciona la facturación?", a: "Recibirás una factura mensual o anual según el plan elegido. Puedes descargar tus facturas desde tu panel de profesional." },
     { q: "¿Es gratis para usuarios que buscan servicios?", a: "Totalmente. La aplicación es 100% gratuita para los usuarios que buscan y contratan profesionales." },
-    { q: "¿Cómo me doy de alta como profesional?", a: "Solo tienes que elegir un plan, rellenar tus datos fiscales y tu perfil pasará a revisión. En menos de 24h estarás visible." }
+    { q: "¿Cómo me doy de alta como profesional?", a: "Descarga la app, selecciona 'Soy profesional' y completa tu perfil. Puedes empezar con el plan gratuito y actualizar cuando quieras." }
   ];
 
   return (
@@ -35,9 +38,9 @@ export default function Home() {
             <Link href="#planes" className="hover:text-violet-600 transition-colors">Planes</Link>
             <Link href="#faq" className="hover:text-violet-600 transition-colors">FAQ</Link>
           </div>
-          <button className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
+          <Link href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
             Descargar app
-          </button>
+          </Link>
         </nav>
       </header>
 
@@ -52,10 +55,10 @@ export default function Home() {
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la potencia de la tecnología.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
+              <Link href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
                 Descargar app
-              </button>
-              <Link href="/profesionales" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
+              </Link>
+              <Link href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
                 Planes para profesionales
               </Link>
             </div>
@@ -200,7 +203,7 @@ export default function Home() {
                 'Perfil profesional verificado',
                 'Recibe recomendaciones',
                 'Aparece en búsquedas de tu zona',
-                'Chat con Profesionales habilitado',
+                'Chat con clientes habilitado',
                 'Estadísticas de tu perfil'
               ].map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-700 font-medium">
@@ -208,8 +211,8 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link href="https://app.dconfy.io" className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#F97316] hover:text-[#F97316] py-3.5 rounded-2xl font-bold transition-all">
-              Empezar como Profesional
+            <Link href="#descargar" className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#F97316] hover:text-[#F97316] py-3.5 rounded-2xl font-bold transition-all">
+              Descargar app
             </Link>
           </div>
 
@@ -226,19 +229,22 @@ export default function Home() {
             <ul className="space-y-4 mb-8 flex-1">
               {[
                 'Perfil Corporativo para el negocio',
-                'Incluye 5 perfiles profesionales',
+                'Incluye 5 perfiles Profesionales',
                 'Todo lo del Plan Profesional',
-                'Chat con clientes habilitado',
-                'Soporte prioritario 24/7'
+                'Soporte prioritario 24/7',
+                '2,49 €/mes por perfil adicional'
               ].map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-300 font-medium">
                   <Check className="w-5 h-5 text-[#F97316] shrink-0" /> {feature}
                 </li>
               ))}
             </ul>
-            <Link href="https://app.dconfy.io" className="block w-full text-center bg-[#F97316] hover:bg-[#EA580C] text-white py-3.5 rounded-2xl font-bold transition-all shadow-lg shadow-orange-500/20">
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="block w-full text-center bg-[#F97316] hover:bg-[#EA580C] text-white py-3.5 rounded-2xl font-bold transition-all shadow-lg shadow-orange-500/20"
+            >
               Contactar
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -311,9 +317,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-2xl font-medium text-slate-300 mb-6">Estamos construyendo la red de servicios más confiable y queremos que seas parte de nuestro lanzamiento.</h2>
-            <button className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-500/20">
+            <Link href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-500/20">
               Descargar app Gratis
-            </button>
+            </Link>
           </div>
 
           <div className="border-t border-slate-800 pt-16 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -338,6 +344,97 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* MODAL DE CONTACTO EMPRESA */}
+      {isContactModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={() => setIsContactModalOpen(false)}></div>
+
+          <div className="bg-white rounded-3xl w-full max-w-lg relative z-10 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-[#FFF9F0] shrink-0">
+              <h3 className="text-2xl font-black text-[#111827]">Solicitar Plan Empresa</h3>
+              <button onClick={() => setIsContactModalOpen(false)} className="text-slate-400 hover:text-slate-700 bg-white p-2 rounded-full shadow-sm">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-6 overflow-y-auto">
+              {formStatus === 'success' ? (
+                <div className="text-center py-10">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-[#111827] mb-2">¡Solicitud recibida!</h4>
+                  <p className="text-slate-500">Hemos recibido tus datos correctamente. Revisa tu email, nos pondremos en contacto contigo en las próximas 24 horas.</p>
+                  <button onClick={() => setIsContactModalOpen(false)} className="mt-8 bg-[#111827] text-white px-8 py-3 rounded-full font-bold w-full">Cerrar</button>
+                </div>
+              ) : (
+                <form className="space-y-4" onSubmit={async (e) => {
+                  e.preventDefault();
+                  setFormStatus('submitting');
+                  const formData = new FormData(e.currentTarget);
+
+                  try {
+                    const res = await fetch('/api/contacto', {
+                      method: 'POST',
+                      body: JSON.stringify({
+                        company: formData.get('company'),
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        profiles: formData.get('profiles'),
+                        message: formData.get('message'),
+                      }),
+                    });
+
+                    if (res.ok) setFormStatus('success');
+                    else setFormStatus('idle');
+                  } catch (err) {
+                    setFormStatus('idle');
+                    alert('Hubo un error. Por favor, inténtalo de nuevo.');
+                  }
+                }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-1.5">Nombre de la empresa *</label>
+                      <input type="text" name="company" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Ej: Clínica Dental Madrid" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-1.5">Persona de contacto *</label>
+                      <input type="text" name="name" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Tu nombre" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1.5">Email corporativo *</label>
+                    <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="email@empresa.com" />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1.5">Perfiles profesionales que necesitas *</label>
+                    <select name="profiles" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white text-slate-700 appearance-none bg-no-repeat pr-10" style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`, backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}>
+                      <option value="">Selecciona una opción</option>
+                      <option value="1-5">Entre 1 y 5 perfiles (Incluido en el plan)</option>
+                      <option value="6-10">De 6 a 10 perfiles</option>
+                      <option value="11-20">De 11 a 20 perfiles</option>
+                      <option value="+20">Más de 20 perfiles</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1.5">Cuéntanos sobre tu necesidad (Opcional)</label>
+                    <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="¿Qué tipo de servicios ofrecéis? ¿Tenéis alguna necesidad especial?"></textarea>
+                  </div>
+
+                  <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#F97316] hover:bg-[#EA580C] text-white py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-orange-500/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
+                    {formStatus === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
+                  </button>
+                  <p className="text-center text-xs text-slate-400 mt-4">Tus datos están seguros.</p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
