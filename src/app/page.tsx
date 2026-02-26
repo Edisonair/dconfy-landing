@@ -247,7 +247,7 @@ export default function Home() {
       <div className="bg-[#FFF9F0] py-24">
 
         {/* 6. TABLA COMPARATIVA */}
-        <section className="px-6 max-w-4xl mx-auto mb-32">
+        <section className="px-6 max-w-4xl mx-auto mb-24">
           <h3 className="text-3xl font-black text-slate-900 text-center mb-10 tracking-tight">Compara los planes</h3>
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden">
             <div className="grid grid-cols-3 p-6 border-b border-slate-100 bg-slate-50/50">
@@ -279,6 +279,10 @@ export default function Home() {
           </div>
         </section>
 
+      </div>
+
+
+      <div className="bg-white py-24">
         {/* 7. FAQ */}
         <section id="faq" className="px-6 max-w-3xl mx-auto">
           <h2 className="text-4xl font-black text-slate-900 text-center mb-12 tracking-tight">Preguntas frecuentes</h2>
@@ -306,9 +310,9 @@ export default function Home() {
       <footer className="bg-[#171721] text-white pt-20 pb-10 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-2xl font-medium text-slate-300 mb-6">Únete a miles de personas que ya confían en las recomendaciones de su red.</h2>
+            <h2 className="text-2xl font-medium text-slate-300 mb-6">Estamos construyendo la red de servicios más confiable y queremos que seas parte de nuestro lanzamiento.</h2>
             <button className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-500/20">
-              Descargar app gratis
+              Descargar app Gratis
             </button>
           </div>
 
