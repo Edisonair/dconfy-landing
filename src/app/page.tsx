@@ -324,7 +324,7 @@ export default function Home() {
 
           <div className="border-t border-slate-800 pt-16 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="md:col-span-2">
-              <div className="font-black text-3xl mb-4 tracking-tight">dconfy</div>
+              <img src="/dconfy_logo_dark.png" alt="Logo dconfy" className="h-8 md:h-10 w-auto object-contain mb-6" />
               <p className="text-slate-400 text-sm max-w-xs leading-relaxed">Profesionales recomendados por gente de tu confianza.</p>
             </div>
             <div className="flex flex-col gap-4">
@@ -333,9 +333,9 @@ export default function Home() {
               <Link href="#faq" className="text-slate-400 hover:text-white text-sm transition-colors">FAQ</Link>
             </div>
             <div className="flex flex-col gap-4">
-              <Link href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Política de privacidad</Link>
-              <Link href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Términos y condiciones</Link>
-              <Link href="#" className="text-slate-400 hover:text-white text-sm transition-colors">Contacto</Link>
+              <Link href="/privacidad" className="text-slate-400 hover:text-white text-sm transition-colors">Política de privacidad</Link>
+              <Link href="/terminos" className="text-slate-400 hover:text-white text-sm transition-colors">Términos y condiciones</Link>
+              <a href="mailto:info@dconfy.io" className="text-slate-400 hover:text-white text-sm transition-colors">Contacto</a>
             </div>
           </div>
 
