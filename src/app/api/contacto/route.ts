@@ -37,7 +37,7 @@ export async function POST(request: Request) {
                 
                 <tr>
                   <td align="center" style="padding: 32px 20px; border-bottom: 1px solid #f1f5f9;">
-                    <img src="https://dconfy.io/dconfy_logo_solid.jpg" alt="dconfy logo" style="height: 40px; width: auto; display: block;" />
+                    <img src="https://dconfy.io/dconfy_logo_hibrid.png" alt="dconfy logo" style="height: 40px; width: auto; display: block;" />
                   </td>
                 </tr>
                 
