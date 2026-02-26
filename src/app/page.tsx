@@ -45,7 +45,7 @@ export default function Home() {
       <section className="bg-[#FFF9F0] pt-12 pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
           <div className="max-w-xl">
-            <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-5xl md:text-6xl font-black text-[#111827] tracking-tight leading-[1.1] mb-6">
               El boca a boca <span className="text-violet-600">de confianza</span> ahora en una app.
             </h1>
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
@@ -86,7 +86,7 @@ export default function Home() {
 
       {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
       <section id="como-funciona" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">¿Cómo funciona?</h2>
+        <h2 className="text-4xl font-black text-[#111827] mb-4 tracking-tight">¿Cómo funciona?</h2>
         <p className="text-slate-500 mb-16 max-w-2xl mx-auto font-medium">Encontrar profesionales y servicios de confianza nunca fue tan fácil.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
@@ -94,21 +94,21 @@ export default function Home() {
             <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center mb-6">
               <Search className="w-5 h-5 text-violet-600" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Busca en tu Red</h3>
+            <h3 className="text-xl font-bold text-[#111827] mb-3">Busca en tu Red</h3>
             <p className="text-slate-500 text-sm leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y validado.</p>
           </div>
           <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/50 hover:-translate-y-1 transition-transform">
             <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center mb-6">
               <Users className="w-5 h-5 text-violet-600" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Confianza Directa</h3>
+            <h3 className="text-xl font-bold text-[#111827] mb-3">Confianza Directa</h3>
             <p className="text-slate-500 text-sm leading-relaxed">Accede al contacto directo de profesionales verificados. Sin intermediarios, sin comisiones ocultas.</p>
           </div>
           <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/50 hover:-translate-y-1 transition-transform">
             <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center mb-6">
               <CheckCircle2 className="w-5 h-5 text-violet-600" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Recomienda y Ayuda</h3>
+            <h3 className="text-xl font-bold text-[#111827] mb-3">Recomienda y Ayuda</h3>
             <p className="text-slate-500 text-sm leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando reseñas honestas y cortas sobre los profesionales que han hecho un buen trabajo.</p>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function Home() {
           />
         </div>
 
-        <h2 className="text-4xl md:text-6xl font-black text-[#171A21] mb-6 tracking-tight">Descarga la app</h2>
+        <h2 className="text-4xl md:text-6xl font-black text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
         <p className="text-slate-500 font-medium mb-12 max-w-xl mx-auto">
           Disponible en iOS y Android. Empieza a encontrar profesionales recomendados por tu red hoy mismo.
@@ -166,19 +166,19 @@ export default function Home() {
 
       {/* 5. PLANES PARA PROFESIONALES */}
       <section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">Planes para profesionales</h2>
+        <h2 className="text-4xl font-black text-[#111827] mb-4 tracking-tight">Planes para profesionales</h2>
         <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige el plan que mejor se adapta a tu situación. Sin compromisos.</p>
 
         {/* Toggle Mensual/Anual */}
         <div className="flex items-center justify-center gap-4 mb-16">
-          <span className={`text-sm font-bold ${!isAnnual ? 'text-slate-900' : 'text-slate-400'}`}>Mensual</span>
+          <span className={`text-sm font-bold ${!isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Mensual</span>
           <button
             onClick={() => setIsAnnual(!isAnnual)}
             className="w-14 h-8 bg-[#F97316] rounded-full p-1 transition-colors relative"
           >
             <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
-          <span className={`text-sm font-bold ${isAnnual ? 'text-slate-900' : 'text-slate-400'}`}>Anual</span>
+          <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
           <span className="text-xs font-bold text-orange-600 bg-orange-100 px-3 py-1 rounded-full ml-2">3 meses gratis</span>
         </div>
 
@@ -187,10 +187,10 @@ export default function Home() {
 
           {/* Plan Profesional */}
           <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
-            <h3 className="text-2xl font-black text-slate-900 mb-2">Plan Profesional</h3>
+            <h3 className="text-2xl font-black text-[#111827] mb-2">Plan Profesional</h3>
             <p className="text-slate-500 text-sm mb-6 h-10">Ideal para autónomos y freelancers que quieren destacar.</p>
             <div className="mb-2 flex items-baseline gap-1">
-              <span className="text-5xl font-black text-slate-900">{isAnnual ? '29.99€' : '2.99€'}</span>
+              <span className="text-5xl font-black text-[#111827]">{isAnnual ? '29.99€' : '2.99€'}</span>
               <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
             </div>
             <p className="text-sm font-bold text-orange-500 mb-8 h-5">{isAnnual ? 'Equivale a 2.49€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
@@ -248,11 +248,11 @@ export default function Home() {
 
         {/* 6. TABLA COMPARATIVA */}
         <section className="px-6 max-w-4xl mx-auto mb-24">
-          <h3 className="text-3xl font-black text-slate-900 text-center mb-10 tracking-tight">Compara los planes</h3>
+          <h3 className="text-3xl font-black text-[#111827] text-center mb-10 tracking-tight">Compara los planes</h3>
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden">
             <div className="grid grid-cols-3 p-6 border-b border-slate-100 bg-slate-50/50">
               <div></div>
-              <div className="text-center font-bold text-slate-800">Profesional</div>
+              <div className="text-center font-bold text-[#111827]">Profesional</div>
               <div className="text-center font-bold text-[#F97316]">Empresa</div>
             </div>
             {[
@@ -285,7 +285,7 @@ export default function Home() {
       <div className="bg-white py-24">
         {/* 7. FAQ */}
         <section id="faq" className="px-6 max-w-3xl mx-auto">
-          <h2 className="text-4xl font-black text-slate-900 text-center mb-12 tracking-tight">Preguntas frecuentes</h2>
+          <h2 className="text-4xl font-black text-[#111827] text-center mb-12 tracking-tight">Preguntas frecuentes</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <div key={i} className="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -293,7 +293,7 @@ export default function Home() {
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                 >
-                  <span className="font-bold text-slate-900 pr-8">{faq.q}</span>
+                  <span className="font-bold text-[#111827] pr-8">{faq.q}</span>
                   <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${openFaq === i ? 'rotate-180 text-violet-600' : ''}`} />
                 </button>
                 <div className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openFaq === i ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
