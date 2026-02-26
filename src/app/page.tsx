@@ -52,7 +52,7 @@ export default function Home() {
               El boca a boca <span className="text-violet-600">de confianza</span> ahora en una app.
             </h1>
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
-              dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la potencia de la tecnología.
+              dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
