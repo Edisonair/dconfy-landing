@@ -46,7 +46,7 @@ export default function Home() {
       </header>
 
       {/* 2. HERO SECTION (FONDO CREMA CON CORTE REDONDEADO) */}
-      <section className="bg-[#FFF9F0] pt-12 pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
+      <section className="bg-[#FFF9F0] pt-12 pb-8 lg:pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-6xl font-black text-[#111827] tracking-tight leading-[1.1] mb-6">
@@ -69,7 +69,7 @@ export default function Home() {
           <div className="mt-2 lg:mt-0 relative w-full flex flex-col items-center">
 
             {/* Version Movil (Carrusel Infinito) */}
-            <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative py-8 -mt-1">
+            <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative pt-8 pb-0 -mt-2">
               <div className="flex w-fit animate-marquee items-center">
                 {/* Grupo 1 */}
                 {[
@@ -79,7 +79,7 @@ export default function Home() {
                   { src: "/hero_vector_painter_relatable.png", alt: "Pintor", delay: '1.5s' },
                   { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora", delay: '2s' }
                 ].map((item, i) => (
-                  <div key={i} className="w-[180px] sm:w-[170px] shrink-0 px-1">
+                  <div key={i} className="w-[155px] sm:w-[170px] shrink-0">
                     <div className="animate-float" style={{ animationDelay: item.delay }}>
                       <img src={item.src} alt={item.alt} className="w-full h-auto scale-[1.35] origin-center drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)]" />
                     </div>
@@ -94,7 +94,7 @@ export default function Home() {
                   { src: "/hero_vector_painter_relatable.png", alt: "Pintor", delay: '1.5s' },
                   { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora", delay: '2s' }
                 ].map((item, i) => (
-                  <div key={i + 5} className="w-[180px] sm:w-[170px] shrink-0 px-1">
+                  <div key={i + 5} className="w-[155px] sm:w-[170px] shrink-0">
                     <div className="animate-float" style={{ animationDelay: item.delay }}>
                       <img src={item.src} alt={item.alt} className="w-full h-auto scale-[1.35] origin-center drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)]" />
                     </div>
