@@ -140,27 +140,27 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium">Encontrar profesionales y servicios de confianza nunca fue tan fácil.</p>
         </div>
 
-        <div className="flex flex-col gap-24">
+        <div className="flex flex-col gap-20 max-w-5xl mx-auto">
           {/* Fila 1 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-1 md:order-1 max-w-lg mx-auto text-center md:text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-1 md:order-1 max-w-md mx-auto md:ml-auto md:mr-8 text-center md:text-left">
               <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-3xl font-black text-[#111827] mb-4">Busca en tu Red</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y validado.</p>
             </div>
-            <div className="order-2 md:order-2 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+            <div className="order-2 md:order-2 max-w-sm mx-auto md:mr-auto md:ml-8 mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_blob_search_photographer.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
             </div>
           </div>
 
           {/* Fila 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1 max-w-sm mx-auto md:ml-auto md:mr-8 mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_heart_trust_floral_clean.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
             </div>
-            <div className="order-1 md:order-2 md:pl-12 max-w-lg mx-auto text-center md:text-left">
+            <div className="order-1 md:order-2 max-w-md mx-auto md:mr-auto md:ml-8 text-center md:text-left">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Users className="w-8 h-8 text-[#FF6600]" />
               </div>
@@ -170,15 +170,15 @@ export default function Home() {
           </div>
 
           {/* Fila 3 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-1 md:order-1 max-w-lg mx-auto md:pr-12 text-center md:text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-1 md:order-1 max-w-md mx-auto md:ml-auto md:mr-8 text-center md:text-left">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Heart className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black text-[#111827] mb-4">Recomienda y Ayuda</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando reseñas honestas y cortas sobre los profesionales que han hecho un buen trabajo.</p>
             </div>
-            <div className="order-2 md:order-2 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+            <div className="order-2 md:order-2 max-w-sm mx-auto md:mr-auto md:ml-8 mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
             </div>
           </div>
