@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X } from 'lucide-react';
+import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram } from 'lucide-react';
 import { sendGAEvent } from '@next/third-parties/google';
 
 export default function Home() {
@@ -402,6 +402,11 @@ export default function Home() {
             <div className="md:col-span-2">
               <img src="/dconfy_logo_dark.png" alt="Logo dconfy" className="h-8 md:h-10 w-auto object-contain mb-6" />
               <p className="text-slate-400 text-sm max-w-xs leading-relaxed">Profesionales recomendados por gente de tu confianza.</p>
+              <div className="mt-6">
+                <a href="https://www.instagram.com/dconfy.io" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center p-2 rounded-full bg-slate-800 hover:bg-[#FF6600] text-slate-400 hover:text-white transition-all group" aria-label="Instagram de dconfy">
+                  <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                </a>
+              </div>
             </div>
             <div className="flex flex-col gap-4">
               <Link href="#como-funciona" className="text-slate-400 hover:text-white text-sm transition-colors">Cómo funciona</Link>
