@@ -50,7 +50,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-6xl font-black text-[#111827] tracking-tight leading-[1.1] mb-6">
-              El boca a boca <span className="bg-gradient-to-tr from-[#FF6600] to-violet-600 text-transparent bg-clip-text">de confianza</span> ahora en una app.
+              El boca a boca <span className="bg-gradient-to-tr from-[#FF6600] from-70% to-violet-600 text-transparent bg-clip-text">de confianza</span> ahora en una app.
             </h1>
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
