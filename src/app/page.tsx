@@ -65,30 +65,69 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero Images (Avatares 3D Pop-out) */}
-          <div className="flex justify-center items-end lg:items-center lg:justify-end mt-20 sm:mt-12 lg:mt-0 relative lg:translate-x-8 xl:translate-x-16 scale-[1.15] sm:scale-100 origin-top lg:origin-center">
+          {/* Hero Images Area */}
+          <div className="mt-16 lg:mt-0 relative w-full flex flex-col items-center">
 
-            {/* Izquierda (Profesora de Yoga - Violeta) */}
-            <div className="w-[160px] sm:w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-20 sm:mt-28 lg:mt-36 z-10 relative">
-              <div className="animate-float" style={{ animationDelay: '0s' }}>
-                <img src="/hero_vector_yoga_mat.png" alt="Profesora de Yoga dconfy" className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-700" />
+            {/* Version Movil (Carrusel Infinito) */}
+            <div className="block md:hidden w-full overflow-hidden relative py-12">
+              <div className="flex w-fit animate-marquee gap-8">
+                {/* Grupo 1 */}
+                {[
+                  { src: "/hero_vector_yoga_mat.png", alt: "Yoga", delay: '0s' },
+                  { src: "/hero_vector_gardener_relatable.png", alt: "Jardinero", delay: '0.5s' },
+                  { src: "/hero_vector_tattoo_alt.png", alt: "Tatuador", delay: '1s' },
+                  { src: "/hero_vector_painter_relatable.png", alt: "Pintor", delay: '1.5s' },
+                  { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora", delay: '2s' }
+                ].map((item, i) => (
+                  <div key={i} className="w-[150px] shrink-0">
+                    <div className="animate-float" style={{ animationDelay: item.delay }}>
+                      <img src={item.src} alt={item.alt} className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)]" />
+                    </div>
+                  </div>
+                ))}
+
+                {/* Grupo 2 (Duplicado exacto para hacer el loop infinito) */}
+                {[
+                  { src: "/hero_vector_yoga_mat.png", alt: "Yoga", delay: '0s' },
+                  { src: "/hero_vector_gardener_relatable.png", alt: "Jardinero", delay: '0.5s' },
+                  { src: "/hero_vector_tattoo_alt.png", alt: "Tatuador", delay: '1s' },
+                  { src: "/hero_vector_painter_relatable.png", alt: "Pintor", delay: '1.5s' },
+                  { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora", delay: '2s' }
+                ].map((item, i) => (
+                  <div key={i + 5} className="w-[150px] shrink-0">
+                    <div className="animate-float" style={{ animationDelay: item.delay }}>
+                      <img src={item.src} alt={item.alt} className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)]" />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Centro (Jardinero - Naranja - El Más Grande y Frontal) */}
-            <div className="w-[180px] sm:w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-4 sm:mb-8 lg:mb-12 z-30 -ml-16 sm:-ml-28 lg:-ml-40 relative">
-              <div className="animate-float" style={{ animationDelay: '1.5s' }}>
-                <img src="/hero_vector_gardener_relatable.png" alt="Jardinero Profesional dconfy" className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-700" />
-              </div>
-            </div>
+            {/* Version Escritorio (Avatares 3D Pop-out Superpuestos) */}
+            <div className="hidden md:flex justify-end items-center relative lg:translate-x-8 xl:translate-x-16 origin-center">
 
-            {/* Derecha (Tatuador - Azul) */}
-            <div className="w-[160px] sm:w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-10 sm:mt-16 lg:mt-20 z-20 -ml-16 sm:-ml-28 lg:-ml-40 relative">
-              <div className="animate-float" style={{ animationDelay: '3s' }}>
-                <img src="/hero_vector_tattoo_alt.png" alt="Tatuador Profesional dconfy" className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-700" />
+              {/* Izquierda (Profesora de Yoga - Violeta) */}
+              <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-28 lg:mt-36 z-10 relative">
+                <div className="animate-float" style={{ animationDelay: '0s' }}>
+                  <img src="/hero_vector_yoga_mat.png" alt="Profesora de Yoga dconfy" className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-700" />
+                </div>
               </div>
-            </div>
 
+              {/* Centro (Jardinero - Naranja - El Más Grande y Frontal) */}
+              <div className="w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-8 lg:mb-12 z-30 -ml-28 lg:-ml-40 relative">
+                <div className="animate-float" style={{ animationDelay: '1.5s' }}>
+                  <img src="/hero_vector_gardener_relatable.png" alt="Jardinero Profesional dconfy" className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-700" />
+                </div>
+              </div>
+
+              {/* Derecha (Tatuador - Azul) */}
+              <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-16 lg:mt-20 z-20 -ml-28 lg:-ml-40 relative">
+                <div className="animate-float" style={{ animationDelay: '3s' }}>
+                  <img src="/hero_vector_tattoo_alt.png" alt="Tatuador Profesional dconfy" className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-700" />
+                </div>
+              </div>
+
+            </div>
           </div>
 
         </div>
