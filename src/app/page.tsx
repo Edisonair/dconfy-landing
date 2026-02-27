@@ -69,7 +69,7 @@ export default function Home() {
           <div className="mt-2 lg:mt-0 relative w-full flex flex-col items-center">
 
             {/* Version Movil (Carrusel Infinito) */}
-            <div className="block md:hidden w-full overflow-hidden relative py-8 -mt-1">
+            <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative py-8 -mt-1">
               <div className="flex w-fit animate-marquee items-center">
                 {/* Grupo 1 */}
                 {[

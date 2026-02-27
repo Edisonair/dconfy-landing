@@ -15,7 +15,7 @@
         }
     }
 
-    --animate-marquee: marquee 25s linear infinite;
+    --animate-marquee: marquee 15s linear infinite;
 
     @keyframes marquee {
         from {
