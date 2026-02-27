@@ -39,7 +39,7 @@ export default function Home() {
             <Link href="#planes" className="hover:text-violet-600 transition-colors">Planes</Link>
             <Link href="#faq" className="hover:text-violet-600 transition-colors">FAQ</Link>
           </div>
-          <Link href="#descargar" onClick={() => sendGAEvent({ event: 'clic_boton', value: 'Descargar_Navbar' })} className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
+          <Link href="#descargar" onClick={() => sendGAEvent({ event: 'Descargar_Navbar' })} className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
             Descargar app
           </Link>
         </nav>
@@ -56,10 +56,10 @@ export default function Home() {
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link onClick={() => sendGAEvent({ event: 'clic_boton', value: 'Descargar_Hero' })} href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
+              <Link onClick={() => sendGAEvent({ event: 'Descargar_Hero' })} href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
                 Descargar app
               </Link>
-              <Link onClick={() => sendGAEvent({ event: 'clic_boton', value: 'Planes_Hero' })} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
+              <Link onClick={() => sendGAEvent({ event: 'Planes_Hero' })} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
                 Planes para profesionales
               </Link>
             </div>
