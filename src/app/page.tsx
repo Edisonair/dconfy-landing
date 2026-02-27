@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Users, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X } from 'lucide-react';
+import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X } from 'lucide-react';
 import { sendGAEvent } from '@next/third-parties/google';
 
 export default function Home() {
@@ -50,7 +50,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-6xl font-black text-[#111827] tracking-tight leading-[1.1] mb-6">
-              El boca a boca <span className="bg-gradient-to-tr from-[#FF6600] from-70% to-violet-600 text-transparent bg-clip-text">de confianza</span> ahora en una app.
+              El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza</span> ahora en una app
             </h1>
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
@@ -89,31 +89,53 @@ export default function Home() {
       </section>
 
       {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
-      <section id="como-funciona" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-black text-[#111827] mb-4 tracking-tight">¿Cómo funciona?</h2>
-        <p className="text-slate-500 mb-16 max-w-2xl mx-auto font-medium">Encontrar profesionales y servicios de confianza nunca fue tan fácil.</p>
+      <section id="como-funciona" className="bg-white py-24 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-black text-[#111827] mb-6 tracking-tight">¿Cómo funciona?</h2>
+          <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium">Encontrar profesionales y servicios de confianza nunca fue tan fácil.</p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-          <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/50 hover:-translate-y-1 transition-transform">
-            <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center mb-6">
-              <Search className="w-5 h-5 text-violet-600" />
+        <div className="flex flex-col gap-24">
+          {/* Fila 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1 max-w-lg mx-auto">
+              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6">
+                <Search className="w-8 h-8 text-violet-600" />
+              </div>
+              <h3 className="text-3xl font-black text-[#111827] mb-4">Busca en tu Red</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y validado.</p>
             </div>
-            <h3 className="text-xl font-bold text-[#111827] mb-3">Busca en tu Red</h3>
-            <p className="text-slate-500 text-sm leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y validado.</p>
+            <div className="order-1 md:order-2 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+              <img src="/comic_blob_search_photographer.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
+            </div>
           </div>
-          <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/50 hover:-translate-y-1 transition-transform">
-            <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center mb-6">
-              <Users className="w-5 h-5 text-violet-600" />
+
+          {/* Fila 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="order-1 md:order-1 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+              <img src="/comic_heart_trust_floral_clean.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
             </div>
-            <h3 className="text-xl font-bold text-[#111827] mb-3">Confianza Directa</h3>
-            <p className="text-slate-500 text-sm leading-relaxed">Accede al contacto directo de profesionales verificados. Sin intermediarios, sin comisiones ocultas.</p>
+            <div className="order-2 md:order-2 md:pl-12 max-w-lg mx-auto">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+                <Users className="w-8 h-8 text-[#FF6600]" />
+              </div>
+              <h3 className="text-3xl font-black text-[#111827] mb-4">Confianza Directa</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">Accede al contacto directo de profesionales verificados. Sin intermediarios, sin comisiones ocultas.</p>
+            </div>
           </div>
-          <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/50 hover:-translate-y-1 transition-transform">
-            <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center mb-6">
-              <CheckCircle2 className="w-5 h-5 text-violet-600" />
+
+          {/* Fila 3 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1 max-w-lg mx-auto md:pr-12">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+                <Heart className="w-8 h-8 text-[#FF6600]" />
+              </div>
+              <h3 className="text-3xl font-black text-[#111827] mb-4">Recomienda y Ayuda</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando reseñas honestas y cortas sobre los profesionales que han hecho un buen trabajo.</p>
             </div>
-            <h3 className="text-xl font-bold text-[#111827] mb-3">Recomienda y Ayuda</h3>
-            <p className="text-slate-500 text-sm leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando reseñas honestas y cortas sobre los profesionales que han hecho un buen trabajo.</p>
+            <div className="order-1 md:order-2 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+              <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
+            </div>
           </div>
         </div>
       </section>
