@@ -39,7 +39,7 @@ export default function Home() {
             <Link href="#planes" className="hover:text-violet-600 transition-colors">Planes</Link>
             <Link href="#faq" className="hover:text-violet-600 transition-colors">FAQ</Link>
           </div>
-          <Link href="#descargar" onClick={() => sendGAEvent({ event: 'Clic_Descargar_Navbar' })} className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
+          <Link href="#descargar" onClick={() => sendGAEvent({ event: 'Clic_Descargar_Navbar' })} className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
             Descargar app
           </Link>
         </nav>
@@ -56,7 +56,7 @@ export default function Home() {
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link onClick={() => sendGAEvent({ event: 'Clic_Descargar_Hero' })} href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
+              <Link onClick={() => sendGAEvent({ event: 'Clic_Descargar_Hero' })} href="#descargar" className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
                 Descargar app
               </Link>
               <Link onClick={() => sendGAEvent({ event: 'Clic_Planes_Hero' })} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
@@ -182,12 +182,12 @@ export default function Home() {
               sendGAEvent({ event: 'clic_toggle_plan' });
             }}
 
-            className="w-14 h-8 bg-[#F97316] rounded-full p-1 transition-colors relative"
+            className="w-14 h-8 bg-[#FF6600] rounded-full p-1 transition-colors relative"
           >
             <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
           <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
-          <span className="text-xs font-bold text-orange-600 bg-orange-100 px-3 py-1 rounded-full ml-2">3 meses gratis</span>
+          <span className="text-xs font-bold text-[#E65C00] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">3 meses gratis</span>
         </div>
 
         {/* Tarjetas de Precios */}
@@ -201,7 +201,7 @@ export default function Home() {
               <span className="text-5xl font-black text-[#111827]">{isAnnual ? '29.99€' : '2.99€'}</span>
               <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
             </div>
-            <p className="text-sm font-bold text-orange-500 mb-8 h-5">{isAnnual ? 'Equivale a 2.49€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
+            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 2.49€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
@@ -212,11 +212,11 @@ export default function Home() {
                 'Estadísticas de tu perfil'
               ].map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-700 font-medium">
-                  <Check className="w-5 h-5 text-[#F97316] shrink-0" /> {feature}
+                  <Check className="w-5 h-5 text-[#FF6600] shrink-0" /> {feature}
                 </li>
               ))}
             </ul>
-            <Link href="#descargar" onClick={() => sendGAEvent({ event: 'clic_descargar_planes' })} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#F97316] hover:text-[#F97316] py-3.5 rounded-2xl font-bold transition-all">
+            <Link href="#descargar" onClick={() => sendGAEvent({ event: 'clic_descargar_planes' })} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl font-bold transition-all">
               Descargar app
             </Link>
           </div>
@@ -229,7 +229,7 @@ export default function Home() {
               <span className="text-5xl font-black text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
               <span className="text-slate-400 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
             </div>
-            <p className="text-sm font-bold text-orange-400 mb-8 h-5">{isAnnual ? 'Equivale a 10.83€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
+            <p className="text-sm font-bold text-[#FF6600]/80 mb-8 h-5">{isAnnual ? 'Equivale a 10.83€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
@@ -240,7 +240,7 @@ export default function Home() {
                 '2,49 €/mes por perfil adicional'
               ].map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-300 font-medium">
-                  <Check className="w-5 h-5 text-[#F97316] shrink-0" /> {feature}
+                  <Check className="w-5 h-5 text-[#FF6600] shrink-0" /> {feature}
                 </li>
               ))}
             </ul>
@@ -250,7 +250,7 @@ export default function Home() {
                 setIsContactModalOpen(true);
               }}
 
-              className="block w-full text-center bg-[#F97316] hover:bg-[#EA580C] text-white py-3.5 rounded-2xl font-bold transition-all shadow-lg shadow-orange-500/20"
+              className="block w-full text-center bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-2xl font-bold transition-all shadow-lg shadow-[#FF6600]/20"
             >
               Contactar
             </button>
@@ -268,7 +268,7 @@ export default function Home() {
             <div className="grid grid-cols-3 p-6 border-b border-slate-100 bg-slate-50/50">
               <div></div>
               <div className="text-center font-bold text-[#111827]">Profesional</div>
-              <div className="text-center font-bold text-[#F97316]">Empresa</div>
+              <div className="text-center font-bold text-[#FF6600]">Empresa</div>
             </div>
             {[
               { name: 'Perfil profesional', p: true, e: true },
@@ -284,10 +284,10 @@ export default function Home() {
               <div key={i} className="grid grid-cols-3 p-6 border-b border-slate-50 items-center hover:bg-slate-50 transition-colors">
                 <div className="text-sm font-medium text-slate-700">{row.name}</div>
                 <div className="flex justify-center">
-                  {row.p ? <Check className="w-5 h-5 text-[#F97316]" /> : <Minus className="w-5 h-5 text-slate-300" />}
+                  {row.p ? <Check className="w-5 h-5 text-[#FF6600]" /> : <Minus className="w-5 h-5 text-slate-300" />}
                 </div>
                 <div className="flex justify-center">
-                  {row.e ? <Check className="w-5 h-5 text-[#F97316]" /> : <Minus className="w-5 h-5 text-slate-300" />}
+                  {row.e ? <Check className="w-5 h-5 text-[#FF6600]" /> : <Minus className="w-5 h-5 text-slate-300" />}
                 </div>
               </div>
             ))}
@@ -326,7 +326,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-2xl font-medium text-slate-300 mb-6">Estamos construyendo la red de servicios más confiable y queremos que seas parte de nuestro lanzamiento.</h2>
-            <Link href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-500/20">
+            <Link href="#descargar" className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/20">
               Descargar app Gratis
             </Link>
           </div>
@@ -405,22 +405,22 @@ export default function Home() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-bold text-slate-700 mb-1.5">Nombre de la empresa *</label>
-                      <input type="text" name="company" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Ej: Clínica Dental Madrid" />
+                      <input type="text" name="company" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Ej: Clínica Dental Madrid" />
                     </div>
                     <div>
                       <label className="block text-sm font-bold text-slate-700 mb-1.5">Persona de contacto *</label>
-                      <input type="text" name="name" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Tu nombre" />
+                      <input type="text" name="name" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Tu nombre" />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-1.5">Email corporativo *</label>
-                    <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="email@empresa.com" />
+                    <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="email@empresa.com" />
                   </div>
 
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-1.5">Perfiles profesionales que necesitas *</label>
-                    <select name="profiles" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white text-slate-700 appearance-none bg-no-repeat pr-10" style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`, backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}>
+                    <select name="profiles" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white text-slate-700 appearance-none bg-no-repeat pr-10" style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`, backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}>
                       <option value="">Selecciona una opción</option>
                       <option value="1-5">Entre 1 y 5 perfiles (Incluido en el plan)</option>
                       <option value="6-10">De 6 a 10 perfiles</option>
@@ -431,10 +431,10 @@ export default function Home() {
 
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-1.5">Cuéntanos sobre tu necesidad (Opcional)</label>
-                    <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#F97316] focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="¿Qué tipo de servicios ofrecéis? ¿Tenéis alguna necesidad especial?"></textarea>
+                    <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="¿Qué tipo de servicios ofrecéis? ¿Tenéis alguna necesidad especial?"></textarea>
                   </div>
 
-                  <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#F97316] hover:bg-[#EA580C] text-white py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-orange-500/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
+                  <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-[#FF6600]/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
                     {formStatus === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
                   </button>
                   <p className="text-center text-xs text-slate-400 mt-4">Tus datos están seguros.</p>
