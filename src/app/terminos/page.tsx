@@ -47,7 +47,7 @@ export default function TerminosPage() {
                             <h2 className="text-xl font-bold text-[#111827] mb-3">4. Suscripciones y Pagos (Para Profesionales)</h2>
                             <ul className="list-disc pl-5 space-y-2">
                                 <li>La app es gratuita para los usuarios que buscan servicios.</li>
-                                <li>Los profesionales pueden optar por planes gratuitos o de pago (Mensual/Anual) para obtener más visibilidad y herramientas.</li>
+                                <li>Los profesionales pueden optar por planes de pago (Mensual/Anual) para obtener más visibilidad y herramientas.</li>
                                 <li><strong>Sin permanencia:</strong> Puedes cancelar tu suscripción en cualquier momento desde tu panel. Disfrutarás de las ventajas del plan hasta que finalice tu ciclo de facturación actual. No se realizan reembolsos parciales por meses no terminados.</li>
                             </ul>
                         </section>

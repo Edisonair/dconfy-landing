@@ -45,12 +45,14 @@ export default function PrivacidadPage() {
 
                         <section>
                             <h2 className="text-xl font-bold text-[#111827] mb-3">4. ¿Con quién compartimos tus datos?</h2>
-                            <p className="mb-2">No vendemos tus datos a terceros. Solo los compartimos con los proveedores de tecnología estrictamente necesarios para que la app funcione:</p>
+                            <p className="mb-2">No vendemos tus datos a terceros. Solo los compartimos con los proveedores de tecnología y plataformas estrictamente necesarios para que la app funcione:</p>
                             <ul className="list-disc pl-5 space-y-2">
                                 <li><strong>Supabase:</strong> Alojamiento de bases de datos y autenticación segura.</li>
-                                <li><strong>Resend:</strong> Envío de correos transaccionales (bienvenidas, contraseñas).</li>
-                                <li><strong>Stripe:</strong> Procesamiento seguro de pagos.</li>
-                                <li><strong>Vercel:</strong> Alojamiento web y analíticas de rendimiento.</li>
+                                <li><strong>Resend:</strong> Envío de correos transaccionales (bienvenidas, recuperación de contraseñas).</li>
+                                <li><strong>Stripe:</strong> Procesamiento seguro de pagos web.</li>
+                                <li><strong>OneSignal:</strong> Gestión y envío de notificaciones push a tu dispositivo (como avisos de nuevos mensajes en el chat).</li>
+                                <li><strong>Apple y Google:</strong> Infraestructura nativa para la entrega de notificaciones (App Store y Google Play Services), métricas anónimas de rendimiento de la app y gestión de pagos si la suscripción se realiza directamente a través de sus tiendas.</li>
+                                <li><strong>Vercel:</strong> Alojamiento de nuestra página web y analíticas de rendimiento.</li>
                             </ul>
                         </section>
 
