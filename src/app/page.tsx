@@ -50,7 +50,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-6xl font-black text-[#111827] tracking-tight leading-[1.1] mb-6">
-              El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza</span> ahora en una app
+              El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
             </h1>
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
@@ -65,22 +65,28 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero Images (Avatares ovalados XL) */}
-          <div className="flex justify-center items-center gap-4 lg:gap-6 lg:justify-end mt-12 lg:mt-0">
+          {/* Hero Images (Avatares 3D Pop-out) */}
+          <div className="flex justify-center items-end lg:items-center lg:justify-end mt-20 sm:mt-12 lg:mt-0 relative lg:translate-x-8 xl:translate-x-16 scale-[1.15] sm:scale-100 origin-top lg:origin-center">
 
-            {/* Izquierda */}
-            <div className="w-[100px] h-[190px] sm:w-[140px] sm:h-[260px] lg:w-[180px] lg:h-[340px] rounded-full overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] mt-16 lg:mt-24 transition-transform hover:-translate-y-2 shrink-0">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Profesional" className="w-full h-full object-cover" />
+            {/* Izquierda (Profesora de Yoga - Violeta) */}
+            <div className="w-[160px] sm:w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-20 sm:mt-28 lg:mt-36 z-10 relative">
+              <div className="animate-float" style={{ animationDelay: '0s' }}>
+                <img src="/hero_vector_yoga_mat.png" alt="Profesora de Yoga dconfy" className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-700" />
+              </div>
             </div>
 
-            {/* Centro (Más grande y elevada) */}
-            <div className="w-[120px] h-[230px] sm:w-[170px] sm:h-[320px] lg:w-[220px] lg:h-[400px] rounded-full overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] z-10 mb-12 lg:mb-20 transition-transform hover:-translate-y-2 shrink-0">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Profesional" className="w-full h-full object-cover" />
+            {/* Centro (Jardinero - Naranja - El Más Grande y Frontal) */}
+            <div className="w-[180px] sm:w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-4 sm:mb-8 lg:mb-12 z-30 -ml-16 sm:-ml-28 lg:-ml-40 relative">
+              <div className="animate-float" style={{ animationDelay: '1.5s' }}>
+                <img src="/hero_vector_gardener_relatable.png" alt="Jardinero Profesional dconfy" className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-700" />
+              </div>
             </div>
 
-            {/* Derecha */}
-            <div className="w-[100px] h-[190px] sm:w-[140px] sm:h-[260px] lg:w-[180px] lg:h-[340px] rounded-full overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] mt-16 lg:mt-24 transition-transform hover:-translate-y-2 shrink-0">
-              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Profesional" className="w-full h-full object-cover" />
+            {/* Derecha (Tatuador - Azul) */}
+            <div className="w-[160px] sm:w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-10 sm:mt-16 lg:mt-20 z-20 -ml-16 sm:-ml-28 lg:-ml-40 relative">
+              <div className="animate-float" style={{ animationDelay: '3s' }}>
+                <img src="/hero_vector_tattoo_alt.png" alt="Tatuador Profesional dconfy" className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-700" />
+              </div>
             </div>
 
           </div>
@@ -98,25 +104,25 @@ export default function Home() {
         <div className="flex flex-col gap-24">
           {/* Fila 1 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 max-w-lg mx-auto">
-              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6">
+            <div className="order-1 md:order-1 max-w-lg mx-auto text-center md:text-left">
+              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-3xl font-black text-[#111827] mb-4">Busca en tu Red</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y validado.</p>
             </div>
-            <div className="order-1 md:order-2 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+            <div className="order-2 md:order-2 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_blob_search_photographer.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
             </div>
           </div>
 
           {/* Fila 2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-1 md:order-1 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+            <div className="order-2 md:order-1 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_heart_trust_floral_clean.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
             </div>
-            <div className="order-2 md:order-2 md:pl-12 max-w-lg mx-auto">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+            <div className="order-1 md:order-2 md:pl-12 max-w-lg mx-auto text-center md:text-left">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Users className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black text-[#111827] mb-4">Confianza Directa</h3>
@@ -126,14 +132,14 @@ export default function Home() {
 
           {/* Fila 3 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 max-w-lg mx-auto md:pr-12">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+            <div className="order-1 md:order-1 max-w-lg mx-auto md:pr-12 text-center md:text-left">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Heart className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black text-[#111827] mb-4">Recomienda y Ayuda</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando reseñas honestas y cortas sobre los profesionales que han hecho un buen trabajo.</p>
             </div>
-            <div className="order-1 md:order-2 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+            <div className="order-2 md:order-2 max-w-sm mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
             </div>
           </div>
@@ -251,7 +257,7 @@ export default function Home() {
               <span className="text-5xl font-black text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
               <span className="text-slate-400 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
             </div>
-            <p className="text-sm font-bold text-[#FF6600]/80 mb-8 h-5">{isAnnual ? 'Equivale a 10.83€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
+            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 10.83€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
