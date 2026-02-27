@@ -55,8 +55,8 @@ export default function Home() {
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link onClick={() => sendGAEvent({ event: 'Clic_Descargar_Hero' })} href="#descargar" className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <Link onClick={() => sendGAEvent({ event: 'Clic_Descargar_Hero' })} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
                 Descargar app
               </Link>
               <Link onClick={() => sendGAEvent({ event: 'Clic_Planes_Hero' })} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
@@ -187,7 +187,7 @@ export default function Home() {
             <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
           <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
-          <span className="text-xs font-bold text-[#E65C00] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">3 meses gratis</span>
+          <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">3 meses gratis</span>
         </div>
 
         {/* Tarjetas de Precios */}
