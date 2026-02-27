@@ -39,7 +39,7 @@ export default function Home() {
             <Link href="#planes" className="hover:text-violet-600 transition-colors">Planes</Link>
             <Link href="#faq" className="hover:text-violet-600 transition-colors">FAQ</Link>
           </div>
-          <Link href="#descargar" onClick={() => sendGAEvent({ event: 'Descargar_Navbar' })} className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
+          <Link href="#descargar" onClick={() => sendGAEvent({ event: 'Clic_Descargar_Navbar' })} className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
             Descargar app
           </Link>
         </nav>
@@ -56,10 +56,10 @@ export default function Home() {
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link onClick={() => sendGAEvent({ event: 'Descargar_Hero' })} href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
+              <Link onClick={() => sendGAEvent({ event: 'Clic_Descargar_Hero' })} href="#descargar" className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-orange-200/50 text-center">
                 Descargar app
               </Link>
-              <Link onClick={() => sendGAEvent({ event: 'Planes_Hero' })} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
+              <Link onClick={() => sendGAEvent({ event: 'Clic_Planes_Hero' })} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
                 Planes para profesionales
               </Link>
             </div>
@@ -139,7 +139,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
 
           {/* Botón App Store */}
-          <button onClick={() => sendGAEvent({ event: 'clic_boton', value: 'AppStore' })} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
+          <button onClick={() => sendGAEvent({ event: 'clic_appstore' })} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
             {/* SVG Oficial de Apple */}
             <svg className="w-8 h-8 ml-1" viewBox="0 0 384 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
@@ -151,7 +151,7 @@ export default function Home() {
           </button>
 
           {/* Botón Google Play */}
-          <button onClick={() => sendGAEvent({ event: 'clic_boton', value: 'GooglePlay' })} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
+          <button onClick={() => sendGAEvent({ event: 'clic_googleplay' })} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
             {/* SVG Oficial de Google Play */}
             <svg className="w-7 h-7 ml-1" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
@@ -179,7 +179,7 @@ export default function Home() {
           <button
             onClick={() => {
               setIsAnnual(!isAnnual);
-              sendGAEvent({ event: 'clic_boton', value: 'Toggle_Plan' });
+              sendGAEvent({ event: 'clic_toggle_plan' });
             }}
 
             className="w-14 h-8 bg-[#F97316] rounded-full p-1 transition-colors relative"
@@ -216,7 +216,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link href="#descargar" onClick={() => sendGAEvent({ event: 'clic_boton', value: 'Descargar_Planes' })} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#F97316] hover:text-[#F97316] py-3.5 rounded-2xl font-bold transition-all">
+            <Link href="#descargar" onClick={() => sendGAEvent({ event: 'clic_descargar_planes' })} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#F97316] hover:text-[#F97316] py-3.5 rounded-2xl font-bold transition-all">
               Descargar app
             </Link>
           </div>
@@ -246,7 +246,7 @@ export default function Home() {
             </ul>
             <button
               onClick={() => {
-                sendGAEvent({ event: 'clic_boton', value: 'Contactar_Plan_Empresa' });
+                sendGAEvent({ event: 'clic_contactar_plan_empresa' });
                 setIsContactModalOpen(true);
               }}
 
