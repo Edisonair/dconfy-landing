@@ -37,7 +37,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         {/* El espía de Google Analytics */}
-        <GoogleAnalytics gaId="G-E3KG5GCGW4" />
+        <GoogleAnalytics gaId="G-9Z17DJR35R" />
       </body>
     </html>
   );
