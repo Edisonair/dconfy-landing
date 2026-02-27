@@ -53,7 +53,7 @@ export default function Home() {
               El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
             </h1>
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
-              dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, con la ayuda de la tecnología.
+              dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, sin tener que preguntar.
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <Link onClick={() => sendGAEvent({ event: 'Clic_Descargar_Hero' })} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
@@ -66,11 +66,11 @@ export default function Home() {
           </div>
 
           {/* Hero Images Area */}
-          <div className="mt-16 lg:mt-0 relative w-full flex flex-col items-center">
+          <div className="mt-2 lg:mt-0 relative w-full flex flex-col items-center">
 
             {/* Version Movil (Carrusel Infinito) */}
-            <div className="block md:hidden w-full overflow-hidden relative py-12">
-              <div className="flex w-fit animate-marquee gap-8">
+            <div className="block md:hidden w-full overflow-hidden relative py-8 -mt-1">
+              <div className="flex w-fit animate-marquee items-center">
                 {/* Grupo 1 */}
                 {[
                   { src: "/hero_vector_yoga_mat.png", alt: "Yoga", delay: '0s' },
@@ -79,9 +79,9 @@ export default function Home() {
                   { src: "/hero_vector_painter_relatable.png", alt: "Pintor", delay: '1.5s' },
                   { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora", delay: '2s' }
                 ].map((item, i) => (
-                  <div key={i} className="w-[150px] shrink-0">
+                  <div key={i} className="w-[180px] sm:w-[170px] shrink-0 px-1">
                     <div className="animate-float" style={{ animationDelay: item.delay }}>
-                      <img src={item.src} alt={item.alt} className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)]" />
+                      <img src={item.src} alt={item.alt} className="w-full h-auto scale-[1.35] origin-center drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)]" />
                     </div>
                   </div>
                 ))}
@@ -94,9 +94,9 @@ export default function Home() {
                   { src: "/hero_vector_painter_relatable.png", alt: "Pintor", delay: '1.5s' },
                   { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora", delay: '2s' }
                 ].map((item, i) => (
-                  <div key={i + 5} className="w-[150px] shrink-0">
+                  <div key={i + 5} className="w-[180px] sm:w-[170px] shrink-0 px-1">
                     <div className="animate-float" style={{ animationDelay: item.delay }}>
-                      <img src={item.src} alt={item.alt} className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)]" />
+                      <img src={item.src} alt={item.alt} className="w-full h-auto scale-[1.35] origin-center drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)]" />
                     </div>
                   </div>
                 ))}
@@ -134,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
-      <section id="como-funciona" className="bg-white py-24 px-6 max-w-7xl mx-auto">
+      <section id="como-funciona" className="bg-white py-24 px-1 max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-black text-[#111827] mb-6 tracking-tight">¿Cómo funciona?</h2>
           <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium">Encontrar profesionales y servicios de confianza nunca fue tan fácil.</p>
