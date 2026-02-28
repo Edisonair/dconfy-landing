@@ -165,7 +165,7 @@ export default function Home() {
                 <Users className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black text-[#111827] mb-4">Confianza Directa</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Accede al contacto directo de profesionales verificados. Sin intermediarios, sin comisiones ocultas.</p>
+              <p className="text-lg text-slate-500 leading-relaxed">Accede a un chat directo de profesionales de confianza. Sin intermediarios, sin comisiones ocultas.</p>
             </div>
           </div>
 
@@ -401,7 +401,7 @@ export default function Home() {
           <div className="border-t border-slate-800 pt-16 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="md:col-span-2">
               <img src="/dconfy_logo_dark.png" alt="Logo dconfy" className="h-8 md:h-10 w-auto object-contain mb-6" />
-              <p className="text-slate-400 text-sm max-w-xs leading-relaxed">Profesionales recomendados por gente de tu confianza.</p>
+              <p className="text-slate-400 text-sm max-w-xs leading-relaxed">Profesionales y servicios recomendados por gente de tu confianza.</p>
               <div className="mt-6 flex items-center gap-3">
                 <a href="https://www.instagram.com/dconfy.io" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center p-2 rounded-full bg-slate-800 hover:bg-[#FF6600] text-slate-400 hover:text-white transition-all group" aria-label="Instagram de dconfy">
                   <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
