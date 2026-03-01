@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram } from 'lucide-react';
+import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle } from 'lucide-react';
 import { sendGAEvent } from '@next/third-parties/google';
 
 export default function Home() {
@@ -165,7 +165,7 @@ export default function Home() {
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-3xl font-black text-[#111827] mb-4">Busca en tu Red</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y validado.</p>
+              <p className="text-lg text-slate-500 leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y recomendado.</p>
             </div>
           </div>
 
@@ -173,7 +173,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <Users className="w-8 h-8 text-[#FF6600]" />
+                <MessageCircle className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black text-[#111827] mb-4">Confianza Directa</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Accede a un chat directo de profesionales de confianza. Sin intermediarios, sin comisiones ocultas.</p>
