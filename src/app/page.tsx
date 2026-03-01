@@ -178,8 +178,8 @@ export default function Home() {
               <h3 className="text-3xl font-black text-[#111827] mb-4">Confianza Directa</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Accede a un chat directo de profesionales de confianza. Sin intermediarios, sin comisiones ocultas.</p>
             </div>
-            <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
-              <img src="/comic_heart_trust_floral_clean.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
+            <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
+              <img src="/comic_heart_trust_floral_clean_cream.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
             </div>
           </div>
         </div>
