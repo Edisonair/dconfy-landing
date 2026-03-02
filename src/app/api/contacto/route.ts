@@ -4,16 +4,16 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
-    try {
-        const data = await request.json();
-        const { company, name, email, profiles, message } = data;
+  try {
+    const data = await request.json();
+    const { company, name, email, profiles, message } = data;
 
-        // 1. Email para ti (Aviso a info@dconfy.io)
-        await resend.emails.send({
-            from: 'dconfy <info@dconfy.io>',
-            to: 'info@dconfy.io',
-            subject: `🔥 Nueva solicitud de Plan Empresa: ${company}`,
-            html: `
+    // 1. Email para ti (Aviso que TÚ vas a recibir)
+    await resend.emails.send({
+      from: 'dconfy <hola@dconfy.app>', // El remitente oficial
+      to: 'info@dconfy.io', // 🚨 TU CORREO REAL DONDE QUIERES LEER LOS AVISOS
+      subject: `🔥 Nueva solicitud de Plan Empresa: ${company}`,
+      html: `
         <h2>Nueva solicitud de Plan Empresa</h2>
         <p><strong>Empresa:</strong> ${company}</p>
         <p><strong>Contacto:</strong> ${name}</p>
@@ -21,14 +21,15 @@ export async function POST(request: Request) {
         <p><strong>Perfiles:</strong> ${profiles}</p>
         <p><strong>Mensaje:</strong> ${message || 'No especificado'}</p>
       `,
-        });
+    });
 
-        // 2. Email automático para el cliente (Diseño Claro Indestructible)
-        await resend.emails.send({
-            from: 'dconfy <info@dconfy.io>',
-            to: email,
-            subject: 'Hemos recibido tu solicitud - dconfy',
-            html: `
+    // 2. Email automático para el cliente (Diseño Claro Indestructible)
+    await resend.emails.send({
+      from: 'dconfy <hola@dconfy.app>', // ✅ AHORA SÍ: El dominio nuevo verificado
+      replyTo: 'info@dconfy.io', // ✅ TU CORREO REAL: Por si el cliente le da a "Responder"
+      to: email, // El correo del cliente
+      subject: 'Hemos recibido tu solicitud - dconfy',
+      html: `
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #FFF9F0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
           <tr>
             <td align="center" style="padding: 40px 20px;">
@@ -37,7 +38,7 @@ export async function POST(request: Request) {
                 
                 <tr>
                   <td align="center" style="padding: 32px 20px; border-bottom: 1px solid #f1f5f9;">
-                    <img src="https://dconfy.io/dconfy_logo_hibrid.png" alt="dconfy logo" style="height: 40px; width: auto; display: block;" />
+                    <img src="https://dconfy.app/dconfy_logo_hibrid.png" alt="dconfy logo" style="height: 40px; width: auto; display: block;" />
                   </td>
                 </tr>
                 
@@ -72,11 +73,11 @@ export async function POST(request: Request) {
           </tr>
         </table>
       `,
-        });
+    });
 
-        return NextResponse.json({ success: true });
-    } catch (error) {
-        console.error('Error enviando email:', error);
-        return NextResponse.json({ error: 'Error enviando email' }, { status: 500 });
-    }
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error enviando email:', error);
+    return NextResponse.json({ error: 'Error enviando email' }, { status: 500 });
+  }
 }
