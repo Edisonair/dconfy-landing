@@ -12,12 +12,12 @@ export const metadata: Metadata = {
   keywords: ["profesionales", "servicios", "recomendaciones", "confianza", "app", "dconfy"],
   openGraph: {
     title: "dconfy | Tu red de confianza",
-    description: "El boca a boca de confianza ahora en una app.",
-    url: "https://dconfy.io",
+    description: "El boca a boca de confianza, ahora en una app.",
+    url: "https://dconfy.app",
     siteName: "dconfy",
     images: [
       {
-        url: "https://dconfy.io/dconfy_icon.png", // La imagen que saldrá al compartir el link
+        url: "https://dconfy.app/dconfy_icon.png", // La imagen que saldrá al compartir el link
         width: 1200,
         height: 630,
       }
