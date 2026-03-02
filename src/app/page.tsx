@@ -47,7 +47,7 @@ export default function Home() {
             <Link href="#planes" className="hover:text-violet-600 transition-colors">Planes</Link>
             <Link href="#faq" className="hover:text-violet-600 transition-colors">FAQ</Link>
           </div>
-          <Link href="#descargar" onClick={() => trackGAEvent('Clic_Descargar', 'Boton Navbar')} className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+          <Link href="#descargar" onClick={() => trackGAEvent('Clic_Descargar_nav', 'Descargar')} className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
             Descargar app
           </Link>
         </nav>
@@ -64,10 +64,10 @@ export default function Home() {
               dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, sin tener que preguntar.
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <Link onClick={() => trackGAEvent('Clic_Descargar', 'Boton Hero')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+              <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
                 Descargar app
               </Link>
-              <Link onClick={() => trackGAEvent('Clic_Planes', 'Boton Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
+              <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
                 Planes para profesionales
               </Link>
             </div>
@@ -214,7 +214,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
 
           {/* Botón App Store */}
-          <button onClick={() => trackGAEvent('Clic_Descargar', 'Boton App Store')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
+          <button onClick={() => trackGAEvent('Clic_Descargar_appStore', 'Descargar')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
             {/* SVG Oficial de Apple */}
             <svg className="w-8 h-8 ml-1" viewBox="0 0 384 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
@@ -226,7 +226,7 @@ export default function Home() {
           </button>
 
           {/* Botón Google Play */}
-          <button onClick={() => trackGAEvent('Clic_Descargar', 'Boton Google Play')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
+          <button onClick={() => trackGAEvent('Clic_Descargar_googlePlay', 'Descargar')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
             {/* SVG Oficial de Google Play */}
             <svg className="w-7 h-7 ml-1" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
@@ -254,7 +254,7 @@ export default function Home() {
           <button
             onClick={() => {
               setIsAnnual(!isAnnual);
-              trackGAEvent('Clic_Planes', 'Boton Toggle Plan');
+              trackGAEvent('Clic_Planes_toggle', 'Planes');
             }}
 
             className="w-14 h-8 bg-[#FF6600] rounded-full p-1 transition-colors relative"
@@ -291,7 +291,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link href="#descargar" onClick={() => trackGAEvent('Clic_Descargar', 'Boton PlanPro')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl font-bold transition-all">
+            <Link href="#descargar" onClick={() => trackGAEvent('Clic_Descargar_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl font-bold transition-all">
               Descargar app
             </Link>
           </div>
@@ -321,7 +321,7 @@ export default function Home() {
             </ul>
             <button
               onClick={() => {
-                trackGAEvent('Clic_Descargar', 'Boton PlanEmpresa');
+                trackGAEvent('Clic_Descargar_planEmpresa', 'Planes');
                 setIsContactModalOpen(true);
               }}
 
@@ -411,10 +411,10 @@ export default function Home() {
               <img src="/dconfy_logo_dark.png" alt="Logo dconfy" className="h-8 md:h-10 w-auto object-contain mb-6" />
               <p className="text-slate-400 text-sm max-w-xs leading-relaxed">Profesionales y servicios recomendados por gente de tu confianza.</p>
               <div className="mt-6 flex items-center gap-3">
-                <a onClick={() => trackGAEvent('Clic_Social', 'Boton Instagram')} href="https://www.instagram.com/dconfy.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center p-2 rounded-full bg-slate-800 hover:bg-[#FF6600] text-slate-400 hover:text-white transition-all group" aria-label="Instagram de dconfy">
+                <a onClick={() => trackGAEvent('Clic_Social_Instagram', 'Social')} href="https://www.instagram.com/dconfy.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center p-2 rounded-full bg-slate-800 hover:bg-[#FF6600] text-slate-400 hover:text-white transition-all group" aria-label="Instagram de dconfy">
                   <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 </a>
-                <a onClick={() => trackGAEvent('Clic_Social', 'Boton TikTok')} href="https://www.tiktok.com/@dconfy.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center p-2 rounded-full bg-slate-800 hover:bg-[#FF6600] text-slate-400 hover:text-white transition-all group" aria-label="TikTok de dconfy">
+                <a onClick={() => trackGAEvent('Clic_Social_TikTok', 'Social')} href="https://www.tiktok.com/@dconfy.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center p-2 rounded-full bg-slate-800 hover:bg-[#FF6600] text-slate-400 hover:text-white transition-all group" aria-label="TikTok de dconfy">
                   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 group-hover:scale-110 transition-transform">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                   </svg>
