@@ -61,7 +61,7 @@ export default function Home() {
               El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
             </h1>
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
-              dconfy recupera la forma natural de encontrar profesionales y servicios: preguntando a la gente que conoces, sin tener que preguntar.
+              dconfy recupera la forma natural de encontrar profesionales y servicios: conectando con la gente que conoces, sin tener que preguntar.
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
