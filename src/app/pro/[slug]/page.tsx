@@ -131,7 +131,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                     {/* INDICADOR DE RECOMENDACIONES */}
                     <div className="flex items-center justify-start gap-2 mb-6 ml-1">
                         <Heart className="w-5 h-5 fill-[#FF6600] text-[#FF6600]" />
-                        <span className="text-xl sm:text-xl font-black text-[#FF6600]">{count || 0}</span>
+                        <span className="text-[12px] font-black text-[#FF6600]">{count || 0}</span>
                         <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider pt-1">Recomendaciones</span>
                     </div>
 
