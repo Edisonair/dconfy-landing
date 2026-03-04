@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { Quote, Heart, Sparkles, Image as ImageIcon } from 'lucide-react';
+import { Quote, Heart, Image as ImageIcon } from 'lucide-react';
 import ActionButtons from './ActionButtons';
 
 export const dynamic = 'force-dynamic';
@@ -54,7 +54,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                 <pre className="bg-slate-100 p-4 rounded text-left text-sm overflow-auto text-slate-800 max-w-2xl mx-auto">
                     {JSON.stringify(error, null, 2)}
                 </pre>
-                <p className="mt-4 text-slate-500 font-bold">Buscando slug o ID: {slug}</p>
             </div>
         );
     }
@@ -71,7 +70,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         .limit(3);
 
     return (
-        <div className="min-h-screen bg-[#F8FAFC] pb-36 font-sans selection:bg-violet-200">
+        <div className="min-h-screen bg-[#FFF9F2] pb-36 font-sans selection:bg-violet-200">
 
             <header className="flex justify-center py-6">
                 <img src="/dconfy_logo.png" alt="dconfy" className="h-8 object-contain" />
@@ -79,55 +78,53 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
             <main className="max-w-xl mx-auto px-4 space-y-6">
 
-                <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 text-center relative overflow-hidden">
-                    <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-violet-50 to-white"></div>
+                {/* TARJETA PRINCIPAL */}
+                <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden">
 
-                    <img
-                        src={profile.professional_logo_url || profile.avatar_url}
-                        alt={profile.professional_name}
-                        className="w-28 h-28 mx-auto rounded-3xl object-cover shadow-lg border-4 border-white relative z-10 bg-white"
-                    />
-
-                    <h1 className="text-2xl font-black text-slate-900 mt-4 leading-tight">
-                        {profile.professional_name || profile.full_name}
-                    </h1>
-
-                    <div className="flex items-center justify-center gap-1.5 text-violet-600 font-bold text-lg mt-1">
-                        <Sparkles className="w-5 h-5" />
-                        <p>{profile.specialty || profile.category}</p>
+                    <div className="flex items-center gap-4 text-left w-full mb-6">
+                        <img
+                            src={profile.professional_logo_url || profile.avatar_url}
+                            alt={profile.professional_name}
+                            className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-sm border border-slate-100 shrink-0"
+                        />
+                        <div className="flex-1 min-w-0">
+                            <h1 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight mb-1 truncate">
+                                {profile.professional_name || profile.full_name}
+                            </h1>
+                            <p className="text-violet-600 font-bold text-sm sm:text-base mb-1 truncate">
+                                {profile.specialty || profile.category}
+                            </p>
+                            <div className="flex items-center gap-1 text-slate-500 font-medium text-sm truncate">
+                                <span>📍</span>
+                                <span className="truncate">{profile.location || 'España'}</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="flex items-center justify-center gap-1.5 text-slate-500 font-medium mt-2">
-                        <span className="text-lg">📍</span>
-                        <span>{profile.location || 'España'}</span>
-                    </div>
-
-                    <div className="mt-6 inline-flex flex-col items-center bg-orange-50/50 border border-orange-100 px-6 py-3 rounded-2xl">
-                        <div className="flex items-center gap-2">
+                    <div className="flex justify-center mb-6">
+                        <div className="inline-flex items-center gap-2 bg-orange-50/50 border border-orange-100 px-6 py-3 rounded-2xl">
                             <Heart className="w-6 h-6 fill-[#FF6600] text-[#FF6600]" />
                             <span className="text-3xl font-black text-[#FF6600]">{count || 0}</span>
+                            <span className="text-[11px] font-bold text-orange-600/80 uppercase tracking-wider ml-1">Recomendaciones</span>
                         </div>
-                        <span className="text-[11px] font-bold text-orange-600/80 uppercase tracking-wider mt-1">Recomendaciones</span>
                     </div>
 
                     {profile.bio && (
-                        <p className="text-slate-700 mt-6 leading-relaxed text-base">
-                            {profile.bio}
-                        </p>
+                        <div className="bg-slate-50 rounded-2xl p-4">
+                            <p className="text-slate-700 leading-relaxed text-[15px]">
+                                {profile.bio}
+                            </p>
+                        </div>
                     )}
 
-                    {/* 🚀 NUEVO: MINIATURAS DE LA GALERÍA */}
                     {profile.gallery && profile.gallery.length > 0 && (
-                        <div className="mt-8 pt-6 border-t border-slate-100">
-                            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center justify-center gap-1.5">
-                                <ImageIcon className="w-4 h-4" /> Algunos de sus trabajos
-                            </p>
+                        <div className="mt-6 pt-6 border-t border-slate-100">
                             <div className="flex justify-center gap-3">
                                 {profile.gallery.slice(0, 2).map((imgUrl: string, index: number) => (
                                     <img
                                         key={index}
                                         src={imgUrl}
-                                        alt={`Trabajo ${index + 1} de ${profile.professional_name}`}
+                                        alt={`Trabajo ${index + 1}`}
                                         className="w-32 h-32 object-cover rounded-2xl shadow-sm border border-slate-100"
                                     />
                                 ))}
@@ -138,7 +135,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
                 {reviews && reviews.length > 0 && (
                     <div className="space-y-4">
-                        {reviews.map((review) => (
+                        {reviews?.map((review) => (
                             <div key={review.id} className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
                                 <div className="flex items-center gap-3 mb-3">
                                     <img
