@@ -22,8 +22,8 @@ export default function ActionButtons({ slug }: { slug: string }) {
                 onClick={handleDeepLink}
                 className="flex-1 max-w-[200px] bg-slate-100 text-slate-700 font-bold py-3.5 rounded-full flex items-center justify-center gap-2 hover:bg-slate-200 transition-colors active:scale-95 text-[13px] sm:text-sm"
             >
-                <img src="/icon.png" alt="dconfy" className="w-5 h-5 rounded-[4px] object-contain shadow-sm" />
-                Abrir en dconfy.app
+                <img src="/icon.png" alt="dconfy" className="w-5 h-5 rounded-[4px] object-contain" />
+                Abrir en dconfy
             </button>
             <button
                 onClick={handleDeepLink}
