@@ -2,26 +2,26 @@ import { createClient } from '@supabase/supabase-js';
 import { MapPin, Quote } from 'lucide-react';
 import ActionButtons from './ActionButtons';
 
-// 🚀 1. APAGAMOS LA CACHÉ: Obligamos a Next.js a consultar a Supabase cada vez
+// 1. APAGAMOS LA CACHÉ
 export const dynamic = 'force-dynamic';
 
-// Inicializa Supabase (Usa tus variables de entorno de Next.js)
+// Inicializa Supabase
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-// Función auxiliar para detectar UUID
 const checkIfUUID = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
 
-// 1. Generamos el SEO para WhatsApp y Redes Sociales
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const isUUID = checkIfUUID(params.slug);
+// 🚀 CAMBIO: params ahora es una Promesa en Next.js 15
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params; // Esperamos a que el router nos dé el slug
+    const isUUID = checkIfUUID(slug);
 
     const { data: profile } = await supabase
         .from('profiles')
         .select('*')
-        .eq(isUUID ? 'id' : 'slug', params.slug)
+        .eq(isUUID ? 'id' : 'slug', slug)
         .single();
 
     if (!profile) return { title: 'Perfil no encontrado | dconfy' };
@@ -40,18 +40,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-// 2. La página (Server Component)
-export default async function PublicProfilePage({ params }: { params: { slug: string } }) {
-    const isUUID = checkIfUUID(params.slug);
+// 🚀 CAMBIO: params ahora es una Promesa
+export default async function PublicProfilePage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params; // Esperamos a que el router nos dé el slug
+    const isUUID = checkIfUUID(slug);
 
-    // Buscamos al profesional y capturamos posibles errores
     const { data: profile, error } = await supabase
         .from('profiles')
         .select('*')
-        .eq(isUUID ? 'id' : 'slug', params.slug)
+        .eq(isUUID ? 'id' : 'slug', slug)
         .single();
 
-    // 🚀 3. LO PINTAMOS EN PANTALLA SI FALLA SUPABASE (Útil para depurar)
     if (error) {
         return (
             <div className="p-10 text-center">
@@ -59,7 +58,7 @@ export default async function PublicProfilePage({ params }: { params: { slug: st
                 <pre className="bg-slate-100 p-4 rounded text-left text-sm overflow-auto text-slate-800 max-w-2xl mx-auto">
                     {JSON.stringify(error, null, 2)}
                 </pre>
-                <p className="mt-4 text-slate-500 font-bold">Buscando slug o ID: {params.slug}</p>
+                <p className="mt-4 text-slate-500 font-bold">Buscando slug o ID: {slug}</p>
             </div>
         );
     }
@@ -68,7 +67,6 @@ export default async function PublicProfilePage({ params }: { params: { slug: st
         return <div className="min-h-screen flex items-center justify-center text-slate-500">Perfil no encontrado.</div>;
     }
 
-    // Buscamos sus últimas 3 recomendaciones
     const { data: reviews, count } = await supabase
         .from('recommendations')
         .select('*, profiles!recommendations_user_id_fkey(full_name, avatar_url)', { count: 'exact' })
@@ -79,14 +77,12 @@ export default async function PublicProfilePage({ params }: { params: { slug: st
     return (
         <div className="min-h-screen bg-[#F8FAFC] pb-32 font-sans selection:bg-violet-200">
 
-            {/* Cabecera sencilla de Dconfy */}
             <header className="flex justify-center py-6">
                 <img src="/logo-completo.png" alt="dconfy" className="h-8 object-contain" />
             </header>
 
             <main className="max-w-xl mx-auto px-4 space-y-6">
 
-                {/* TARJETA PRINCIPAL DEL PROFESIONAL */}
                 <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 text-center relative overflow-hidden">
                     <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-violet-50 to-white"></div>
 
@@ -109,7 +105,6 @@ export default async function PublicProfilePage({ params }: { params: { slug: st
                         <span>{profile.location || 'España'}</span>
                     </div>
 
-                    {/* Resumen de Confianza */}
                     <div className="mt-6 inline-flex flex-col items-center bg-violet-50 border border-violet-100 px-6 py-3 rounded-2xl">
                         <span className="text-2xl font-black text-violet-700">{count || 0}</span>
                         <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">Recomendaciones</span>
@@ -122,7 +117,6 @@ export default async function PublicProfilePage({ params }: { params: { slug: st
                     )}
                 </div>
 
-                {/* ÚLTIMAS RECOMENDACIONES (Preview) */}
                 {reviews && reviews.length > 0 && (
                     <div className="space-y-4">
                         <h2 className="text-lg font-bold text-slate-900 pl-2">Lo que dicen de su trabajo:</h2>
@@ -149,8 +143,7 @@ export default async function PublicProfilePage({ params }: { params: { slug: st
                 )}
             </main>
 
-            {/* BOTONES MÁGICOS (Cliente) */}
-            <ActionButtons slug={params.slug} />
+            <ActionButtons slug={slug} />
 
         </div>
     );
