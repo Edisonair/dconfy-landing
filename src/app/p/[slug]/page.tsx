@@ -2,15 +2,27 @@ import { createClient } from '@supabase/supabase-js';
 import { MapPin, Quote } from 'lucide-react';
 import ActionButtons from './ActionButtons';
 
+// 🚀 1. APAGAMOS LA CACHÉ: Obligamos a Next.js a consultar a Supabase cada vez
+export const dynamic = 'force-dynamic';
+
 // Inicializa Supabase (Usa tus variables de entorno de Next.js)
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
+// Función auxiliar para detectar UUID
+const checkIfUUID = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
+
 // 1. Generamos el SEO para WhatsApp y Redes Sociales
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const { data: profile } = await supabase.from('profiles').select('*').eq('slug', params.slug).single();
+    const isUUID = checkIfUUID(params.slug);
+
+    const { data: profile } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq(isUUID ? 'id' : 'slug', params.slug)
+        .single();
 
     if (!profile) return { title: 'Perfil no encontrado | dconfy' };
 
@@ -30,8 +42,27 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 // 2. La página (Server Component)
 export default async function PublicProfilePage({ params }: { params: { slug: string } }) {
-    // Buscamos al profesional
-    const { data: profile } = await supabase.from('profiles').select('*').eq('slug', params.slug).single();
+    const isUUID = checkIfUUID(params.slug);
+
+    // Buscamos al profesional y capturamos posibles errores
+    const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq(isUUID ? 'id' : 'slug', params.slug)
+        .single();
+
+    // 🚀 3. LO PINTAMOS EN PANTALLA SI FALLA SUPABASE (Útil para depurar)
+    if (error) {
+        return (
+            <div className="p-10 text-center">
+                <h1 className="text-red-500 font-bold mb-4">Error de Supabase:</h1>
+                <pre className="bg-slate-100 p-4 rounded text-left text-sm overflow-auto text-slate-800 max-w-2xl mx-auto">
+                    {JSON.stringify(error, null, 2)}
+                </pre>
+                <p className="mt-4 text-slate-500 font-bold">Buscando slug o ID: {params.slug}</p>
+            </div>
+        );
+    }
 
     if (!profile) {
         return <div className="min-h-screen flex items-center justify-center text-slate-500">Perfil no encontrado.</div>;
