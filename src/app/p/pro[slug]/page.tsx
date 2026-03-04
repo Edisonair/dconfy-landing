@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { Quote, Heart, Sparkles } from 'lucide-react';
+import { Quote, Heart, Sparkles, Image as ImageIcon } from 'lucide-react';
 import ActionButtons from './ActionButtons';
 
 export const dynamic = 'force-dynamic';
@@ -115,11 +115,29 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                             {profile.bio}
                         </p>
                     )}
+
+                    {/* 🚀 NUEVO: MINIATURAS DE LA GALERÍA */}
+                    {profile.gallery && profile.gallery.length > 0 && (
+                        <div className="mt-8 pt-6 border-t border-slate-100">
+                            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center justify-center gap-1.5">
+                                <ImageIcon className="w-4 h-4" /> Algunos de sus trabajos
+                            </p>
+                            <div className="flex justify-center gap-3">
+                                {profile.gallery.slice(0, 2).map((imgUrl: string, index: number) => (
+                                    <img
+                                        key={index}
+                                        src={imgUrl}
+                                        alt={`Trabajo ${index + 1} de ${profile.professional_name}`}
+                                        className="w-32 h-32 object-cover rounded-2xl shadow-sm border border-slate-100"
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 {reviews && reviews.length > 0 && (
                     <div className="space-y-4">
-                        {/* 🚀 Eliminado el título "Lo que dicen de su trabajo" */}
                         {reviews.map((review) => (
                             <div key={review.id} className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
                                 <div className="flex items-center gap-3 mb-3">
