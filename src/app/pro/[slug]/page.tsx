@@ -72,8 +72,17 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
     return (
         <div className="min-h-screen bg-[#FFF9F2] pb-36 font-sans selection:bg-violet-200">
 
-            <header className="flex justify-center py-6">
-                <img src="/dconfy_logo.png" alt="dconfy" className="h-8 object-contain" />
+            {/* 🚀 NUEVO HEADER: Logo a la izquierda, Botón a la derecha */}
+            <header className="flex justify-between items-center py-6 max-w-xl mx-auto px-4">
+                <img src="/dconfy_logo.png" alt="dconfy" className="h-7 sm:h-8 object-contain" />
+                <a
+                    href="https://dconfy.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-full border border-slate-200 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95"
+                >
+                    dconfy.app
+                </a>
             </header>
 
             <main className="max-w-xl mx-auto px-4 space-y-6">
@@ -82,7 +91,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                 <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden">
 
                     <div className="flex items-center gap-4 text-left w-full mb-4">
-                        {/* 🚀 FOTO UN POCO MÁS GRANDE (pasó de w-20 a w-24) */}
                         <img
                             src={profile.professional_logo_url || profile.avatar_url}
                             alt={profile.professional_name}
@@ -102,10 +110,10 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     </div>
 
-                    {/* 🚀 INDICADOR DE RECOMENDACIONES MÁS PEQUEÑO, SIN FONDO Y ALINEADO A LA IZQUIERDA */}
+                    {/* INDICADOR DE RECOMENDACIONES */}
                     <div className="flex items-center justify-start gap-2 mb-6 ml-1">
                         <Heart className="w-5 h-5 fill-[#FF6600] text-[#FF6600]" />
-                        <span className="text-1xl font-black text-[#FF6600]">{count || 0}</span>
+                        <span className="text-xl sm:text-2xl font-black text-[#FF6600]">{count || 0}</span>
                         <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider pt-1">Recomendaciones</span>
                     </div>
 
@@ -117,7 +125,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     )}
 
-                    {/* 🚀 IMÁGENES FULL-WIDTH (grid) Y MÁS ALTAS (h-48) */}
+                    {/* IMÁGENES DE GALERÍA */}
                     {profile.gallery && profile.gallery.length > 0 && (
                         <div className="mt-6 pt-6 border-t border-slate-100">
                             <div className="grid grid-cols-2 gap-3 w-full">
@@ -134,6 +142,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                     )}
                 </div>
 
+                {/* REVIEWS */}
                 {reviews && reviews.length > 0 && (
                     <div className="space-y-4">
                         {reviews?.map((review) => (
