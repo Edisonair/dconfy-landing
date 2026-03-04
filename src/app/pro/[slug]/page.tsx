@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const title = `${profile.professional_name || profile.full_name} - ${profile.specialty} | dconfy`;
     const description = `Recomendado en ${profile.location}. ${profile.bio?.substring(0, 100) || 'Descubre su perfil en dconfy.'}...`;
+    const imageUrl = profile.professional_logo_url || profile.avatar_url || 'https://dconfy.app/dconfy_logo.png';
 
     return {
         title,
@@ -32,8 +33,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         openGraph: {
             title,
             description,
-            images: [profile.professional_logo_url || profile.avatar_url || 'https://dconfy.app/og-default.png'],
+            url: `https://dconfy.app/pro/${slug}`,
+            siteName: 'dconfy',
+            images: [
+                {
+                    url: imageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: `Perfil de ${profile.professional_name || profile.full_name}`,
+                }
+            ],
+            locale: 'es_ES',
+            type: 'profile',
         },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: [imageUrl],
+        }
     };
 }
 
