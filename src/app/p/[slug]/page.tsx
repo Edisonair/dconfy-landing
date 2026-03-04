@@ -1,11 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
-import { MapPin, Quote } from 'lucide-react';
+import { Quote, Heart, Sparkles } from 'lucide-react';
 import ActionButtons from './ActionButtons';
 
-// 1. APAGAMOS LA CACHÉ
 export const dynamic = 'force-dynamic';
 
-// Inicializa Supabase
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -13,9 +11,8 @@ const supabase = createClient(
 
 const checkIfUUID = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
 
-// 🚀 CAMBIO: params ahora es una Promesa en Next.js 15
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params; // Esperamos a que el router nos dé el slug
+    const { slug } = await params;
     const isUUID = checkIfUUID(slug);
 
     const { data: profile } = await supabase
@@ -40,9 +37,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
 }
 
-// 🚀 CAMBIO: params ahora es una Promesa
 export default async function PublicProfilePage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params; // Esperamos a que el router nos dé el slug
+    const { slug } = await params;
     const isUUID = checkIfUUID(slug);
 
     const { data: profile, error } = await supabase
@@ -75,10 +71,10 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         .limit(3);
 
     return (
-        <div className="min-h-screen bg-[#F8FAFC] pb-32 font-sans selection:bg-violet-200">
+        <div className="min-h-screen bg-[#F8FAFC] pb-36 font-sans selection:bg-violet-200">
 
             <header className="flex justify-center py-6">
-                <img src="/logo-completo.png" alt="dconfy" className="h-8 object-contain" />
+                <img src="/dconfy_logo.png" alt="dconfy" className="h-8 object-contain" />
             </header>
 
             <main className="max-w-xl mx-auto px-4 space-y-6">
@@ -96,22 +92,26 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         {profile.professional_name || profile.full_name}
                     </h1>
 
-                    <p className="text-violet-600 font-bold text-lg mt-1">
-                        {profile.specialty || profile.category}
-                    </p>
+                    <div className="flex items-center justify-center gap-1.5 text-violet-600 font-bold text-lg mt-1">
+                        <Sparkles className="w-5 h-5" />
+                        <p>{profile.specialty || profile.category}</p>
+                    </div>
 
                     <div className="flex items-center justify-center gap-1.5 text-slate-500 font-medium mt-2">
-                        <MapPin className="w-4 h-4" />
+                        <span className="text-lg">📍</span>
                         <span>{profile.location || 'España'}</span>
                     </div>
 
-                    <div className="mt-6 inline-flex flex-col items-center bg-violet-50 border border-violet-100 px-6 py-3 rounded-2xl">
-                        <span className="text-2xl font-black text-violet-700">{count || 0}</span>
-                        <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">Recomendaciones</span>
+                    <div className="mt-6 inline-flex flex-col items-center bg-orange-50/50 border border-orange-100 px-6 py-3 rounded-2xl">
+                        <div className="flex items-center gap-2">
+                            <Heart className="w-6 h-6 fill-[#FF6600] text-[#FF6600]" />
+                            <span className="text-3xl font-black text-[#FF6600]">{count || 0}</span>
+                        </div>
+                        <span className="text-[11px] font-bold text-orange-600/80 uppercase tracking-wider mt-1">Recomendaciones</span>
                     </div>
 
                     {profile.bio && (
-                        <p className="text-slate-600 mt-6 leading-relaxed text-sm">
+                        <p className="text-slate-700 mt-6 leading-relaxed text-base">
                             {profile.bio}
                         </p>
                     )}
@@ -119,7 +119,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
                 {reviews && reviews.length > 0 && (
                     <div className="space-y-4">
-                        <h2 className="text-lg font-bold text-slate-900 pl-2">Lo que dicen de su trabajo:</h2>
+                        {/* 🚀 Eliminado el título "Lo que dicen de su trabajo" */}
                         {reviews.map((review) => (
                             <div key={review.id} className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
                                 <div className="flex items-center gap-3 mb-3">
