@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { Quote, Heart, Image as ImageIcon } from 'lucide-react';
+import { Quote, Heart } from 'lucide-react';
 import ActionButtons from './ActionButtons';
 
 export const dynamic = 'force-dynamic';
@@ -81,11 +81,12 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                 {/* TARJETA PRINCIPAL */}
                 <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden">
 
-                    <div className="flex items-center gap-4 text-left w-full mb-6">
+                    <div className="flex items-center gap-4 text-left w-full mb-4">
+                        {/* 🚀 FOTO UN POCO MÁS GRANDE (pasó de w-20 a w-24) */}
                         <img
                             src={profile.professional_logo_url || profile.avatar_url}
                             alt={profile.professional_name}
-                            className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-sm border border-slate-100 shrink-0"
+                            className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shadow-sm border border-slate-100 shrink-0"
                         />
                         <div className="flex-1 min-w-0">
                             <h1 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight mb-1 truncate">
@@ -101,12 +102,11 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     </div>
 
-                    <div className="flex justify-center mb-6">
-                        <div className="inline-flex items-center gap-2 bg-orange-50/50 border border-orange-100 px-6 py-3 rounded-2xl">
-                            <Heart className="w-6 h-6 fill-[#FF6600] text-[#FF6600]" />
-                            <span className="text-3xl font-black text-[#FF6600]">{count || 0}</span>
-                            <span className="text-[11px] font-bold text-orange-600/80 uppercase tracking-wider ml-1">Recomendaciones</span>
-                        </div>
+                    {/* 🚀 INDICADOR DE RECOMENDACIONES MÁS PEQUEÑO, SIN FONDO Y ALINEADO A LA IZQUIERDA */}
+                    <div className="flex items-center justify-start gap-2 mb-6 ml-1">
+                        <Heart className="w-5 h-5 fill-[#FF6600] text-[#FF6600]" />
+                        <span className="text-2xl font-black text-[#FF6600]">{count || 0}</span>
+                        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider pt-1">Recomendaciones</span>
                     </div>
 
                     {profile.bio && (
@@ -117,15 +117,16 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     )}
 
+                    {/* 🚀 IMÁGENES FULL-WIDTH (grid) Y MÁS ALTAS (h-48) */}
                     {profile.gallery && profile.gallery.length > 0 && (
                         <div className="mt-6 pt-6 border-t border-slate-100">
-                            <div className="flex justify-center gap-3">
+                            <div className="grid grid-cols-2 gap-3 w-full">
                                 {profile.gallery.slice(0, 2).map((imgUrl: string, index: number) => (
                                     <img
                                         key={index}
                                         src={imgUrl}
                                         alt={`Trabajo ${index + 1}`}
-                                        className="w-32 h-32 object-cover rounded-2xl shadow-sm border border-slate-100"
+                                        className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-sm border border-slate-100"
                                     />
                                 ))}
                             </div>
