@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
 
-const inter = Inter({ subsets: ["latin"] });
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ["latin"],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-be-vietnam-pro',
+});
 
 // SEO
 export const metadata: Metadata = {
@@ -34,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={inter.className}>
+      <body className={beVietnamPro.className}>
         {children}
         {/* El espía de Google Analytics */}
         <GoogleAnalytics gaId="G-9Z17DJR35R" />
