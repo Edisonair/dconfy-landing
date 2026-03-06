@@ -114,7 +114,7 @@ export default function Home() {
                 {heroProfessionals.map((item, i) => (
                   <div key={`group1-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
                     <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
-                      <img src={item.src} alt={item.alt} className="w-full h-auto scale-[1.35] origin-center" />
+                      <img src={item.src} alt={item.alt} draggable="false" className="w-full h-auto scale-[1.35] origin-center pointer-events-none select-none [-webkit-touch-callout:none] [-webkit-user-drag:none]" />
                     </div>
                   </div>
                 ))}
@@ -123,7 +123,7 @@ export default function Home() {
                 {heroProfessionals.map((item, i) => (
                   <div key={`group2-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
                     <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
-                      <img src={item.src} alt={item.alt} className="w-full h-auto scale-[1.35] origin-center" />
+                      <img src={item.src} alt={item.alt} draggable="false" className="w-full h-auto scale-[1.35] origin-center pointer-events-none select-none [-webkit-touch-callout:none] [-webkit-user-drag:none]" />
                     </div>
                   </div>
                 ))}
