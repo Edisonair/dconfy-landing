@@ -109,7 +109,7 @@ export default function Home() {
 
             {/* Version Movil (Carrusel Infinito) */}
             <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative py-8 -mt-1">
-              <div className="flex w-fit animate-marquee items-center">
+              <div className="flex w-fit animate-marquee items-center hover:[animation-play-state:paused] active:[animation-play-state:paused] cursor-grab active:cursor-grabbing">
                 {/* Grupo 1 */}
                 {heroProfessionals.map((item, i) => (
                   <div key={`group1-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
