@@ -34,7 +34,7 @@ export default function VerificadoPage() {
                 <div className="space-y-4">
                     <Link
                         href="/"
-                        className="block w-full bg-[#111827] hover:bg-[#222630] text-white py-4 rounded-xl font-bold transition-all shadow-lg"
+                        className="block w-full bg-[#111827] hover:bg-[#222630] text-white py-4 rounded-xl font-[system-ui] font-bold transition-all shadow-lg"
                     >
                         Volver a la web
                     </Link>

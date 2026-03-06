@@ -20,7 +20,7 @@ export default function ActionButtons({ slug }: { slug: string }) {
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-slate-200 z-50 flex gap-3 justify-center pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
             <button
                 onClick={handleDeepLink}
-                className="flex-1 max-w-[200px] bg-slate-100 text-slate-700 font-bold py-3.5 rounded-full flex items-center justify-center gap-2 hover:bg-slate-200 transition-colors active:scale-95 text-[13px] sm:text-sm"
+                className="flex-1 max-w-[200px] bg-slate-100 text-slate-700 font-bold py-3.5 rounded-full flex font-[system-ui] items-center justify-center gap-2 hover:bg-slate-200 transition-colors active:scale-95 text-[13px] sm:text-sm"
             >
                 <img src="/icon.png" alt="dconfy" className="w-5 h-5 rounded-[4px] object-contain" />
                 Abrir en dconfy

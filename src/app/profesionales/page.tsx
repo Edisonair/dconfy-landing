@@ -87,7 +87,7 @@ export default function ProfesionalesForm() {
                                     <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Especialidad</label>
                                     <input required type="text" name="specialty" value={formData.specialty} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all" placeholder="Ej: Abogado, Fontanero, Fisioterapeuta..." />
                                 </div>
-                                <button disabled={loading} type="submit" className="w-full mt-4 bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-violet-200 transition-all active:scale-[0.98] disabled:opacity-70 flex justify-center items-center">
+                                <button disabled={loading} type="submit" className="w-full mt-4 bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-xl font-[system-ui] shadow-lg shadow-violet-200 transition-all active:scale-[0.98] disabled:opacity-70 flex justify-center items-center">
                                     {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Solicitar Acceso Profesional'}
                                 </button>
                             </form>

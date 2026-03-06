@@ -1,10 +1,41 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle } from 'lucide-react';
 
+const heroProfessionals = [
+  { src: "/hero_vector_yoga_mat.png", alt: "Yoga" },
+  { src: "/hero_vector_gardener_relatable.png", alt: "Jardinero" },
+  { src: "/hero_vector_tattoo_alt.png", alt: "Tatuador" },
+  { src: "/hero_vector_painter_relatable.png", alt: "Pintor" },
+  { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora" },
+  { src: "/hero_vector_vet_relatable.png", alt: "Veterinaria" },
+  { src: "/hero_vector_photographer.png", alt: "Fotógrafo" },
+  { src: "/hero_vector_lawyer.png", alt: "Abogada" },
+  { src: "/hero_vector_physio.png", alt: "Fisioterapeuta" },
+  { src: "/hero_vector_chef.png", alt: "Chef Privada" },
+  { src: "/hero_vector_barber_relatable.png", alt: "Barbero" },
+  { src: "/hero_vector_realestate.png", alt: "Agente Inmobiliaria" },
+  { src: "/hero_vector_personaltrainer.png", alt: "Entrenador" },
+  { src: "/hero_vector_thaimassage.png", alt: "Masajista" },
+  { src: "/hero_vector_socialmedia.png", alt: "Experto en Redes" }
+];
+
 export default function Home() {
+  const [desktopCycle, setDesktopCycle] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDesktopCycle(prev => prev + 1);
+    }, 3000); // Crossfade transition 
+    return () => clearInterval(timer);
+  }, []);
+
+  const leftIdx = (desktopCycle * 3) % heroProfessionals.length;
+  const centerIdx = (desktopCycle * 3 + 1) % heroProfessionals.length;
+  const rightIdx = (desktopCycle * 3 + 2) % heroProfessionals.length;
+
   const [isAnnual, setIsAnnual] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -47,7 +78,7 @@ export default function Home() {
             <Link href="#planes" className="hover:text-violet-600 transition-colors">Planes</Link>
             <Link href="#faq" className="hover:text-violet-600 transition-colors">FAQ</Link>
           </div>
-          <Link href="#descargar" onClick={() => trackGAEvent('Clic_Descargar_nav', 'Descargar')} className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+          <Link href="#descargar" onClick={() => trackGAEvent('Clic_Descargar_nav', 'Descargar')} className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
             Descargar app
           </Link>
         </nav>
@@ -57,17 +88,17 @@ export default function Home() {
       <section className="bg-[#FFF9F0] pt-12 pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
           <div className="max-w-xl">
-            <h1 className="text-5xl md:text-6xl font-black text-[#111827] tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-6">
               El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
             </h1>
             <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
               dconfy recupera la forma natural de encontrar profesionales: preguntando a la gente que conoces, pero con la potencia de la tecnología.
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+              <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
                 Descargar app
               </Link>
-              <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-bold transition-all text-center">
+              <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
                 Planes para profesionales
               </Link>
             </div>
@@ -80,30 +111,18 @@ export default function Home() {
             <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative py-8 -mt-1">
               <div className="flex w-fit animate-marquee items-center">
                 {/* Grupo 1 */}
-                {[
-                  { src: "/hero_vector_yoga_mat.png", alt: "Yoga", delay: '0s' },
-                  { src: "/hero_vector_gardener_relatable.png", alt: "Jardinero", delay: '0.5s' },
-                  { src: "/hero_vector_tattoo_alt.png", alt: "Tatuador", delay: '1s' },
-                  { src: "/hero_vector_painter_relatable.png", alt: "Pintor", delay: '1.5s' },
-                  { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora", delay: '2s' }
-                ].map((item, i) => (
-                  <div key={i} className="w-[180px] sm:w-[170px] shrink-0 px-1">
-                    <div className="animate-float" style={{ animationDelay: item.delay }}>
+                {heroProfessionals.map((item, i) => (
+                  <div key={`group1-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
+                    <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
                       <img src={item.src} alt={item.alt} className="w-full h-auto scale-[1.35] origin-center" />
                     </div>
                   </div>
                 ))}
 
                 {/* Grupo 2 (Duplicado exacto para hacer el loop infinito) */}
-                {[
-                  { src: "/hero_vector_yoga_mat.png", alt: "Yoga", delay: '0s' },
-                  { src: "/hero_vector_gardener_relatable.png", alt: "Jardinero", delay: '0.5s' },
-                  { src: "/hero_vector_tattoo_alt.png", alt: "Tatuador", delay: '1s' },
-                  { src: "/hero_vector_painter_relatable.png", alt: "Pintor", delay: '1.5s' },
-                  { src: "/hero_vector_dogwalker_relatable.png", alt: "Paseadora", delay: '2s' }
-                ].map((item, i) => (
-                  <div key={i + 5} className="w-[180px] sm:w-[170px] shrink-0 px-1">
-                    <div className="animate-float" style={{ animationDelay: item.delay }}>
+                {heroProfessionals.map((item, i) => (
+                  <div key={`group2-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
+                    <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
                       <img src={item.src} alt={item.alt} className="w-full h-auto scale-[1.35] origin-center" />
                     </div>
                   </div>
@@ -111,27 +130,51 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Version Escritorio (Avatares 3D Pop-out Superpuestos) */}
+            {/* Version Escritorio (Avatares 3D Pop-out Superpuestos Animados) */}
             <div className="hidden md:flex justify-end items-center relative lg:translate-x-8 xl:translate-x-16 origin-center">
 
-              {/* Izquierda (Profesora de Yoga - Violeta) */}
+              {/* Izquierda */}
               <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-28 lg:mt-36 z-10 relative">
-                <div className="animate-float" style={{ animationDelay: '0s' }}>
-                  <img src="/hero_vector_yoga_mat.png" alt="Profesora de Yoga dconfy" className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-700" />
+                <div className="animate-float relative" style={{ animationDelay: '0s' }}>
+                  {heroProfessionals.map((pro, idx) => (
+                    <img
+                      key={`desktop-left-${idx}`}
+                      src={pro.src}
+                      alt={pro.alt}
+                      className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === leftIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                        }`}
+                    />
+                  ))}
                 </div>
               </div>
 
-              {/* Centro (Jardinero - Naranja - El Más Grande y Frontal) */}
-              <div className="w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-8 lg:mb-12 z-30 -ml-28 lg:-ml-40 relative">
-                <div className="animate-float" style={{ animationDelay: '1.5s' }}>
-                  <img src="/hero_vector_gardener_relatable.png" alt="Jardinero Profesional dconfy" className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-700" />
+              {/* Centro (El Más Grande y Frontal) */}
+              <div className="w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-8 lg:mb-12 z-30 -ml-16 lg:-ml-24 relative">
+                <div className="animate-float relative" style={{ animationDelay: '1.5s' }}>
+                  {heroProfessionals.map((pro, idx) => (
+                    <img
+                      key={`desktop-center-${idx}`}
+                      src={pro.src}
+                      alt={pro.alt}
+                      className={`w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-1000 ${idx === centerIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                        }`}
+                    />
+                  ))}
                 </div>
               </div>
 
-              {/* Derecha (Tatuador - Azul) */}
-              <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-16 lg:mt-20 z-20 -ml-28 lg:-ml-40 relative">
-                <div className="animate-float" style={{ animationDelay: '3s' }}>
-                  <img src="/hero_vector_tattoo_alt.png" alt="Tatuador Profesional dconfy" className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-700" />
+              {/* Derecha */}
+              <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-16 lg:mt-20 z-20 -ml-16 lg:-ml-24 relative">
+                <div className="animate-float relative" style={{ animationDelay: '3s' }}>
+                  {heroProfessionals.map((pro, idx) => (
+                    <img
+                      key={`desktop-right-${idx}`}
+                      src={pro.src}
+                      alt={pro.alt}
+                      className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === rightIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                        }`}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -144,7 +187,7 @@ export default function Home() {
       {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
       <section id="como-funciona" className="bg-white py-24 px-1 max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-black text-[#111827] mb-6 tracking-tight">¿Cómo funciona?</h2>
+          <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">¿Cómo funciona?</h2>
           <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium">Encontrar profesionales y servicios de confianza nunca fue tan fácil.</p>
         </div>
 
@@ -155,7 +198,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Heart className="w-8 h-8 text-[#FF6600]" />
               </div>
-              <h3 className="text-3xl font-black text-[#111827] mb-4">Recomienda y Ayuda</h3>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda y Ayuda</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando reseñas honestas y cortas sobre los profesionales que han hecho un buen trabajo.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
@@ -172,7 +215,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
-              <h3 className="text-3xl font-black text-[#111827] mb-4">Busca en tu Red</h3>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Busca en tu Red</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y recomendado.</p>
             </div>
           </div>
@@ -183,7 +226,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <MessageCircle className="w-8 h-8 text-[#FF6600]" />
               </div>
-              <h3 className="text-3xl font-black text-[#111827] mb-4">Confianza Directa</h3>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Confianza Directa</h3>
               <p className="text-lg text-slate-500 leading-relaxed">Accede a un chat directo de profesionales de confianza. Sin intermediarios, sin comisiones ocultas.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
@@ -205,7 +248,7 @@ export default function Home() {
           />
         </div>
 
-        <h2 className="text-4xl md:text-6xl font-black text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
+        <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
         <p className="text-slate-500 font-medium mb-12 max-w-xl mx-auto">
           Disponible en iOS y Android. Empieza a encontrar profesionales recomendados por tu red hoy mismo.
@@ -245,7 +288,7 @@ export default function Home() {
 
       {/* 5. PLANES PARA PROFESIONALES */}
       <section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-black text-[#111827] mb-4 tracking-tight">Planes para profesionales</h2>
+        <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4 tracking-tight">Planes para profesionales</h2>
         <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige el plan que mejor se adapta a tu situación. Sin compromisos.</p>
 
         {/* Toggle Mensual/Anual */}
@@ -270,10 +313,10 @@ export default function Home() {
 
           {/* Plan Profesional */}
           <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
-            <h3 className="text-2xl font-black text-[#111827] mb-2">Plan Profesional</h3>
+            <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-2">Plan Profesional</h3>
             <p className="text-slate-500 text-sm mb-6 h-10">Ideal para autónomos y freelancers que quieren destacar.</p>
             <div className="mb-2 flex items-baseline gap-1">
-              <span className="text-5xl font-black text-[#111827]">{isAnnual ? '29.99€' : '2.99€'}</span>
+              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '29.99€' : '2.99€'}</span>
               <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
             </div>
             <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 2.49€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
@@ -291,17 +334,17 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link href="#descargar" onClick={() => trackGAEvent('Clic_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl font-bold transition-all">
+            <Link href="#descargar" onClick={() => trackGAEvent('Clic_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all">
               Descargar app
             </Link>
           </div>
 
           {/* Plan Empresa (Diseño Prestigio) */}
           <div className="bg-[#171A21] p-8 rounded-[2rem] border border-slate-800 shadow-2xl relative transform md:-translate-y-4 hover:-translate-y-5 transition-transform flex flex-col text-white">
-            <h3 className="text-2xl font-black text-white mb-2">Plan Empresa</h3>
+            <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-2">Plan Empresa</h3>
             <p className="text-slate-400 text-sm mb-6 h-10">Para equipos y negocios que buscan máxima visibilidad.</p>
             <div className="mb-2 flex items-baseline gap-1">
-              <span className="text-5xl font-black text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
+              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
               <span className="text-slate-400 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
             </div>
             <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 10.83€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
@@ -325,7 +368,7 @@ export default function Home() {
                 setIsContactModalOpen(true);
               }}
 
-              className="block w-full text-center bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-2xl font-bold transition-all shadow-lg shadow-[#FF6600]/20"
+              className="block w-full text-center bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20"
             >
               Contactar
             </button>
@@ -338,7 +381,7 @@ export default function Home() {
 
         {/* 6. TABLA COMPARATIVA */}
         <section className="px-6 max-w-4xl mx-auto mb-24">
-          <h3 className="text-3xl font-black text-[#111827] text-center mb-10 tracking-tight">Compara los planes</h3>
+          <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] text-center mb-10 tracking-tight">Compara los planes</h3>
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden">
             <div className="grid grid-cols-3 p-6 border-b border-slate-100 bg-slate-50/50">
               <div></div>
@@ -375,7 +418,7 @@ export default function Home() {
       <div className="bg-white py-24">
         {/* 7. FAQ */}
         <section id="faq" className="px-6 max-w-3xl mx-auto">
-          <h2 className="text-4xl font-black text-[#111827] text-center mb-12 tracking-tight">Preguntas frecuentes</h2>
+          <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] text-center mb-12 tracking-tight">Preguntas frecuentes</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <div key={i} className="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -401,7 +444,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-2xl font-medium text-slate-300 mb-6">Estamos construyendo la red de servicios más confiable y queremos que seas parte de nuestro lanzamiento.</h2>
-            <Link href="#descargar" className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/20">
+            <Link href="#descargar" className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20">
               Descargar app Gratis
             </Link>
           </div>
@@ -446,7 +489,7 @@ export default function Home() {
 
           <div className="bg-white rounded-3xl w-full max-w-lg relative z-10 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-[#FFF9F0] shrink-0">
-              <h3 className="text-2xl font-black text-[#111827]">Solicitar Plan Empresa</h3>
+              <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">Solicitar Plan Empresa</h3>
               <button onClick={() => setIsContactModalOpen(false)} className="text-slate-400 hover:text-slate-700 bg-white p-2 rounded-full shadow-sm">
                 <X className="w-5 h-5" />
               </button>
@@ -460,7 +503,7 @@ export default function Home() {
                   </div>
                   <h4 className="text-xl font-bold text-[#111827] mb-2">¡Solicitud recibida!</h4>
                   <p className="text-slate-500">Hemos recibido tus datos correctamente. Revisa tu email, nos pondremos en contacto contigo en las próximas 24 horas.</p>
-                  <button onClick={() => setIsContactModalOpen(false)} className="mt-8 bg-[#111827] text-white px-8 py-3 rounded-full font-bold w-full">Cerrar</button>
+                  <button onClick={() => setIsContactModalOpen(false)} className="mt-8 bg-[#111827] text-white px-8 py-3 rounded-full font-[system-ui] font-bold w-full">Cerrar</button>
                 </div>
               ) : (
                 <form className="space-y-4" onSubmit={async (e) => {
@@ -519,7 +562,7 @@ export default function Home() {
                     <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="¿Qué tipo de servicios ofrecéis? ¿Tenéis alguna necesidad especial?"></textarea>
                   </div>
 
-                  <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-[#FF6600]/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
+                  <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
                     {formStatus === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
                   </button>
                   <p className="text-center text-xs text-slate-400 mt-4">Tus datos están seguros.</p>

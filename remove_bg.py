@@ -1,4 +1,5 @@
 import sys
+import math
 from collections import deque
 from PIL import Image
 
@@ -7,7 +8,6 @@ def process_image(input_path, output_path):
     width, height = img.size
     pixels = img.load()
     
-    visited = set()
     queue = deque()
     
     # Start flood fill from the borders
@@ -18,10 +18,15 @@ def process_image(input_path, output_path):
         queue.append((0, y))
         queue.append((width-1, y))
         
-    def is_bg(c):
-        # We look for pure or almost pure white
-        return c[0] > 240 and c[1] > 240 and c[2] > 240
+    bg_color = pixels[0, 0]
+    
+    def color_dist(c1, c2):
+        return math.sqrt((c1[0]-c2[0])**2 + (c1[1]-c2[1])**2 + (c1[2]-c2[2])**2)
         
+    def is_bg(c):
+        return color_dist(c, bg_color) < 40
+        
+    visited = set()
     while queue:
         x, y = queue.popleft()
         if (x, y) in visited:

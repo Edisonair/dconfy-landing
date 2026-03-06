@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
-
-const beVietnamPro = Be_Vietnam_Pro({
-  subsets: ["latin"],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-be-vietnam-pro',
-});
 
 // SEO
 export const metadata: Metadata = {
@@ -38,7 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={beVietnamPro.className}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+      </head>
+      <body className="font-sans text-slate-900 bg-white" style={{ fontFamily: '"Be Vietnam", sans-serif' }}>
         {children}
         {/* El espía de Google Analytics */}
         <GoogleAnalytics gaId="G-9Z17DJR35R" />
