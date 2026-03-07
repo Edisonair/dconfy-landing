@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { Quote, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import ActionButtons from './ActionButtons';
 
 export const dynamic = 'force-dynamic';
@@ -10,6 +10,21 @@ const supabase = createClient(
 );
 
 const checkIfUUID = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
+
+// 🚀 DICCIONARIO DE PROVINCIAS (Para sacarla automáticamente del Código Postal)
+const PROVINCES: Record<string, string> = {
+    '01': 'Álava', '02': 'Albacete', '03': 'Alicante', '04': 'Almería', '05': 'Ávila',
+    '06': 'Badajoz', '07': 'Islas Baleares', '08': 'Barcelona', '09': 'Burgos', '10': 'Cáceres',
+    '11': 'Cádiz', '12': 'Castellón', '13': 'Ciudad Real', '14': 'Córdoba', '15': 'A Coruña',
+    '16': 'Cuenca', '17': 'Girona', '18': 'Granada', '19': 'Guadalajara', '20': 'Guipúzcoa',
+    '21': 'Huelva', '22': 'Huesca', '23': 'Jaén', '24': 'León', '25': 'Lleida',
+    '26': 'La Rioja', '27': 'Lugo', '28': 'Madrid', '29': 'Málaga', '30': 'Murcia',
+    '31': 'Navarra', '32': 'Ourense', '33': 'Asturias', '34': 'Palencia', '35': 'Las Palmas',
+    '36': 'Pontevedra', '37': 'Salamanca', '38': 'Santa Cruz de Tenerife', '39': 'Cantabria', '40': 'Segovia',
+    '41': 'Sevilla', '42': 'Soria', '43': 'Tarragona', '44': 'Teruel', '45': 'Toledo',
+    '46': 'Valencia', '47': 'Valladolid', '48': 'Vizcaya', '49': 'Zamora', '50': 'Zaragoza',
+    '51': 'Ceuta', '52': 'Melilla'
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -87,10 +102,14 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         .order('created_at', { ascending: false })
         .limit(3);
 
+    // 🚀 Calculamos la provincia igual que en la App
+    const provinceFromZip = profile.zip_code && profile.zip_code.length === 5 ? PROVINCES[profile.zip_code.substring(0, 2)] : '';
+    const finalProvince = profile.province || provinceFromZip || '';
+    const displayLocation = `${profile.location || 'España'}${finalProvince ? `, ${finalProvince}` : ''}`;
+
     return (
         <div className="min-h-screen bg-[#FFF9F2] pb-36 font-sans selection:bg-violet-200">
 
-            {/* 🚀 NUEVO HEADER: Logo a la izquierda, Botón a la derecha */}
             <header className="flex justify-between items-center py-6 max-w-xl mx-auto px-4">
                 <img src="/dconfy_logo.png" alt="dconfy" className="h-7 sm:h-8 object-contain" />
                 <a
@@ -105,7 +124,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
             <main className="max-w-xl mx-auto px-4 space-y-6">
 
-                {/* TARJETA PRINCIPAL */}
                 <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden">
 
                     <div className="flex items-center gap-4 text-left w-full mb-4">
@@ -123,12 +141,12 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                             </p>
                             <div className="flex items-center gap-1 text-slate-500 font-medium text-sm truncate">
                                 <span>📍</span>
-                                <span className="truncate">{profile.location || 'España'}</span>
+                                {/* 🚀 Aquí inyectamos la ubicación completa con provincia */}
+                                <span className="truncate">{displayLocation}</span>
                             </div>
                         </div>
                     </div>
 
-                    {/* INDICADOR DE RECOMENDACIONES */}
                     <div className="flex items-center justify-start gap-2 mb-6 ml-1">
                         <Heart className="w-5 h-5 fill-[#FF6600] text-[#FF6600]" />
                         <span className="text-[16px] font-black text-[#FF6600]">{count || 0}</span>
@@ -143,7 +161,20 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     )}
 
-                    {/* IMÁGENES DE GALERÍA */}
+                    {/* 🚀 TAGS UN POCO MÁS GRANDES PERO MANTENIENDO EL ESTILO PLANO */}
+                    {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
+                        <div className="mt-4 flex flex-wrap gap-2">
+                            {profile.services_tags.map((tag: string, index: number) => (
+                                <span
+                                    key={index}
+                                    className="bg-slate-100 text-slate-600 text-xs px-3 py-1.5 rounded-lg font-bold border border-slate-200/60"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    )}
+
                     {profile.gallery && profile.gallery.length > 0 && (
                         <div className="mt-6 pt-6 border-t border-slate-100">
                             <div className="grid grid-cols-2 gap-3 w-full">
@@ -160,7 +191,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                     )}
                 </div>
 
-                {/* REVIEWS */}
                 {reviews && reviews.length > 0 && (
                     <div className="space-y-4">
                         {reviews?.map((review) => (
@@ -176,8 +206,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                                         <p className="text-[11px] text-slate-400 font-medium">Recomendación verificada</p>
                                     </div>
                                 </div>
-                                <p className="text-slate-700 text-sm leading-relaxed relative z-10">
-                                    <Quote className="absolute -top-1 -left-1 w-6 h-6 text-slate-100 -z-10 transform -scale-x-100" />
+                                <p className="text-slate-700 text-sm leading-relaxed">
                                     {review.content}
                                 </p>
                             </div>
