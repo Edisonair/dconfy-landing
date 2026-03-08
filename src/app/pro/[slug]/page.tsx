@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import * as LucideIcons from 'lucide-react';
 import ActionButtons from './ActionButtons';
 import PublicGallery from './PublicGallery';
+import ContactButtons from './ContactButtons'; // 🚀 IMPORTAMOS EL NUEVO COMPONENTE
 
 export const dynamic = 'force-dynamic';
 
@@ -11,12 +12,6 @@ const supabase = createClient(
 );
 
 const checkIfUUID = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
-
-const TikTokIcon = ({ className }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
-    </svg>
-);
 
 const PROVINCES: Record<string, string> = {
     '01': 'Álava', '02': 'Albacete', '03': 'Alicante', '04': 'Almería', '05': 'Ávila',
@@ -200,7 +195,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     </div>
 
-
                     <div className="flex items-center justify-between bg-slate-50/50 border border-slate-100 p-4 rounded-2xl mb-6">
                         <div className="flex-none">
                             {profile.price_per_hour > 0 ? (
@@ -216,39 +210,9 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                             )}
                         </div>
 
-                        <div className="flex gap-2 sm:gap-3 justify-end flex-1 flex-wrap">
-                            {profile.tiktok_url && (
-                                <a href={`https://tiktok.com/@${profile.tiktok_url.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform">
-                                    <TikTokIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </a>
-                            )}
-                            {profile.website && (
-                                <a href={profile.website.startsWith('http') ? profile.website : `https://${profile.website}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-blue-800 text-white rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform">
-                                    <LucideIcons.Globe className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </a>
-                            )}
-                            {profile.instagram_url && (
-                                <a href={`https://instagram.com/${profile.instagram_url.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-red-500 text-white rounded-full flex items-center justify-center shadow-md shadow-red-200 active:scale-95 transition-transform">
-                                    <LucideIcons.Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </a>
-                            )}
+                        {/* 🚀 INVOCAMOS A NUESTRO NUEVO COMPONENTE DE BOTONES */}
+                        <ContactButtons profile={profile} slug={slug} />
 
-                            {/* 🚀 BOTÓN DE EMAIL (GRIS OSCURO + ICONO BLANCO) */}
-                            {profile.show_email === true && profile.email_professional && (
-                                <a href={`mailto:${profile.email_professional}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shadow-slate-200 active:scale-95 transition-all">
-                                    <LucideIcons.Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </a>
-                            )}
-
-                            {profile.whatsapp_number && (
-                                <a href={`tel:${profile.whatsapp_number.replace(/\s+/g, '')}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-green-500 text-white rounded-full flex items-center justify-center shadow-md shadow-green-200 active:scale-95 transition-transform">
-                                    <LucideIcons.Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </a>
-                            )}
-                            <a href={`https://app.dconfy.io/#/pro/${slug}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-violet-600 text-white rounded-full flex shrink-0 items-center justify-center shadow-md shadow-violet-200 active:scale-95 transition-transform">
-                                <LucideIcons.MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                            </a>
-                        </div>
                     </div>
 
                     <div className="flex items-center justify-start gap-2 mb-6 ml-1">
