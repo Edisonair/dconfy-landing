@@ -69,7 +69,7 @@ export default function AdminLogin() {
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <h1 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Portal de Gestión</h1>
+                    <h1 className="text-3xl font-bold [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Portal de Gestión</h1>
                     <p className="text-slate-500 font-medium mt-2">Acceso exclusivo para administradores</p>
                 </div>
 
