@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import * as LucideIcons from 'lucide-react';
 import ActionButtons from './ActionButtons';
-import PublicGallery from './PublicGallery'; // 🚀 IMPORTAMOS EL NUEVO COMPONENTE
+import PublicGallery from './PublicGallery';
 
 export const dynamic = 'force-dynamic';
 
@@ -232,6 +232,14 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                                     <LucideIcons.Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </a>
                             )}
+
+                            {/* 🚀 BOTÓN DE EMAIL (GRIS OSCURO + ICONO BLANCO) */}
+                            {profile.show_email === true && profile.email_professional && (
+                                <a href={`mailto:${profile.email_professional}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shadow-slate-200 active:scale-95 transition-all">
+                                    <LucideIcons.Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                                </a>
+                            )}
+
                             {profile.whatsapp_number && (
                                 <a href={`tel:${profile.whatsapp_number.replace(/\s+/g, '')}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-green-500 text-white rounded-full flex items-center justify-center shadow-md shadow-green-200 active:scale-95 transition-transform">
                                     <LucideIcons.Phone className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -270,7 +278,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     )}
 
-                    {/* 🚀 COMPONENTE CLIENTE CON EL LIGHTBOX INCORPORADO */}
                     <PublicGallery images={profile.gallery} />
 
                 </div>
