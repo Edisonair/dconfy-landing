@@ -1,10 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
-import {
-    Heart, Scale, Briefcase, Shield, Brain, Wrench, Zap,
-    Paintbrush, Sparkles, Dumbbell, Laptop, Camera, Scissors,
-    Car, Dog, Home
-} from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import ActionButtons from './ActionButtons';
+import PublicGallery from './PublicGallery'; // 🚀 IMPORTAMOS EL NUEVO COMPONENTE
 
 export const dynamic = 'force-dynamic';
 
@@ -15,7 +12,12 @@ const supabase = createClient(
 
 const checkIfUUID = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
 
-// 🚀 DICCIONARIO DE PROVINCIAS
+const TikTokIcon = ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+    </svg>
+);
+
 const PROVINCES: Record<string, string> = {
     '01': 'Álava', '02': 'Albacete', '03': 'Alicante', '04': 'Almería', '05': 'Ávila',
     '06': 'Badajoz', '07': 'Islas Baleares', '08': 'Barcelona', '09': 'Burgos', '10': 'Cáceres',
@@ -30,27 +32,46 @@ const PROVINCES: Record<string, string> = {
     '51': 'Ceuta', '52': 'Melilla'
 };
 
-// 🚀 SELECTOR INTELIGENTE DE ICONOS PARA LA VISTA PÚBLICA
-const getIconForCategory = (category: string) => {
-    const cat = category?.toLowerCase() || '';
-    if (cat.includes('abogado') || cat.includes('legal')) return <Scale className="w-4 h-4" />;
-    if (cat.includes('asesor') || cat.includes('gestor') || cat.includes('financier')) return <Briefcase className="w-4 h-4" />;
-    if (cat.includes('seguro')) return <Shield className="w-4 h-4" />;
-    if (cat.includes('psic') || cat.includes('terap')) return <Brain className="w-4 h-4" />;
-    if (cat.includes('fontaner') || cat.includes('reform') || cat.includes('construc')) return <Wrench className="w-4 h-4" />;
-    if (cat.includes('electri')) return <Zap className="w-4 h-4" />;
-    if (cat.includes('pintor')) return <Paintbrush className="w-4 h-4" />;
-    if (cat.includes('limpiez')) return <Sparkles className="w-4 h-4" />;
-    if (cat.includes('fisioterap') || cat.includes('salud') || cat.includes('médic') || cat.includes('bienestar')) return <Heart className="w-4 h-4" />;
-    if (cat.includes('entrenador') || cat.includes('deport') || cat.includes('fitness')) return <Dumbbell className="w-4 h-4" />;
-    if (cat.includes('informátic') || cat.includes('ordenador') || cat.includes('tech')) return <Laptop className="w-4 h-4" />;
-    if (cat.includes('fotógraf') || cat.includes('audiovisual')) return <Camera className="w-4 h-4" />;
-    if (cat.includes('peluquer') || cat.includes('estétic') || cat.includes('belleza')) return <Scissors className="w-4 h-4" />;
-    if (cat.includes('motor') || cat.includes('coche') || cat.includes('mecánic')) return <Car className="w-4 h-4" />;
-    if (cat.includes('mascot') || cat.includes('veterinar')) return <Dog className="w-4 h-4" />;
-    if (cat.includes('hogar')) return <Home className="w-4 h-4" />;
+const getIconForCategoryFallback = (category: string) => {
+    if (!category) return <LucideIcons.Briefcase className="w-4 h-4" />;
 
-    return <Briefcase className="w-4 h-4" />; // Icono por defecto
+    const cat = category.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+    if (cat.includes('abogad') || cat.includes('legal') || cat.includes('ley') || cat.includes('juridic')) return <LucideIcons.Scale className="w-4 h-4" />;
+    if (cat.includes('asesor') || cat.includes('gestor') || cat.includes('financier') || cat.includes('contable') || cat.includes('banco') || cat.includes('econom') || cat.includes('consultor')) return <LucideIcons.Briefcase className="w-4 h-4" />;
+    if (cat.includes('seguro')) return <LucideIcons.Shield className="w-4 h-4" />;
+    if (cat.includes('psicolog') || cat.includes('terap') || cat.includes('mente') || cat.includes('coach') || cat.includes('psiquiatr')) return <LucideIcons.Brain className="w-4 h-4" />;
+    if (cat.includes('fontaner') || cat.includes('reform') || cat.includes('construc') || cat.includes('obras') || cat.includes('albanil') || cat.includes('arquitect') || cat.includes('instalador')) return <LucideIcons.Wrench className="w-4 h-4" />;
+    if (cat.includes('electri') || cat.includes('iluminacion') || cat.includes('energia')) return <LucideIcons.Zap className="w-4 h-4" />;
+    if (cat.includes('pintor') || cat.includes('pintura') || cat.includes('decoracion')) return <LucideIcons.Paintbrush className="w-4 h-4" />;
+    if (cat.includes('limpiez') || cat.includes('asistent')) return <LucideIcons.Sparkles className="w-4 h-4" />;
+    if (cat.includes('fisioterap') || cat.includes('salud') || cat.includes('medic') || cat.includes('bienestar') || cat.includes('enfermer') || cat.includes('clinic') || cat.includes('dental') || cat.includes('dentist') || cat.includes('nutricion') || cat.includes('osteopat') || cat.includes('quiropractic')) return <LucideIcons.Heart className="w-4 h-4" />;
+    if (cat.includes('entrenador') || cat.includes('deport') || cat.includes('fitness') || cat.includes('gimnasio') || cat.includes('yoga') || cat.includes('pilates') || cat.includes('personal trainer')) return <LucideIcons.Dumbbell className="w-4 h-4" />;
+    if (cat.includes('peluquer') || cat.includes('estetic') || cat.includes('belleza') || cat.includes('barber') || cat.includes('maquillaj') || cat.includes('unas') || cat.includes('salon') || cat.includes('laser')) return <LucideIcons.Scissors className="w-4 h-4" />;
+    if (cat.includes('motor') || cat.includes('coche') || cat.includes('mecanic') || cat.includes('taller') || cat.includes('vehiculo') || cat.includes('moto') || cat.includes('chapista')) return <LucideIcons.Car className="w-4 h-4" />;
+    if (cat.includes('mensajer') || cat.includes('reparto') || cat.includes('logistic') || cat.includes('envio') || cat.includes('transporte') || cat.includes('mudanz') || cat.includes('porte')) return <LucideIcons.Package className="w-4 h-4" />;
+    if (cat.includes('mascot') || cat.includes('veterinar') || cat.includes('perro') || cat.includes('animal') || cat.includes('gato') || cat.includes('adiestrador') || cat.includes('paseador')) return <LucideIcons.Dog className="w-4 h-4" />;
+    if (cat.includes('informatic') || cat.includes('ordenador') || cat.includes('tech') || cat.includes('desarrollador') || cat.includes('programador') || cat.includes('web') || cat.includes('software') || cat.includes('tecnolog') || cat.includes('reparacion movil')) return <LucideIcons.Laptop className="w-4 h-4" />;
+    if (cat.includes('fotograf') || cat.includes('audiovisual') || cat.includes('video') || cat.includes('produccion') || cat.includes('camarograf')) return <LucideIcons.Camera className="w-4 h-4" />;
+    if (cat.includes('diseno') || cat.includes('grafico') || cat.includes('ilustrador') || cat.includes('creativo') || cat.includes('arte') || cat.includes('artista') || cat.includes('artesan')) return <LucideIcons.Palette className="w-4 h-4" />;
+    if (cat.includes('marketing') || cat.includes('publicidad') || cat.includes('seo') || cat.includes('redes sociales') || cat.includes('comunicacion') || cat.includes('agencia')) return <LucideIcons.Megaphone className="w-4 h-4" />;
+    if (cat.includes('inmobiliar') || cat.includes('bienes raices') || cat.includes('propiedad') || cat.includes('alquiler') || cat.includes('real estate')) return <LucideIcons.Building className="w-4 h-4" />;
+    if (cat.includes('tienda') || cat.includes('comercio') || cat.includes('retail') || cat.includes('ventas') || cat.includes('florister')) return <LucideIcons.Store className="w-4 h-4" />;
+    if (cat.includes('profesor') || cat.includes('clase') || cat.includes('educacion') || cat.includes('idiom') || cat.includes('ingles') || cat.includes('docent') || cat.includes('academia') || cat.includes('tutor')) return <LucideIcons.GraduationCap className="w-4 h-4" />;
+    if (cat.includes('evento') || cat.includes('fiesta') || cat.includes('boda') || cat.includes('dj') || cat.includes('music') || cat.includes('animacion') || cat.includes('espectacul') || cat.includes('wedding')) return <LucideIcons.PartyPopper className="w-4 h-4" />;
+    if (cat.includes('restauran') || cat.includes('comida') || cat.includes('chef') || cat.includes('catering') || cat.includes('pasteler') || cat.includes('hosteleria') || cat.includes('bar') || cat.includes('cafeteria') || cat.includes('reposteria')) return <LucideIcons.Utensils className="w-4 h-4" />;
+    if (cat.includes('cuidador') || cat.includes('ninera') || cat.includes('canguro') || cat.includes('mayores') || cat.includes('infantil')) return <LucideIcons.Users className="w-4 h-4" />;
+    if (cat.includes('hogar') || cat.includes('casa')) return <LucideIcons.Home className="w-4 h-4" />;
+
+    return <LucideIcons.Briefcase className="w-4 h-4" />;
+};
+
+const renderIcon = (dbIconName: string | null, categoryText: string) => {
+    if (dbIconName && (LucideIcons as any)[dbIconName]) {
+        const IconComponent = (LucideIcons as any)[dbIconName];
+        return <IconComponent className="w-4 h-4" />;
+    }
+    return getIconForCategoryFallback(categoryText);
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -77,14 +98,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description,
             url: `https://dconfy.app/pro/${slug}`,
             siteName: 'dconfy',
-            images: [
-                {
-                    url: imageUrl,
-                    width: 1200,
-                    height: 630,
-                    alt: `Perfil de ${profile.professional_name || profile.full_name}`,
-                }
-            ],
+            images: [{ url: imageUrl, width: 1200, height: 630, alt: `Perfil de ${profile.professional_name || profile.full_name}` }],
             locale: 'es_ES',
             type: 'profile',
         },
@@ -103,7 +117,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
     const { data: profile, error } = await supabase
         .from('profiles')
-        .select('*')
+        .select('*, categories(*)')
         .eq(isUUID ? 'id' : 'slug', slug)
         .single();
 
@@ -122,6 +136,17 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         return <div className="min-h-screen flex items-center justify-center text-slate-500">Perfil no encontrado.</div>;
     }
 
+    let dbIconName = null;
+    if (profile.categories) {
+        const catArray = Array.isArray(profile.categories) ? profile.categories[0] : profile.categories;
+        dbIconName = catArray?.icon_name || null;
+    }
+
+    if (!dbIconName && profile.category) {
+        const { data: catData } = await supabase.from('categories').select('icon_name').eq('name', profile.category).maybeSingle();
+        if (catData) dbIconName = catData.icon_name;
+    }
+
     const { data: reviews, count } = await supabase
         .from('recommendations')
         .select('*, profiles!recommendations_user_id_fkey(full_name, avatar_url)', { count: 'exact' })
@@ -137,14 +162,14 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         <div className="min-h-screen bg-[#FFF9F2] pb-36 font-sans selection:bg-violet-200">
 
             <header className="flex justify-between items-center py-6 max-w-xl mx-auto px-4">
-                <img src="/dconfy_icon.png" alt="dconfy" className="h-11 sm:h-11 object-contain drop-shadow-sm" />
+                <img src="/icon.png" alt="dconfy" className="h-11 sm:h-11 object-contain" />
                 <a
                     href="https://dconfy.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-full border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95"
+                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-full hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95 shadow-sm"
                 >
-                    Profesional en dconfy.app
+                    Profesional en <span className="text-orange-600">dconfy.app</span>
                 </a>
             </header>
 
@@ -163,9 +188,8 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                                 {profile.professional_name || profile.full_name}
                             </h1>
 
-                            {/* 🚀 NUEVA PÍLDORA DE ESPECIALIDAD CON ICONO */}
                             <div className="flex items-center gap-1.5 bg-violet-50 text-violet-700 border border-violet-200/60 px-3 py-1 rounded-full w-fit mb-2">
-                                {getIconForCategory(profile.specialty || profile.category)}
+                                {renderIcon(dbIconName, profile.specialty || profile.category)}
                                 <span className="font-bold text-sm tracking-tight">{profile.specialty || profile.category}</span>
                             </div>
 
@@ -176,10 +200,53 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     </div>
 
+
+                    <div className="flex items-center justify-between bg-slate-50/50 border border-slate-100 p-4 rounded-2xl mb-6">
+                        <div className="flex-none">
+                            {profile.price_per_hour > 0 ? (
+                                <>
+                                    <span className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">{profile.price_per_hour}€</span>
+                                    <span className="text-slate-500 font-medium ml-1">/h</span>
+                                </>
+                            ) : (
+                                <div className="flex flex-col text-[11px] font-black text-slate-400 uppercase tracking-widest leading-snug">
+                                    <span>Precio a</span>
+                                    <span>Consultar</span>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="flex gap-2 sm:gap-3 justify-end flex-1 flex-wrap">
+                            {profile.tiktok_url && (
+                                <a href={`https://tiktok.com/@${profile.tiktok_url.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform">
+                                    <TikTokIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                                </a>
+                            )}
+                            {profile.website && (
+                                <a href={profile.website.startsWith('http') ? profile.website : `https://${profile.website}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-blue-800 text-white rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform">
+                                    <LucideIcons.Globe className="w-4 h-4 sm:w-5 sm:h-5" />
+                                </a>
+                            )}
+                            {profile.instagram_url && (
+                                <a href={`https://instagram.com/${profile.instagram_url.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-red-500 text-white rounded-full flex items-center justify-center shadow-md shadow-red-200 active:scale-95 transition-transform">
+                                    <LucideIcons.Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
+                                </a>
+                            )}
+                            {profile.whatsapp_number && (
+                                <a href={`tel:${profile.whatsapp_number.replace(/\s+/g, '')}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-green-500 text-white rounded-full flex items-center justify-center shadow-md shadow-green-200 active:scale-95 transition-transform">
+                                    <LucideIcons.Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                                </a>
+                            )}
+                            <a href={`https://app.dconfy.io/#/pro/${slug}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-violet-600 text-white rounded-full flex shrink-0 items-center justify-center shadow-md shadow-violet-200 active:scale-95 transition-transform">
+                                <LucideIcons.MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                            </a>
+                        </div>
+                    </div>
+
                     <div className="flex items-center justify-start gap-2 mb-6 ml-1">
-                        <Heart className="w-5 h-5 fill-[#FF6600] text-[#FF6600]" />
+                        <LucideIcons.Heart className="w-6 h-6 fill-[#FF6600] text-[#FF6600]" />
                         <span className="text-[16px] font-black text-[#FF6600]">{count || 0}</span>
-                        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Recomendaciones</span>
+                        <span className="text-[12px] font-bold text-slate-500 uppercase tracking-wider">Recomendaciones</span>
                     </div>
 
                     {profile.bio && (
@@ -195,7 +262,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                             {profile.services_tags.map((tag: string, index: number) => (
                                 <span
                                     key={index}
-                                    className="bg-violet-100 text-violet-700 px-3.5 py-1.5 rounded-lg text-sm"
+                                    className="bg-violet-100 text-violet-700 px-3.5 py-1.5 rounded-lg text-xs font-bold"
                                 >
                                     {tag}
                                 </span>
@@ -203,20 +270,9 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     )}
 
-                    {profile.gallery && profile.gallery.length > 0 && (
-                        <div className="mt-6 pt-6 border-t border-slate-100">
-                            <div className="grid grid-cols-2 gap-3 w-full">
-                                {profile.gallery.slice(0, 2).map((imgUrl: string, index: number) => (
-                                    <img
-                                        key={index}
-                                        src={imgUrl}
-                                        alt={`Trabajo ${index + 1}`}
-                                        className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-sm border border-slate-100"
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    )}
+                    {/* 🚀 COMPONENTE CLIENTE CON EL LIGHTBOX INCORPORADO */}
+                    <PublicGallery images={profile.gallery} />
+
                 </div>
 
                 {reviews && reviews.length > 0 && (
