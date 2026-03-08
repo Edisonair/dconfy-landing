@@ -22,15 +22,55 @@ const heroProfessionals = [
   { src: "/hero_vector_socialmedia.png", alt: "Experto en Redes" }
 ];
 
+const placeholderRoles = [
+  "Abogado", "Fisioterapeuta", "Fontanero", "Psicólogo", "Tatuador",
+  "Electricista", "Mecánico", "Salón de Peluquería", "Entrenador Personal",
+  "Fotógrafo", "Veterinario", "Clínica Estética", "Jardinero",
+  "Experto en Redes", "Asesor Fiscal", "Masajista", "Agente de Seguros"
+];
+
 export default function Home() {
   const [desktopCycle, setDesktopCycle] = useState(0);
+
+  // 🚀 ESTADOS MÁQUINA DE ESCRIBIR
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setDesktopCycle(prev => prev + 1);
-    }, 3000); // Crossfade transition 
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // 🚀 LÓGICA MÁQUINA DE ESCRIBIR (Ahora mucho más rápida)
+  useEffect(() => {
+    const currentWord = placeholderRoles[currentRoleIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (isDeleting) {
+      // Borrando súper rápido
+      timeout = setTimeout(() => {
+        setDisplayedText(currentWord.substring(0, displayedText.length - 1));
+        if (displayedText.length === 0) {
+          setIsDeleting(false);
+          setCurrentRoleIndex((prev) => (prev + 1) % placeholderRoles.length);
+        }
+      }, 20); // 🚀 Bajado de 40ms a 20ms
+    } else {
+      // Escribiendo más rápido
+      timeout = setTimeout(() => {
+        setDisplayedText(currentWord.substring(0, displayedText.length + 1));
+        if (displayedText.length === currentWord.length) {
+          // Pausa cuando termina de escribir la palabra
+          timeout = setTimeout(() => setIsDeleting(true), 2000);
+        }
+      }, 40); // 🚀 Bajado de 80ms a 40ms
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, currentRoleIndex]);
 
   const leftIdx = (desktopCycle * 3) % heroProfessionals.length;
   const centerIdx = (desktopCycle * 3 + 1) % heroProfessionals.length;
@@ -85,7 +125,7 @@ export default function Home() {
       </header>
 
       {/* 2. HERO SECTION (FONDO CREMA CON CORTE REDONDEADO) */}
-      <section className="bg-[#FFF9F0] pt-12 pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
+      <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-6">
@@ -107,10 +147,12 @@ export default function Home() {
           {/* Hero Images Area */}
           <div className="mt-2 lg:mt-0 relative w-full flex flex-col items-center">
 
-            {/* Version Movil (Carrusel Infinito) */}
-            <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative py-8 -mt-1">
-              <div className="flex w-fit animate-marquee items-center hover:[animation-play-state:paused] active:[animation-play-state:paused] cursor-grab active:cursor-grabbing">
-                {/* Grupo 1 */}
+            {/* Version Movil */}
+            {/* 🚀 Añadido pt-16 (padding top extra) para que las imágenes escaladas no se corten por el borde del overflow-hidden */}
+            <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative pt-16 pb-4 -mt-4">
+
+              {/* 🚀 Cambiado a mb-12 para dar más aire entre las imágenes y la cápsula */}
+              <div className="flex w-fit animate-marquee items-center hover:[animation-play-state:paused] active:[animation-play-state:paused] cursor-grab active:cursor-grabbing mb-12">
                 {heroProfessionals.map((item, i) => (
                   <div key={`group1-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
                     <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
@@ -118,8 +160,6 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
-
-                {/* Grupo 2 (Duplicado exacto para hacer el loop infinito) */}
                 {heroProfessionals.map((item, i) => (
                   <div key={`group2-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
                     <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
@@ -128,53 +168,67 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+
+              {/* 🚀 CÁPSULA ANIMADA CON MÁQUINA DE ESCRIBIR (SOLO MÓVIL) */}
+              <div className="flex justify-center px-4">
+                <div className="bg-white border border-slate-200/60 shadow-md shadow-violet-100/50 px-5 py-2.5 rounded-full flex items-center gap-2 max-w-full">
+                  <Search className="w-4 h-4 text-violet-400 shrink-0" />
+                  <span className="text-slate-500 font-medium text-sm shrink-0">Encuentra a tu</span>
+                  <div className="flex items-center overflow-hidden">
+                    <span className="font-bold text-violet-600 text-sm whitespace-nowrap">{displayedText}</span>
+                    <span className="w-[2px] h-4 bg-violet-500 ml-0.5 animate-[pulse_0.8s_infinite]"></span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Version Escritorio (Avatares 3D Pop-out Superpuestos Animados) */}
-            <div className="hidden md:flex justify-end items-center relative lg:translate-x-8 xl:translate-x-16 origin-center">
+            {/* Version Escritorio */}
+            <div className="hidden md:flex flex-col items-center justify-end relative lg:translate-x-8 xl:translate-x-16 origin-center w-full">
 
-              {/* Izquierda */}
-              <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-28 lg:mt-36 z-10 relative">
-                <div className="animate-float relative" style={{ animationDelay: '0s' }}>
-                  {heroProfessionals.map((pro, idx) => (
-                    <img
-                      key={`desktop-left-${idx}`}
-                      src={pro.src}
-                      alt={pro.alt}
-                      className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === leftIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
-                        }`}
-                    />
-                  ))}
+              <div className="flex justify-end items-center relative w-full">
+                {/* Izquierda */}
+                <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-28 lg:mt-36 z-10 relative">
+                  <div className="animate-float relative" style={{ animationDelay: '0s' }}>
+                    {heroProfessionals.map((pro, idx) => (
+                      <img
+                        key={`desktop-left-${idx}`}
+                        src={pro.src}
+                        alt={pro.alt}
+                        className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === leftIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                          }`}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Centro (El Más Grande y Frontal) */}
-              <div className="w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-8 lg:mb-12 z-30 -ml-16 lg:-ml-24 relative">
-                <div className="animate-float relative" style={{ animationDelay: '1.5s' }}>
-                  {heroProfessionals.map((pro, idx) => (
-                    <img
-                      key={`desktop-center-${idx}`}
-                      src={pro.src}
-                      alt={pro.alt}
-                      className={`w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-1000 ${idx === centerIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
-                        }`}
-                    />
-                  ))}
+                {/* Centro */}
+                <div className="w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-8 lg:mb-12 z-30 -ml-16 lg:-ml-24 relative">
+                  <div className="animate-float relative" style={{ animationDelay: '1.5s' }}>
+                    {heroProfessionals.map((pro, idx) => (
+                      <img
+                        key={`desktop-center-${idx}`}
+                        src={pro.src}
+                        alt={pro.alt}
+                        className={`w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-1000 ${idx === centerIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                          }`}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Derecha */}
-              <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-16 lg:mt-20 z-20 -ml-16 lg:-ml-24 relative">
-                <div className="animate-float relative" style={{ animationDelay: '3s' }}>
-                  {heroProfessionals.map((pro, idx) => (
-                    <img
-                      key={`desktop-right-${idx}`}
-                      src={pro.src}
-                      alt={pro.alt}
-                      className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === rightIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
-                        }`}
-                    />
-                  ))}
+                {/* Derecha */}
+                <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-16 lg:mt-20 z-20 -ml-16 lg:-ml-24 relative">
+                  <div className="animate-float relative" style={{ animationDelay: '3s' }}>
+                    {heroProfessionals.map((pro, idx) => (
+                      <img
+                        key={`desktop-right-${idx}`}
+                        src={pro.src}
+                        alt={pro.alt}
+                        className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === rightIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                          }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -185,7 +239,7 @@ export default function Home() {
       </section>
 
       {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
-      <section id="como-funciona" className="bg-white py-24 px-1 max-w-7xl mx-auto">
+      <section id="como-funciona" className="bg-white pt-12 pb-24 lg:py-24 px-1 max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">¿Cómo funciona?</h2>
           <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium">Encontrar profesionales y servicios de confianza nunca fue tan fácil.</p>
