@@ -1,5 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
-import { Heart } from 'lucide-react';
+import {
+    Heart, Scale, Briefcase, Shield, Brain, Wrench, Zap,
+    Paintbrush, Sparkles, Dumbbell, Laptop, Camera, Scissors,
+    Car, Dog, Home
+} from 'lucide-react';
 import ActionButtons from './ActionButtons';
 
 export const dynamic = 'force-dynamic';
@@ -11,7 +15,7 @@ const supabase = createClient(
 
 const checkIfUUID = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
 
-// 🚀 DICCIONARIO DE PROVINCIAS (Para sacarla automáticamente del Código Postal)
+// 🚀 DICCIONARIO DE PROVINCIAS
 const PROVINCES: Record<string, string> = {
     '01': 'Álava', '02': 'Albacete', '03': 'Alicante', '04': 'Almería', '05': 'Ávila',
     '06': 'Badajoz', '07': 'Islas Baleares', '08': 'Barcelona', '09': 'Burgos', '10': 'Cáceres',
@@ -24,6 +28,29 @@ const PROVINCES: Record<string, string> = {
     '41': 'Sevilla', '42': 'Soria', '43': 'Tarragona', '44': 'Teruel', '45': 'Toledo',
     '46': 'Valencia', '47': 'Valladolid', '48': 'Vizcaya', '49': 'Zamora', '50': 'Zaragoza',
     '51': 'Ceuta', '52': 'Melilla'
+};
+
+// 🚀 SELECTOR INTELIGENTE DE ICONOS PARA LA VISTA PÚBLICA
+const getIconForCategory = (category: string) => {
+    const cat = category?.toLowerCase() || '';
+    if (cat.includes('abogado') || cat.includes('legal')) return <Scale className="w-4 h-4" />;
+    if (cat.includes('asesor') || cat.includes('gestor') || cat.includes('financier')) return <Briefcase className="w-4 h-4" />;
+    if (cat.includes('seguro')) return <Shield className="w-4 h-4" />;
+    if (cat.includes('psic') || cat.includes('terap')) return <Brain className="w-4 h-4" />;
+    if (cat.includes('fontaner') || cat.includes('reform') || cat.includes('construc')) return <Wrench className="w-4 h-4" />;
+    if (cat.includes('electri')) return <Zap className="w-4 h-4" />;
+    if (cat.includes('pintor')) return <Paintbrush className="w-4 h-4" />;
+    if (cat.includes('limpiez')) return <Sparkles className="w-4 h-4" />;
+    if (cat.includes('fisioterap') || cat.includes('salud') || cat.includes('médic') || cat.includes('bienestar')) return <Heart className="w-4 h-4" />;
+    if (cat.includes('entrenador') || cat.includes('deport') || cat.includes('fitness')) return <Dumbbell className="w-4 h-4" />;
+    if (cat.includes('informátic') || cat.includes('ordenador') || cat.includes('tech')) return <Laptop className="w-4 h-4" />;
+    if (cat.includes('fotógraf') || cat.includes('audiovisual')) return <Camera className="w-4 h-4" />;
+    if (cat.includes('peluquer') || cat.includes('estétic') || cat.includes('belleza')) return <Scissors className="w-4 h-4" />;
+    if (cat.includes('motor') || cat.includes('coche') || cat.includes('mecánic')) return <Car className="w-4 h-4" />;
+    if (cat.includes('mascot') || cat.includes('veterinar')) return <Dog className="w-4 h-4" />;
+    if (cat.includes('hogar')) return <Home className="w-4 h-4" />;
+
+    return <Briefcase className="w-4 h-4" />; // Icono por defecto
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -102,7 +129,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         .order('created_at', { ascending: false })
         .limit(3);
 
-    // 🚀 Calculamos la provincia igual que en la App
     const provinceFromZip = profile.zip_code && profile.zip_code.length === 5 ? PROVINCES[profile.zip_code.substring(0, 2)] : '';
     const finalProvince = profile.province || provinceFromZip || '';
     const displayLocation = `${profile.location || 'España'}${finalProvince ? `, ${finalProvince}` : ''}`;
@@ -111,14 +137,14 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         <div className="min-h-screen bg-[#FFF9F2] pb-36 font-sans selection:bg-violet-200">
 
             <header className="flex justify-between items-center py-6 max-w-xl mx-auto px-4">
-                <img src="/dconfy_logo.png" alt="dconfy" className="h-7 sm:h-8 object-contain" />
+                <img src="/dconfy_icon.png" alt="dconfy" className="h-11 sm:h-11 object-contain drop-shadow-sm" />
                 <a
                     href="https://dconfy.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-full border border-slate-200 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95"
+                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-full border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95"
                 >
-                    dconfy.app
+                    Profesional en dconfy.app
                 </a>
             </header>
 
@@ -133,15 +159,18 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                             className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shadow-sm border border-slate-100 shrink-0"
                         />
                         <div className="flex-1 min-w-0">
-                            <h1 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight mb-1 truncate">
+                            <h1 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight mb-2 truncate">
                                 {profile.professional_name || profile.full_name}
                             </h1>
-                            <p className="text-violet-600 font-bold text-sm sm:text-base mb-1 truncate">
-                                {profile.specialty || profile.category}
-                            </p>
+
+                            {/* 🚀 NUEVA PÍLDORA DE ESPECIALIDAD CON ICONO */}
+                            <div className="flex items-center gap-1.5 bg-violet-50 text-violet-700 border border-violet-200/60 px-3 py-1 rounded-full w-fit mb-2">
+                                {getIconForCategory(profile.specialty || profile.category)}
+                                <span className="font-bold text-sm tracking-tight">{profile.specialty || profile.category}</span>
+                            </div>
+
                             <div className="flex items-center gap-1 text-slate-500 font-medium text-sm truncate">
                                 <span>📍</span>
-                                {/* 🚀 Aquí inyectamos la ubicación completa con provincia */}
                                 <span className="truncate">{displayLocation}</span>
                             </div>
                         </div>
@@ -161,13 +190,12 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         </div>
                     )}
 
-                    {/* 🚀 TAGS UN POCO MÁS GRANDES PERO MANTENIENDO EL ESTILO PLANO */}
                     {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
-                        <div className="mt-4 flex flex-wrap gap-2">
+                        <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-2">
                             {profile.services_tags.map((tag: string, index: number) => (
                                 <span
                                     key={index}
-                                    className="bg-slate-100 text-slate-600 text-xs px-3 py-1.5 rounded-lg font-bold border border-slate-200/60"
+                                    className="bg-violet-100 text-violet-700 px-3.5 py-1.5 rounded-lg text-sm"
                                 >
                                     {tag}
                                 </span>
