@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import * as LucideIcons from 'lucide-react';
 import ActionButtons from './ActionButtons';
 import PublicGallery from './PublicGallery';
-import ContactButtons from './ContactButtons'; // 🚀 IMPORTAMOS EL NUEVO COMPONENTE
+import ContactButtons from './ContactButtons';
 
 export const dynamic = 'force-dynamic';
 
@@ -156,13 +156,14 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
     return (
         <div className="min-h-screen bg-[#FFF9F2] pb-36 font-sans selection:bg-violet-200">
 
+            {/* Cabecera general con el logo */}
             <header className="flex justify-between items-center py-6 max-w-xl mx-auto px-4">
                 <img src="/icon.png" alt="dconfy" className="h-11 sm:h-11 object-contain" />
                 <a
                     href="https://dconfy.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-full hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95 shadow-sm"
+                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95 border border-slate-200"
                 >
                     Profesional en <span className="text-orange-600">dconfy.app</span>
                 </a>
@@ -170,104 +171,117 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
             <main className="max-w-xl mx-auto px-4 space-y-6">
 
-                <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden">
+                {/* 1. SECCIÓN CABECERA DEL PROFESIONAL */}
+                <div className="flex items-center gap-4 text-left w-full mt-2">
+                    <img
+                        src={profile.professional_logo_url || profile.avatar_url}
+                        alt={profile.professional_name}
+                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover shadow-sm border border-slate-200 shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight mb-2 truncate">
+                            {profile.professional_name || profile.full_name}
+                        </h1>
 
-                    <div className="flex items-center gap-4 text-left w-full mb-4">
-                        <img
-                            src={profile.professional_logo_url || profile.avatar_url}
-                            alt={profile.professional_name}
-                            className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shadow-sm border border-slate-100 shrink-0"
-                        />
-                        <div className="flex-1 min-w-0">
-                            <h1 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight mb-2 truncate">
-                                {profile.professional_name || profile.full_name}
-                            </h1>
+                        <div className="flex items-center gap-1.5 bg-violet-50 text-violet-700 px-3 py-1.5 rounded-2xl w-fit mb-2 border border-violet-100">
+                            {renderIcon(dbIconName, profile.specialty || profile.category)}
+                            <span className="font-bold text-sm tracking-tight">{profile.specialty || profile.category}</span>
+                        </div>
 
-                            <div className="flex items-center gap-1.5 bg-violet-50 text-violet-700 border border-violet-200/60 px-3 py-1 rounded-full w-fit mb-2">
-                                {renderIcon(dbIconName, profile.specialty || profile.category)}
-                                <span className="font-bold text-sm tracking-tight">{profile.specialty || profile.category}</span>
-                            </div>
-
-                            <div className="flex items-center gap-1 text-slate-500 font-medium text-sm truncate">
-                                <span>📍</span>
-                                <span className="truncate">{displayLocation}</span>
-                            </div>
+                        <div className="flex items-center gap-1 text-slate-500 font-medium text-sm truncate">
+                            <span>📍</span>
+                            <span className="truncate">{displayLocation}</span>
                         </div>
                     </div>
+                </div>
 
-                    <div className="flex items-center justify-between bg-slate-50/50 border border-slate-100 p-4 rounded-2xl mb-6">
-                        <div className="flex-none">
-                            {profile.price_per_hour > 0 ? (
-                                <>
-                                    <span className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">{profile.price_per_hour}€</span>
-                                    <span className="text-slate-500 font-medium ml-1">/h</span>
-                                </>
-                            ) : (
-                                <div className="flex flex-col text-[11px] font-black text-slate-400 uppercase tracking-widest leading-snug">
-                                    <span>Precio a</span>
-                                    <span>Consultar</span>
-                                </div>
-                            )}
-                        </div>
+                {/* 2. TARJETA DE ACCIONES (Precio y Contacto) */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between bg-white p-5 rounded-2xl gap-4">
+                    <div className="flex-none flex items-baseline">
+                        {profile.price_per_hour > 0 ? (
+                            <>
+                                <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{profile.price_per_hour}€</span>
+                                <span className="text-slate-500 font-medium ml-1 text-lg">/h</span>
+                            </>
+                        ) : (
+                            <div className="flex flex-col text-xs font-black text-slate-400 uppercase tracking-widest leading-snug">
+                                <span>Precio a</span>
+                                <span>Consultar</span>
+                            </div>
+                        )}
+                    </div>
 
-                        {/* 🚀 INVOCAMOS A NUESTRO NUEVO COMPONENTE DE BOTONES */}
+                    <div className="flex-1">
                         <ContactButtons profile={profile} slug={slug} />
-
                     </div>
+                </div>
 
-                    <div className="flex items-center justify-start gap-2 mb-6 ml-1">
-                        <LucideIcons.Heart className="w-6 h-6 fill-[#FF6600] text-[#FF6600]" />
-                        <span className="text-[16px] font-black text-[#FF6600]">{count || 0}</span>
-                        <span className="text-[12px] font-bold text-slate-500 uppercase tracking-wider">Recomendaciones</span>
-                    </div>
+                {/* 3. RECUENTO DE RECOMENDACIONES */}
+                <div className="flex items-center justify-start gap-2 ml-1">
+                    <LucideIcons.Heart className="w-6 h-6 fill-[#FF6600] text-[#FF6600]" />
+                    <span className="text-lg font-black text-[#FF6600]">{count || 0}</span>
+                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Recomendaciones</span>
+                </div>
 
-                    {profile.bio && (
-                        <div className="bg-slate-50 rounded-2xl p-4">
+                {/* 4. TARJETA COMBINADA DE BIOGRAFÍA Y ETIQUETAS */}
+                {(profile.bio || (profile.services_tags && profile.services_tags.length > 0)) && (
+                    <div className="bg-white rounded-2xl p-5 ">
+
+                        {profile.bio && (
                             <p className="text-slate-700 leading-relaxed text-[15px]">
                                 {profile.bio}
                             </p>
-                        </div>
-                    )}
+                        )}
 
-                    {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
-                        <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-2">
-                            {profile.services_tags.map((tag: string, index: number) => (
-                                <span
-                                    key={index}
-                                    className="bg-violet-100 text-violet-700 px-3.5 py-1.5 rounded-lg text-xs font-bold"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    )}
+                        {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
+                            <div className={`flex flex-wrap gap-2 ${profile.bio ? 'mt-4 pt-4 border-t border-slate-100' : ''}`}>
+                                {profile.services_tags.map((tag: string, index: number) => (
+                                    <span
+                                        key={index}
+                                        className="bg-violet-50 text-violet-700 border border-violet-100 px-3 py-1.5 rounded-lg text-xs font-bold"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
 
-                    <PublicGallery images={profile.gallery} />
+                    </div>
+                )}
 
-                </div>
+                {/* 5. GALERÍA DE FOTOS */}
+                {profile.gallery && profile.gallery.length > 0 && (
+                    <div>
+                        <PublicGallery images={profile.gallery} />
+                    </div>
+                )}
 
+                {/* 6. TARJETAS DE OPINIONES */}
                 {reviews && reviews.length > 0 && (
-                    <div className="space-y-4">
+                    <div className="space-y-4 pt-4">
                         {reviews?.map((review) => (
-                            <div key={review.id} className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
+                            <div key={review.id} className="bg-white p-5 rounded-2xl border border-slate-200">
                                 <div className="flex items-center gap-3 mb-3">
                                     <img
                                         src={review.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${review.profiles?.full_name}`}
-                                        className="w-10 h-10 rounded-full object-cover"
+                                        className="w-11 h-11 rounded-full object-cover shadow-sm border border-slate-100"
                                         alt="Avatar"
                                     />
                                     <div>
-                                        <p className="font-bold text-slate-900 text-sm leading-tight">{review.profiles?.full_name}</p>
-                                        <p className="text-[11px] text-slate-400 font-medium">Recomendación verificada</p>
+                                        <p className="font-bold text-slate-900 text-[15px] leading-tight">{review.profiles?.full_name}</p>
+                                        <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mt-0.5 flex items-center gap-1">
+                                            <LucideIcons.CheckCircle2 className="w-3 h-3 text-green-500" /> Verificada
+                                        </p>
                                     </div>
                                 </div>
-                                <p className="text-slate-700 text-sm leading-relaxed">
-                                    {review.content}
+                                <p className="text-slate-700 text-[15px] leading-relaxed">
+                                    "{review.content}"
                                 </p>
                             </div>
                         ))}
                     </div>
                 )}
+
             </main>
 
             <ActionButtons slug={slug} />
