@@ -37,13 +37,13 @@ export default function PublicGallery({ images }: { images: string[] }) {
 
     return (
         <>
-            <div className="mt-6 pt-6 border-t border-slate-100">
+            <div className="mt-6 pt-6 ">
                 <div className="flex gap-2 sm:gap-3 w-full h-40 sm:h-48">
                     {displayImages.map((imgUrl: string, index: number) => (
                         <div
                             key={index}
                             onClick={() => openLightbox(index)}
-                            className="flex-1 h-full rounded-2xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50 relative cursor-zoom-in group"
+                            className="flex-1 h-full rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 relative cursor-zoom-in group"
                         >
                             <img
                                 src={imgUrl}

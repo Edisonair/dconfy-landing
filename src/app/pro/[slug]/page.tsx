@@ -154,7 +154,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
     const displayLocation = `${profile.location || 'España'}${finalProvince ? `, ${finalProvince}` : ''}`;
 
     return (
-        <div className="min-h-screen bg-[#FFF9F2] pb-36 font-sans selection:bg-violet-200">
+        <div className="min-h-screen bg-[#FAFAFA] pb-36 font-sans selection:bg-violet-200">
 
             {/* Cabecera general con el logo */}
             <header className="flex justify-between items-center py-6 max-w-xl mx-auto px-4">
@@ -196,8 +196,8 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                 </div>
 
                 {/* 2. TARJETA DE ACCIONES (Precio y Contacto) */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between bg-white p-5 rounded-2xl gap-4">
-                    <div className="flex-none flex items-baseline">
+                <div className="flex items-center justify-between bg-white p-4 sm:p-5 rounded-2xl gap-2 sm:gap-4 border border-slate-100">
+                    <div className="flex-none flex items-baseline shrink-0">
                         {profile.price_per_hour > 0 ? (
                             <>
                                 <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{profile.price_per_hour}€</span>
@@ -225,7 +225,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
                 {/* 4. TARJETA COMBINADA DE BIOGRAFÍA Y ETIQUETAS */}
                 {(profile.bio || (profile.services_tags && profile.services_tags.length > 0)) && (
-                    <div className="bg-white rounded-2xl p-5 ">
+                    <div className="bg-white rounded-2xl p-5 border border-slate-100">
 
                         {profile.bio && (
                             <p className="text-slate-700 leading-relaxed text-[15px]">
