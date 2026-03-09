@@ -40,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setDesktopCycle(prev => prev + 1);
-    }, 1000);
+    }, 2000);
     return () => clearInterval(timer);
   }, []);
 
@@ -64,7 +64,7 @@ export default function Home() {
         setDisplayedText(currentWord.substring(0, displayedText.length + 1));
         if (displayedText.length === currentWord.length) {
           // Pausa cuando termina de escribir la palabra
-          timeout = setTimeout(() => setIsDeleting(true), 2000);
+          timeout = setTimeout(() => setIsDeleting(true), 1000);
         }
       }, 40); // 🚀 Bajado de 80ms a 40ms
     }
@@ -173,7 +173,7 @@ export default function Home() {
               <div className="flex justify-center px-4">
                 <div className="bg-white border border-slate-200/60 shadow-md shadow-violet-100/50 px-5 py-2.5 rounded-full flex items-center gap-2 max-w-full">
                   <Search className="w-4 h-4 text-violet-400 shrink-0" />
-                  <span className="text-slate-500 font-medium text-sm shrink-0">Encuentra a tu</span>
+                  <span className="text-slate-500 font-medium text-sm shrink-0"></span>
                   <div className="flex items-center overflow-hidden">
                     <span className="font-bold text-violet-600 text-sm whitespace-nowrap">{displayedText}</span>
                     <span className="w-[2px] h-4 bg-violet-500 ml-0.5 animate-[pulse_0.8s_infinite]"></span>
@@ -377,7 +377,8 @@ export default function Home() {
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
-                'Perfil profesional verificado',
+                'Perfil Profesional verificado',
+                'Perfil web público para compartir',
                 'Recibe recomendaciones',
                 'Aparece en búsquedas de tu zona',
                 'Chat con clientes habilitado',
@@ -405,6 +406,7 @@ export default function Home() {
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
+                'Panel de control para gestionar tu negocio',
                 'Perfil Corporativo para el negocio',
                 'Incluye 5 perfiles Profesionales',
                 'Todo lo del Plan Profesional',
