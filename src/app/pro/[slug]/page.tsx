@@ -176,7 +176,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                     <img
                         src={profile.professional_logo_url || profile.avatar_url}
                         alt={profile.professional_name}
-                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover shadow-sm border border-slate-200 shrink-0"
+                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shadow-sm border border-slate-200 shrink-0"
                     />
                     <div className="flex-1 min-w-0">
                         <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight mb-2 truncate">
