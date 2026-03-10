@@ -139,7 +139,7 @@ export default function Home() {
                 Descargar app
               </Link>
               <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
-                Planes para profesionales
+                ¿Ofreces algún servicio?
               </Link>
             </div>
           </div>
@@ -342,7 +342,7 @@ export default function Home() {
 
       {/* 5. PLANES PARA PROFESIONALES */}
       <section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4 tracking-tight">Planes para profesionales</h2>
+        <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
         <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige el plan que mejor se adapta a tu situación. Sin compromisos.</p>
 
         {/* Toggle Mensual/Anual */}
@@ -524,6 +524,7 @@ export default function Home() {
               <Link href="#como-funciona" className="text-slate-400 hover:text-white text-sm transition-colors">Cómo funciona</Link>
               <Link href="#planes" className="text-slate-400 hover:text-white text-sm transition-colors">Planes</Link>
               <Link href="#faq" className="text-slate-400 hover:text-white text-sm transition-colors">FAQ</Link>
+              <Link href="/admin" className="text-slate-400 hover:text-white text-sm transition-colors">Acceso Empresas</Link>
             </div>
             <div className="flex flex-col gap-4">
               <Link href="/privacidad" className="text-slate-400 hover:text-white text-sm transition-colors">Política de privacidad</Link>
