@@ -359,7 +359,7 @@ export default function Home() {
             <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
           <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
-          <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">Oferta de lanzamiento<br />3 meses gratis</span>
+          <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">Ahora 3 meses gratis</span>
         </div>
 
         {/* Tarjetas de Precios */}
