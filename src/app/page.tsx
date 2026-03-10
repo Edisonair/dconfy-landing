@@ -173,7 +173,7 @@ export default function Home() {
               <div className="flex justify-center px-4">
                 <div className="bg-white border border-slate-200/60 shadow-md shadow-violet-100/50 px-5 py-2.5 rounded-full flex items-center gap-2 max-w-full">
                   <Search className="w-4 h-4 text-violet-400 shrink-0" />
-                  <span className="text-slate-500 font-medium text-sm shrink-0">Busco:</span>
+                  <span className="text-slate-500 font-medium text-sm shrink-0">Busco</span>
                   <div className="flex items-center overflow-hidden">
                     <span className="font-bold text-violet-600 text-sm whitespace-nowrap">{displayedText}</span>
                     <span className="w-[2px] h-4 bg-violet-500 ml-0.5 animate-[pulse_0.8s_infinite]"></span>
@@ -359,7 +359,7 @@ export default function Home() {
             <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
           <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
-          <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">Oferta de lanzamiento: 3 meses gratis</span>
+          <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">Oferta de lanzamiento<br />3 meses gratis</span>
         </div>
 
         {/* Tarjetas de Precios */}
