@@ -126,13 +126,13 @@ export default function Home() {
 
       {/* 2. HERO SECTION (FONDO CREMA CON CORTE REDONDEADO) */}
       <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
-          <div className="max-w-xl">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
+          <div className="max-w-xl lg:max-w-lg">
             <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-6">
               El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
             </h1>
-            <p className="text-lg text-slate-500 font-medium mb-8 leading-relaxed">
-              dconfy recupera la forma natural de encontrar profesionales: preguntando a la gente que conoces, pero con la potencia de la tecnología.
+            <p className="text-xl md:text-2xl text-slate-600 font-bold mb-8 leading-relaxed tracking-tight">
+              Descubre profesionales recomendados por tus amigos y amigos de tus amigos.
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
@@ -238,11 +238,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 2.5 VENTAJAS (CARDS) */}
+      <section className="bg-transparent pt-24 pb-8 px-6 max-w-7xl mx-auto relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1 */}
+          <div className="bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
+              <Users className="w-6 h-6 text-[#FF6600]" />
+            </div>
+            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
+              Tu red primero
+            </h3>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              Las recomendaciones de tu círculo tienen prioridad.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="bg-violet-50 p-8 rounded-3xl border border-violet-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(124,58,237,0.1)] border border-violet-50">
+              <CheckCircle2 className="w-6 h-6 text-violet-600" />
+            </div>
+            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
+              Confianza visible
+            </h3>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              Sabes quién recomienda a cada profesional.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
+              <MessageCircle className="w-6 h-6 text-[#FF6600]" />
+            </div>
+            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
+              Habla directamente
+            </h3>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              Chatea desde la app y contacta con confianza.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
-      <section id="como-funciona" className="bg-white pt-12 pb-24 lg:py-24 px-1 max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">¿Cómo funciona?</h2>
-          <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium">Encontrar profesionales y servicios de confianza nunca fue tan fácil.</p>
+      <section id="como-funciona" className="bg-white pt-12 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16 relative flex flex-col items-center">
+          <div className="relative inline-block mb-6">
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">Así funciona</h2>
+          </div>
+          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+            dconfy recupera la forma natural de encontrar profesionales: <span className="font-bold text-slate-700">preguntando a la gente que conoces</span>, ahora con la potencia de la tecnología.
+          </p>
         </div>
 
         <div className="flex flex-col gap-20 max-w-4xl mx-auto">
@@ -252,8 +300,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Heart className="w-8 h-8 text-[#FF6600]" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda y Ayuda</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando reseñas honestas y cortas sobre los profesionales que han hecho un buen trabajo.</p>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda en quien de verdad confías</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un profesional.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
@@ -269,8 +317,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Busca en tu Red</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Olvídate de las listas de desconocidos. Nuestros resultados priorizan a los profesionales que tus amigos ya han contratado y recomendado.</p>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra profesionales a través de tu red</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">No ves opiniones anónimas: ves a quién conoce tu gente.</p>
             </div>
           </div>
 
@@ -280,12 +328,68 @@ export default function Home() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <MessageCircle className="w-8 h-8 text-[#FF6600]" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Confianza Directa</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Accede a un chat directo de profesionales de confianza. Sin intermediarios, sin comisiones ocultas.</p>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Contacta sin intermediarios</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">Habla directamente con el profesional desde la app.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_heart_trust_floral_clean_cream2.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.5 POR QUÉ DCONFY ES DIFERENTE */}
+      <section className="bg-white py-24 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">¿Por qué dconfy es diferente?</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
+          {/* Columna Otras plataformas */}
+          <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200">
+            <h3 className="text-2xl font-bold text-slate-400 mb-8 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-sm">✕</span>
+              Otras plataformas
+            </h3>
+            <ul className="space-y-6">
+              <li className="flex items-start gap-4">
+                <Minus className="w-6 h-6 text-slate-400 shrink-0 mt-0.5" />
+                <span className="text-lg text-slate-600 font-medium">Opiniones de desconocidos</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Minus className="w-6 h-6 text-slate-400 shrink-0 mt-0.5" />
+                <span className="text-lg text-slate-600 font-medium">Rankings impersonales</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Minus className="w-6 h-6 text-slate-400 shrink-0 mt-0.5" />
+                <span className="text-lg text-slate-600 font-medium">Demasiadas opciones</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Columna dconfy */}
+          <div className="bg-[#FFF9F0] p-10 rounded-3xl border-2 border-[#FF6600] shadow-xl shadow-orange-100/50 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-200/40 to-violet-200/40 blur-3xl rounded-full"></div>
+            <h3 className="text-2xl font-black text-[#111827] mb-8 flex items-center gap-3 relative z-10">
+              <span className="w-8 h-8 rounded-full bg-[#FF6600] flex items-center justify-center text-white">
+                <Check className="w-5 h-5" />
+              </span>
+              dconfy
+            </h3>
+            <ul className="space-y-6 relative z-10">
+              <li className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <span className="text-lg text-[#111827] font-bold">Recomendaciones de tu gente</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <span className="text-lg text-[#111827] font-bold">Amigos y amigos de amigos</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <span className="text-lg text-[#111827] font-bold">Confianza antes de elegir</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -540,95 +644,96 @@ export default function Home() {
       </footer>
 
       {/* MODAL DE CONTACTO EMPRESA */}
-      {isContactModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={() => setIsContactModalOpen(false)}></div>
+      {
+        isContactModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={() => setIsContactModalOpen(false)}></div>
 
-          <div className="bg-white rounded-3xl w-full max-w-lg relative z-10 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-[#FFF9F0] shrink-0">
-              <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">Solicitar Plan Empresa</h3>
-              <button onClick={() => setIsContactModalOpen(false)} className="text-slate-400 hover:text-slate-700 bg-white p-2 rounded-full shadow-sm">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+            <div className="bg-white rounded-3xl w-full max-w-lg relative z-10 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+              <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-[#FFF9F0] shrink-0">
+                <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">Solicitar Plan Empresa</h3>
+                <button onClick={() => setIsContactModalOpen(false)} className="text-slate-400 hover:text-slate-700 bg-white p-2 rounded-full shadow-sm">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
-            <div className="p-6 overflow-y-auto">
-              {formStatus === 'success' ? (
-                <div className="text-center py-10">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-green-600" />
-                  </div>
-                  <h4 className="text-xl font-bold text-[#111827] mb-2">¡Solicitud recibida!</h4>
-                  <p className="text-slate-500">Hemos recibido tus datos correctamente. Revisa tu email, nos pondremos en contacto contigo en las próximas 24 horas.</p>
-                  <button onClick={() => setIsContactModalOpen(false)} className="mt-8 bg-[#111827] text-white px-8 py-3 rounded-full font-[system-ui] font-bold w-full">Cerrar</button>
-                </div>
-              ) : (
-                <form className="space-y-4" onSubmit={async (e) => {
-                  e.preventDefault();
-                  setFormStatus('submitting');
-                  const formData = new FormData(e.currentTarget);
-
-                  try {
-                    const res = await fetch('/api/contacto', {
-                      method: 'POST',
-                      body: JSON.stringify({
-                        company: formData.get('company'),
-                        name: formData.get('name'),
-                        email: formData.get('email'),
-                        profiles: formData.get('profiles'),
-                        message: formData.get('message'),
-                      }),
-                    });
-
-                    if (res.ok) setFormStatus('success');
-                    else setFormStatus('idle');
-                  } catch (err) {
-                    setFormStatus('idle');
-                    alert('Hubo un error. Por favor, inténtalo de nuevo.');
-                  }
-                }}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-bold text-slate-700 mb-1.5">Nombre de la empresa *</label>
-                      <input type="text" name="company" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Ej: Clínica Dental Madrid" />
+              <div className="p-6 overflow-y-auto">
+                {formStatus === 'success' ? (
+                  <div className="text-center py-10">
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 className="w-8 h-8 text-green-600" />
                     </div>
-                    <div>
-                      <label className="block text-sm font-bold text-slate-700 mb-1.5">Persona de contacto *</label>
-                      <input type="text" name="name" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Tu nombre" />
+                    <h4 className="text-xl font-bold text-[#111827] mb-2">¡Solicitud recibida!</h4>
+                    <p className="text-slate-500">Hemos recibido tus datos correctamente. Revisa tu email, nos pondremos en contacto contigo en las próximas 24 horas.</p>
+                    <button onClick={() => setIsContactModalOpen(false)} className="mt-8 bg-[#111827] text-white px-8 py-3 rounded-full font-[system-ui] font-bold w-full">Cerrar</button>
+                  </div>
+                ) : (
+                  <form className="space-y-4" onSubmit={async (e) => {
+                    e.preventDefault();
+                    setFormStatus('submitting');
+                    const formData = new FormData(e.currentTarget);
+
+                    try {
+                      const res = await fetch('/api/contacto', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                          company: formData.get('company'),
+                          name: formData.get('name'),
+                          email: formData.get('email'),
+                          profiles: formData.get('profiles'),
+                          message: formData.get('message'),
+                        }),
+                      });
+
+                      if (res.ok) setFormStatus('success');
+                      else setFormStatus('idle');
+                    } catch (err) {
+                      setFormStatus('idle');
+                      alert('Hubo un error. Por favor, inténtalo de nuevo.');
+                    }
+                  }}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-bold text-slate-700 mb-1.5">Nombre de la empresa *</label>
+                        <input type="text" name="company" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Ej: Clínica Dental Madrid" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-bold text-slate-700 mb-1.5">Persona de contacto *</label>
+                        <input type="text" name="name" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Tu nombre" />
+                      </div>
                     </div>
-                  </div>
 
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1.5">Email corporativo *</label>
-                    <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="email@empresa.com" />
-                  </div>
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-1.5">Email corporativo *</label>
+                      <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="email@empresa.com" />
+                    </div>
 
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1.5">Perfiles profesionales que necesitas *</label>
-                    <select name="profiles" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white text-slate-700 appearance-none bg-no-repeat pr-10" style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`, backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}>
-                      <option value="">Selecciona una opción</option>
-                      <option value="1-5">Entre 1 y 5 perfiles (Incluido en el plan)</option>
-                      <option value="6-10">De 6 a 10 perfiles</option>
-                      <option value="11-20">De 11 a 20 perfiles</option>
-                      <option value="+20">Más de 20 perfiles</option>
-                    </select>
-                  </div>
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-1.5">Perfiles profesionales que necesitas *</label>
+                      <select name="profiles" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white text-slate-700 appearance-none bg-no-repeat pr-10" style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`, backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}>
+                        <option value="">Selecciona una opción</option>
+                        <option value="1-5">Entre 1 y 5 perfiles (Incluido en el plan)</option>
+                        <option value="6-10">De 6 a 10 perfiles</option>
+                        <option value="11-20">De 11 a 20 perfiles</option>
+                        <option value="+20">Más de 20 perfiles</option>
+                      </select>
+                    </div>
 
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1.5">Cuéntanos sobre tu necesidad (Opcional)</label>
-                    <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="¿Qué tipo de servicios ofrecéis? ¿Tenéis alguna necesidad especial?"></textarea>
-                  </div>
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-1.5">Cuéntanos sobre tu necesidad (Opcional)</label>
+                      <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="¿Qué tipo de servicios ofrecéis? ¿Tenéis alguna necesidad especial?"></textarea>
+                    </div>
 
-                  <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
-                    {formStatus === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
-                  </button>
-                  <p className="text-center text-xs text-slate-400 mt-4">Tus datos están seguros.</p>
-                </form>
-              )}
+                    <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
+                      {formStatus === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
+                    </button>
+                    <p className="text-center text-xs text-slate-400 mt-4">Tus datos están seguros.</p>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 }
