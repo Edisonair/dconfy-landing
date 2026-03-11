@@ -225,7 +225,8 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                                     key={i}
                                     src={review.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(review.profiles?.full_name || 'U')}`}
                                     alt={review.profiles?.full_name}
-                                    className="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm"
+                                    // 🚀 CAMBIO AQUÍ: Borde del color del fondo y z-index dinámico
+                                    className={`w-7 h-7 rounded-full border-2 border-[#FAFAFA] object-cover relative ${i === 0 ? 'z-10' : 'z-0'}`}
                                 />
                             ))}
                         </div>
