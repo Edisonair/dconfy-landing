@@ -84,10 +84,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const title = `${profile.professional_name || profile.full_name} - ${profile.specialty} | dconfy`;
     const description = `Recomendado en ${profile.location}. ${profile.bio?.substring(0, 100) || 'Descubre su perfil en dconfy.'}...`;
 
-    // 🚀 Lógica robusta para la imagen de WhatsApp
+    // Construct a consistent fallback avatar for the link preview
     let imageUrl = profile.professional_logo_url || profile.avatar_url;
     if (!imageUrl || !imageUrl.startsWith('http')) {
-        imageUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.professional_name || profile.full_name || 'Pro')}&background=6D28D9&color=fff&size=512`;
+        const fallbackName = profile.professional_name || profile.full_name || 'Professional';
+        imageUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(fallbackName)}&background=random&color=fff&size=512`;
     }
 
     return {
@@ -98,19 +99,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description,
             url: `https://dconfy.app/pro/${slug}`,
             siteName: 'dconfy',
-            images: [
-                {
-                    url: imageUrl,
-                    width: 800,
-                    height: 800,
-                    alt: `Perfil de ${profile.professional_name || profile.full_name}`
-                }
-            ],
+            // 🚀 REDUCE LAS DIMENSIONES AQUÍ PARA INDICAR PREFERENCIA POR MINIATURA PEQUEÑA
+            images: [{ url: imageUrl, width: 300, height: 300, alt: `Perfil de ${profile.professional_name || profile.full_name}` }],
             locale: 'es_ES',
             type: 'profile',
         },
         twitter: {
-            card: 'summary_large_image',
+            card: 'summary', // 🚀 Cambia a 'summary' para una tarjeta de vista previa cuadrada y pequeña en Twitter
             title,
             description,
             images: [imageUrl],
@@ -237,6 +232,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                                     key={i}
                                     src={review.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(review.profiles?.full_name || 'U')}`}
                                     alt={review.profiles?.full_name}
+                                    // 🚀 CAMBIO AQUÍ: Borde del color del fondo y z-index dinámico
                                     className={`w-7 h-7 rounded-full border-2 border-[#FAFAFA] object-cover relative ${i === 0 ? 'z-10' : 'z-0'}`}
                                 />
                             ))}
