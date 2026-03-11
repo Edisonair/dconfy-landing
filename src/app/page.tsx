@@ -395,7 +395,7 @@ export default function Home() {
                     <div className="flex -space-x-1.5">
                       <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white object-cover shadow-sm bg-slate-100" />
                     </div>
-                    <span className="text-slate-800 font-bold text-xs lg:text-sm">dconfy de Lucia, Juan y 12 más</span>
+                    <span className="text-slate-800 font-bold text-xs lg:text-sm">En la red de Lucia, Juan y 12 más</span>
                   </div>
                 </div>
               </div>
@@ -454,7 +454,7 @@ export default function Home() {
                     <div className="flex -space-x-1.5">
                       <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white object-cover shadow-sm bg-slate-100" />
                     </div>
-                    <span className="text-slate-800 font-bold text-xs lg:text-sm">dconfy de Carlos, Sara y 23 más</span>
+                    <span className="text-slate-800 font-bold text-xs lg:text-sm">En la red de Carlos, Sara y 23 más</span>
                   </div>
                 </div>
               </div>

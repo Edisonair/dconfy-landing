@@ -216,12 +216,33 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                     </div>
                 </div>
 
-                {/* 3. RECUENTO DE RECOMENDACIONES */}
-                <div className="flex items-center justify-start gap-2 ml-1">
-                    <LucideIcons.Heart className="w-6 h-6 fill-[#FF6600] text-[#FF6600]" />
-                    <span className="text-lg font-black text-[#FF6600]">{count || 0}</span>
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Recomendaciones</span>
-                </div>
+                {/* 3. TRUST BADGE DE RECOMENDACIONES (SIN CAJA) */}
+                {count && count > 0 ? (
+                    <div className="flex items-center gap-2.5 mt-2">
+                        <div className="flex -space-x-2 shrink-0">
+                            {reviews?.slice(0, 2).map((review, i) => (
+                                <img
+                                    key={i}
+                                    src={review.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(review.profiles?.full_name || 'U')}`}
+                                    alt={review.profiles?.full_name}
+                                    className="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm"
+                                />
+                            ))}
+                        </div>
+                        <div className="text-[14px] text-slate-600 font-medium">
+                            Recomendado por <span className="font-bold text-slate-900">{reviews?.[0]?.profiles?.full_name?.split(' ')[0]}</span>
+                            {count > 1 && reviews?.[1] && (
+                                <>
+                                    {count === 2 ? ' y ' : ', '}
+                                    <span className="font-bold text-slate-900">{reviews[1].profiles?.full_name?.split(' ')[0]}</span>
+                                </>
+                            )}
+                            {count > 2 && (
+                                <> y <span className="font-bold text-slate-900">{count - 2} más</span></>
+                            )}
+                        </div>
+                    </div>
+                ) : null}
 
                 {/* 4. TARJETA COMBINADA DE BIOGRAFÍA Y ETIQUETAS */}
                 {(profile.bio || (profile.services_tags && profile.services_tags.length > 0)) && (
