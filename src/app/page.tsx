@@ -132,15 +132,31 @@ export default function Home() {
               El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 font-bold mb-8 leading-relaxed tracking-tight">
-              Descubre profesionales recomendados por tus amigos y amigos de tus amigos.
+              Recomendaciones reales entre personas que se conocen.
             </p>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
-                Descargar app
-              </Link>
-              <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
-                ¿Ofreces algún servicio?
-              </Link>
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+                  Descargar app
+                </Link>
+                <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
+                  ¿Ofreces algún servicio?
+                </Link>
+              </div>
+
+              {/* Apple and Android icons */}
+              <div className="flex items-center justify-center sm:justify-start gap-4 mt-4 pl-2">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md text-slate-500 opacity-90 hover:opacity-100 transition-opacity cursor-default overflow-hidden" title="iOS">
+                  <svg className="w-7 h-7 fill-current -mt-0.5" viewBox="0 0 24 24">
+                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.15 2.95.97 3.83 2.32-3.11 1.94-2.58 6.09.43 7.33-.76 1.76-1.78 3.52-2.91 3.36zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                  </svg>
+                </div>
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md text-slate-500 opacity-90 hover:opacity-100 transition-opacity cursor-default overflow-hidden" title="Android">
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.81.24l-1.92 3.32C15.11 8.24 13.62 8 12 8c-1.62 0-3.11.24-4.45.65L5.63 5.33c-.16-.3-.52-.39-.81-.24-.29.16-.42.54-.26.85l1.84 3.18C3.56 10.97 1.5 14.16 1.15 18h21.7c-.35-3.84-2.41-7.03-5.24-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -172,8 +188,7 @@ export default function Home() {
               {/* 🚀 CÁPSULA ANIMADA CON MÁQUINA DE ESCRIBIR (SOLO MÓVIL) */}
               <div className="flex justify-center px-4">
                 <div className="bg-white border border-slate-200/60 shadow-md shadow-violet-100/50 px-5 py-2.5 rounded-full flex items-center gap-2 max-w-full">
-                  <Search className="w-4 h-4 text-violet-400 shrink-0" />
-                  <span className="text-slate-500 font-medium text-sm shrink-0">Busco</span>
+                  <span className="text-slate-500 font-medium text-sm shrink-0">Recomendaciones de</span>
                   <div className="flex items-center overflow-hidden">
                     <span className="font-bold text-violet-600 text-sm whitespace-nowrap">{displayedText}</span>
                     <span className="w-[2px] h-4 bg-violet-500 ml-0.5 animate-[pulse_0.8s_infinite]"></span>
@@ -242,7 +257,7 @@ export default function Home() {
       <section className="bg-transparent pt-24 pb-8 px-6 max-w-7xl mx-auto relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
-          <div className="bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+          <div className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
               <Users className="w-6 h-6 text-[#FF6600]" />
             </div>
@@ -255,7 +270,7 @@ export default function Home() {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-violet-50 p-8 rounded-3xl border border-violet-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+          <div className="flex flex-col items-center text-center bg-violet-50 p-8 rounded-3xl border border-violet-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(124,58,237,0.1)] border border-violet-50">
               <CheckCircle2 className="w-6 h-6 text-violet-600" />
             </div>
@@ -263,12 +278,12 @@ export default function Home() {
               Confianza visible
             </h3>
             <p className="text-slate-500 font-medium leading-relaxed">
-              Sabes quién recomienda a cada profesional.
+              Sabes quién recomienda a cada Profesional
             </p>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+          <div className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
               <MessageCircle className="w-6 h-6 text-[#FF6600]" />
             </div>
@@ -338,8 +353,137 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 3.1 CÓMO SE VE UNA RECOMENDACIÓN */}
+      <section className="bg-slate-50 py-24 px-6 overflow-hidden relative">
+        <div className="max-w-4xl mx-auto z-10 relative">
+          <div className="text-center mb-16 lg:mb-24">
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así se ve una recomendación en dconfy</h2>
+            <p className="mt-4 text-xl text-slate-500 font-medium">Cada recomendación viene de alguien de tu red.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-10 max-w-[1200px] mx-auto">
+            {/* Tarjeta 1 - PlusHome */}
+            <div className="relative w-full max-w-[500px] justify-self-end flex flex-col items-center sm:items-stretch">
+              {/* Card Container con Shadow y Borde Suave */}
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
+                {/* Gradiente izquierdo para simular el borde colorido */}
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
+
+                <div className="flex justify-between items-start mb-1.5">
+                  <div className="flex-1 pr-3">
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">PlusHome</h3>
+                    <p className="text-[#8B5CF6] font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">REFORMAS INTEGRALES</p>
+                    <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Lampiste...</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Fontane...</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Pint...</span>
+                      <span className="bg-[#F3F0FF] text-[#8B5CF6] px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-bold border border-[#E9D5FF] shrink-0">+3</span>
+                    </div>
+                  </div>
+                  <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] rounded-2xl overflow-hidden shrink-0 shadow-sm border border-slate-100">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Reforma" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm text-[#FF6600]">📍</span>
+                    <span className="text-[#64748b] font-medium text-xs lg:text-sm">Madrid</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 mt-1">
+                    <div className="flex -space-x-1.5">
+                      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white object-cover shadow-sm bg-slate-100" />
+                    </div>
+                    <span className="text-slate-800 font-bold text-xs lg:text-sm">dconfy de Lucia, Juan y 12 más</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recomendador Info */}
+              <div className="flex items-start gap-3 mt-2 ml-4 self-start">
+                <div className="relative shrink-0 mt-0.5">
+                  <div className="w-[40px] h-[40px] lg:w-[48px] lg:h-[48px] rounded-full overflow-hidden shadow-sm border-2 border-white bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Laura Gomez" className="w-full h-full object-cover" />
+                  </div>
+
+                </div>
+                <div className="pt-1 flex flex-col gap-1">
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="text-[#64748b] font-medium text-sm lg:text-base">Recomendado por <strong className="text-slate-900 font-black">Laura García</strong></span>
+                    <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#EFF6FF] text-[#3B82F6] text-[11px] tracking-wide font-bold border border-[#BFDBFE]">
+                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                      Susana
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-slate-400 font-medium text-xs">
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>9 feb</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Tarjeta 2 - Elena Gómez */}
+            <div className="relative w-full max-w-[500px] justify-self-start flex flex-col items-center sm:items-stretch">
+              {/* Card Container */}
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
+
+                <div className="flex justify-between items-start mb-1.5">
+                  <div className="flex-1 pr-3">
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">Elena Gómez</h3>
+                    <p className="text-[#8B5CF6] font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">PSICÓLOGO</p>
+                    <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Neuropsicólogo</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Clínico o Sani...</span>
+                    </div>
+                  </div>
+                  <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] rounded-2xl overflow-hidden shrink-0 shadow-sm border border-slate-100 bg-orange-50">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Psicóloga" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm text-[#FF6600]">📍</span>
+                    <span className="text-[#64748b] font-medium text-xs lg:text-sm">Barcelona</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 mt-1">
+                    <div className="flex -space-x-1.5">
+                      <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white object-cover shadow-sm bg-slate-100" />
+                    </div>
+                    <span className="text-slate-800 font-bold text-xs lg:text-sm">dconfy de Carlos, Sara y 23 más</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recomendador Info */}
+              <div className="flex items-start gap-3 mt-2 ml-4 self-start">
+                <div className="relative shrink-0 mt-0.5">
+                  <div className="w-[40px] h-[40px] lg:w-[48px] lg:h-[48px] rounded-full overflow-hidden shadow-sm border-2 border-white bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Edi" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="text-[#64748b] font-medium text-sm lg:text-base">Recomendado por <strong className="text-slate-900 font-black">Edgar</strong></span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-slate-400 font-medium text-xs mt-0.5">
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>5 feb</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* 3.5 POR QUÉ DCONFY ES DIFERENTE */}
-      <section className="bg-white py-24 px-6 max-w-7xl mx-auto">
+      < section className="bg-white py-24 px-6 max-w-7xl mx-auto" >
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">¿Por qué dconfy es diferente?</h2>
         </div>
@@ -392,19 +536,19 @@ export default function Home() {
             </ul>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* 4. DESCARGAR APP (FONDO CREMA) */}
-      <section id="descargar" className="bg-[#FFF9F0] py-24 px-6 text-center">
+      < section id="descargar" className="bg-[#FFF9F0] py-24 px-6 text-center" >
 
         {/* Logo App */}
-        <div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto mb-8 overflow-hidden">
+        < div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto mb-8 overflow-hidden" >
           <img
             src="/dconfy_icon.png"
             alt="Logo dconfy"
             className="w-full h-full object-cover"
           />
-        </div>
+        </div >
 
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
@@ -442,10 +586,10 @@ export default function Home() {
 
         <p className="text-[15px] text-[#8C98A9] mt-6 font-medium">Próximamente disponible</p>
 
-      </section>
+      </section >
 
       {/* 5. PLANES PARA PROFESIONALES */}
-      <section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center">
+      < section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center" >
         <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
         <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige el plan que mejor se adapta a tu situación. Sin compromisos.</p>
 
@@ -534,13 +678,13 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* BLOQUE FINAL (FONDO CREMA PARA COMPARADOR Y FAQ) */}
-      <div className="bg-[#FFF9F0] py-24">
+      < div className="bg-[#FFF9F0] py-24" >
 
         {/* 6. TABLA COMPARATIVA */}
-        <section className="px-6 max-w-4xl mx-auto mb-24">
+        < section className="px-6 max-w-4xl mx-auto mb-24" >
           <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] text-center mb-10 tracking-tight">Compara los planes</h3>
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden">
             <div className="grid grid-cols-3 p-6 border-b border-slate-100 bg-slate-50/50">
@@ -570,9 +714,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </section>
+        </section >
 
-      </div>
+      </div >
 
 
       <div className="bg-white py-24">
@@ -733,7 +877,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-        )}
-    </div>
+        )
+      }
+    </div >
   );
 }
