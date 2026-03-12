@@ -132,8 +132,9 @@ export default function Home() {
               El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 font-bold mb-8 leading-relaxed tracking-tight">
-              Recomendaciones reales entre personas que se conocen.
+              Descubre profesionales y servicios recomendados por tu gente.
             </p>
+
             <div className="flex flex-col gap-3">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
@@ -304,7 +305,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">Así funciona</h2>
           </div>
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-            dconfy recupera la forma natural de encontrar profesionales: <span className="font-bold text-slate-700">preguntando a la gente que conoces</span>, ahora con la potencia de la tecnología.
+            dconfy recupera la forma natural de encontrar servicios y profesionales, <span className="font-bold text-slate-700">preguntando a la gente que conoces</span>, ahora con la potencia de la tecnología.
           </p>
         </div>
 
@@ -316,7 +317,7 @@ export default function Home() {
                 <Heart className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda en quien de verdad confías</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un profesional.</p>
+              <p className="text-lg text-slate-500 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un servicio de confianza.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
@@ -332,7 +333,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra profesionales a través de tu red</h3>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra servicios y profesionales recomendados por tu red.</h3>
               <p className="text-lg text-slate-500 leading-relaxed">No ves opiniones anónimas: ves a quién conoce tu gente.</p>
             </div>
           </div>
@@ -361,9 +362,9 @@ export default function Home() {
             <p className="mt-4 text-xl text-slate-500 font-medium">Cada recomendación viene de alguien de tu red.</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-10 max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-10 max-w-[1000px] mx-auto px-4 lg:px-0">
             {/* Tarjeta 1 - PlusHome */}
-            <div className="relative w-full max-w-[500px] justify-self-end flex flex-col items-center sm:items-stretch">
+            <div className="relative w-full max-w-[420px] justify-self-center md:justify-self-end flex flex-col items-center sm:items-stretch">
               {/* Card Container con Shadow y Borde Suave */}
               <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
                 {/* Gradiente izquierdo para simular el borde colorido */}
@@ -410,7 +411,7 @@ export default function Home() {
                 </div>
                 <div className="pt-1 flex flex-col gap-1">
                   <div className="flex flex-wrap items-center gap-1.5">
-                    <span className="text-[#64748b] font-medium text-sm lg:text-base">Recomendado por <strong className="text-slate-900 font-black">Laura García</strong></span>
+                    <span className="text-[#64748b] font-medium text-sm lg:text-base">Recomendado por <strong className="text-slate-900 font-black">Laura</strong></span>
                     <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#EFF6FF] text-[#3B82F6] text-[11px] tracking-wide font-bold border border-[#BFDBFE]">
                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
                       de tu amiga Susana
@@ -424,8 +425,62 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Tarjeta 1.5 - Bella Donna */}
+            <div className="relative w-full max-w-[420px] justify-self-center md:justify-self-start flex flex-col items-center sm:items-stretch">
+              {/* Card Container */}
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
+
+                <div className="flex justify-between items-start mb-1.5">
+                  <div className="flex-1 pr-3">
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">Bella Donna</h3>
+                    <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">MODA MUJER</p>
+                    <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Vestidos</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Complementos</span>
+                    </div>
+                  </div>
+                  <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] rounded-2xl overflow-hidden shrink-0 shadow-sm border border-slate-100 bg-pink-50">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Vestidos" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm text-[#FF6600]">📍</span>
+                    <span className="text-[#64748b] font-medium text-xs lg:text-sm">Valencia</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 mt-1">
+                    <div className="flex -space-x-1.5">
+                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white object-cover shadow-sm bg-slate-100" />
+                    </div>
+                    <span className="text-slate-800 font-bold text-xs lg:text-sm">En la red de Marta y 5 más</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recomendador Info */}
+              <div className="flex items-start gap-3 mt-2 ml-4 self-start">
+                <div className="relative shrink-0 mt-0.5">
+                  <div className="w-[40px] h-[40px] lg:w-[48px] lg:h-[48px] rounded-full overflow-hidden shadow-sm border-2 border-white bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Marta" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="pt-1 flex flex-col gap-1">
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="text-[#64748b] font-medium text-sm lg:text-base">Recomendado por <strong className="text-slate-900 font-black">Marta</strong></span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-slate-400 font-medium text-xs mt-0.5">
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>12 mar</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Tarjeta 2 - Elena Gómez */}
-            <div className="relative w-full max-w-[500px] justify-self-start flex flex-col items-center sm:items-stretch">
+            <div className="relative w-full max-w-[420px] md:col-span-2 justify-self-center flex flex-col items-center sm:items-stretch mx-auto">
               {/* Card Container */}
               <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
                 <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
@@ -527,7 +582,7 @@ export default function Home() {
               </li>
               <li className="flex items-start gap-4">
                 <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
-                <span className="text-lg text-[#111827] font-bold">Amigos y amigos de amigos</span>
+                <span className="text-lg text-[#111827] font-bold">Servicios y Profesionales</span>
               </li>
               <li className="flex items-start gap-4">
                 <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
@@ -591,7 +646,7 @@ export default function Home() {
       {/* 5. PLANES PARA PROFESIONALES */}
       < section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center" >
         <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
-        <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige el plan que mejor se adapta a tu situación. Sin compromisos.</p>
+        <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige tu plan y convierte las recomendaciones en nuevos clientes.</p>
 
         {/* Toggle Mensual/Anual */}
         <div className="flex items-center justify-center gap-4 mb-16">
