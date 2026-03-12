@@ -372,16 +372,16 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
                     <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">PlusHome</h3>
-                    <p className="text-[#8B5CF6] font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">REFORMAS INTEGRALES</p>
+                    <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">REFORMAS INTEGRALES</p>
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
-                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Lampiste...</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Lampistería</span>
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Fontane...</span>
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Pint...</span>
                       <span className="bg-[#F3F0FF] text-[#8B5CF6] px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-bold border border-[#E9D5FF] shrink-0">+3</span>
                     </div>
                   </div>
                   <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] rounded-2xl overflow-hidden shrink-0 shadow-sm border border-slate-100">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Reforma" className="w-full h-full object-cover" />
+                    <img src="/home.jpg" alt="Reforma" className="w-full h-full object-cover" />
                   </div>
                 </div>
 
@@ -433,14 +433,14 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
                     <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">Elena Gómez</h3>
-                    <p className="text-[#8B5CF6] font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">PSICÓLOGO</p>
+                    <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">FISIOTERÁPIA</p>
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
-                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Neuropsicólogo</span>
-                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Clínico o Sani...</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Ortopédica/Traumatológica</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Deportiva</span>
                     </div>
                   </div>
                   <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] rounded-2xl overflow-hidden shrink-0 shadow-sm border border-slate-100 bg-orange-50">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Psicóloga" className="w-full h-full object-cover" />
+                    <img src="/fisio.jpg" alt="Fisioterápia" className="w-full h-full object-cover" />
                   </div>
                 </div>
 
