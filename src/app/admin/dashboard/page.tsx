@@ -66,6 +66,10 @@ export default function AdminDashboard() {
     const [unifiedSpecialties, setUnifiedSpecialties] = useState<any[]>([]);
     const [topRecommendedPros, setTopRecommendedPros] = useState<any[]>([]);
     const [customSpecialties, setCustomSpecialties] = useState<any[]>([]);
+
+    // 🚀 NUEVO ESTADO PARA EL GRÁFICO DE RANGOS
+    const [recsByUserRange, setRecsByUserRange] = useState<any[]>([]);
+
     const [newEmail, setNewEmail] = useState('');
     const [isInviting, setIsInviting] = useState(false);
 
@@ -76,8 +80,6 @@ export default function AdminDashboard() {
 
     const [emailDraft, setEmailDraft] = useState({ subject: '', title: '', message: '', audience: 'all', buttonText: '', buttonUrl: '' });
     const [isSendingEmail, setIsSendingEmail] = useState(false);
-
-    // 🚀 NUEVO ESTADO PARA HISTORIAL DE EMAILS
     const [emailHistory, setEmailHistory] = useState<any[]>([]);
 
     useEffect(() => {
@@ -98,7 +100,9 @@ export default function AdminDashboard() {
     const loadRawData = async () => {
         const { data: profiles } = await supabase.from('profiles').select('id, full_name, professional_name, role, specialty, interests, avatar_url, zip_code');
         const { data: categories } = await supabase.from('categories').select('name, color_class');
-        const { data: recommendations } = await supabase.from('recommendations').select('profile_id');
+
+        // 🚀 AHORA TAMBIÉN PEDIMOS EL user_id PARA SABER QUIÉN RECOMIENDA
+        const { data: recommendations } = await supabase.from('recommendations').select('profile_id, user_id');
 
         const { data: chats } = await supabase.from('chats').select('id, professional_id');
         const { data: messages } = await supabase.from('messages').select('chat_id');
@@ -125,7 +129,6 @@ export default function AdminDashboard() {
         if (data) setAnnouncements(data);
     };
 
-    // 🚀 CARGAR HISTORIAL DE EMAILS
     const loadEmailHistory = async () => {
         const { data } = await supabase.from('broadcast_email_history').select('*').order('created_at', { ascending: false });
         if (data) setEmailHistory(data);
@@ -177,7 +180,6 @@ export default function AdminDashboard() {
             alert(`¡Email masivo enviado con éxito a ${data.count} destinatarios! 🚀`);
             setEmailDraft({ subject: '', title: '', message: '', audience: 'all', buttonText: '', buttonUrl: '' });
 
-            // 🚀 RECARGAMOS EL HISTORIAL TRAS ENVIAR
             await loadEmailHistory();
         } catch (err: any) {
             console.error(err);
@@ -241,12 +243,40 @@ export default function AdminDashboard() {
             }
         });
 
-        const proRecsCount: Record<string, number> = {}, recsSpecCount: Record<string, number> = {}, topProsBySpec: Record<string, { name: string, recs: number, avatar: string }> = {};
+        const proRecsCount: Record<string, number> = {};
+        const recsSpecCount: Record<string, number> = {};
+        const userRecsCount: Record<string, number> = {}; // 🚀 CONTADOR PARA USUARIOS
+        const topProsBySpec: Record<string, { name: string, recs: number, avatar: string }> = {};
+
         filteredRecommendations.forEach(r => {
             proRecsCount[r.profile_id] = (proRecsCount[r.profile_id] || 0) + 1;
             const spec = profileSpecMap.get(r.profile_id) || 'Desconocido';
             recsSpecCount[spec] = (recsSpecCount[spec] || 0) + 1;
+
+            // 🚀 Contar recomendaciones DADAS por cada usuario
+            if (r.user_id) {
+                userRecsCount[r.user_id] = (userRecsCount[r.user_id] || 0) + 1;
+            }
         });
+
+        // 🚀 PROCESAR RANGOS DE USUARIOS
+        const ranges = { '1-10': 0, '11-20': 0, '21-30': 0, '31-40': 0, '+40': 0 };
+        Object.values(userRecsCount).forEach(count => {
+            if (count >= 1 && count <= 10) ranges['1-10']++;
+            else if (count >= 11 && count <= 20) ranges['11-20']++;
+            else if (count >= 21 && count <= 30) ranges['21-30']++;
+            else if (count >= 31 && count <= 40) ranges['31-40']++;
+            else if (count > 40) ranges['+40']++;
+        });
+
+        const maxRange = Math.max(...Object.values(ranges), 1);
+        setRecsByUserRange([
+            { range: '1 a 10', count: ranges['1-10'], percentage: (ranges['1-10'] / maxRange) * 100, color: 'bg-blue-500' },
+            { range: '11 a 20', count: ranges['11-20'], percentage: (ranges['11-20'] / maxRange) * 100, color: 'bg-emerald-500' },
+            { range: '21 a 30', count: ranges['21-30'], percentage: (ranges['21-30'] / maxRange) * 100, color: 'bg-amber-500' },
+            { range: '31 a 40', count: ranges['31-40'], percentage: (ranges['31-40'] / maxRange) * 100, color: 'bg-purple-500' },
+            { range: '+ de 40', count: ranges['+40'], percentage: (ranges['+40'] / maxRange) * 100, color: 'bg-[#FF6600]' }
+        ]);
 
         filteredProfiles.forEach(p => {
             if (p.specialty) {
@@ -386,7 +416,7 @@ export default function AdminDashboard() {
                         {/* 🟢 VISTA: DASHBOARD */}
                         {activeView === 'dashboard' && (
                             <>
-                                {/* MÉTRICAS GLOBALES */}
+                                {/* 1. MÉTRICAS GLOBALES */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                     <div className="bg-slate-900 p-6 rounded-[1rem] shadow-xl shadow-black/20 flex items-center gap-5">
                                         <div className="w-12 h-12 bg-violet-500/10 text-violet-400 rounded-2xl flex items-center justify-center shrink-0"><Users className="w-6 h-6" /></div>
@@ -408,6 +438,7 @@ export default function AdminDashboard() {
                                         <div className="w-12 h-12 bg-[#FF6600]/10 text-[#FF6600] rounded-2xl flex items-center justify-center shrink-0"><Heart className="w-6 h-6 fill-current" /></div>
                                         <div><p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-0.5">Recomendaciones</p><p className="text-2xl font-black text-white">{stats.recs}</p></div>
                                     </div>
+
                                     <div className="bg-slate-900 p-6 rounded-[1rem] shadow-xl shadow-black/20 flex items-center gap-5">
                                         <div className="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center shrink-0"><MessageCircle className="w-6 h-6" /></div>
                                         <div><p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-0.5">Chats Abiertos</p><p className="text-2xl font-black text-white">{stats.chats}</p></div>
@@ -423,7 +454,7 @@ export default function AdminDashboard() {
                                     </div>
                                 </div>
 
-                                {/* GRÁFICOS */}
+                                {/* 2. GRÁFICO UNIFICADO */}
                                 <div className="bg-slate-900 p-6 md:p-8 rounded-[1rem] shadow-xl shadow-black/20 w-full">
                                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 border-b border-slate-800 pb-6 gap-4">
                                         <h3 className="text-xl font-bold text-white flex items-center gap-3">
@@ -477,6 +508,7 @@ export default function AdminDashboard() {
                                     )}
                                 </div>
 
+                                {/* 3. GRÁFICO INTERESES */}
                                 <div className="bg-slate-900 p-6 md:p-8 rounded-[1rem] shadow-xl shadow-black/20 w-full">
                                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 border-b border-slate-800 pb-6 gap-4">
                                         <h3 className="text-xl font-bold text-white flex items-center gap-3">
@@ -514,6 +546,7 @@ export default function AdminDashboard() {
                                     )}
                                 </div>
 
+                                {/* 4. TOP PROFESIONALES Y RANGO USUARIOS (NUEVO) */}
                                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                                     <div className="bg-slate-900 p-6 md:p-8 rounded-[1rem] shadow-xl shadow-black/20 w-full">
                                         <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
@@ -539,35 +572,72 @@ export default function AdminDashboard() {
                                         )}
                                     </div>
 
-                                    <div className="bg-[#FF6600]/5 p-6 md:p-8 rounded-[1rem] border border-orange-500/20 shadow-xl shadow-black/10 w-full">
-                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                                            <div>
-                                                <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                                                    <AlertCircle className="w-6 h-6 text-[#FF6600]" /> Radar de Nuevas Profesiones
-                                                </h3>
-                                                <p className="text-slate-400 text-sm mt-1 font-medium">Pendientes de añadir.</p>
-                                            </div>
+                                    {/* 🚀 NUEVO GRÁFICO: RANGOS DE RECOMENDACIONES POR USUARIO */}
+                                    <div className="bg-slate-900 p-6 md:p-8 rounded-[1rem] shadow-xl shadow-black/20 w-full">
+                                        <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                            <Users className="w-6 h-6 text-emerald-400" /> Rango de Recomendaciones dadas por Usuario
+                                        </h3>
+
+                                        {recsByUserRange.reduce((acc, curr) => acc + curr.count, 0) === 0 ? (
+                                            <p className="text-sm text-slate-500 font-medium py-4">No hay datos suficientes para {selectedProvince}.</p>
+                                        ) : (
+                                            <>
+                                                <div className="h-[250px] w-full flex items-end gap-4 md:gap-8 border-b-2 border-slate-800 pb-2 relative mt-10 px-4">
+                                                    {recsByUserRange.map((item, idx) => (
+                                                        <div key={idx} className="relative group flex-1 flex flex-col justify-end items-center h-full bg-slate-800/20 rounded-t-xl hover:bg-slate-800/40 transition-colors">
+                                                            <div className="absolute bottom-full mb-3 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center z-50 pointer-events-none w-max">
+                                                                <div className="bg-slate-800 border border-slate-700 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2">
+                                                                    <div className={`w-2.5 h-2.5 rounded-full ${item.color}`}></div>
+                                                                    <span>Recomiendan a {item.range}:</span> <span className="text-[#FF6600]">{item.count} usuarios</span>
+                                                                </div>
+                                                                <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-slate-800 -mt-[1px]"></div>
+                                                            </div>
+                                                            <div className={`w-full max-w-[60px] rounded-t-xl transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(0,0,0,0.2)] ${item.color}`} style={{ height: `${Math.max(item.percentage, 5)}%` }}></div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-3 px-2">
+                                                    {recsByUserRange.map((item, idx) => (
+                                                        <div key={idx} className="flex items-center gap-2">
+                                                            <div className={`w-3 h-3 rounded-sm ${item.color} shadow-sm`}></div>
+                                                            <span className="text-xs font-bold text-slate-300">{item.range} <span className="text-slate-500 ml-1">({item.count})</span></span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* RADAR CUSTOM PASA A OCUPAR ANCHO COMPLETO ABAJO */}
+                                <div className="bg-[#FF6600]/5 p-6 md:p-8 rounded-[1rem] border border-orange-500/20 shadow-xl shadow-black/10 w-full mt-2">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                                        <div>
+                                            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                                                <AlertCircle className="w-6 h-6 text-[#FF6600]" /> Radar de Nuevas Profesiones
+                                            </h3>
+                                            <p className="text-slate-400 text-sm mt-1 font-medium">Especialidades escritas a mano que están pendientes de añadir oficialmente.</p>
                                         </div>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            {customSpecialties.length === 0 ? (
-                                                <p className="text-sm text-slate-500 w-full text-center py-6 bg-slate-900/50 rounded-2xl border border-dashed border-slate-700 font-bold sm:col-span-2">¡Todo al día!</p>
-                                            ) : (
-                                                customSpecialties.map((spec, idx) => (
-                                                    <div key={idx} className="flex flex-col bg-slate-900 border border-slate-700 rounded-xl overflow-hidden hover:border-[#FF6600]/50 transition-colors shadow-sm">
-                                                        <div className="flex items-center justify-between px-4 py-3 bg-slate-800/50">
-                                                            <span className="font-bold text-slate-200 text-sm">{spec.name}</span>
-                                                            <span className="bg-[#FF6600]/10 text-[#FF6600] text-xs font-black px-2.5 py-1 rounded-lg ml-3 shrink-0">{spec.count}</span>
-                                                        </div>
-                                                        <div className="px-4 py-3 bg-slate-900/30 flex flex-col gap-2 border-t border-slate-800/50 max-h-32 overflow-y-auto custom-scrollbar">
-                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-0.5">Usuarios:</span>
-                                                            {spec.users.map((u: any) => (
-                                                                <div key={u.id} className="text-xs text-slate-400 flex items-center gap-2"><div className="w-1.5 h-1.5 bg-slate-700 rounded-full shrink-0" /><span className="truncate">{u.name}</span></div>
-                                                            ))}
-                                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                        {customSpecialties.length === 0 ? (
+                                            <p className="text-sm text-slate-500 w-full text-center py-6 bg-slate-900/50 rounded-2xl border border-dashed border-slate-700 font-bold sm:col-span-2 lg:col-span-3 xl:col-span-4">¡Todo al día!</p>
+                                        ) : (
+                                            customSpecialties.map((spec, idx) => (
+                                                <div key={idx} className="flex flex-col bg-slate-900 border border-slate-700 rounded-xl overflow-hidden hover:border-[#FF6600]/50 transition-colors shadow-sm">
+                                                    <div className="flex items-center justify-between px-4 py-3 bg-slate-800/50">
+                                                        <span className="font-bold text-slate-200 text-sm">{spec.name}</span>
+                                                        <span className="bg-[#FF6600]/10 text-[#FF6600] text-xs font-black px-2.5 py-1 rounded-lg ml-3 shrink-0">{spec.count}</span>
                                                     </div>
-                                                ))
-                                            )}
-                                        </div>
+                                                    <div className="px-4 py-3 bg-slate-900/30 flex flex-col gap-2 border-t border-slate-800/50 max-h-32 overflow-y-auto custom-scrollbar">
+                                                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-0.5">Usuarios:</span>
+                                                        {spec.users.map((u: any) => (
+                                                            <div key={u.id} className="text-xs text-slate-400 flex items-center gap-2"><div className="w-1.5 h-1.5 bg-slate-700 rounded-full shrink-0" /><span className="truncate">{u.name}</span></div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))
+                                        )}
                                     </div>
                                 </div>
                             </>
@@ -587,7 +657,7 @@ export default function AdminDashboard() {
                                         onClick={() => setCommTab('emails')}
                                         className={`px-6 py-2.5 rounded-xl font-bold transition-all flex items-center gap-2 ${commTab === 'emails' ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`}
                                     >
-                                        <Mail className="w-4 h-4" /> Emails Masivos
+                                        <Mail className="w-4 h-4" /> Enviar Emails Masivos
                                     </button>
                                 </div>
 
@@ -595,47 +665,48 @@ export default function AdminDashboard() {
                                 {commTab === 'banners' && (
                                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
                                         <div className="xl:col-span-1 bg-slate-900 p-6 md:p-8 rounded-[1rem] border border-slate-800 h-fit shadow-xl shadow-black/20">
-                                            <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2"><Megaphone className="w-5 h-5 text-[#FF6600]" /> Crear Anuncio</h3>
+                                            <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2"><Megaphone className="w-5 h-5 text-[#FF6600]" /> Crear Anuncio In-App</h3>
                                             <form onSubmit={handleCreateBanner} className="space-y-5">
                                                 <div>
                                                     <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Título Corto <span className="text-[#FF6600]">*</span></label>
-                                                    <input type="text" required value={newBanner.title} onChange={e => setNewBanner({ ...newBanner, title: e.target.value })} placeholder="Ej: ¡Nueva Versión!" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
+                                                    <input type="text" required value={newBanner.title} onChange={e => setNewBanner({ ...newBanner, title: e.target.value })} placeholder="Ej: ¡Nueva Versión 1.1!" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
                                                 </div>
                                                 <div>
                                                     <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Mensaje <span className="text-[#FF6600]">*</span></label>
-                                                    <textarea required value={newBanner.message} onChange={e => setNewBanner({ ...newBanner, message: e.target.value })} placeholder="Breve descripción..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none h-20 resize-none" />
+                                                    <textarea required value={newBanner.message} onChange={e => setNewBanner({ ...newBanner, message: e.target.value })} placeholder="Explica la novedad..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none h-20 resize-none" />
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-4">
                                                     <div>
-                                                        <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Color</label>
-                                                        <select value={newBanner.type} onChange={e => setNewBanner({ ...newBanner, type: e.target.value })} className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white outline-none appearance-none">
-                                                            <option value="dark">Oscuro (Nativo)</option>
+                                                        <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Color / Tipo</label>
+                                                        <select value={newBanner.type} onChange={e => setNewBanner({ ...newBanner, type: e.target.value })} className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none appearance-none">
+                                                            <option value="dark">Negro Corporativo</option>
                                                             <option value="promo">Naranja (Promo)</option>
                                                             <option value="info">Azul (Info)</option>
                                                             <option value="success">Verde (Éxito)</option>
+                                                            <option value="warning">Amarillo (Alerta)</option>
                                                         </select>
                                                     </div>
                                                     <div>
                                                         <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Texto Botón</label>
-                                                        <input type="text" value={newBanner.button_text} onChange={e => setNewBanner({ ...newBanner, button_text: e.target.value })} placeholder="VER MÁS" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white outline-none" />
+                                                        <input type="text" value={newBanner.button_text} onChange={e => setNewBanner({ ...newBanner, button_text: e.target.value })} placeholder="VER MÁS" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Enlace (Opcional)</label>
-                                                    <input type="url" value={newBanner.link_url} onChange={e => setNewBanner({ ...newBanner, link_url: e.target.value })} placeholder="https://..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white outline-none" />
+                                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Enlace (URL Destino)</label>
+                                                    <input type="url" value={newBanner.link_url} onChange={e => setNewBanner({ ...newBanner, link_url: e.target.value })} placeholder="https://..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
                                                 </div>
                                                 <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl mt-4">
-                                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-3">¿A quién le saldrá?</label>
+                                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-3">¿A quién le saldrá el banner?</label>
                                                     <div className="flex flex-col gap-2">
-                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer ${newBanner.audience === 'all' ? 'border-[#FF6600] bg-[#FF6600]/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${newBanner.audience === 'all' ? 'border-[#FF6600] bg-[#FF6600]/10' : 'border-slate-800 hover:border-slate-700'}`}>
                                                             <input type="radio" name="banner_aud" value="all" checked={newBanner.audience === 'all'} onChange={() => setNewBanner({ ...newBanner, audience: 'all' })} className="w-4 h-4 accent-[#FF6600]" />
-                                                            <span className="text-sm font-bold text-white">Todos</span>
+                                                            <span className="text-sm font-bold text-white">Todos los Usuarios</span>
                                                         </label>
-                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer ${newBanner.audience === 'pros' ? 'border-[#FF6600] bg-[#FF6600]/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${newBanner.audience === 'pros' ? 'border-[#FF6600] bg-[#FF6600]/10' : 'border-slate-800 hover:border-slate-700'}`}>
                                                             <input type="radio" name="banner_aud" value="pros" checked={newBanner.audience === 'pros'} onChange={() => setNewBanner({ ...newBanner, audience: 'pros', target_sector: '' })} className="w-4 h-4 accent-[#FF6600]" />
-                                                            <span className="text-sm font-bold text-white">Profesionales</span>
+                                                            <span className="text-sm font-bold text-white">Solo Profesionales</span>
                                                         </label>
-                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer ${newBanner.audience === 'sector' ? 'border-[#FF6600] bg-[#FF6600]/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${newBanner.audience === 'sector' ? 'border-[#FF6600] bg-[#FF6600]/10' : 'border-slate-800 hover:border-slate-700'}`}>
                                                             <input type="radio" name="banner_aud" value="sector" checked={newBanner.audience === 'sector'} onChange={() => setNewBanner({ ...newBanner, audience: 'sector' })} className="w-4 h-4 accent-[#FF6600]" />
                                                             <span className="text-sm font-bold text-white">Por Sector</span>
                                                         </label>
@@ -647,8 +718,8 @@ export default function AdminDashboard() {
                                                         </select>
                                                     )}
                                                 </div>
-                                                <button type="submit" disabled={isCreatingBanner} className="w-full bg-[#FF6600] text-white py-3.5 rounded-xl font-bold mt-4 hover:bg-[#e65c00] transition-colors disabled:opacity-50">
-                                                    {isCreatingBanner ? 'Guardando...' : 'Guardar Anuncio'}
+                                                <button type="submit" disabled={isCreatingBanner} className="w-full bg-[#FF6600] text-white py-3.5 rounded-xl font-bold mt-4 hover:bg-[#e65c00] transition-colors disabled:opacity-50 active:scale-95 shadow-lg shadow-[#FF6600]/20">
+                                                    {isCreatingBanner ? 'Guardando...' : 'Crear y Guardar Anuncio'}
                                                 </button>
                                             </form>
                                         </div>
@@ -665,21 +736,21 @@ export default function AdminDashboard() {
                                                                 <div className="flex items-center gap-3 mb-1.5">
                                                                     <span className={`w-2.5 h-2.5 rounded-full ${ann.type === 'promo' ? 'bg-[#FF6600]' : ann.type === 'success' ? 'bg-emerald-500' : ann.type === 'warning' ? 'bg-amber-500' : ann.type === 'dark' ? 'bg-slate-500' : 'bg-blue-500'}`}></span>
                                                                     <span className="font-bold text-white text-lg">{ann.title}</span>
-                                                                    {ann.is_active && <span className="text-[10px] bg-[#FF6600] text-white px-2 py-0.5 rounded uppercase font-black tracking-wider">Activo en App</span>}
+                                                                    {ann.is_active && <span className="text-[10px] bg-[#FF6600] text-white px-2 py-0.5 rounded uppercase font-black tracking-wider shadow-sm">Activo en App</span>}
                                                                 </div>
                                                                 <p className="text-slate-400 text-sm ml-5.5 pl-5 mb-2">{ann.message}</p>
                                                                 <div className="ml-5 flex gap-2">
                                                                     <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700">
                                                                         Aud: {ann.audience === 'all' ? 'Todos' : ann.audience === 'pros' ? 'Profesionales' : `Sector: ${ann.target_sector}`}
                                                                     </span>
-                                                                    {ann.link_url && <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Con Enlace</span>}
+                                                                    {ann.link_url && <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Con enlace</span>}
                                                                 </div>
                                                             </div>
                                                             <div className="flex flex-col items-end gap-4 pl-6 border-l border-slate-800/50 shrink-0">
-                                                                <button onClick={() => handleToggleBanner(ann.id, ann.is_active)} className={`relative w-12 h-6 rounded-full transition-colors ${ann.is_active ? 'bg-[#FF6600]' : 'bg-slate-700'}`}>
+                                                                <button onClick={() => handleToggleBanner(ann.id, ann.is_active)} className={`relative w-12 h-6 rounded-full transition-colors focus:outline-none ${ann.is_active ? 'bg-[#FF6600]' : 'bg-slate-700'}`}>
                                                                     <div className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${ann.is_active ? 'translate-x-6' : 'translate-x-0'}`}></div>
                                                                 </button>
-                                                                <button onClick={() => handleDeleteBanner(ann.id)} className="text-slate-500 hover:text-red-500 p-1"><Trash2 className="w-5 h-5" /></button>
+                                                                <button onClick={() => handleDeleteBanner(ann.id)} className="text-slate-500 hover:text-red-500 transition-colors p-1"><Trash2 className="w-5 h-5" /></button>
                                                             </div>
                                                         </div>
                                                     ))
@@ -689,32 +760,26 @@ export default function AdminDashboard() {
                                     </div>
                                 )}
 
-                                {/* 🚀 EMAILS MASIVOS CON HISTORIAL */}
+                                {/* EMAILS MASIVOS CON HISTORIAL */}
                                 {commTab === 'emails' && (
                                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-
-                                        {/* CREAR EMAIL */}
                                         <div className="xl:col-span-1 bg-slate-900 p-6 md:p-8 rounded-[1rem] border border-slate-800 h-fit shadow-xl shadow-black/20">
                                             <div className="mb-6">
                                                 <h3 className="text-lg font-bold text-white flex items-center gap-2"><Mail className="w-5 h-5 text-blue-400" /> Nuevo Email</h3>
                                             </div>
-
                                             <form onSubmit={handleSendBroadcast} className="space-y-5">
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Asunto (Llega al buzón) <span className="text-red-500">*</span></label>
+                                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Asunto <span className="text-red-500">*</span></label>
                                                     <input type="text" required value={emailDraft.subject} onChange={e => setEmailDraft({ ...emailDraft, subject: e.target.value })} placeholder="Ej: Novedades en dconfy" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none" />
                                                 </div>
-
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Titular (Dentro del email)</label>
-                                                    <input type="text" value={emailDraft.title} onChange={e => setEmailDraft({ ...emailDraft, title: e.target.value })} placeholder="Si lo dejas en blanco, no sale." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none" />
+                                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Titular interno</label>
+                                                    <input type="text" value={emailDraft.title} onChange={e => setEmailDraft({ ...emailDraft, title: e.target.value })} placeholder="Opcional..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none" />
                                                 </div>
-
                                                 <div>
                                                     <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Mensaje <span className="text-red-500">*</span></label>
                                                     <textarea required value={emailDraft.message} onChange={e => setEmailDraft({ ...emailDraft, message: e.target.value })} placeholder="Cuerpo del mensaje..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none h-32 resize-none" />
                                                 </div>
-
                                                 <div className="grid grid-cols-1 gap-4 pt-2 border-t border-slate-800">
                                                     <div>
                                                         <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Texto del botón</label>
@@ -725,35 +790,31 @@ export default function AdminDashboard() {
                                                         <input type="url" value={emailDraft.buttonUrl} onChange={e => setEmailDraft({ ...emailDraft, buttonUrl: e.target.value })} placeholder="https://..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white outline-none" />
                                                     </div>
                                                 </div>
-
                                                 <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl">
                                                     <label className="block text-xs font-bold text-slate-400 uppercase mb-3">¿A quién va dirigido?</label>
                                                     <div className="flex flex-col gap-2">
-                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${emailDraft.audience === 'all' ? 'border-blue-500 bg-blue-500/10' : 'border-slate-800 bg-slate-900 hover:border-slate-700'}`}>
-                                                            <input type="radio" name="audience" value="all" checked={emailDraft.audience === 'all'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'all' })} className="w-4 h-4 accent-blue-500" />
+                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${emailDraft.audience === 'all' ? 'border-blue-500 bg-blue-500/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                                            <input type="radio" name="email_aud" value="all" checked={emailDraft.audience === 'all'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'all' })} className="w-4 h-4 accent-blue-500" />
                                                             <span className="text-sm font-bold text-white">Todos los Usuarios</span>
                                                         </label>
-                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${emailDraft.audience === 'pros' ? 'border-blue-500 bg-blue-500/10' : 'border-slate-800 bg-slate-900 hover:border-slate-700'}`}>
-                                                            <input type="radio" name="audience" value="pros" checked={emailDraft.audience === 'pros'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'pros' })} className="w-4 h-4 accent-blue-500" />
+                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${emailDraft.audience === 'pros' ? 'border-blue-500 bg-blue-500/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                                            <input type="radio" name="email_aud" value="pros" checked={emailDraft.audience === 'pros'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'pros' })} className="w-4 h-4 accent-blue-500" />
                                                             <span className="text-sm font-bold text-white">Solo Profesionales</span>
                                                         </label>
-                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${emailDraft.audience === 'top' ? 'border-blue-500 bg-blue-500/10' : 'border-slate-800 bg-slate-900 hover:border-slate-700'}`}>
-                                                            <input type="radio" name="audience" value="top" checked={emailDraft.audience === 'top'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'top' })} className="w-4 h-4 accent-blue-500" />
+                                                        <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${emailDraft.audience === 'top' ? 'border-blue-500 bg-blue-500/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                                            <input type="radio" name="email_aud" value="top" checked={emailDraft.audience === 'top'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'top' })} className="w-4 h-4 accent-blue-500" />
                                                             <span className="text-sm font-bold text-white">Top Valorados (4+⭐)</span>
                                                         </label>
                                                     </div>
                                                 </div>
-
-                                                <button type="submit" disabled={isSendingEmail} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold transition-all disabled:opacity-50 flex justify-center items-center gap-2 shadow-lg shadow-blue-500/20">
+                                                <button type="submit" disabled={isSendingEmail} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold transition-all disabled:opacity-50 flex justify-center items-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95">
                                                     {isSendingEmail ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <><Send className="w-5 h-5" /> Enviar Masivo</>}
                                                 </button>
                                             </form>
                                         </div>
 
-                                        {/* HISTORIAL DE EMAILS */}
                                         <div className="xl:col-span-2 bg-slate-900 p-6 md:p-8 rounded-[1rem] border border-slate-800 shadow-xl shadow-black/20">
                                             <h3 className="text-lg font-bold text-white mb-6">Historial de Emails Enviados</h3>
-
                                             <div className="space-y-4">
                                                 {emailHistory.length === 0 ? (
                                                     <p className="text-slate-500 py-12 text-center font-medium border border-dashed border-slate-800 rounded-2xl">Aún no has enviado ningún correo masivo.</p>
@@ -767,7 +828,6 @@ export default function AdminDashboard() {
                                                                 </span>
                                                             </div>
                                                             <p className="text-slate-400 text-sm line-clamp-2 mb-4 leading-relaxed">{email.message}</p>
-
                                                             <div className="flex flex-wrap items-center gap-3 border-t border-slate-800 pt-3">
                                                                 <span className="text-[10px] uppercase font-black tracking-wider px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-md border border-blue-500/20">
                                                                     Aud: {email.audience === 'all' ? 'Todos los Usuarios' : email.audience === 'pros' ? 'Solo Profesionales' : 'Top Profesionales'}
@@ -775,7 +835,6 @@ export default function AdminDashboard() {
                                                                 <span className="text-[10px] uppercase font-black tracking-wider px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20 flex items-center gap-1.5">
                                                                     <CheckCircle2 className="w-3.5 h-3.5" /> Entregado a {email.sent_count} usuarios
                                                                 </span>
-                                                                {email.title && <span className="text-[10px] uppercase font-black tracking-wider px-2.5 py-1 bg-slate-800 text-slate-400 rounded-md border border-slate-700">Incluye Titular</span>}
                                                             </div>
                                                         </div>
                                                     ))
