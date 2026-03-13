@@ -315,7 +315,6 @@ export default function Home() {
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Lampistería</span>
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Fontane...</span>
-                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Pint...</span>
                       <span className="bg-[#F3F0FF] text-[#8B5CF6] px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-bold border border-[#E9D5FF] shrink-0">+3</span>
                     </div>
                   </div>
@@ -428,7 +427,7 @@ export default function Home() {
                     <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">Elena Gómez</h3>
                     <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">FISIOTERÁPIA</p>
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
-                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Ortopédica/Traumatológica</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Traumatológica</span>
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Deportiva</span>
                     </div>
                   </div>
