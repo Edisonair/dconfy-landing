@@ -145,7 +145,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Apple and Android icons */}
+              {/* Apple and Android icons (Hidden temporarily)
               <div className="flex items-center justify-center sm:justify-start gap-4 mt-4 pl-2">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md text-slate-500 opacity-90 hover:opacity-100 transition-opacity cursor-default overflow-hidden" title="iOS">
                   <svg className="w-7 h-7 fill-current -mt-0.5" viewBox="0 0 24 24">
@@ -156,6 +156,43 @@ export default function Home() {
                   <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
                     <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.81.24l-1.92 3.32C15.11 8.24 13.62 8 12 8c-1.62 0-3.11.24-4.45.65L5.63 5.33c-.16-.3-.52-.39-.81-.24-.29.16-.42.54-.26.85l1.84 3.18C3.56 10.97 1.5 14.16 1.15 18h21.7c-.35-3.84-2.41-7.03-5.24-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z" />
                   </svg>
+                </div>
+              </div>
+              */}
+
+              {/* Recommendation Flow Visual */}
+              <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 mt-6 pl-2">
+                <div className="flex flex-col items-center gap-1.5">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Tú" className="w-full h-full object-cover" />
+                  </div>
+                  <span className="text-[10px] font-black text-slate-900 leading-none">Tú</span>
+                </div>
+
+                <div className="text-[#FF6600] mb-4">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
+
+                <div className="flex flex-col items-center gap-1.5">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Carlos" className="w-full h-full object-cover" />
+                  </div>
+                  <span className="text-[10px] font-black text-slate-900 leading-none">Carlos</span>
+                </div>
+
+                <div className="text-[#FF6600] mb-4">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
+
+                <div className="flex flex-col items-center gap-1.5">
+                  <div className="w-12 h-10 sm:w-14 sm:h-11 rounded-xl overflow-hidden shadow-sm shrink-0 bg-orange-50">
+                    <img src="/fisio.jpg" alt="Elena" className="w-full h-full object-cover" />
+                  </div>
+                  <span className="text-[10px] font-black text-slate-900 leading-none">Fisio Elena</span>
                 </div>
               </div>
             </div>
