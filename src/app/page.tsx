@@ -375,6 +375,7 @@ export default function Home() {
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Vestidos</span>
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Complementos</span>
+                      <span className="bg-[#F3F0FF] text-[#8B5CF6] px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-bold border border-[#E9D5FF] shrink-0">+4</span>
                     </div>
                   </div>
                   <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] rounded-2xl overflow-hidden shrink-0 shadow-sm border border-slate-100 bg-pink-50">
@@ -429,6 +430,7 @@ export default function Home() {
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Traumatológica</span>
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Deportiva</span>
+                      <span className="bg-[#F3F0FF] text-[#8B5CF6] px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-bold border border-[#E9D5FF] shrink-0">+1</span>
                     </div>
                   </div>
                   <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] rounded-2xl overflow-hidden shrink-0 shadow-sm border border-slate-100 bg-orange-50">
