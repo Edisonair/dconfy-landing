@@ -254,105 +254,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2.5 VENTAJAS (CARDS) */}
-      <section className="bg-transparent pt-24 pb-8 px-6 max-w-7xl mx-auto relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1 */}
-          <div className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
-              <Users className="w-6 h-6 text-[#FF6600]" />
-            </div>
-            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
-              Tu red primero
-            </h3>
-            <p className="text-slate-500 font-medium leading-relaxed">
-              Las recomendaciones de tu círculo tienen prioridad.
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="flex flex-col items-center text-center bg-violet-50 p-8 rounded-3xl border border-violet-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(124,58,237,0.1)] border border-violet-50">
-              <CheckCircle2 className="w-6 h-6 text-violet-600" />
-            </div>
-            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
-              Confianza visible
-            </h3>
-            <p className="text-slate-500 font-medium leading-relaxed">
-              Sabes quién recomienda a cada Profesional
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
-              <MessageCircle className="w-6 h-6 text-[#FF6600]" />
-            </div>
-            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
-              Habla directamente
-            </h3>
-            <p className="text-slate-500 font-medium leading-relaxed">
-              Chatea desde la app y contacta con confianza.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
-      <section id="como-funciona" className="bg-white pt-12 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-16 relative flex flex-col items-center">
-          <div className="relative inline-block mb-6">
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">Así funciona</h2>
-          </div>
-          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-            dconfy recupera la forma natural de encontrar servicios y profesionales, <span className="font-bold text-slate-700">preguntando a la gente que conoces</span>, ahora con la potencia de la tecnología.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-20 max-w-4xl mx-auto">
-          {/* Fila 1 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <Heart className="w-8 h-8 text-[#FF6600]" />
-              </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda en quien de verdad confías</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un servicio de confianza.</p>
-            </div>
-            <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
-              <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
-            </div>
-          </div>
-
-          {/* Fila 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
-              <img src="/comic_blob_search_photographer.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
-            </div>
-            <div className="order-1 md:order-2 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <Search className="w-8 h-8 text-violet-600" />
-              </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra servicios y profesionales recomendados por tu red.</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">No ves opiniones anónimas: ves a quién conoce tu gente.</p>
-            </div>
-          </div>
-
-          {/* Fila 3 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <MessageCircle className="w-8 h-8 text-[#FF6600]" />
-              </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Contacta sin intermediarios</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Habla directamente con el profesional desde la app.</p>
-            </div>
-            <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
-              <img src="/comic_heart_trust_floral_clean_cream2.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 3.1 CÓMO SE VE UNA RECOMENDACIÓN */}
       <section className="bg-slate-50 py-24 px-6 overflow-hidden relative">
@@ -533,6 +434,105 @@ export default function Home() {
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+      {/* 2.5 VENTAJAS (CARDS) */}
+      <section className="bg-transparent pt-24 pb-8 px-6 max-w-7xl mx-auto relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1 */}
+          <div className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
+              <Users className="w-6 h-6 text-[#FF6600]" />
+            </div>
+            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
+              Tu red primero
+            </h3>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              Las recomendaciones de tu círculo tienen prioridad.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="flex flex-col items-center text-center bg-violet-50 p-8 rounded-3xl border border-violet-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(124,58,237,0.1)] border border-violet-50">
+              <CheckCircle2 className="w-6 h-6 text-violet-600" />
+            </div>
+            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
+              Confianza visible
+            </h3>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              Sabes quién recomienda a cada Profesional
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
+              <MessageCircle className="w-6 h-6 text-[#FF6600]" />
+            </div>
+            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
+              Habla directamente
+            </h3>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              Chatea desde la app y contacta con confianza.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
+      <section id="como-funciona" className="bg-white pt-12 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16 relative flex flex-col items-center">
+          <div className="relative inline-block mb-6">
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">Así funciona</h2>
+          </div>
+          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+            dconfy recupera la forma natural de encontrar servicios y profesionales, <span className="font-bold text-slate-700">preguntando a la gente que conoces</span>, ahora con la potencia de la tecnología.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-20 max-w-4xl mx-auto">
+          {/* Fila 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
+                <Heart className="w-8 h-8 text-[#FF6600]" />
+              </div>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda en quien de verdad confías</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un servicio de confianza.</p>
+            </div>
+            <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+              <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
+            </div>
+          </div>
+
+          {/* Fila 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+              <img src="/comic_blob_search_photographer.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
+            </div>
+            <div className="order-1 md:order-2 max-w-sm mx-auto text-center md:text-left">
+              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
+                <Search className="w-8 h-8 text-violet-600" />
+              </div>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra servicios y profesionales recomendados por tu red.</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">No ves opiniones anónimas: ves a quién conoce tu gente.</p>
+            </div>
+          </div>
+
+          {/* Fila 3 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
+                <MessageCircle className="w-8 h-8 text-[#FF6600]" />
+              </div>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Contacta sin intermediarios</h3>
+              <p className="text-lg text-slate-500 leading-relaxed">Habla directamente con el profesional desde la app.</p>
+            </div>
+            <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
+              <img src="/comic_heart_trust_floral_clean_cream2.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
+            </div>
           </div>
         </div>
       </section>
