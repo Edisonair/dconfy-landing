@@ -296,7 +296,7 @@ export default function Home() {
       <section className="bg-slate-50 py-24 px-6 overflow-hidden relative">
         <div className="max-w-4xl mx-auto z-10 relative">
           <div className="text-center mb-16 lg:mb-24">
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así se ve una recomendación en dconfy</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así funcionan las recomendaciones en dconfy</h2>
             <p className="mt-4 text-xl text-slate-500 font-medium">Cada recomendación viene de alguien de tu red.</p>
           </div>
 
@@ -500,7 +500,7 @@ export default function Home() {
               Confianza visible
             </h3>
             <p className="text-slate-500 font-medium leading-relaxed">
-              Sabes quién recomienda a cada Profesional
+              Sabes quién recomienda cada servicio o profesional.
             </p>
           </div>
 
@@ -709,7 +709,7 @@ export default function Home() {
           {/* Plan Profesional */}
           <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-2">Plan Profesional</h3>
-            <p className="text-slate-500 text-sm mb-6 h-10">Ideal para autónomos y freelancers que quieren destacar.</p>
+            <p className="text-slate-500 text-sm mb-6 h-10">Ideal para profesionales, autónomos y pequeños negocios que quieren destacar.</p>
             <div className="mb-2 flex items-baseline gap-1">
               <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '29.99€' : '2.99€'}</span>
               <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
