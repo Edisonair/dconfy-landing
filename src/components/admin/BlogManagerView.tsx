@@ -1,9 +1,9 @@
 import React from 'react';
-import { FileText, Plus, Trash2, Edit, CheckCircle2, XCircle } from 'lucide-react';
+import { FileText, Plus, Trash2, Edit, CheckCircle2, XCircle, EyeOff } from 'lucide-react';
 
 export function BlogManagerView({
-    blogPosts, handleCreatePost, handleDeletePost, isCreatingPost,
-    newPost, setNewPost, showPostForm, setShowPostForm
+    blogPosts, handleCreatePost, handleDeletePost, handleEditClick, handleCancelEdit, handleTogglePublish,
+    isCreatingPost, newPost, setNewPost, showPostForm, editingPostId
 }: any) {
     return (
         <div className="space-y-6">
@@ -15,16 +15,21 @@ export function BlogManagerView({
                     <p className="text-slate-400 font-medium mt-1">Crea y gestiona los artículos que aparecen en dconfy.app/novedades</p>
                 </div>
                 <button
-                    onClick={() => setShowPostForm(!showPostForm)}
+                    onClick={handleCancelEdit}
                     className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg flex items-center gap-2"
                 >
-                    {showPostForm ? 'Cancelar' : <><Plus className="w-5 h-5" /> Nuevo Artículo</>}
+                    {showPostForm ? 'Cancelar Edición' : <><Plus className="w-5 h-5" /> Nuevo Artículo</>}
                 </button>
             </div>
 
-            {/* FORMULARIO DE CREACIÓN */}
+            {/* FORMULARIO DE CREACIÓN / EDICIÓN */}
             {showPostForm && (
                 <form onSubmit={handleCreatePost} className="bg-slate-900 p-6 md:p-8 rounded-[1rem] border border-slate-800 shadow-xl shadow-black/20 space-y-5 animate-in fade-in slide-in-from-top-4">
+                    <div className="border-b border-slate-800 pb-4 mb-4">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            {editingPostId ? <><Edit className="w-5 h-5 text-blue-400" /> Editando Artículo</> : <><Plus className="w-5 h-5 text-[#FF6600]" /> Crear Nuevo Artículo</>}
+                        </h3>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="md:col-span-2">
                             <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Título <span className="text-[#FF6600]">*</span></label>
@@ -50,7 +55,7 @@ export function BlogManagerView({
 
                         <div className="md:col-span-2">
                             <label className="block text-xs font-bold text-slate-400 uppercase mb-2">URL de la Imagen de Portada</label>
-                            <input type="url" value={newPost.image} onChange={e => setNewPost({ ...newPost, image: e.target.value })} placeholder="https://..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
+                            <input type="text" value={newPost.image} onChange={e => setNewPost({ ...newPost, image: e.target.value })} placeholder="Ej: /blog/imagen.jpg o https://..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
                         </div>
 
                         <div className="md:col-span-2">
@@ -60,58 +65,84 @@ export function BlogManagerView({
 
                         <div className="md:col-span-2">
                             <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Contenido (Admite HTML) <span className="text-[#FF6600]">*</span></label>
-                            <textarea required value={newPost.content} onChange={e => setNewPost({ ...newPost, content: e.target.value })} placeholder="<p>Escribe tu artículo aquí...</p>" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none h-48 font-mono text-sm resize-none" />
+                            <textarea required rows={20} style={{ minHeight: '500px' }} value={newPost.content} onChange={e => setNewPost({ ...newPost, content: e.target.value })} placeholder="<p>Escribe tu artículo aquí...</p>" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none font-mono text-sm resize-y" />
                         </div>
                     </div>
 
-                    <div className="flex justify-end pt-4 border-t border-slate-800">
-                        <button type="submit" disabled={isCreatingPost} className="bg-white text-slate-900 px-8 py-3 rounded-xl font-black transition-all disabled:opacity-50 hover:bg-slate-200">
-                            {isCreatingPost ? 'Guardando...' : 'Publicar Artículo'}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 mt-2 border-t border-slate-800">
+                        <label className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-slate-800/50 transition-colors w-fit">
+                            <div className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 ease-in-out ${newPost.is_published ? 'bg-emerald-500' : 'bg-slate-700'}`}>
+                                <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition duration-200 ease-in-out ${newPost.is_published ? 'translate-x-6' : 'translate-x-1'}`} />
+                            </div>
+                            <span className="text-sm font-bold text-white">
+                                {newPost.is_published ? 'Visible en la web (Público)' : 'Oculto (Borrador)'}
+                            </span>
+                        </label>
+
+                        <button type="submit" disabled={isCreatingPost} className="bg-white text-slate-900 px-8 py-3.5 rounded-xl font-black transition-all disabled:opacity-50 hover:bg-slate-200 active:scale-95 shadow-lg">
+                            {isCreatingPost ? 'Guardando...' : editingPostId ? 'Guardar Cambios' : 'Guardar Artículo'}
                         </button>
                     </div>
                 </form>
             )}
 
             {/* LISTA DE ARTÍCULOS */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {blogPosts.length === 0 ? (
-                    <div className="md:col-span-2 xl:col-span-3 text-center py-16 border border-dashed border-slate-800 rounded-2xl bg-slate-900/30">
-                        <FileText className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-                        <p className="text-slate-400 font-medium text-lg">Aún no hay ningún artículo publicado.</p>
-                    </div>
-                ) : (
-                    blogPosts.map((post: any) => (
-                        <div key={post.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors flex flex-col group">
-                            {post.image ? (
-                                <div className="h-40 overflow-hidden relative">
-                                    <img src={post.image} alt="portada" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                    <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold uppercase border border-slate-700">{post.category}</div>
-                                </div>
-                            ) : (
-                                <div className="h-20 bg-slate-800 flex items-center px-5"><span className="bg-slate-700 text-slate-300 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase">{post.category}</span></div>
-                            )}
-
-                            <div className="p-5 flex-1 flex flex-col">
-                                <h3 className="text-lg font-bold text-white leading-tight mb-2 line-clamp-2">{post.title}</h3>
-                                <p className="text-slate-400 text-sm line-clamp-2 mb-4 flex-1">{post.excerpt}</p>
-
-                                <div className="flex items-center justify-between border-t border-slate-800 pt-4 mt-auto">
-                                    <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider">
-                                        {post.is_published ? (
-                                            <span className="text-emerald-400 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> Público</span>
-                                        ) : (
-                                            <span className="text-amber-400 flex items-center gap-1"><XCircle className="w-3.5 h-3.5" /> Borrador</span>
-                                        )}
+            {!showPostForm && (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 animate-in fade-in duration-300">
+                    {blogPosts.length === 0 ? (
+                        <div className="md:col-span-2 xl:col-span-3 text-center py-16 border border-dashed border-slate-800 rounded-2xl bg-slate-900/30">
+                            <FileText className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+                            <p className="text-slate-400 font-medium text-lg">Aún no hay ningún artículo publicado.</p>
+                        </div>
+                    ) : (
+                        blogPosts.map((post: any) => (
+                            <div key={post.id} className={`bg-slate-900 border rounded-2xl overflow-hidden transition-all flex flex-col group ${post.is_published ? 'border-slate-800 hover:border-slate-700 shadow-lg shadow-black/10' : 'border-slate-800/50 opacity-80'}`}>
+                                {post.image ? (
+                                    <div className="h-40 overflow-hidden relative">
+                                        <img src={post.image} alt="portada" className={`w-full h-full object-cover transition-transform duration-500 ${post.is_published ? 'group-hover:scale-105' : 'grayscale-[30%]'}`} />
+                                        {/* 🚀 ETIQUETA ABAJO A LA IZQUIERDA (bottom-3) */}
+                                        <div className="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold uppercase border border-slate-700">{post.category}</div>
                                     </div>
-                                    <div className="flex items-center gap-2">
-                                        <button onClick={() => handleDeletePost(post.id)} className="p-2 text-slate-500 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors"><Trash2 className="w-4 h-4" /></button>
+                                ) : (
+                                    <div className="h-20 bg-slate-800 flex items-center px-5"><span className="bg-slate-700 text-slate-300 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase">{post.category}</span></div>
+                                )}
+
+                                <div className="p-5 flex-1 flex flex-col">
+                                    <h3 className="text-lg font-bold text-white leading-tight mb-2 line-clamp-2">{post.title}</h3>
+                                    <p className="text-slate-400 text-sm line-clamp-2 mb-4 flex-1">{post.excerpt}</p>
+
+                                    <div className="flex items-center justify-between border-t border-slate-800 pt-4 mt-auto">
+
+                                        <div className="flex items-center gap-3">
+                                            <button
+                                                type="button"
+                                                onClick={() => handleTogglePublish(post.id, post.is_published)}
+                                                className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none ${post.is_published ? 'bg-emerald-500' : 'bg-slate-700'}`}
+                                                title={post.is_published ? "Ocultar artículo" : "Hacer público"}
+                                            >
+                                                <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition duration-200 ease-in-out ${post.is_published ? 'translate-x-6' : 'translate-x-1'}`} />
+                                            </button>
+
+                                            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider">
+                                                {post.is_published ? (
+                                                    <span className="text-emerald-400 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> Público</span>
+                                                ) : (
+                                                    <span className="text-amber-500 flex items-center gap-1"><EyeOff className="w-3.5 h-3.5" /> Borrador</span>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-1">
+                                            <button onClick={() => handleEditClick(post)} className="p-2 text-slate-500 hover:text-blue-400 hover:bg-blue-400/10 rounded-lg transition-colors" title="Editar artículo"><Edit className="w-4 h-4" /></button>
+                                            <button onClick={() => handleDeletePost(post.id)} className="p-2 text-slate-500 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors" title="Borrar artículo"><Trash2 className="w-4 h-4" /></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))
-                )}
-            </div>
+                        ))
+                    )}
+                </div>
+            )}
         </div>
     );
 }

@@ -47,8 +47,8 @@ export default async function NovedadesPage() {
                             novedades.map((post) => (
                                 <Link key={post.id} href={`/novedades/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col">
                                     <div className="h-64 overflow-hidden relative bg-slate-100">
-                                        {/* 🚀 AQUÍ ESTÁ LA ETIQUETA BAJADA A LA ESQUINA INFERIOR (bottom-4) */}
-                                        <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-violet-700 shadow-sm">
+                                        {/* 🚀 AQUÍ ESTÁ LA ETIQUETA EN LA ESQUINA INFERIOR (bottom-4) */}
+                                        <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-violet-700 shadow-sm">
                                             {post.category}
                                         </div>
                                         {post.image && (

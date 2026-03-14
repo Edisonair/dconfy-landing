@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@supabase/supabase-js';
 import { LayoutDashboard, Ticket, LogOut, Menu, X, ChevronLeft, ChevronRight, MapPin, Radio, FileText } from 'lucide-react';
 
-// 🚀 TUS COMPONENTES MODULARIZADOS
 import { DashboardMetrics } from '@/components/admin/DashboardMetrics';
 import { CommunicationsView } from '@/components/admin/CommunicationsView';
 import { InvitationsView } from '@/components/admin/InvitationsView';
@@ -48,13 +47,11 @@ const getProvinceName = (zip?: string) => {
 export default function AdminDashboard() {
     const router = useRouter();
 
-    // 🚀 AQUÍ ESTÁ EL FIX 1: Añadido 'blog' al tipo de activeView
     const [activeView, setActiveView] = useState<'dashboard' | 'invitations' | 'communications' | 'blog'>('dashboard');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    // --- ESTADOS: DASHBOARD ---
     const [rawData, setRawData] = useState<{ profiles: any[], categories: any[], recommendations: any[], chats: any[], messages: any[], shared: any[], connections: any[] } | null>(null);
     const [selectedProvince, setSelectedProvince] = useState<string>('Global');
     const [availableProvinces, setAvailableProvinces] = useState<string[]>([]);
@@ -66,12 +63,10 @@ export default function AdminDashboard() {
     const [customSpecialties, setCustomSpecialties] = useState<any[]>([]);
     const [recsByUserRange, setRecsByUserRange] = useState<any[]>([]);
 
-    // --- ESTADOS: INVITACIONES ---
     const [invitations, setInvitations] = useState<any[]>([]);
     const [newEmail, setNewEmail] = useState('');
     const [isInviting, setIsInviting] = useState(false);
 
-    // --- ESTADOS: COMUNICACIONES ---
     const [commTab, setCommTab] = useState<'banners' | 'emails'>('banners');
     const [announcements, setAnnouncements] = useState<any[]>([]);
     const [newBanner, setNewBanner] = useState({ title: '', message: '', type: 'dark', link_url: '', button_text: '', audience: 'all', target_sector: '' });
@@ -80,17 +75,16 @@ export default function AdminDashboard() {
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [emailHistory, setEmailHistory] = useState<any[]>([]);
 
-    // --- ESTADOS: BLOG ---
     const [blogPosts, setBlogPosts] = useState<any[]>([]);
     const [showPostForm, setShowPostForm] = useState(false);
     const [isCreatingPost, setIsCreatingPost] = useState(false);
-    const [newPost, setNewPost] = useState({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '' });
+    const [editingPostId, setEditingPostId] = useState<string | null>(null);
+    const [newPost, setNewPost] = useState({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false });
 
     useEffect(() => {
         checkAccessAndLoadData();
     }, []);
 
-    // 🚀 AQUÍ ESTÁ EL FIX 2: Definimos todas las funciones de carga ANTES del Promise.all
     const loadRawData = async () => {
         const { data: profiles } = await supabase.from('profiles').select('id, full_name, professional_name, role, specialty, interests, avatar_url, zip_code');
         const { data: categories } = await supabase.from('categories').select('name, color_class');
@@ -142,13 +136,10 @@ export default function AdminDashboard() {
         const { data: profile } = await supabase.from('profiles').select('role').eq('id', session.user.id).single();
         if (profile?.role !== 'super_admin') { router.push('/admin'); return; }
 
-        // Ahora sí, llamamos a todas las funciones de carga correctamente
         await Promise.all([loadRawData(), loadInvitations(), loadAnnouncements(), loadEmailHistory(), loadBlogPosts()]);
         setIsLoading(false);
     };
 
-
-    // --- FUNCIONES: COMUNICACIONES ---
     const handleCreateBanner = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!newBanner.title || !newBanner.message) return;
@@ -199,7 +190,6 @@ export default function AdminDashboard() {
         } finally { setIsSendingEmail(false); }
     };
 
-    // --- FUNCIONES: INVITACIONES ---
     const handleInvite = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!newEmail) return;
@@ -216,19 +206,60 @@ export default function AdminDashboard() {
         await supabase.from('vip_invitations').delete().eq('id', id); await loadInvitations();
     };
 
-    // --- FUNCIONES: BLOG ---
     const handleCreatePost = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!newPost.title || !newPost.slug || !newPost.content) return;
         setIsCreatingPost(true);
         try {
-            const { error } = await supabase.from('blog_posts').insert([newPost]);
-            if (error) throw error;
-            setNewPost({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '' });
+            if (editingPostId) {
+                const { error } = await supabase.from('blog_posts').update(newPost).eq('id', editingPostId);
+                if (error) throw error;
+            } else {
+                const { error } = await supabase.from('blog_posts').insert([newPost]);
+                if (error) throw error;
+            }
+
+            setNewPost({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false });
             setShowPostForm(false);
+            setEditingPostId(null);
             await loadBlogPosts();
-        } catch (error: any) { alert('Error al crear post: ' + error.message); }
+        } catch (error: any) { alert('Error al guardar post: ' + error.message); }
         finally { setIsCreatingPost(false); }
+    };
+
+    const handleEditClick = (post: any) => {
+        setNewPost({
+            title: post.title,
+            slug: post.slug,
+            category: post.category || 'Novedades',
+            read_time: post.read_time || '2 min',
+            image: post.image || '',
+            excerpt: post.excerpt || '',
+            content: post.content || '',
+            is_published: post.is_published
+        });
+        setEditingPostId(post.id);
+        setShowPostForm(true);
+        document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleCancelEdit = () => {
+        if (showPostForm) {
+            setNewPost({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false });
+            setShowPostForm(false);
+            setEditingPostId(null);
+        } else {
+            setShowPostForm(true);
+        }
+    };
+
+    const handleTogglePublish = async (id: string, currentStatus: boolean) => {
+        try {
+            await supabase.from('blog_posts').update({ is_published: !currentStatus }).eq('id', id);
+            await loadBlogPosts();
+        } catch (err: any) {
+            alert('Error al cambiar visibilidad: ' + err.message);
+        }
     };
 
     const handleDeletePost = async (id: string) => {
@@ -237,8 +268,6 @@ export default function AdminDashboard() {
         await loadBlogPosts();
     };
 
-
-    // --- PROCESAMIENTO DE DATOS DASHBOARD ---
     useEffect(() => {
         if (!rawData) return;
         processDashboardData();
@@ -365,7 +394,6 @@ export default function AdminDashboard() {
         setTopRecommendedPros(Object.entries(topProsBySpec).map(([specialty, data]) => ({ specialty, ...data })).sort((a, b) => b.recs - a.recs));
     };
 
-
     const handleLogout = async () => { await supabase.auth.signOut(); router.push('/admin'); };
 
     if (isLoading) return <div className="min-h-screen flex items-center justify-center bg-slate-950"><div className="w-8 h-8 border-4 border-[#FF6600] border-t-transparent rounded-full animate-spin"></div></div>;
@@ -428,6 +456,10 @@ export default function AdminDashboard() {
                         blogPosts={blogPosts}
                         handleCreatePost={handleCreatePost}
                         handleDeletePost={handleDeletePost}
+                        handleEditClick={handleEditClick}
+                        handleCancelEdit={handleCancelEdit}
+                        handleTogglePublish={handleTogglePublish}
+                        editingPostId={editingPostId}
                         isCreatingPost={isCreatingPost}
                         newPost={newPost}
                         setNewPost={setNewPost}

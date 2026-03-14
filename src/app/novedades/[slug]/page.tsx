@@ -1,23 +1,27 @@
-import { novedades } from '../../../data/novedades';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
-
-// 🚀 Imports de nuestros componentes adaptados a esta ruta
 import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
+import { createClient } from '@supabase/supabase-js';
 
-export function generateStaticParams() {
-    return novedades.map((post) => ({
-        slug: post.slug,
-    }));
-}
+const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
     const resolvedParams = await params;
-    const post = novedades.find((p) => p.slug === resolvedParams.slug);
 
-    if (!post) {
+    // 🚀 Buscamos el artículo específico en Supabase usando el slug de la URL
+    const { data: post } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('slug', resolvedParams.slug)
+        .single();
+
+    // Si no existe o está en modo borrador, mandamos a la página de error 404
+    if (!post || !post.is_published) {
         notFound();
     }
 
@@ -42,16 +46,18 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                             {post.title}
                         </h1>
                         <div className="flex items-center gap-6 text-sm font-bold text-slate-400 uppercase tracking-wider">
-                            <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {new Date(post.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                            <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> {post.readTime}</span>
+                            <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {new Date(post.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                            <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> {post.read_time}</span>
                         </div>
                     </div>
 
-                    <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-80 md:h-[400px] object-cover rounded-3xl mb-12 shadow-md"
-                    />
+                    {post.image && (
+                        <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-80 md:h-[400px] object-cover rounded-3xl mb-12 shadow-md bg-slate-100"
+                        />
+                    )}
 
                     <article
                         className="prose prose-lg prose-slate prose-headings:font-bold prose-headings:tracking-tight prose-a:text-violet-600 hover:prose-a:text-violet-500 prose-img:rounded-2xl max-w-none"
