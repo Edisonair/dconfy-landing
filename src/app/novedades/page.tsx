@@ -9,6 +9,8 @@ export const metadata = {
     description: 'Descubre las últimas funcionalidades, noticias y mejoras de dconfy.',
 };
 
+export const dynamic = 'force-dynamic';
+
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
