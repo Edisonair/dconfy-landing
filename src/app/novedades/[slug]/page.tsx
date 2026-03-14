@@ -1,4 +1,3 @@
-// app/novedades/[slug]/page.tsx
 import { novedades } from '../../../data/novedades';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -10,8 +9,12 @@ export function generateStaticParams() {
     }));
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-    const post = novedades.find((p) => p.slug === params.slug);
+// 🚀 AQUÍ ESTÁ EL CAMBIO: Añadimos async y Promise para Next.js 15
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+    // 🚀 Resolvemos la promesa de los parámetros de la URL
+    const resolvedParams = await params;
+
+    const post = novedades.find((p) => p.slug === resolvedParams.slug);
 
     if (!post) {
         notFound();
