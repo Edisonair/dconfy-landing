@@ -38,3 +38,15 @@ h3.font-black,
 h4.font-black {
     -webkit-text-stroke: 1px currentColor;
 }
+
+/* Blog content styling */
+.contenido-blog p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Ocupar el espacio de una línea en párrafos vacíos (dobles Enters) */
+.contenido-blog p:empty::before {
+    content: "\00a0";
+    display: block;
+}
