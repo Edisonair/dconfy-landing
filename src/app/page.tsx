@@ -276,7 +276,7 @@ export default function Home() {
 
 
       {/* 3.1 CÓMO SE VE UNA RECOMENDACIÓN */}
-      <section className="bg-slate-50 py-24 px-6 overflow-hidden relative">
+      <section className="bg-[#fafafa] py-24 px-6 overflow-hidden relative">
         <div className="max-w-4xl mx-auto z-10 relative">
           <div className="text-center mb-16 lg:mb-24">
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así funcionan las recomendaciones en dconfy</h2>
