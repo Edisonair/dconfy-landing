@@ -15,7 +15,7 @@ export function Footer() {
     };
 
     return (
-        <footer className="bg-[#171721] text-white pt-20 pb-10 px-6">
+        <footer className="bg-[#171721] text-white pt-16 pb-10 px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-2xl font-medium text-slate-300 mb-10">Estamos construyendo la red de servicios más confiable,<br></br> y queremos que seas parte de nuestro lanzamiento.</h2>
@@ -38,22 +38,23 @@ export function Footer() {
                                 </svg>
                             </a>
                         </div>
+                        <div className="text-left text-xs text-slate-600 pt-6">
+                            © {new Date().getFullYear()} dconfy. Todos los derechos reservados.
+                        </div>
                     </div>
                     <div className="flex flex-col gap-4">
                         <Link href="/#como-funciona" className="text-slate-400 hover:text-white text-sm transition-colors">Cómo funciona</Link>
                         <Link href="/#planes" className="text-slate-400 hover:text-white text-sm transition-colors">Planes</Link>
                         <Link href="/#faq" className="text-slate-400 hover:text-white text-sm transition-colors">FAQ</Link>
+                        <Link href="/blog" className="text-slate-400 hover:text-white text-sm transition-colors">Blog</Link>
                         <Link href="/admin" className="text-slate-400 hover:text-white text-sm transition-colors">Acceso Empresas</Link>
+
                     </div>
                     <div className="flex flex-col gap-4">
                         <Link href="/privacidad" className="text-slate-400 hover:text-white text-sm transition-colors">Política de privacidad</Link>
                         <Link href="/terminos" className="text-slate-400 hover:text-white text-sm transition-colors">Términos y condiciones</Link>
                         <a href="mailto:info@dconfy.io" className="text-slate-400 hover:text-white text-sm transition-colors">Contacto</a>
                     </div>
-                </div>
-
-                <div className="text-center text-xs text-slate-600 pt-8 border-t border-slate-800">
-                    © {new Date().getFullYear()} dconfy. Todos los derechos reservados.
                 </div>
             </div>
         </footer>

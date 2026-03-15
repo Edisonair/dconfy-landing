@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Calendar, Clock, FileText } from 'lucide-react';
-import { Header } from '../../components/Header';
+import { ArrowRight, Calendar, Clock, FileText, ChevronLeft } from 'lucide-react';
 import { Footer } from '../../components/Footer';
 import { createClient } from '@supabase/supabase-js';
 
@@ -25,9 +24,20 @@ export default async function NovedadesPage() {
 
     return (
         <>
-            <Header />
+            {/* 🚀 NUEVA CABECERA OSCURA EXCLUSIVA PARA EL BLOG */}
+            <header className="fixed top-0 w-full bg-slate-950 border-b border-slate-800 z-50 shadow-lg">
+                <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+                    <Link href="/">
+                        <img src="/dconfy_logo_hibrid.png" alt="dconfy" className="h-8 md:h-9 object-contain" />
+                    </Link>
+                    <Link href="/" className="text-sm font-bold text-slate-300 hover:text-white transition-colors flex items-center gap-2">
+                        dconfy.app
+                    </Link>
+                </div>
+            </header>
 
-            <div className="min-h-screen bg-slate-50 pt-24 pb-20">
+            {/* 🚀 NUEVO FONDO COLOR #faf3e5 Y MÁS ESPACIO ARRIBA (pt-32) */}
+            <div className="min-h-screen bg-[#faf3e5] pt-32 pb-20">
                 <div className="max-w-5xl mx-auto px-6">
 
                     <div className="text-center mb-16">
@@ -41,15 +51,14 @@ export default async function NovedadesPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {!novedades || novedades.length === 0 ? (
-                            <div className="col-span-1 md:col-span-2 text-center py-20 bg-white rounded-3xl border border-dashed border-slate-200">
+                            <div className="col-span-1 md:col-span-2 text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300 shadow-sm">
                                 <FileText className="w-12 h-12 text-slate-300 mx-auto mb-4" />
                                 <p className="text-slate-500 font-medium">Próximamente publicaremos nuevas noticias.</p>
                             </div>
                         ) : (
                             novedades.map((post) => (
-                                <Link key={post.id} href={`/blog/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col">
-                                    <div className="h-64 overflow-hidden relative bg-slate-100">
-                                        {/* 🚀 ETIQUETA ABAJO A LA IZQUIERDA (bottom-4) */}
+                                <Link key={post.id} href={`/blog/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 flex flex-col">
+                                    <div className="aspect-[16/9] w-full overflow-hidden relative bg-slate-100">
                                         <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-violet-700 shadow-sm">
                                             {post.category}
                                         </div>
