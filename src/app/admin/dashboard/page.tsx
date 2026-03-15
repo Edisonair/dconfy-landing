@@ -81,7 +81,12 @@ export default function AdminDashboard() {
     const [showPostForm, setShowPostForm] = useState(false);
     const [isCreatingPost, setIsCreatingPost] = useState(false);
     const [editingPostId, setEditingPostId] = useState<string | null>(null);
-    const [newPost, setNewPost] = useState({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false });
+
+    // 🚀 Añadimos "created_at" al estado inicial para controlar la fecha
+    const [newPost, setNewPost] = useState({
+        title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false,
+        created_at: new Date().toISOString().split('T')[0]
+    });
 
     useEffect(() => {
         checkAccessAndLoadData();
@@ -248,7 +253,7 @@ export default function AdminDashboard() {
                 if (error) throw error;
             }
 
-            setNewPost({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false });
+            setNewPost({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false, created_at: new Date().toISOString().split('T')[0] });
             setShowPostForm(false);
             setEditingPostId(null);
             await loadBlogPosts();
@@ -265,7 +270,8 @@ export default function AdminDashboard() {
             image: post.image || '',
             excerpt: post.excerpt || '',
             content: post.content || '',
-            is_published: post.is_published
+            is_published: post.is_published,
+            created_at: post.created_at ? new Date(post.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
         });
         setEditingPostId(post.id);
         setShowPostForm(true);
@@ -274,7 +280,7 @@ export default function AdminDashboard() {
 
     const handleCancelEdit = () => {
         if (showPostForm) {
-            setNewPost({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false });
+            setNewPost({ title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false, created_at: new Date().toISOString().split('T')[0] });
             setShowPostForm(false);
             setEditingPostId(null);
         } else {

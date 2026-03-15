@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, Plus, Trash2, Edit, CheckCircle2, EyeOff, Code } from 'lucide-react';
+import { FileText, Plus, Trash2, Edit, CheckCircle2, EyeOff, Code, Calendar } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import 'react-quill-new/dist/quill.snow.css';
 
@@ -13,7 +13,6 @@ export function BlogManagerView({
     isCreatingPost, newPost, setNewPost, showPostForm, editingPostId
 }: any) {
 
-    // 🚀 NUEVO: Estado para controlar si vemos el editor visual o el HTML
     const [showHtmlView, setShowHtmlView] = useState(false);
 
     return (
@@ -23,7 +22,7 @@ export function BlogManagerView({
                     <h2 className="text-2xl font-black text-white flex items-center gap-2">
                         <FileText className="w-6 h-6 text-[#FF6600]" /> Blog y Novedades
                     </h2>
-                    <p className="text-slate-400 font-medium mt-1">Crea y gestiona los artículos que aparecen en dconfy.app/novedades</p>
+                    <p className="text-slate-400 font-medium mt-1">Crea y gestiona los artículos que aparecen en dconfy.app/blog</p>
                 </div>
                 <button
                     onClick={handleCancelEdit}
@@ -46,12 +45,17 @@ export function BlogManagerView({
                             <input type="text" required value={newPost.title} onChange={e => setNewPost({ ...newPost, title: e.target.value })} placeholder="Ej: Nueva función de IA disponible" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
                         </div>
 
-                        <div>
+                        <div className="md:col-span-2">
                             <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Slug (URL amigable) <span className="text-[#FF6600]">*</span></label>
                             <input type="text" required value={newPost.slug} onChange={e => setNewPost({ ...newPost, slug: e.target.value.toLowerCase().replace(/\s+/g, '-') })} placeholder="ej: nueva-funcion-ia" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-300 focus:ring-2 focus:ring-[#FF6600] outline-none" />
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
+                        {/* 🚀 AQUÍ AÑADIMOS EL SELECTOR DE FECHA */}
+                        <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Fecha Publicación <span className="text-[#FF6600]">*</span></label>
+                                <input type="date" required value={newPost.created_at} onChange={e => setNewPost({ ...newPost, created_at: e.target.value })} className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
+                            </div>
                             <div>
                                 <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Categoría</label>
                                 <input type="text" value={newPost.category} onChange={e => setNewPost({ ...newPost, category: e.target.value })} placeholder="Ej: Actualizaciones" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none" />
@@ -72,7 +76,6 @@ export function BlogManagerView({
                             <textarea required value={newPost.excerpt} onChange={e => setNewPost({ ...newPost, excerpt: e.target.value })} placeholder="Un texto breve para enganchar..." className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none h-20 resize-none" />
                         </div>
 
-                        {/* 🚀 ZONA DEL EDITOR MODIFICADA */}
                         <div className="md:col-span-2">
                             <div className="flex items-center justify-between mb-2">
                                 <label className="block text-xs font-bold text-slate-400 uppercase">Contenido de la Noticia <span className="text-[#FF6600]">*</span></label>
@@ -144,6 +147,12 @@ export function BlogManagerView({
                                 )}
 
                                 <div className="p-5 flex-1 flex flex-col">
+                                    {/* 🚀 FECHA EN LA TARJETA */}
+                                    <span className="text-[11px] font-black text-slate-500 mb-2.5 flex items-center gap-1.5 tracking-wider uppercase">
+                                        <Calendar className="w-3.5 h-3.5" />
+                                        {new Date(post.created_at).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                                    </span>
+
                                     <h3 className="text-lg font-bold text-white leading-tight mb-2 line-clamp-2">{post.title}</h3>
                                     <p className="text-slate-400 text-sm line-clamp-2 mb-4 flex-1">{post.excerpt}</p>
 
