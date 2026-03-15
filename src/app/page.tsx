@@ -114,7 +114,7 @@ export default function Home() {
             <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-6">
               El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 font-bold mb-8 leading-relaxed tracking-tight">
+            <p className="text-xl md:text-2xl text-slate-600 font-normal mb-8 leading-relaxed tracking-tight">
               Descubre profesionales y servicios recomendados por tu gente.
             </p>
 

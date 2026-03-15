@@ -42,7 +42,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <div className="min-h-screen bg-[#faf3e5] pt-32 pb-40">
                 <div className="max-w-3xl mx-auto px-6">
 
-                    <Link href="/blog" className="inline-flex items-center gap-2 text-slate-500 hover:text-violet-600 font-semibold mb-8 transition-colors">
+                    <Link href="/blog" className="inline-flex items-center gap-2 text-[#111827] hover:text-violet-600 font-semibold mb-8 transition-colors">
                         <ArrowLeft className="w-5 h-5" /> Volver al blog
                     </Link>
 
@@ -52,10 +52,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 {post.category}
                             </span>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight tracking-tight">
+                        <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-6 leading-tight tracking-tight">
                             {post.title}
                         </h1>
-                        <div className="flex items-center gap-6 text-sm font-bold text-slate-500 uppercase tracking-wider">
+                        <div className="flex items-center gap-6 text-sm font-bold text-[#111827] uppercase tracking-wider">
                             <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {new Date(post.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                             <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> {post.read_time}</span>
                         </div>
@@ -71,7 +71,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
                     <div className="max-w-3xl mx-auto w-full sm:px-0 contenido-blog">
                         <article
-                            className="prose prose-lg prose-slate prose-headings:font-black prose-headings:tracking-tight prose-a:text-violet-600 hover:prose-a:text-violet-500 prose-img:rounded-2xl"
+                            className="prose prose-lg prose-p:text-[#111827] prose-headings:text-[#111827] prose-headings:tracking-tight prose-a:text-violet-600 hover:prose-a:text-violet-500 prose-img:rounded-2xl"
                             dangerouslySetInnerHTML={{ __html: cleanContent }}
                         />
                     </div>
