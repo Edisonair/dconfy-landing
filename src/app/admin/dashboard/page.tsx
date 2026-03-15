@@ -71,6 +71,8 @@ export default function AdminDashboard() {
     const [announcements, setAnnouncements] = useState<any[]>([]);
     const [newBanner, setNewBanner] = useState({ title: '', message: '', type: 'dark', link_url: '', button_text: '', audience: 'all', target_sector: '' });
     const [isCreatingBanner, setIsCreatingBanner] = useState(false);
+    const [editingBannerId, setEditingBannerId] = useState<string | null>(null);
+
     const [emailDraft, setEmailDraft] = useState({ subject: '', title: '', message: '', audience: 'all', buttonText: '', buttonUrl: '' });
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [emailHistory, setEmailHistory] = useState<any[]>([]);
@@ -147,11 +149,38 @@ export default function AdminDashboard() {
 
         setIsCreatingBanner(true);
         try {
-            await supabase.from('app_announcements').insert([newBanner]);
+            if (editingBannerId) {
+                const { error } = await supabase.from('app_announcements').update(newBanner).eq('id', editingBannerId);
+                if (error) throw error;
+            } else {
+                const { error } = await supabase.from('app_announcements').insert([newBanner]);
+                if (error) throw error;
+            }
+
             setNewBanner({ title: '', message: '', type: 'dark', link_url: '', button_text: '', audience: 'all', target_sector: '' });
+            setEditingBannerId(null);
             await loadAnnouncements();
-        } catch (err) { alert('Error al crear anuncio'); }
+        } catch (err) { alert('Error al guardar anuncio'); }
         finally { setIsCreatingBanner(false); }
+    };
+
+    const handleEditBannerClick = (banner: any) => {
+        setEditingBannerId(banner.id);
+        setNewBanner({
+            title: banner.title,
+            message: banner.message,
+            type: banner.type || 'dark',
+            button_text: banner.button_text || '',
+            link_url: banner.link_url || '',
+            audience: banner.audience || 'all',
+            target_sector: banner.target_sector || ''
+        });
+        document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleCancelBannerEdit = () => {
+        setEditingBannerId(null);
+        setNewBanner({ title: '', message: '', type: 'dark', link_url: '', button_text: '', audience: 'all', target_sector: '' });
     };
 
     const handleToggleBanner = async (id: string, currentStatus: boolean) => {
@@ -437,6 +466,9 @@ export default function AdminDashboard() {
                         setEmailDraft={setEmailDraft}
                         isSendingEmail={isSendingEmail}
                         emailHistory={emailHistory}
+                        editingBannerId={editingBannerId}
+                        handleEditBannerClick={handleEditBannerClick}
+                        handleCancelBannerEdit={handleCancelBannerEdit}
                     />
                 );
             case 'invitations':

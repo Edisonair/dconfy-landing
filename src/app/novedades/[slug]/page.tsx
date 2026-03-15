@@ -13,23 +13,23 @@ const supabase = createClient(
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
     const resolvedParams = await params;
 
-    // 🚀 Buscamos el artículo específico en Supabase usando el slug de la URL
     const { data: post } = await supabase
         .from('blog_posts')
         .select('*')
         .eq('slug', resolvedParams.slug)
         .single();
 
-    // Si no existe o está en modo borrador, mandamos a la página de error 404
     if (!post || !post.is_published) {
         notFound();
     }
+
+    const cleanContent = post?.content ? post.content.replace(/&nbsp;/g, ' ') : '';
 
     return (
         <>
             <Header />
 
-            <div className="min-h-screen bg-white pt-24 pb-20">
+            <div className="min-h-screen bg-white pt-24 pb-40">
                 <div className="max-w-3xl mx-auto px-6">
 
                     <Link href="/novedades" className="inline-flex items-center gap-2 text-slate-500 hover:text-violet-600 font-semibold mb-8 transition-colors">
@@ -59,15 +59,32 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                         />
                     )}
 
-                    <article
-                        className="prose prose-lg prose-slate prose-headings:font-bold prose-headings:tracking-tight prose-a:text-violet-600 hover:prose-a:text-violet-500 prose-img:rounded-2xl max-w-none"
-                        dangerouslySetInnerHTML={{ __html: post.content }}
-                    />
+                    {/* 🚀 AÑADIMOS LA CLASE "contenido-blog" PARA DOMAR EL TEXTO */}
+                    <div className="max-w-3xl mx-auto w-full sm:px-0 contenido-blog">
+                        <article
+                            className="prose prose-lg prose-slate prose-headings:font-black prose-headings:tracking-tight prose-a:text-violet-600 hover:prose-a:text-violet-500 prose-img:rounded-2xl"
+                            dangerouslySetInnerHTML={{ __html: cleanContent }}
+                        />
+                    </div>
 
                 </div>
             </div>
 
             <Footer />
+
+            {/* 🚀 IMPONEMOS LA LEY DE LOS ESPACIOS POR LA FUERZA */}
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .contenido-blog p {
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                }
+                /* Esto obliga a los párrafos vacíos (los dobles Enters) a ocupar el espacio de una línea */
+                .contenido-blog p:empty::before {
+                    content: "\\00a0";
+                    display: block;
+                }
+            `}} />
         </>
     );
 }
