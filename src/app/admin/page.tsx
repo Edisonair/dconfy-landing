@@ -136,7 +136,7 @@ export default function AdminLogin() {
                 </div>
 
                 <div className="text-center mt-8">
-                    <p className="text-xs text-slate-400 font-medium">dconfy.io © {new Date().getFullYear()}</p>
+                    <p className="text-xs text-slate-400 font-medium">dconfy.app © {new Date().getFullYear()}</p>
                 </div>
 
             </div>
