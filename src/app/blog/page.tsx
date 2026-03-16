@@ -42,7 +42,7 @@ export default async function NovedadesPage() {
 
                     <div className="text-center mb-16">
                         <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
-                            Lo último en <span className="text-violet-600">dconfy</span>
+                            Lo último en <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">dconfy</span>
                         </h1>
                         <p className="text-lg text-[#111827] max-w-2xl mx-auto">
                             Entérate de las nuevas funcionalidades, mejoras y noticias sobre nuestra plataforma.

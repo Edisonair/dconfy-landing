@@ -84,7 +84,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const title = `${profile.professional_name || profile.full_name} - ${profile.specialty} | dconfy`;
     const description = `Recomendado en ${profile.location}. ${profile.bio?.substring(0, 100) || 'Descubre su perfil en dconfy.'}...`;
 
-    // Construct a consistent fallback avatar for the link preview
     let imageUrl = profile.professional_logo_url || profile.avatar_url;
     if (!imageUrl || !imageUrl.startsWith('http')) {
         const fallbackName = profile.professional_name || profile.full_name || 'Professional';
@@ -99,13 +98,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description,
             url: `https://dconfy.app/pro/${slug}`,
             siteName: 'dconfy',
-            // 🚀 REDUCE LAS DIMENSIONES AQUÍ PARA INDICAR PREFERENCIA POR MINIATURA PEQUEÑA
             images: [{ url: imageUrl, width: 300, height: 300, alt: `Perfil de ${profile.professional_name || profile.full_name}` }],
             locale: 'es_ES',
             type: 'profile',
         },
         twitter: {
-            card: 'summary', // 🚀 Cambia a 'summary' para una tarjeta de vista previa cuadrada y pequeña en Twitter
+            card: 'summary',
             title,
             description,
             images: [imageUrl],
@@ -160,10 +158,14 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
     const finalProvince = profile.province || provinceFromZip || '';
     const displayLocation = `${profile.location || 'España'}${finalProvince ? `, ${finalProvince}` : ''}`;
 
+    // 🚀 LÓGICA PARA CREAR EL ENLACE DEL MAPA
+    const mapUrl = profile.google_maps_url
+        ? profile.google_maps_url
+        : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${profile.location || ''}, ${finalProvince || ''}, España`)}`;
+
     return (
         <div className="min-h-screen bg-[#FAFAFA] pb-36 font-sans selection:bg-violet-200">
 
-            {/* Cabecera general con el logo */}
             <header className="flex justify-between items-center py-6 max-w-xl mx-auto px-4">
                 <img src="/icon.png" alt="dconfy" className="h-11 sm:h-11 object-contain" />
                 <a
@@ -190,15 +192,25 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                             {profile.professional_name || profile.full_name}
                         </h1>
 
-                        <div className="flex items-center gap-1.5 bg-violet-50 text-violet-700 px-3 py-1.5 rounded-2xl w-fit mb-2 border border-violet-100">
+                        <div className="flex items-center gap-1.5 bg-violet-50 text-violet-700 px-3 py-1.5 rounded-xl w-fit mb-2 border border-violet-100">
                             {renderIcon(dbIconName, profile.specialty || profile.category)}
                             <span className="font-bold text-sm tracking-tight">{profile.specialty || profile.category}</span>
                         </div>
 
-                        <div className="flex items-center gap-1 text-slate-500 font-medium text-sm truncate">
-                            <span>📍</span>
-                            <span className="truncate">{displayLocation}</span>
-                        </div>
+                        {/* 🚀 EL TEXTO AHORA ES UN ENLACE CLICABLE */}
+                        {displayLocation && (
+                            <a
+                                href={mapUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center text-slate-500 hover:text-violet-600 text-sm font-bold w-fit group transition-colors"
+                                title="Ver en Google Maps"
+                            >
+                                <span className="mr-1.5 text-sm">📍</span>
+                                <span className="truncate">{displayLocation}</span>
+                                <LucideIcons.ExternalLink className="w-3 h-3 ml-1.5 opacity-50 group-hover:opacity-100 shrink-0" />
+                            </a>
+                        )}
                     </div>
                 </div>
 
@@ -232,7 +244,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                                     key={i}
                                     src={review.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(review.profiles?.full_name || 'U')}`}
                                     alt={review.profiles?.full_name}
-                                    // 🚀 CAMBIO AQUÍ: Borde del color del fondo y z-index dinámico
                                     className={`w-7 h-7 rounded-full border-2 border-[#FAFAFA] object-cover relative ${i === 0 ? 'z-10' : 'z-0'}`}
                                 />
                             ))}
