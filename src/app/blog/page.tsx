@@ -45,7 +45,7 @@ export default async function NovedadesPage() {
                             Lo último en <span className="text-violet-600">dconfy</span>
                         </h1>
                         <p className="text-lg text-[#111827] max-w-2xl mx-auto">
-                            Entérate antes que nadie de las nuevas funcionalidades, mejoras y noticias sobre nuestra plataforma.
+                            Entérate de las nuevas funcionalidades, mejoras y noticias sobre nuestra plataforma.
                         </p>
                     </div>
 
