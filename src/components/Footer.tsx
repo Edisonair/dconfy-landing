@@ -53,7 +53,7 @@ export function Footer() {
                     <div className="flex flex-col gap-4">
                         <Link href="/privacidad" className="text-slate-400 hover:text-white text-sm transition-colors">Política de privacidad</Link>
                         <Link href="/terminos" className="text-slate-400 hover:text-white text-sm transition-colors">Términos y condiciones</Link>
-                        <a href="mailto:info@dconfy.io" className="text-slate-400 hover:text-white text-sm transition-colors">Contacto</a>
+                        <Link href="/contacto" className="text-slate-400 hover:text-white text-sm transition-colors">Contacto</Link>
                     </div>
                 </div>
             </div>
