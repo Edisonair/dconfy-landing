@@ -22,7 +22,8 @@ const heroProfessionals = [
   { src: "/hero_vector_personaltrainer.png", alt: "Entrenador" },
   { src: "/hero_vector_thaimassage.png", alt: "Masajista" },
   { src: "/hero_vector_socialmedia.png", alt: "Experto en Redes" },
-  { src: "/hero_vector_commerce_4.png", alt: "Comercios" }
+  { src: "/hero_vector_commerce_4.png", alt: "Comercios" },
+  { src: "/hero_vector_wine.png", alt: "Bodegas" }
 ];
 
 const placeholderRoles = [
@@ -30,7 +31,7 @@ const placeholderRoles = [
   "Electricista", "Mecánico", "Salón de Peluquería", "Entrenador Personal",
   "Fotógrafo", "Veterinario", "Clínica Estética", "Jardinero",
   "Experto en Redes", "Asesor Fiscal", "Masajista", "Agente de Seguros",
-  "Tienda de Ropa", "Boutique", "Comercio Local"
+  "Tienda de Ropa", "Boutique", "Comercio Local", "Bodega", "Sumiller"
 ];
 
 export default function Home() {
