@@ -23,7 +23,7 @@ const heroProfessionals = [
   { src: "/hero_vector_thaimassage.png", alt: "Masajista" },
   { src: "/hero_vector_socialmedia.png", alt: "Experto en Redes" },
   { src: "/hero_vector_commerce_4.png", alt: "Comercios" },
-  { src: "/hero_vector_wine_sommelier_fixed.png", alt: "Bodegas" }
+  { src: "/hero_vector_wine_sommelier_final_v2.png", alt: "Bodegas" }
 ];
 
 const placeholderRoles = [
