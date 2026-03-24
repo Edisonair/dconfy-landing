@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle } from 'lucide-react';
+import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle, ArrowDown } from 'lucide-react';
+import { motion, Variants } from "framer-motion";
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 
@@ -34,14 +35,34 @@ const placeholderRoles = [
   "Tienda de Ropa", "Boutique", "Comercio Local", "Bodega", "Sumiller"
 ];
 
+// 🚀 TIPADO EXPLÍCITO 'Variants' PARA EVITAR ERRORES DE TYPESCRIPT
+const fadeInUpVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const staggerContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
 export default function Home() {
   const [desktopCycle, setDesktopCycle] = useState(0);
 
-  // 🚀 ESTADOS MÁQUINA DE ESCRIBIR
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // 🚀 CORREGIDO EL ERROR DE clearInterval
   useEffect(() => {
     const timer = setInterval(() => {
       setDesktopCycle(prev => prev + 1);
@@ -49,29 +70,25 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  // 🚀 LÓGICA MÁQUINA DE ESCRIBIR (Ahora mucho más rápida)
   useEffect(() => {
     const currentWord = placeholderRoles[currentRoleIndex];
     let timeout: NodeJS.Timeout;
 
     if (isDeleting) {
-      // Borrando súper rápido
       timeout = setTimeout(() => {
         setDisplayedText(currentWord.substring(0, displayedText.length - 1));
         if (displayedText.length === 0) {
           setIsDeleting(false);
           setCurrentRoleIndex((prev) => (prev + 1) % placeholderRoles.length);
         }
-      }, 20); // 🚀 Bajado de 40ms a 20ms
+      }, 20);
     } else {
-      // Escribiendo más rápido
       timeout = setTimeout(() => {
         setDisplayedText(currentWord.substring(0, displayedText.length + 1));
         if (displayedText.length === currentWord.length) {
-          // Pausa cuando termina de escribir la palabra
           timeout = setTimeout(() => setIsDeleting(true), 1000);
         }
-      }, 40); // 🚀 Bajado de 80ms a 40ms
+      }, 40);
     }
 
     return () => clearTimeout(timeout);
@@ -107,10 +124,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white selection:bg-violet-200">
 
-      {/* 1. NAVBAR (FONDO CREMA) */}
       <Header />
 
-      {/* 2. HERO SECTION (FONDO CREMA CON CORTE REDONDEADO) */}
       <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
           <div className="max-w-xl lg:max-w-lg">
@@ -131,22 +146,6 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Apple and Android icons (Hidden temporarily)
-              <div className="flex items-center justify-center sm:justify-start gap-4 mt-4 pl-2">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md text-slate-500 opacity-90 hover:opacity-100 transition-opacity cursor-default overflow-hidden" title="iOS">
-                  <svg className="w-7 h-7 fill-current -mt-0.5" viewBox="0 0 24 24">
-                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.15 2.95.97 3.83 2.32-3.11 1.94-2.58 6.09.43 7.33-.76 1.76-1.78 3.52-2.91 3.36zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-                  </svg>
-                </div>
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md text-slate-500 opacity-90 hover:opacity-100 transition-opacity cursor-default overflow-hidden" title="Android">
-                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.81.24l-1.92 3.32C15.11 8.24 13.62 8 12 8c-1.62 0-3.11.24-4.45.65L5.63 5.33c-.16-.3-.52-.39-.81-.24-.29.16-.42.54-.26.85l1.84 3.18C3.56 10.97 1.5 14.16 1.15 18h21.7c-.35-3.84-2.41-7.03-5.24-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z" />
-                  </svg>
-                </div>
-              </div>
-              */}
-
-              {/* Recommendation Flow Visual */}
               <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 mt-6 pl-2">
                 <div className="flex flex-col items-center gap-1.5">
                   <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
@@ -184,14 +183,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero Images Area */}
           <div className="mt-2 lg:mt-0 relative w-full flex flex-col items-center">
-
-            {/* Version Movil */}
-            {/* 🚀 Añadido pt-16 (padding top extra) para que las imágenes escaladas no se corten por el borde del overflow-hidden */}
             <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative pt-16 pb-4 -mt-4">
-
-              {/* 🚀 Cambiado a mb-12 para dar más aire entre las imágenes y la cápsula */}
               <div className="flex w-fit animate-marquee items-center hover:[animation-play-state:paused] active:[animation-play-state:paused] cursor-grab active:cursor-grabbing mb-12">
                 {heroProfessionals.map((item, i) => (
                   <div key={`group1-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
@@ -209,7 +202,6 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* 🚀 CÁPSULA ANIMADA CON MÁQUINA DE ESCRIBIR (SOLO MÓVIL) */}
               <div className="flex justify-center px-4">
                 <div className="bg-white border border-slate-200/60 shadow-md shadow-violet-100/50 px-5 py-2.5 rounded-full flex items-center gap-2 max-w-full">
                   <span className="text-slate-500 font-medium text-sm shrink-0">Recomendaciones de</span>
@@ -221,11 +213,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Version Escritorio */}
             <div className="hidden md:flex flex-col items-center justify-end relative lg:translate-x-8 xl:translate-x-16 origin-center w-full">
-
               <div className="flex justify-end items-center relative w-full">
-                {/* Izquierda */}
                 <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-28 lg:mt-36 z-10 relative">
                   <div className="animate-float relative" style={{ animationDelay: '0s' }}>
                     {heroProfessionals.map((pro, idx) => (
@@ -240,7 +229,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Centro */}
                 <div className="w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-8 lg:mb-12 z-30 -ml-16 lg:-ml-24 relative">
                   <div className="animate-float relative" style={{ animationDelay: '1.5s' }}>
                     {heroProfessionals.map((pro, idx) => (
@@ -255,7 +243,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Derecha */}
                 <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-16 lg:mt-20 z-20 -ml-16 lg:-ml-24 relative">
                   <div className="animate-float relative" style={{ animationDelay: '3s' }}>
                     {heroProfessionals.map((pro, idx) => (
@@ -270,28 +257,37 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
 
-
-      {/* 3.1 CÓMO SE VE UNA RECOMENDACIÓN */}
-      <section className="bg-[#fafafa] py-24 px-6 overflow-hidden relative">
+      {/* 🚀 DEGRADADO RADIAL RESTAURADO AQUÍ */}
+      <section
+        className="py-24 px-6 overflow-hidden relative"
+        style={{ background: 'radial-gradient(circle at center, #fafafa 10%, #ffffff 90%)' }}
+      >
         <div className="max-w-4xl mx-auto z-10 relative">
-          <div className="text-center mb-16 lg:mb-24">
+          <motion.div
+            className="text-center mb-16 lg:mb-24"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+          >
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así funcionan las recomendaciones en dconfy</h2>
             <p className="mt-4 text-xl text-slate-500 font-medium">Cada recomendación viene de alguien de tu red.</p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-10 max-w-[1000px] mx-auto px-4 lg:px-0">
-            {/* Tarjeta 1 - PlusHome */}
-            <div className="relative w-full max-w-[420px] justify-self-center md:justify-self-end flex flex-col items-center sm:items-stretch">
-              {/* Card Container con Shadow y Borde Suave */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-10 max-w-[1000px] mx-auto px-4 lg:px-0"
+            whileInView="visible"
+            initial="hidden"
+            variants={staggerContainerVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] justify-self-center md:justify-self-end flex flex-col items-center sm:items-stretch">
               <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
-                {/* Gradiente izquierdo para simular el borde colorido */}
                 <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
 
                 <div className="flex justify-between items-start mb-1.5">
@@ -324,7 +320,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Recomendador Info */}
               <div className="flex items-start gap-3 mt-2 ml-4 self-start">
                 <div className="relative shrink-0 mt-0.5">
                   <div className="w-[40px] h-[40px] lg:w-[48px] lg:h-[48px] rounded-full overflow-hidden shadow-sm border-2 border-white bg-slate-100">
@@ -346,11 +341,9 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Tarjeta 1.5 - Bella Donna */}
-            <div className="relative w-full max-w-[420px] justify-self-center md:justify-self-start flex flex-col items-center sm:items-stretch">
-              {/* Card Container */}
+            <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] justify-self-center md:justify-self-start flex flex-col items-center sm:items-stretch">
               <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
                 <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
 
@@ -384,7 +377,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Recomendador Info */}
               <div className="flex items-start gap-3 mt-2 ml-4 self-start">
                 <div className="relative shrink-0 mt-0.5">
                   <div className="w-[40px] h-[40px] lg:w-[48px] lg:h-[48px] rounded-full overflow-hidden shadow-sm border-2 border-white bg-slate-100">
@@ -401,11 +393,9 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Tarjeta 2 - Elena Gómez */}
-            <div className="relative w-full max-w-[420px] md:col-span-2 justify-self-center flex flex-col items-center sm:items-stretch mx-auto">
-              {/* Card Container */}
+            <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] md:col-span-2 justify-self-center flex flex-col items-center sm:items-stretch mx-auto">
               <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
                 <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
 
@@ -439,7 +429,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Recomendador Info */}
               <div className="flex items-start gap-3 mt-2 ml-4 self-start">
                 <div className="relative shrink-0 mt-0.5">
                   <div className="w-[40px] h-[40px] lg:w-[48px] lg:h-[48px] rounded-full overflow-hidden shadow-sm border-2 border-white bg-slate-100">
@@ -456,16 +445,22 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
         </div>
       </section>
-      {/* 2.5 VENTAJAS (CARDS) */}
-      <section className="bg-transparent pt-24 pb-8 px-6 max-w-7xl mx-auto relative z-20">
+
+      {/* 🚀 ORDEN RESTAURADO: LAS VENTAJAS VUELVEN AQUÍ */}
+      <motion.section
+        className="bg-transparent pt-24 pb-8 px-6 max-w-7xl mx-auto relative z-20"
+        whileInView="visible"
+        initial="hidden"
+        variants={staggerContainerVariants}
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1 */}
-          <div className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+          <motion.div variants={fadeInUpVariants} className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
               <Users className="w-6 h-6 text-[#FF6600]" />
             </div>
@@ -475,10 +470,9 @@ export default function Home() {
             <p className="text-slate-500 font-medium leading-relaxed">
               Las recomendaciones de tu círculo tienen prioridad.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Card 2 */}
-          <div className="flex flex-col items-center text-center bg-violet-50 p-8 rounded-3xl border border-violet-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+          <motion.div variants={fadeInUpVariants} className="flex flex-col items-center text-center bg-violet-50 p-8 rounded-3xl border border-violet-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(124,58,237,0.1)] border border-violet-50">
               <CheckCircle2 className="w-6 h-6 text-violet-600" />
             </div>
@@ -488,10 +482,9 @@ export default function Home() {
             <p className="text-slate-500 font-medium leading-relaxed">
               Sabes quién recomienda cada servicio o profesional.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Card 3 */}
-          <div className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+          <motion.div variants={fadeInUpVariants} className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
               <MessageCircle className="w-6 h-6 text-[#FF6600]" />
             </div>
@@ -501,24 +494,44 @@ export default function Home() {
             <p className="text-slate-500 font-medium leading-relaxed">
               Chatea desde la app y contacta con confianza.
             </p>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 3. CÓMO FUNCIONA (FONDO BLANCO) */}
       <section id="como-funciona" className="bg-white pt-12 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-16 relative flex flex-col items-center">
+        <motion.div
+          className="flex justify-center mb-6"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 1 }}
+        >
+          <ArrowDown className="w-10 h-10 text-[#FF6600] animate-bounce" />
+        </motion.div>
+
+        <motion.div
+          className="text-center mb-16 relative flex flex-col items-center"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
           <div className="relative inline-block mb-6">
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">Así funciona</h2>
           </div>
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
             dconfy recupera la forma natural de encontrar servicios y profesionales, <span className="font-bold text-slate-700">preguntando a la gente que conoces</span>, ahora con la potencia de la tecnología.
           </p>
-        </div>
+        </motion.div>
 
         <div className="flex flex-col gap-20 max-w-4xl mx-auto">
-          {/* Fila 1 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Heart className="w-8 h-8 text-[#FF6600]" />
@@ -529,10 +542,15 @@ export default function Home() {
             <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Fila 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="order-2 md:order-1 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_blob_search_photographer.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
             </div>
@@ -543,10 +561,15 @@ export default function Home() {
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra servicios y profesionales recomendados por tu red.</h3>
               <p className="text-lg text-slate-500 leading-relaxed">No ves opiniones anónimas: ves a quién conoce tu gente.</p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Fila 3 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <MessageCircle className="w-8 h-8 text-[#FF6600]" />
@@ -557,19 +580,29 @@ export default function Home() {
             <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_heart_trust_floral_clean_cream2.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 3.5 POR QUÉ DCONFY ES DIFERENTE */}
       < section className="bg-white py-24 px-6 max-w-7xl mx-auto" >
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
           <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">¿Por qué dconfy es diferente?</h2>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
-          {/* Columna Otras plataformas */}
-          <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto"
+          whileInView="visible"
+          initial="hidden"
+          variants={staggerContainerVariants}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div variants={fadeInUpVariants} className="bg-slate-50 p-10 rounded-3xl border border-slate-200">
             <h3 className="text-2xl font-bold text-slate-400 mb-8 flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-sm">✕</span>
               Otras plataformas
@@ -588,10 +621,9 @@ export default function Home() {
                 <span className="text-lg text-slate-600 font-medium">Demasiadas opciones</span>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Columna dconfy */}
-          <div className="bg-[#FFF9F0] p-10 rounded-3xl border-2 border-[#FF6600] shadow-xl shadow-orange-100/50 relative overflow-hidden">
+          <motion.div variants={fadeInUpVariants} className="bg-[#FFF9F0] p-10 rounded-3xl border-2 border-[#FF6600] shadow-xl shadow-orange-100/50 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-200/40 to-violet-200/40 blur-3xl rounded-full"></div>
             <h3 className="text-2xl font-black text-[#111827] mb-8 flex items-center gap-3 relative z-10">
               <span className="w-8 h-8 rounded-full bg-[#FF6600] flex items-center justify-center text-white">
@@ -613,14 +645,12 @@ export default function Home() {
                 <span className="text-lg text-[#111827] font-bold">Confianza antes de elegir</span>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section >
 
-      {/* 4. DESCARGAR APP (FONDO CREMA) */}
       < section id="descargar" className="bg-[#FFF9F0] py-24 px-6 text-center" >
 
-        {/* Logo App */}
         < div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto mb-8 overflow-hidden" >
           <img
             src="/dconfy_icon.png"
@@ -637,9 +667,7 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
 
-          {/* Botón App Store */}
           <button onClick={() => trackGAEvent('Clic_appStore', 'Descargar')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
-            {/* SVG Oficial de Apple */}
             <svg className="w-8 h-8 ml-1" viewBox="0 0 384 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
             </svg>
@@ -649,9 +677,7 @@ export default function Home() {
             </div>
           </button>
 
-          {/* Botón Google Play */}
           <button onClick={() => trackGAEvent('Clic_googlePlay', 'Descargar')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
-            {/* SVG Oficial de Google Play */}
             <svg className="w-7 h-7 ml-1" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
             </svg>
@@ -667,13 +693,24 @@ export default function Home() {
 
       </section >
 
-      {/* 5. PLANES PARA PROFESIONALES */}
       < section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center" >
-        <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
-        <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige tu plan y convierte las recomendaciones en nuevos clientes.</p>
+        <motion.div
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
+          <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige tu plan y convierte las recomendaciones en nuevos clientes.</p>
+        </motion.div>
 
-        {/* Toggle Mensual/Anual */}
-        <div className="flex items-center justify-center gap-4 mb-16">
+        <motion.div
+          className="flex items-center justify-center gap-4 mb-16"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
           <span className={`text-sm font-bold ${!isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Mensual</span>
           <button
             onClick={() => {
@@ -687,13 +724,16 @@ export default function Home() {
           </button>
           <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
           <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">3 meses gratis</span>
-        </div>
+        </motion.div>
 
-        {/* Tarjetas de Precios */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
-
-          {/* Plan Profesional */}
-          <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left"
+          whileInView="visible"
+          initial="hidden"
+          variants={staggerContainerVariants}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div variants={fadeInUpVariants} className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-2">Plan Profesional</h3>
             <p className="text-slate-500 text-sm mb-6 h-10">Ideal para profesionales, autónomos y pequeños negocios que quieren destacar.</p>
             <div className="mb-2 flex items-baseline gap-1">
@@ -719,10 +759,9 @@ export default function Home() {
             <Link href="#descargar" onClick={() => trackGAEvent('Clic_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all">
               Descargar app
             </Link>
-          </div>
+          </motion.div>
 
-          {/* Plan Empresa (Diseño Prestigio) */}
-          <div className="bg-[#171A21] p-8 rounded-[2rem] border border-slate-800 shadow-2xl relative transform md:-translate-y-4 hover:-translate-y-5 transition-transform flex flex-col text-white">
+          <motion.div variants={fadeInUpVariants} className="bg-[#171A21] p-8 rounded-[2rem] border border-slate-800 shadow-2xl relative transform md:-translate-y-4 hover:-translate-y-5 transition-transform flex flex-col text-white">
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-2">Plan Empresa</h3>
             <p className="text-slate-400 text-sm mb-6 h-10">Para equipos y negocios que buscan máxima visibilidad.</p>
             <div className="mb-2 flex items-baseline gap-1">
@@ -755,15 +794,19 @@ export default function Home() {
             >
               Contactar
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section >
 
-      {/* BLOQUE FINAL (FONDO CREMA PARA COMPARADOR Y FAQ) */}
       < div className="bg-[#FFF9F0] py-24" >
 
-        {/* 6. TABLA COMPARATIVA */}
-        < section className="px-6 max-w-4xl mx-auto mb-24" >
+        <motion.section
+          className="px-6 max-w-4xl mx-auto mb-24"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] text-center mb-10 tracking-tight">Compara los planes</h3>
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden">
             <div className="grid grid-cols-3 p-6 border-b border-slate-100 bg-slate-50/50">
@@ -793,18 +836,31 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </section >
+        </motion.section >
 
       </div >
 
-
       <div className="bg-white py-24">
-        {/* 7. FAQ */}
         <section id="faq" className="px-6 max-w-3xl mx-auto">
-          <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] text-center mb-12 tracking-tight">Preguntas frecuentes</h2>
-          <div className="space-y-4">
+          <motion.h2
+            className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] text-center mb-12 tracking-tight"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            Preguntas frecuentes
+          </motion.h2>
+
+          <motion.div
+            className="space-y-4"
+            whileInView="visible"
+            initial="hidden"
+            variants={staggerContainerVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+              <motion.div key={i} variants={fadeInUpVariants} className="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
@@ -815,17 +871,14 @@ export default function Home() {
                 <div className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openFaq === i ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <p className="text-slate-500 text-sm leading-relaxed">{faq.a}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
-
       </div>
 
-      {/* 8. FOOTER OSCURO */}
       <Footer />
 
-      {/* MODAL DE CONTACTO EMPRESA */}
       {
         isContactModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
