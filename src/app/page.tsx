@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle, ArrowDown } from 'lucide-react';
+// Importaciones restauradas y añadidas Menu y Mail
+import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle, ArrowDown, Bookmark, Menu, Mail } from 'lucide-react';
 import { motion, Variants } from "framer-motion";
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -35,7 +36,7 @@ const placeholderRoles = [
   "Tienda de Ropa", "Boutique", "Comercio Local", "Bodega", "Sumiller"
 ];
 
-// 🚀 TIPADO EXPLÍCITO 'Variants' PARA EVITAR ERRORES DE TYPESCRIPT
+// Tipado explícito Variants para evitar errores de TypeScript
 const fadeInUpVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -62,7 +63,7 @@ export default function Home() {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // 🚀 CORREGIDO EL ERROR DE clearInterval
+  // Corregido el error de clearInterval
   useEffect(() => {
     const timer = setInterval(() => {
       setDesktopCycle(prev => prev + 1);
@@ -262,7 +263,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🚀 DEGRADADO RADIAL RESTAURADO AQUÍ */}
+      {/* Degradado radial restaurado */}
       <section
         className="py-24 px-6 overflow-hidden relative"
         style={{ background: 'radial-gradient(circle at center, #fafafa 10%, #ffffff 90%)' }}
@@ -451,7 +452,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🚀 ORDEN RESTAURADO: LAS VENTAJAS VUELVEN AQUÍ */}
+      {/* Orden restaurado: las ventajas vuelven aquí */}
       <motion.section
         className="bg-transparent pt-24 pb-8 px-6 max-w-7xl mx-auto relative z-20"
         whileInView="visible"
@@ -584,7 +585,190 @@ export default function Home() {
         </div>
       </section>
 
-      < section className="bg-white py-24 px-6 max-w-7xl mx-auto" >
+      {/* Nueva sección: Agenda de confianza (diseño píxel a píxel) */}
+      <section className="bg-[#FFF9F0] py-24 px-6 max-w-7xl mx-auto rounded-[3rem] my-12 relative overflow-hidden shadow-sm">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-violet-200/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-200/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <motion.div
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-orange-100 mx-auto lg:mx-0">
+              <Bookmark className="w-8 h-8 text-[#FF6600]" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight mb-6 text-center lg:text-left">Tu agenda de confianza, siempre a mano</h2>
+            <p className="text-xl font-bold text-slate-700 mb-4 leading-relaxed text-center lg:text-left">
+              Las mejores recomendaciones siempre han existido. El problema es que se olvidan.
+            </p>
+            <p className="text-lg text-slate-500 mb-8 leading-relaxed text-center lg:text-left">
+              En dconfy, cada vez que tú o alguien de tu red recomienda un profesional o servicio, queda guardado automáticamente en tu perfil. Como una agenda inteligente que se construye sola, con solo la gente y los servicios que te interesan.
+            </p>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <span className="text-lg text-slate-700 font-medium">Lo que tú recomiendas, siempre visible en tu perfil</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <span className="text-lg text-slate-700 font-medium">Lo que recomienda tu gente, accesible cuando lo necesites</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <span className="text-lg text-slate-700 font-medium">Sin buscar, sin preguntar de nuevo — está ahí cuando lo necesitas</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          <motion.div
+            className="relative mx-auto w-full max-w-[340px]"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {/* Recreación exacta del teléfono en HTML/Tailwind */}
+            <div className="bg-white rounded-[2.5rem] border-[8px] border-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative overflow-hidden h-[750px] flex flex-col transform hover:-translate-y-2 transition-transform duration-500">
+
+              {/* Notch del móvil eliminado */}
+
+              {/* Top bar (App Header) */}
+              <div className="pt-6 pb-3 px-4 flex justify-between items-center border-b border-slate-50 shrink-0 bg-white relative z-10">
+                <Users className="w-5 h-5 text-slate-800" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-violet-600 to-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">
+                  @mRivero
+                </div>
+                <div className="flex gap-3 text-slate-800">
+                  <Mail className="w-5 h-5" />
+                  <Menu className="w-5 h-5" />
+                </div>
+              </div>
+
+              {/* Profile Info */}
+              <div className="px-4 py-4 flex items-center gap-3 shrink-0 bg-white">
+                <div className="w-14 h-14 rounded-full overflow-hidden border border-slate-100 shrink-0 shadow-sm">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Marta Rivero" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-[17px] leading-tight mb-0.5">Marta Rivero</h3>
+                  <div className="flex gap-2.5 text-[9px] font-black text-slate-400 tracking-wide">
+                    <div><span className="text-slate-900 text-[10px]">11</span> DCONFY</div>
+                    <div><span className="text-slate-900 text-[10px]">9</span> REFERENCIAS</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Grid Layout Scrollable */}
+              <div className="flex-1 overflow-y-auto bg-slate-50 px-3 pt-2 pb-24 hide-scrollbar" style={{ scrollbarWidth: 'none' }}>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {/* Card 1: Clínica Estética */}
+                  <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
+                    <div className="h-[100px] bg-slate-200 relative">
+                      <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Le Bonde" />
+                    </div>
+                    <div className="p-2.5">
+                      <div className="flex justify-between items-start">
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Le Bonde</div>
+                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                      </div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Clínica Estética</div>
+                    </div>
+                  </div>
+
+                  {/* Card 2: Tatuajes */}
+                  <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
+                    <div className="h-[100px] bg-slate-200 relative">
+                      <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Erick Noel" />
+                    </div>
+                    <div className="p-2.5">
+                      <div className="flex justify-between items-start">
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Erick Noel</div>
+                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">147 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                      </div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Tatuajes</div>
+                    </div>
+                  </div>
+
+                  {/* Card 3: Fisioterapia */}
+                  <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
+                    <div className="h-[100px] bg-slate-200 relative">
+                      <img src="/fisio.jpg" className="w-full h-full object-cover" alt="Elena Gómez" />
+                    </div>
+                    <div className="p-2.5">
+                      <div className="flex justify-between items-start">
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Elena Gómez</div>
+                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">31 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                      </div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Fisioterapia</div>
+                    </div>
+                  </div>
+
+                  {/* Card 4: Interiorismo */}
+                  <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
+                    <div className="h-[100px] bg-slate-200 relative">
+                      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="AKA Studio" />
+                    </div>
+                    <div className="p-2.5">
+                      <div className="flex justify-between items-start">
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">AKA Studio</div>
+                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">121 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                      </div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Interiorismo</div>
+                    </div>
+                  </div>
+
+                  {/* Card 5: Moda */}
+                  <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
+                    <div className="h-[100px] bg-slate-200 relative">
+                      <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Nosso Boutique" />
+                    </div>
+                    <div className="p-2.5">
+                      <div className="flex justify-between items-start">
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Nosso Boutique</div>
+                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                      </div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Moda Mujer</div>
+                    </div>
+                  </div>
+
+                  {/* Card 6: Inmobiliaria */}
+                  <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
+                    <div className="h-[100px] bg-slate-200 relative">
+                      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Grupo SIL" />
+                    </div>
+                    <div className="p-2.5">
+                      <div className="flex justify-between items-start">
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Grupo SIL</div>
+                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                      </div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Inmobiliaria</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Degradado para suavizar el final del scroll */}
+                <div className="absolute bottom-[60px] left-0 right-0 h-12 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-10"></div>
+              </div>
+
+              {/* Bottom Navigation Bar */}
+              <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-100 flex justify-around items-center pt-3 pb-6 px-2 z-20">
+                <Search className="w-6 h-6 text-slate-300" />
+                <Users className="w-6 h-6 text-slate-300" />
+                <MessageCircle className="w-6 h-6 text-slate-300" />
+                <div className="w-7 h-7 rounded-full overflow-hidden ring-2 ring-violet-600 ring-offset-2">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" className="w-full h-full object-cover" alt="Perfil" />
+                </div>
+              </div>
+
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-white py-24 px-6 max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"
           whileInView="visible"
@@ -614,11 +798,19 @@ export default function Home() {
               </li>
               <li className="flex items-start gap-4">
                 <Minus className="w-6 h-6 text-slate-400 shrink-0 mt-0.5" />
+                <span className="text-lg text-slate-600 font-medium">Reseñas anónimas y sin contexto</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Minus className="w-6 h-6 text-slate-400 shrink-0 mt-0.5" />
                 <span className="text-lg text-slate-600 font-medium">Rankings impersonales</span>
               </li>
               <li className="flex items-start gap-4">
                 <Minus className="w-6 h-6 text-slate-400 shrink-0 mt-0.5" />
-                <span className="text-lg text-slate-600 font-medium">Demasiadas opciones</span>
+                <span className="text-lg text-slate-600 font-medium">Las recomendaciones se pierden entre mensajes</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Minus className="w-6 h-6 text-slate-400 shrink-0 mt-0.5" />
+                <span className="text-lg text-slate-600 font-medium">Contacto a través de intermediarios</span>
               </li>
             </ul>
           </motion.div>
@@ -638,26 +830,34 @@ export default function Home() {
               </li>
               <li className="flex items-start gap-4">
                 <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
-                <span className="text-lg text-[#111827] font-bold">Servicios y Profesionales</span>
+                <span className="text-lg text-[#111827] font-bold">Sabes exactamente quién recomienda</span>
               </li>
               <li className="flex items-start gap-4">
                 <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
-                <span className="text-lg text-[#111827] font-bold">Confianza antes de elegir</span>
+                <span className="text-lg text-[#111827] font-bold">Tu red primero, siempre</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <span className="text-lg text-[#111827] font-bold">Todo queda guardado automáticamente en tu perfil</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <span className="text-lg text-[#111827] font-bold">Contacto directo desde la app</span>
               </li>
             </ul>
           </motion.div>
         </motion.div>
-      </section >
+      </section>
 
-      < section id="descargar" className="bg-[#FFF9F0] py-24 px-6 text-center" >
+      <section id="descargar" className="bg-[#FFF9F0] py-24 px-6 text-center">
 
-        < div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto mb-8 overflow-hidden" >
+        <div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto mb-8 overflow-hidden">
           <img
             src="/dconfy_icon.png"
             alt="Logo dconfy"
             className="w-full h-full object-cover"
           />
-        </div >
+        </div>
 
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
@@ -691,9 +891,9 @@ export default function Home() {
 
         <p className="text-[15px] text-[#8C98A9] mt-6 font-medium">Próximamente disponible</p>
 
-      </section >
+      </section>
 
-      < section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center" >
+      <section id="planes" className="bg-white py-24 px-6 max-w-7xl mx-auto text-center">
         <motion.div
           whileInView="visible"
           initial="hidden"
@@ -796,9 +996,9 @@ export default function Home() {
             </button>
           </motion.div>
         </motion.div>
-      </section >
+      </section>
 
-      < div className="bg-[#FFF9F0] py-24" >
+      <div className="bg-[#FFF9F0] py-24">
 
         <motion.section
           className="px-6 max-w-4xl mx-auto mb-24"
@@ -836,9 +1036,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </motion.section >
+        </motion.section>
 
-      </div >
+      </div>
 
       <div className="bg-white py-24">
         <section id="faq" className="px-6 max-w-3xl mx-auto">
