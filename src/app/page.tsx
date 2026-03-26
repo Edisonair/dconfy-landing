@@ -602,7 +602,7 @@ export default function Home() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight mb-6 text-center lg:text-left">Tu agenda de confianza, siempre a mano</h2>
             <p className="text-xl font-bold text-slate-700 mb-4 leading-relaxed text-center lg:text-left">
-              Las mejores recomendaciones siempre han existido. El problema es que se olvidan.
+              Las mejores recomendaciones siempre han existido.
             </p>
             <p className="text-lg text-slate-500 mb-8 leading-relaxed text-center lg:text-left">
               En dconfy quedan guardadas automáticamente, para ti y los tuyos, siempre a mano.
