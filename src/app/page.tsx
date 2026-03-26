@@ -605,7 +605,7 @@ export default function Home() {
               Las mejores recomendaciones siempre han existido. El problema es que se olvidan.
             </p>
             <p className="text-lg text-slate-500 mb-8 leading-relaxed text-center lg:text-left">
-              En dconfy, cada vez que tú o alguien de tu red recomienda un profesional o servicio, queda guardado automáticamente en tu perfil. Como una agenda inteligente que se construye sola, con solo la gente y los servicios que te interesan.
+              En dconfy quedan guardadas automáticamente, para ti y los tuyos, siempre a mano.
             </p>
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
