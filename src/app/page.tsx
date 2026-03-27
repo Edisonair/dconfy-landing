@@ -131,7 +131,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
           <div className="max-w-xl lg:max-w-lg">
             <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-6">
-              El boca a boca <span className="text-[#FF6600]">de</span> <span className="bg-gradient-to-r from-[#FF6600] to-violet-600 text-transparent bg-clip-text">confianza,</span> ahora en una app
+              El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D]">de confianza,</span> ahora en una app
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 font-normal mb-8 leading-relaxed tracking-tight">
               Descubre profesionales y servicios recomendados por tu gente.
@@ -600,9 +600,9 @@ export default function Home() {
             <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-orange-100 mx-auto lg:mx-0">
               <Bookmark className="w-8 h-8 text-[#FF6600]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight mb-6 text-center lg:text-left">Tu agenda de confianza, siempre a mano</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D] [-webkit-text-stroke:0]">de confianza</span>, siempre a mano</h2>
             <p className="text-xl font-bold text-slate-700 mb-4 leading-relaxed text-center lg:text-left">
-              Las mejores recomendaciones siempre han existido.
+              Las recomendaciones siempre han existido.
             </p>
             <p className="text-lg text-slate-500 mb-8 leading-relaxed text-center lg:text-left">
               En dconfy quedan guardadas automáticamente, para ti y los tuyos, siempre a mano.
@@ -862,8 +862,15 @@ export default function Home() {
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
         <p className="text-slate-500 font-medium mb-12 max-w-xl mx-auto">
-          Disponible en iOS y Android. Empieza a encontrar profesionales recomendados por tu red hoy mismo.
+          Disponible en iOS y Android. Empieza a encontrar profesionales y servicios recomendados por tu red.
         </p>
+
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50/80 border border-orange-200/50 text-[#FF6600] text-[13px] font-bold tracking-wide uppercase shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#FF6600] animate-pulse"></span>
+            Próximamente disponible
+          </div>
+        </div>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
 
@@ -888,8 +895,6 @@ export default function Home() {
           </button>
 
         </div>
-
-        <p className="text-[15px] text-[#8C98A9] mt-6 font-medium">Próximamente disponible</p>
 
       </section>
 
