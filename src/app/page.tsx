@@ -518,10 +518,10 @@ export default function Home() {
           viewport={{ once: true, amount: 0.5 }}
         >
           <div className="relative inline-block mb-6">
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">Así funciona</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">Cómo funciona dconfy</h2>
           </div>
-          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-            dconfy recupera la forma natural de encontrar servicios y profesionales, <span className="font-bold text-slate-700">preguntando a la gente que conoces</span>, ahora con la potencia de la tecnología.
+          <p className="text-xl md:text-2xl text-[#111827] max-w-2xl mx-auto font-semibold leading-relaxed">
+            El boca a boca en la era digital hace más fácil compartir y descubrir recomendaciones de confianza.
           </p>
         </motion.div>
 

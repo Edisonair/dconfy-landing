@@ -59,7 +59,7 @@ export default async function NovedadesPage() {
                             novedades.map((post) => (
                                 <Link key={post.id} href={`/blog/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 flex flex-col">
                                     <div className="aspect-[16/9] w-full overflow-hidden relative bg-slate-100">
-                                        <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-violet-700 shadow-sm">
+                                        <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-orange-800 shadow-sm">
                                             {post.category}
                                         </div>
                                         {post.image && (
