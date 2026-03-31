@@ -862,19 +862,19 @@ export default function Home() {
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
         <p className="text-slate-500 font-medium mb-12 max-w-xl mx-auto">
-          Disponible en iOS y Android. Empieza a encontrar profesionales y servicios recomendados por tu red.
+          Empieza a encontrar profesionales y servicios recomendados por tu red.
         </p>
 
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50/80 border border-orange-200/50 text-[#FF6600] text-[13px] font-bold tracking-wide uppercase shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#FF6600] animate-pulse"></span>
-            Próximamente disponible
+            Disponible próximamente
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
 
-          <button onClick={() => trackGAEvent('Clic_appStore', 'Descargar')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
+          <button onClick={() => trackGAEvent('Clic_appStore', 'Descargar')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-full flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
             <svg className="w-8 h-8 ml-1" viewBox="0 0 384 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
             </svg>
@@ -884,7 +884,7 @@ export default function Home() {
             </div>
           </button>
 
-          <button onClick={() => trackGAEvent('Clic_googlePlay', 'Descargar')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-[14px] flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
+          <button onClick={() => trackGAEvent('Clic_googlePlay', 'Descargar')} className="bg-[#171A21] hover:bg-[#222630] text-white px-5 py-2.5 rounded-full flex items-center justify-start gap-3.5 transition-colors w-[200px] shadow-sm">
             <svg className="w-7 h-7 ml-1" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
             </svg>
@@ -961,7 +961,7 @@ export default function Home() {
               <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '2.49€' : '2.99€'}</span>
               <span className="text-slate-500 font-medium">/mes</span>
             </div>
-            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 29.99€ al año' : 'Ahorra 2 meses con el plan anual'}</p>
+            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '29,99€ al año (pago anual). Ahorra 2 meses. ' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
@@ -989,7 +989,7 @@ export default function Home() {
               <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '10.83€' : '12.99€'}</span>
               <span className="text-slate-400 font-medium">/mes</span>
             </div>
-            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 129.99€ al año' : 'Ahorra 2 meses con el plan anual'}</p>
+            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '129.99€ al año (pago anual). Ahorra 2 meses.' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
@@ -1033,7 +1033,7 @@ export default function Home() {
             <div className="grid grid-cols-3 p-6 border-b border-slate-100 bg-slate-50/50">
               <div></div>
               <div className="text-center font-bold text-[#111827]">Profesional</div>
-              <div className="text-center font-bold text-[#FF6600]">Empresa</div>
+              <div className="text-center font-bold text-[#111827]">Empresa</div>
             </div>
             {[
               { name: 'Perfil profesional', p: true, e: true },
@@ -1049,10 +1049,10 @@ export default function Home() {
               <div key={i} className="grid grid-cols-3 p-6 border-b border-slate-50 items-center hover:bg-slate-50 transition-colors">
                 <div className="text-sm font-medium text-slate-700">{row.name}</div>
                 <div className="flex justify-center">
-                  {row.p ? <Check className="w-5 h-5 text-[#FF6600]" /> : <Minus className="w-5 h-5 text-slate-300" />}
+                  {row.p ? <div className="w-5 h-5 bg-[#111827] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 text-white" strokeWidth={3} /></div> : <Minus className="w-5 h-5 text-slate-300" />}
                 </div>
                 <div className="flex justify-center">
-                  {row.e ? <Check className="w-5 h-5 text-[#FF6600]" /> : <Minus className="w-5 h-5 text-slate-300" />}
+                  {row.e ? <div className="w-5 h-5 bg-[#111827] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 text-white" strokeWidth={3} /></div> : <Minus className="w-5 h-5 text-slate-300" />}
                 </div>
               </div>
             ))}
