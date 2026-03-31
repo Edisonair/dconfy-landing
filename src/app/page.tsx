@@ -99,7 +99,7 @@ export default function Home() {
   const centerIdx = (desktopCycle * 3 + 1) % heroProfessionals.length;
   const rightIdx = (desktopCycle * 3 + 2) % heroProfessionals.length;
 
-  const [isAnnual, setIsAnnual] = useState(false);
+  const [isAnnual, setIsAnnual] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -276,7 +276,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así funcionan las recomendaciones en dconfy</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así se ven las recomendaciones en dconfy</h2>
             <p className="mt-4 text-xl text-slate-500 font-medium">Cada recomendación viene de alguien de tu red.</p>
           </motion.div>
 
@@ -916,7 +916,10 @@ export default function Home() {
           variants={fadeInUpVariants}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <span className={`text-sm font-bold ${!isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Mensual</span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full">Ahora 3 meses gratis</span>
+            <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
+          </div>
           <button
             onClick={() => {
               setIsAnnual(!isAnnual);
@@ -925,10 +928,9 @@ export default function Home() {
 
             className="w-14 h-8 bg-[#FF6600] rounded-full p-1 transition-colors relative"
           >
-            <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
+            <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${!isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
-          <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
-          <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full ml-2">3 meses gratis</span>
+          <span className={`text-sm font-bold ${!isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Mensual</span>
         </motion.div>
 
         <motion.div
@@ -942,10 +944,10 @@ export default function Home() {
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-2">Plan Profesional</h3>
             <p className="text-slate-500 text-sm mb-6 h-10">Ideal para profesionales, autónomos y pequeños negocios que quieren destacar.</p>
             <div className="mb-2 flex items-baseline gap-1">
-              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '29.99€' : '2.99€'}</span>
-              <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
+              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '2.49€' : '2.99€'}</span>
+              <span className="text-slate-500 font-medium">/mes</span>
             </div>
-            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 2.49€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
+            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 29.99€ al año' : 'Ahorra 2 meses con el plan anual'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
@@ -970,10 +972,10 @@ export default function Home() {
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-2">Plan Empresa</h3>
             <p className="text-slate-400 text-sm mb-6 h-10">Para equipos y negocios que buscan máxima visibilidad.</p>
             <div className="mb-2 flex items-baseline gap-1">
-              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
-              <span className="text-slate-400 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
+              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '10.83€' : '12.99€'}</span>
+              <span className="text-slate-400 font-medium">/mes</span>
             </div>
-            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 10.83€ al mes' : 'Ahorra 2 meses con el plan anual'}</p>
+            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? 'Equivale a 129.99€ al año' : 'Ahorra 2 meses con el plan anual'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
