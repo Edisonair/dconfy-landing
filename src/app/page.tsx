@@ -33,7 +33,7 @@ const placeholderRoles = [
   "Electricista", "Mecánico", "Salón de Peluquería", "Entrenador Personal",
   "Fotógrafo", "Veterinario", "Clínica Estética", "Jardinero",
   "Experto en Redes", "Asesor Fiscal", "Masajista", "Agente de Seguros",
-  "Tienda de Ropa", "Boutique", "Comercio Local", "Bodega", "Sumiller"
+  "Tienda de Ropa", "Boutique", "Bodega"
 ];
 
 // Tipado explícito Variants para evitar errores de TypeScript
