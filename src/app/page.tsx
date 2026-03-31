@@ -555,7 +555,7 @@ export default function Home() {
             <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-orange-100 mx-auto lg:mx-0">
               <Bookmark className="w-8 h-8 text-[#FF6600]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D] [-webkit-text-stroke:0]">de confianza</span>,<br /> siempre a mano</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D] [-webkit-text-stroke:1px]">de confianza</span>,<br /> siempre a mano</h2>
             <p className="text-xl font-semibold text-slate-700 mb-16
              leading-relaxed text-center lg:text-left">
               En dconfy las recomendaciones quedan guardadas automáticamente, para ti y los tuyos.
