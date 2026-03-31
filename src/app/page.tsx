@@ -916,21 +916,35 @@ export default function Home() {
           variants={fadeInUpVariants}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full">Ahora 3 meses gratis</span>
-            <span className={`text-sm font-bold ${isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Anual</span>
-          </div>
-          <button
-            onClick={() => {
-              setIsAnnual(!isAnnual);
-              trackGAEvent('Clic_Planes_toggle', 'Planes');
-            }}
+          <span className="text-xs font-bold text-[#F97316] bg-[#FF6600]/10 px-3 py-1 rounded-full max-sm:mb-2">3 meses gratis por lanzamiento</span>
 
-            className="w-14 h-8 bg-[#FF6600] rounded-full p-1 transition-colors relative"
-          >
-            <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${!isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
-          </button>
-          <span className={`text-sm font-bold ${!isAnnual ? 'text-[#111827]' : 'text-slate-400'}`}>Mensual</span>
+          <div className="relative flex items-center bg-[#F4F5F8] p-1.5 rounded-full w-[260px] h-[52px]">
+            <div
+              className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 left-1.5 ${!isAnnual ? 'translate-x-full' : 'translate-x-0'}`}
+            ></div>
+            <button
+              onClick={() => {
+                if (!isAnnual) {
+                  setIsAnnual(true);
+                  trackGAEvent('Clic_Planes_toggle', 'Planes');
+                }
+              }}
+              className={`relative z-10 w-1/2 h-full flex items-center justify-center text-[15px] font-bold transition-colors select-none ${isAnnual ? 'text-[#111827]' : 'text-slate-500 hover:text-slate-700'}`}
+            >
+              Anual
+            </button>
+            <button
+              onClick={() => {
+                if (isAnnual) {
+                  setIsAnnual(false);
+                  trackGAEvent('Clic_Planes_toggle', 'Planes');
+                }
+              }}
+              className={`relative z-10 w-1/2 h-full flex items-center justify-center text-[15px] font-bold transition-colors select-none ${!isAnnual ? 'text-[#111827]' : 'text-slate-500 hover:text-slate-700'}`}
+            >
+              Mensual
+            </button>
+          </div>
         </motion.div>
 
         <motion.div
