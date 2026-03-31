@@ -99,7 +99,7 @@ export default function Home() {
   const centerIdx = (desktopCycle * 3 + 1) % heroProfessionals.length;
   const rightIdx = (desktopCycle * 3 + 2) % heroProfessionals.length;
 
-  const [isAnnual, setIsAnnual] = useState(true);
+  const [isAnnual, setIsAnnual] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -874,19 +874,8 @@ export default function Home() {
 
           <div className="relative flex items-center bg-[#F4F5F8] p-1.5 rounded-full w-[260px] h-[52px]">
             <div
-              className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 left-1.5 ${!isAnnual ? 'translate-x-full' : 'translate-x-0'}`}
+              className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 left-1.5 ${isAnnual ? 'translate-x-full' : 'translate-x-0'}`}
             ></div>
-            <button
-              onClick={() => {
-                if (!isAnnual) {
-                  setIsAnnual(true);
-                  trackGAEvent('Clic_Planes_toggle', 'Planes');
-                }
-              }}
-              className={`relative z-10 w-1/2 h-full flex items-center justify-center text-[15px] font-bold transition-colors select-none ${isAnnual ? 'text-[#111827]' : 'text-slate-500 hover:text-slate-700'}`}
-            >
-              Anual
-            </button>
             <button
               onClick={() => {
                 if (isAnnual) {
@@ -897,6 +886,17 @@ export default function Home() {
               className={`relative z-10 w-1/2 h-full flex items-center justify-center text-[15px] font-bold transition-colors select-none ${!isAnnual ? 'text-[#111827]' : 'text-slate-500 hover:text-slate-700'}`}
             >
               Mensual
+            </button>
+            <button
+              onClick={() => {
+                if (!isAnnual) {
+                  setIsAnnual(true);
+                  trackGAEvent('Clic_Planes_toggle', 'Planes');
+                }
+              }}
+              className={`relative z-10 w-1/2 h-full flex items-center justify-center text-[15px] font-bold transition-colors select-none ${isAnnual ? 'text-[#111827]' : 'text-slate-500 hover:text-slate-700'}`}
+            >
+              Anual
             </button>
           </div>
         </motion.div>
@@ -912,10 +912,10 @@ export default function Home() {
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-2">Plan Profesional</h3>
             <p className="text-slate-500 text-sm mb-6 h-10">Ideal para profesionales, autónomos y pequeños negocios que quieren destacar.</p>
             <div className="mb-2 flex items-baseline gap-1">
-              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '2.49€' : '2.99€'}</span>
-              <span className="text-slate-500 font-medium">/mes</span>
+              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '29,99€' : '2.99€'}</span>
+              <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
             </div>
-            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '29,99€ al año (pago anual). Ahorra 2 meses. ' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
+            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '2,49€ al mes (ahorras 2 meses)' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
@@ -940,10 +940,10 @@ export default function Home() {
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-2">Plan Empresa</h3>
             <p className="text-slate-400 text-sm mb-6 h-10">Para equipos y negocios que buscan máxima visibilidad.</p>
             <div className="mb-2 flex items-baseline gap-1">
-              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '10.83€' : '12.99€'}</span>
-              <span className="text-slate-400 font-medium">/mes</span>
+              <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
+              <span className="text-slate-400 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
             </div>
-            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '129.99€ al año (pago anual). Ahorra 2 meses.' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
+            <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '10,83 € al mes (ahorras 2 meses)' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
 
             <ul className="space-y-4 mb-8 flex-1">
               {[
