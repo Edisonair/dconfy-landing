@@ -127,7 +127,7 @@ export default function Home() {
 
       <Header />
 
-      <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 rounded-b-[3rem] sm:rounded-b-[5rem] overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.03)] z-10">
+      <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
           <div className="max-w-xl lg:max-w-lg">
             <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-6">
@@ -266,7 +266,7 @@ export default function Home() {
       {/* Degradado radial restaurado */}
       <section
         className="py-24 px-6 overflow-hidden relative"
-        style={{ background: 'radial-gradient(circle at center, #fafafa 10%, #ffffff 90%)' }}
+
       >
         <div className="max-w-4xl mx-auto z-10 relative">
           <motion.div
@@ -276,7 +276,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así se ven las recomendaciones en dconfy</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así son las recomendaciones en dconfy</h2>
             <p className="mt-4 text-xl text-slate-500 font-medium">Cada recomendación viene de alguien de tu red.</p>
           </motion.div>
 
@@ -452,52 +452,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Orden restaurado: las ventajas vuelven aquí */}
-      <motion.section
-        className="bg-transparent pt-24 pb-8 px-6 max-w-7xl mx-auto relative z-20"
-        whileInView="visible"
-        initial="hidden"
-        variants={staggerContainerVariants}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <motion.div variants={fadeInUpVariants} className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
-              <Users className="w-6 h-6 text-[#FF6600]" />
-            </div>
-            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
-              Tu red primero
-            </h3>
-            <p className="text-slate-500 font-medium leading-relaxed">
-              Las recomendaciones de tu círculo tienen prioridad.
-            </p>
-          </motion.div>
 
-          <motion.div variants={fadeInUpVariants} className="flex flex-col items-center text-center bg-violet-50 p-8 rounded-3xl border border-violet-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(124,58,237,0.1)] border border-violet-50">
-              <CheckCircle2 className="w-6 h-6 text-violet-600" />
-            </div>
-            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
-              Confianza visible
-            </h3>
-            <p className="text-slate-500 font-medium leading-relaxed">
-              Sabes quién recomienda cada servicio o profesional.
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeInUpVariants} className="flex flex-col items-center text-center bg-[#FFF9F0] p-8 rounded-3xl border border-orange-100 shadow-sm hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-[0_4px_10px_rgba(255,102,0,0.1)] border border-orange-50">
-              <MessageCircle className="w-6 h-6 text-[#FF6600]" />
-            </div>
-            <h3 className="text-xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-3">
-              Habla directamente
-            </h3>
-            <p className="text-slate-500 font-medium leading-relaxed">
-              Chatea desde la app y contacta con confianza.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
 
       <section id="como-funciona" className="bg-white pt-12 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
         <motion.div
@@ -538,7 +493,7 @@ export default function Home() {
                 <Heart className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda en quien de verdad confías</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un servicio de confianza.</p>
+              <p className="text-lg text-slate-700 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un servicio de confianza.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
@@ -559,8 +514,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra servicios y profesionales recomendados por tu red.</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">No ves opiniones anónimas: ves a quién conoce tu gente.</p>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra servicios y profesionales recomendados por tu red</h3>
+              <p className="text-lg text-slate-700 leading-relaxed">No ves opiniones anónimas: ves a quién conoce tu gente.</p>
             </div>
           </motion.div>
 
@@ -576,7 +531,7 @@ export default function Home() {
                 <MessageCircle className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Contacta sin intermediarios</h3>
-              <p className="text-lg text-slate-500 leading-relaxed">Habla directamente con el profesional desde la app.</p>
+              <p className="text-lg text-slate-700 leading-relaxed">Habla directamente con el profesional desde la app.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
               <img src="/comic_heart_trust_floral_clean_cream2.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
@@ -600,13 +555,12 @@ export default function Home() {
             <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-orange-100 mx-auto lg:mx-0">
               <Bookmark className="w-8 h-8 text-[#FF6600]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D] [-webkit-text-stroke:0]">de confianza</span>, siempre a mano</h2>
-            <p className="text-xl font-bold text-slate-700 mb-4 leading-relaxed text-center lg:text-left">
-              Las recomendaciones siempre han existido.
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D] [-webkit-text-stroke:0]">de confianza</span>,<br /> siempre a mano</h2>
+            <p className="text-xl font-semibold text-slate-700 mb-16
+             leading-relaxed text-center lg:text-left">
+              En dconfy las recomendaciones quedan guardadas automáticamente, para ti y los tuyos.
             </p>
-            <p className="text-lg text-slate-500 mb-8 leading-relaxed text-center lg:text-left">
-              En dconfy quedan guardadas automáticamente, para ti y los tuyos, siempre a mano.
-            </p>
+
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
                 <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />

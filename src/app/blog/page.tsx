@@ -59,7 +59,7 @@ export default async function NovedadesPage() {
                             novedades.map((post) => (
                                 <Link key={post.id} href={`/blog/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 flex flex-col">
                                     <div className="aspect-[16/9] w-full overflow-hidden relative bg-slate-100">
-                                        <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-orange-800 shadow-sm">
+                                        <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-[#FF6600] shadow-sm">
                                             {post.category}
                                         </div>
                                         {post.image && (
@@ -75,13 +75,13 @@ export default async function NovedadesPage() {
                                             <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {new Date(post.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                                             <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {post.read_time}</span>
                                         </div>
-                                        <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-violet-600 transition-colors leading-tight">
+                                        <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#FF6600] transition-colors leading-tight">
                                             {post.title}
                                         </h2>
                                         <p className="text-slate-500 mb-6 flex-1 leading-relaxed">
                                             {post.excerpt}
                                         </p>
-                                        <div className="flex items-center text-[#FF6600] font-bold gap-2 group-hover:gap-3 transition-all">
+                                        <div className="flex items-center text-violet-600 font-bold gap-2 group-hover:gap-3 transition-all">
                                             Leer artículo <ArrowRight className="w-5 h-5" />
                                         </div>
                                     </div>
