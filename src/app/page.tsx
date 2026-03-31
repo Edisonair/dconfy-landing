@@ -530,7 +530,7 @@ export default function Home() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <MessageCircle className="w-8 h-8 text-[#FF6600]" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Contacta sin intermediarios</h3>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Contacta con más confianza</h3>
               <p className="text-lg text-slate-700 leading-relaxed">Habla directamente con el profesional desde la app.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
@@ -541,7 +541,7 @@ export default function Home() {
       </section>
 
       {/* Nueva sección: Agenda de confianza (diseño píxel a píxel) */}
-      <section className="bg-[#FFF9F0] py-24 px-6 max-w-7xl mx-auto rounded-[3rem] my-12 relative overflow-hidden shadow-sm">
+      <section className="bg-[#FFF9F0] py-24 px-6 max-w-7xl mx-auto rounded-[3rem] my-12 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-violet-200/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-200/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
