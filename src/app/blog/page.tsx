@@ -37,7 +37,7 @@ export default async function NovedadesPage() {
             </header>
 
             {/* 🚀 NUEVO FONDO COLOR #faf3e5 Y MÁS ESPACIO ARRIBA (pt-32) */}
-            <div className="min-h-screen bg-[#faf3e5] pt-32 pb-20">
+            <div className="min-h-screen bg-[#f5f5f7] pt-32 pb-20">
                 <div className="max-w-5xl mx-auto px-6">
 
                     <div className="text-center mb-16">
@@ -57,7 +57,7 @@ export default async function NovedadesPage() {
                             </div>
                         ) : (
                             novedades.map((post) => (
-                                <Link key={post.id} href={`/blog/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 flex flex-col">
+                                <Link key={post.id} href={`/blog/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
                                     <div className="aspect-[16/9] w-full overflow-hidden relative bg-slate-100">
                                         <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-[#FF6600] shadow-sm">
                                             {post.category}

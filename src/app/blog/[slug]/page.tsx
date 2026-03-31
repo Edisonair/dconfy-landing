@@ -39,7 +39,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </header>
 
             {/* 🚀 NUEVO FONDO COLOR #faf3e5 Y MÁS ESPACIO ARRIBA */}
-            <div className="min-h-screen bg-[#faf3e5] pt-32 pb-40">
+            <div className="min-h-screen bg-[#f5f5f7] pt-32 pb-40">
                 <div className="max-w-3xl mx-auto px-6">
 
                     <Link href="/blog" className="inline-flex items-center gap-2 text-[#111827] hover:text-violet-600 font-semibold mb-8 transition-colors">
