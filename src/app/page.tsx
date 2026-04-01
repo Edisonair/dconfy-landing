@@ -496,7 +496,7 @@ export default function Home() {
               <p className="text-lg text-slate-700 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un servicio de confianza.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
-              <img src="/comic_pebble_recommend_megaphone_final.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
+              <img src="/recomendaciones.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
             </div>
           </motion.div>
 
@@ -508,7 +508,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <div className="order-2 md:order-1 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
-              <img src="/comic_blob_search_photographer.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
+              <img src="/profesionales-servicios.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
             </div>
             <div className="order-1 md:order-2 max-w-sm mx-auto text-center md:text-left">
               <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
@@ -534,7 +534,7 @@ export default function Home() {
               <p className="text-lg text-slate-700 leading-relaxed">Habla directamente con el profesional desde la app.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
-              <img src="/comic_heart_trust_floral_clean_cream2.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
+              <img src="/habla-confianza.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
             </div>
           </motion.div>
         </div>
