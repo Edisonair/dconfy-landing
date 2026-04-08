@@ -65,6 +65,7 @@ export default function AdminDashboard() {
 
     const [invitations, setInvitations] = useState<any[]>([]);
     const [newEmail, setNewEmail] = useState('');
+    const [newName, setNewName] = useState('');
     const [isInviting, setIsInviting] = useState(false);
 
     const [commTab, setCommTab] = useState<'banners' | 'emails'>('banners');
@@ -226,12 +227,12 @@ export default function AdminDashboard() {
 
     const handleInvite = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!newEmail) return;
+        if (!newEmail || !newName) return;
         setIsInviting(true);
         try {
-            const { error } = await supabase.from('vip_invitations').insert([{ email: newEmail.toLowerCase() }]);
+            const { error } = await supabase.from('vip_invitations').insert([{ email: newEmail.toLowerCase(), name: newName }]);
             if (error) throw error;
-            setNewEmail(''); await loadInvitations();
+            setNewEmail(''); setNewName(''); await loadInvitations();
         } catch (error: any) { alert('Error al invitar.'); } finally { setIsInviting(false); }
     };
 
@@ -483,6 +484,8 @@ export default function AdminDashboard() {
                         handleInvite={handleInvite}
                         newEmail={newEmail}
                         setNewEmail={setNewEmail}
+                        newName={newName}
+                        setNewName={setNewName}
                         isInviting={isInviting}
                         invitations={invitations}
                         handleDeleteInvite={handleDeleteInvite}
