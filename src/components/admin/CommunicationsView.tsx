@@ -75,7 +75,26 @@ export function CommunicationsView({
                                         <input type="radio" name="email_aud" value="top" checked={emailDraft.audience === 'top'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'top' })} className="w-4 h-4 accent-blue-500" />
                                         <span className="text-sm font-bold text-white">Top Valorados (4+⭐)</span>
                                     </label>
+                                    <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${emailDraft.audience === 'vip' ? 'border-blue-500 bg-blue-500/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                        <input type="radio" name="email_aud" value="vip" checked={emailDraft.audience === 'vip'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'vip' })} className="w-4 h-4 accent-blue-500" />
+                                        <span className="text-sm font-bold text-white">Lista VIP (Acesso anticipado)</span>
+                                    </label>
+                                    <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${emailDraft.audience === 'custom' ? 'border-blue-500 bg-blue-500/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                        <input type="radio" name="email_aud" value="custom" checked={emailDraft.audience === 'custom'} onChange={() => setEmailDraft({ ...emailDraft, audience: 'custom' })} className="w-4 h-4 accent-blue-500" />
+                                        <span className="text-sm font-bold text-white">Lista de emails (Personalizada)</span>
+                                    </label>
                                 </div>
+                                {emailDraft.audience === 'custom' && (
+                                    <div className="mt-3 animate-in slide-in-from-top-2 duration-300">
+                                        <textarea
+                                            value={emailDraft.custom_emails || ''}
+                                            onChange={e => setEmailDraft({ ...emailDraft, custom_emails: e.target.value })}
+                                            placeholder="ejemplo1@email.com, ejemplo2@email.com..."
+                                            className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 outline-none text-sm h-24 resize-none"
+                                        />
+                                        <p className="text-xs text-slate-500 mt-1">Separa los correos con comas.</p>
+                                    </div>
+                                )}
                             </div>
                             <button type="submit" disabled={isSendingEmail} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold transition-all disabled:opacity-50 flex justify-center items-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95">
                                 {isSendingEmail ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <><Send className="w-5 h-5" /> Enviar Masivo</>}
@@ -100,7 +119,7 @@ export function CommunicationsView({
                                         <p className="text-slate-400 text-sm line-clamp-2 mb-4 leading-relaxed">{email.message}</p>
                                         <div className="flex flex-wrap items-center gap-3 border-t border-slate-800 pt-3">
                                             <span className="text-[10px] uppercase font-black tracking-wider px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-md border border-blue-500/20">
-                                                Aud: {email.audience === 'all' ? 'Todos' : email.audience === 'pros' ? 'Solo Profesionales' : 'Top Profesionales'}
+                                                Aud: {email.audience === 'all' ? 'Todos' : email.audience === 'pros' ? 'Solo Profesionales' : email.audience === 'vip' ? 'Lista VIP' : email.audience === 'custom' ? 'Lista Personalizada' : 'Top Profesionales'}
                                             </span>
                                             <span className="text-[10px] uppercase font-black tracking-wider px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20 flex items-center gap-1.5">
                                                 <CheckCircle2 className="w-3.5 h-3.5" /> Entregado a {email.sent_count}
@@ -196,13 +215,34 @@ export function CommunicationsView({
                                     <input type="radio" name="banner_aud" value="sector" checked={newBanner.audience === 'sector'} onChange={() => setNewBanner({ ...newBanner, audience: 'sector' })} className="w-4 h-4 accent-[#FF6600]" />
                                     <span className="text-sm font-bold text-white">Por Sector</span>
                                 </label>
+                                <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${newBanner.audience === 'vip' ? 'border-[#FF6600] bg-[#FF6600]/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                    <input type="radio" name="banner_aud" value="vip" checked={newBanner.audience === 'vip'} onChange={() => setNewBanner({ ...newBanner, audience: 'vip' })} className="w-4 h-4 accent-[#FF6600]" />
+                                    <span className="text-sm font-bold text-white">Lista VIP (Acceso anticipado)</span>
+                                </label>
+                                <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${newBanner.audience === 'custom' ? 'border-[#FF6600] bg-[#FF6600]/10' : 'border-slate-800 hover:border-slate-700'}`}>
+                                    <input type="radio" name="banner_aud" value="custom" checked={newBanner.audience === 'custom'} onChange={() => setNewBanner({ ...newBanner, audience: 'custom' })} className="w-4 h-4 accent-[#FF6600]" />
+                                    <span className="text-sm font-bold text-white">Lista de emails (Personalizada)</span>
+                                </label>
                             </div>
+
                             {newBanner.audience === 'sector' ? (
-                                <select value={newBanner.target_sector} onChange={e => setNewBanner({ ...newBanner, target_sector: e.target.value })} className="w-full mt-3 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                                <select value={newBanner.target_sector} onChange={e => setNewBanner({ ...newBanner, target_sector: e.target.value })} className="w-full mt-3 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none animate-in slide-in-from-top-2">
                                     <option value="">-- Elige sector --</option>
                                     {officialCategoriesList?.map((spec: string) => <option key={spec} value={spec}>{spec}</option>)}
                                 </select>
                             ) : null}
+
+                            {newBanner.audience === 'custom' && (
+                                <div className="mt-3 animate-in slide-in-from-top-2 duration-300">
+                                    <textarea
+                                        value={newBanner.custom_emails || ''}
+                                        onChange={e => setNewBanner({ ...newBanner, custom_emails: e.target.value })}
+                                        placeholder="ejemplo1@email.com, ejemplo2@email.com..."
+                                        className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#FF6600] outline-none text-sm h-24 resize-none"
+                                    />
+                                    <p className="text-xs text-slate-500 mt-1">Separa los correos con comas.</p>
+                                </div>
+                            )}
                         </div>
                         <button type="submit" disabled={isCreatingBanner} className={`w-full text-white py-3.5 rounded-xl font-bold mt-4 transition-colors disabled:opacity-50 active:scale-95 shadow-lg ${editingBannerId ? 'bg-blue-600 hover:bg-blue-700 shadow-blue-500/20' : 'bg-[#FF6600] hover:bg-[#e65c00] shadow-[#FF6600]/20'}`}>
                             {isCreatingBanner ? 'Guardando...' : editingBannerId ? 'Guardar Cambios' : 'Crear y Guardar Anuncio'}
@@ -227,7 +267,7 @@ export function CommunicationsView({
                                         <p className="text-slate-400 text-sm ml-5.5 pl-5 mb-2">{ann.message}</p>
                                         <div className="ml-5 flex gap-2">
                                             <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700">
-                                                Aud: {ann.audience === 'all' ? 'Todos' : ann.audience === 'pros' ? 'Profesionales' : `Sector: ${ann.target_sector}`}
+                                                Aud: {ann.audience === 'all' ? 'Todos' : ann.audience === 'pros' ? 'Profesionales' : ann.audience === 'vip' ? 'Lista VIP' : ann.audience === 'custom' ? 'Lista Personalizada' : `Sector: ${ann.target_sector}`}
                                             </span>
                                             {ann.link_url ? <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Con enlace</span> : null}
                                         </div>

@@ -78,10 +78,10 @@ export default function VIPInvitationPage() {
                                     Acceso Anticipado
                                 </div>
                                 <h1 className="text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
-                                    Buscamos a los 50 primeros profesionales para estrenar dconfy.
+                                    Buscamos a los 50 primeros profesionales para estrenar dconfy gratis.
                                 </h1>
                                 <p className="text-slate-500 text-lg">
-                                    Únete a la lista VIP. Sin comisiones ocultas, solo clientes reales gracias al boca a boca digital.
+                                    Únete a dconfy y deja que el boca a boca digital haga crecer tu negocio.
                                 </p>
                             </div>
 
