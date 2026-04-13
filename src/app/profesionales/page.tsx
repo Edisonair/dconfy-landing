@@ -184,7 +184,7 @@ export default function VIPInvitationPage() {
                                 </div>
                                 {/* 🚀 Blanco suavizado con text-neutral-200 */}
                                 <h1 className="text-3xl md:text-4xl font-black text-neutral-200 mb-4 tracking-tight leading-tight">
-                                    Buscamos a los 50 primeros profesionales para estrenar dconfy gratis.
+                                    Buscamos a los <span className="text-[#FF6600]">50 primeros</span> profesionales para estrenar dconfy gratis.
                                 </h1>
                                 {/* 🚀 Gris neutro para el subtítulo */}
                                 <p className="text-neutral-400 text-lg mb-6">
