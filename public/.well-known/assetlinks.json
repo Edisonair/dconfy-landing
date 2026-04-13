@@ -1,0 +1,15 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "io.dconfy.app",
+            "sha256_cert_fingerprints": [
+                "CF:E6:8D:02:D9:C2:C1:CC:48:68:49:09:CD:93:43:CB:51:AF:0C:3D:31:45:D9:5F:BD:A1:B9:F9:18:FE:21:01",
+                "16:D4:13:BC:D3:71:D0:FF:85:B2:82:89:21:1C:E7:6C:F1:1A:09:DF:CF:E1:D7:A6:B4:0B:14:B0:94:46:2B:D4"
+            ]
+        }
+    }
+]
