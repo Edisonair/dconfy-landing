@@ -269,7 +269,7 @@ export default function VIPInvitationPage() {
 
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-bold text-neutral-400 mb-1.5">
-                                        Email profesional
+                                        Email
                                     </label>
                                     <input
                                         type="email"
@@ -279,7 +279,7 @@ export default function VIPInvitationPage() {
                                         value={formData.email}
                                         onChange={handleEmailChange}
                                         className={`w-full px-4 py-3 rounded-xl border bg-[#0A0A0A] text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none ${emailError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
-                                        placeholder="hola@tuempresa.com"
+                                        placeholder="hola@mail.com"
                                     />
                                     {emailError && (
                                         <p className="text-[10px] font-bold text-red-500 mt-1.5">
