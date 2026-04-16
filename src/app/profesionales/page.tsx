@@ -155,12 +155,12 @@ export default function VIPInvitationPage() {
         !emailError;
 
     return (
-        <div className="flex flex-col min-h-screen bg-[#0A0A0A]">
+        <div className="flex flex-col min-h-screen bg-slate-950 ">
             <Header />
 
             <main className="flex-grow flex items-center justify-center pt-32 pb-20 px-6">
                 {/* 🚀 Cambio a gris puro (#161616) y borde más neutro */}
-                <div className="w-full max-w-lg bg-[#161616] rounded-3xl p-8 md:p-12 border border-neutral-800">
+                <div className="w-full max-w-lg bg-slate-950 rounded-3xl p-8 md:p-12 border border-neutral-800">
 
                     {status === 'success' ? (
                         <div className="text-center py-10 animate-in fade-in zoom-in duration-500">
@@ -209,7 +209,7 @@ export default function VIPInvitationPage() {
                                         required
                                         value={formData.nombre}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-[#0A0A0A] text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
+                                        className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
                                         placeholder="Ej. Laura Gómez"
                                     />
                                 </div>
@@ -226,7 +226,7 @@ export default function VIPInvitationPage() {
                                             required
                                             value={formData.profesion}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-[#0A0A0A] text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
+                                            className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
                                             placeholder="Ej. Fisioterapeuta..."
                                         />
                                     </div>
@@ -245,7 +245,7 @@ export default function VIPInvitationPage() {
                                                 value={formData.codigoPostal}
                                                 onChange={handleZipChange}
                                                 onBlur={handleZipBlur}
-                                                className={`w-full px-4 py-3 rounded-xl border bg-[#0A0A0A] text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none text-center ${zipError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
+                                                className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none text-center ${zipError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
                                                 placeholder="28001"
                                             />
                                             {isZipLoading && (
@@ -278,8 +278,8 @@ export default function VIPInvitationPage() {
                                         required
                                         value={formData.email}
                                         onChange={handleEmailChange}
-                                        className={`w-full px-4 py-3 rounded-xl border bg-[#0A0A0A] text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none ${emailError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
-                                        placeholder="hola@mail.com"
+                                        className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none ${emailError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
+                                        placeholder="hola@tmail.com"
                                     />
                                     {emailError && (
                                         <p className="text-[10px] font-bold text-red-500 mt-1.5">

@@ -94,7 +94,7 @@ export default function AdminDashboard() {
     }, []);
 
     const loadRawData = async () => {
-        const { data: profiles } = await supabase.from('profiles').select('id, full_name, professional_name, role, specialty, interests, avatar_url, zip_code');
+        const { data: profiles } = await supabase.from('profiles').select('id, full_name, professional_name, role, specialty, interests, avatar_url, professional_logo_url, zip_code');
         const { data: categories } = await supabase.from('categories').select('name, color_class');
         const { data: recommendations } = await supabase.from('recommendations').select('profile_id, user_id');
         const { data: chats } = await supabase.from('chats').select('id, professional_id');
@@ -338,6 +338,7 @@ export default function AdminDashboard() {
         const intCounts: Record<string, number> = {}, specCounts: Record<string, number> = {}, customMap: Record<string, { id: string, name: string }[]> = {};
         const profileSpecMap = new Map<string, string>();
 
+        // PRIMER BUCLE: Conteo general
         filteredProfiles.forEach(p => {
             if (p.role === 'user') uCount++;
             if (p.specialty) {
@@ -358,11 +359,15 @@ export default function AdminDashboard() {
             }
         });
 
+        // 1. PRIMERO declaramos las variables
         const proRecsCount: Record<string, number> = {};
         const recsSpecCount: Record<string, number> = {};
         const userRecsCount: Record<string, number> = {};
-        const topProsBySpec: Record<string, { name: string, recs: number, avatar: string }> = {};
 
+        // 🚀 El tipo actualizado con el logo opcional
+        const topProsBySpec: Record<string, { name: string, recs: number, avatar: string, professional_logo_url?: string }> = {};
+
+        // 2. LUEGO rellenamos los conteos
         filteredRecommendations.forEach(r => {
             proRecsCount[r.profile_id] = (proRecsCount[r.profile_id] || 0) + 1;
             const spec = profileSpecMap.get(r.profile_id) || 'Desconocido';
@@ -391,12 +396,18 @@ export default function AdminDashboard() {
             { range: '+ de 40', count: ranges['+40'], percentage: (ranges['+40'] / maxRange) * 100, color: 'bg-[#FF6600]' }
         ]);
 
+        // 3. SEGUNDO BUCLE: Y AHORA calculamos el top, porque proRecsCount ya existe
         filteredProfiles.forEach(p => {
             if (p.specialty) {
                 const cleanSpec = p.specialty.trim();
                 const currentRecs = proRecsCount[p.id] || 0;
                 if (currentRecs > 0 && (!topProsBySpec[cleanSpec] || currentRecs > topProsBySpec[cleanSpec].recs)) {
-                    topProsBySpec[cleanSpec] = { name: p.professional_name || p.full_name || 'Usuario', recs: currentRecs, avatar: p.avatar_url || '' };
+                    topProsBySpec[cleanSpec] = {
+                        name: p.professional_name || p.full_name || 'Usuario',
+                        recs: currentRecs,
+                        avatar: p.avatar_url || '',
+                        professional_logo_url: p.professional_logo_url || ''
+                    };
                 }
             }
         });

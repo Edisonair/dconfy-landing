@@ -2,6 +2,10 @@ import React from 'react';
 import { Users, Network, Briefcase, Share2, Heart, MessageCircle, Send, TrendingUp, BarChart3, Star, Trophy, AlertCircle } from 'lucide-react';
 
 export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, interestsData, topRecommendedPros, recsByUserRange, customSpecialties }: any) {
+
+    // 🚀 NUEVO: Calculamos el total de intereses sumando los conteos
+    const totalInterests = interestsData?.reduce((acc: number, curr: any) => acc + (curr.count || 0), 0) || 0;
+
     return (
         <>
             {/* 1. MÉTRICAS GLOBALES */}
@@ -99,8 +103,12 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
             {/* 3. GRÁFICO INTERESES */}
             <div className="bg-slate-900 p-6 md:p-8 rounded-[1rem] shadow-xl shadow-black/20 w-full mt-10">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 border-b border-slate-800 pb-6 gap-4">
+                    {/* 🚀 NUEVO: Título con el total de intereses */}
                     <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                        <Star className="w-6 h-6 text-yellow-400 fill-current" /> Intereses {selectedProvince !== 'Global' && <span className="text-[#FF6600] ml-1">en {selectedProvince}</span>}
+                        <Star className="w-6 h-6 text-yellow-400 fill-current" />
+                        Intereses
+                        <span className="text-slate-400 font-medium ml-1">({totalInterests})</span>
+                        {selectedProvince !== 'Global' && <span className="text-[#FF6600] ml-1 text-base">en {selectedProvince}</span>}
                     </h3>
                 </div>
                 {interestsData.length === 0 ? (
@@ -146,7 +154,8 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {topRecommendedPros.map((pro: any, idx: number) => (
                                 <div key={idx} className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 flex items-center gap-4 hover:bg-slate-800 transition-colors shadow-sm">
-                                    <img src={pro.avatar || '/default-avatar.png'} className="w-12 h-12 rounded-full object-cover bg-slate-900 border border-slate-700 shrink-0" alt={pro.name} />
+                                    {/* 🚀 NUEVO: Utilizamos professional_logo_url, con fallback a avatar o imagen por defecto */}
+                                    <img src={pro.professional_logo_url || pro.avatar || '/default-avatar.png'} className="w-12 h-12 rounded-full object-cover bg-slate-900 border border-slate-700 shrink-0" alt={pro.name} />
                                     <div className="flex-1 min-w-0">
                                         <p className="text-white font-black text-[15px] leading-tight truncate mb-0.5">{pro.specialty}</p>
                                         <p className="text-slate-400 text-xs font-medium truncate">{pro.name}</p>
