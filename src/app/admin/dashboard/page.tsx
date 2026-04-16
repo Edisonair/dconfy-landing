@@ -66,6 +66,8 @@ export default function AdminDashboard() {
     const [invitations, setInvitations] = useState<any[]>([]);
     const [newEmail, setNewEmail] = useState('');
     const [newName, setNewName] = useState('');
+    const [newProfession, setNewProfession] = useState('');
+    const [newZipCode, setNewZipCode] = useState('');
     const [isInviting, setIsInviting] = useState(false);
 
     const [commTab, setCommTab] = useState<'banners' | 'emails'>('banners');
@@ -83,7 +85,6 @@ export default function AdminDashboard() {
     const [isCreatingPost, setIsCreatingPost] = useState(false);
     const [editingPostId, setEditingPostId] = useState<string | null>(null);
 
-    // 🚀 Añadimos "created_at" al estado inicial para controlar la fecha
     const [newPost, setNewPost] = useState({
         title: '', slug: '', category: 'Novedades', read_time: '2 min', image: '', excerpt: '', content: '', is_published: false,
         created_at: new Date().toISOString().split('T')[0]
@@ -230,10 +231,50 @@ export default function AdminDashboard() {
         if (!newEmail || !newName) return;
         setIsInviting(true);
         try {
-            const { error } = await supabase.from('vip_invitations').insert([{ email: newEmail.toLowerCase(), name: newName }]);
+            // 🚀 LÓGICA AUTOMÁTICA: Convertir CP en Población y Provincia
+            let city = '';
+            let province = getProvinceName(newZipCode); // Asignamos la provincia por defecto con nuestro diccionario
+
+            if (newZipCode && newZipCode.length === 5) {
+                try {
+                    // Llamamos a la API gratuita para sacar la ciudad exacta
+                    const zipRes = await fetch(`https://api.zippopotam.us/es/${newZipCode}`);
+                    if (zipRes.ok) {
+                        const zipData = await zipRes.json();
+                        if (zipData.places && zipData.places.length > 0) {
+                            city = zipData.places[0]['place name'];
+                            if (zipData.places[0]['state']) {
+                                province = zipData.places[0]['state'];
+                            }
+                        }
+                    }
+                } catch (apiError) {
+                    console.log("No se pudo obtener la ciudad de la API externa", apiError);
+                }
+            }
+
+            const { error } = await supabase.from('vip_invitations').insert([{
+                email: newEmail.toLowerCase(),
+                name: newName,
+                profesion: newProfession,
+                zip_code: newZipCode,
+                city: city || null,
+                province: province !== 'Desconocida' ? province : null
+            }]);
+
             if (error) throw error;
-            setNewEmail(''); setNewName(''); await loadInvitations();
-        } catch (error: any) { alert('Error al invitar.'); } finally { setIsInviting(false); }
+
+            setNewEmail('');
+            setNewName('');
+            setNewProfession('');
+            setNewZipCode('');
+
+            await loadInvitations();
+        } catch (error: any) {
+            alert('Error al invitar.');
+        } finally {
+            setIsInviting(false);
+        }
     };
 
     const handleDeleteInvite = async (id: string) => {
@@ -364,7 +405,6 @@ export default function AdminDashboard() {
         const recsSpecCount: Record<string, number> = {};
         const userRecsCount: Record<string, number> = {};
 
-        // 🚀 El tipo actualizado con el logo opcional
         const topProsBySpec: Record<string, { name: string, recs: number, avatar: string, professional_logo_url?: string }> = {};
 
         // 2. LUEGO rellenamos los conteos
@@ -497,6 +537,10 @@ export default function AdminDashboard() {
                         setNewEmail={setNewEmail}
                         newName={newName}
                         setNewName={setNewName}
+                        newProfession={newProfession}
+                        setNewProfession={setNewProfession}
+                        newZipCode={newZipCode}
+                        setNewZipCode={setNewZipCode}
                         isInviting={isInviting}
                         invitations={invitations}
                         handleDeleteInvite={handleDeleteInvite}
