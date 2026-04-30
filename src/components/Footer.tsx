@@ -19,9 +19,9 @@ export function Footer() {
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-2xl font-medium text-slate-300 mb-10">Estamos construyendo la red de servicios más confiable,<br></br> y queremos que seas parte de nuestro lanzamiento.</h2>
-                    {/*<Link href="/#descargar" className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20">
-                        Descargar app Gratis
-                    </Link>*/}
+                    {<Link href="/#descargar" className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20">
+                        Muy Pronto
+                    </Link>}
                 </div>
 
                 <div className="border-t border-slate-800 pt-16 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">

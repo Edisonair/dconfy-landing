@@ -106,7 +106,7 @@ export default function Home() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const faqs = [
-    { q: "¿Cómo se validan las reseñas?", a: "La validación la hace tu propio círculo de confianza. Esa es la esencia de dconfy: olvídate de las reseñas falsas o anónimas de internet. Así garantizamos que cada valoración sea 100% auténtica y basada en la experiencia real de la gente en la que ya confías." },
+    { q: "¿Cómo se validan las recomendaciones?", a: "La validación la hace tu propio círculo de confianza. Esa es la esencia de dconfy: olvídate de las reseñas falsas o anónimas de internet. Así garantizamos que cada valoración sea 100% auténtica y basada en la experiencia real de la gente en la que ya confías." },
     { q: "¿Es gratis para usuarios que buscan servicios?", a: "Totalmente. La aplicación es 100% gratuita para los usuarios que buscan y contratan profesionales." },
     { q: "¿Cómo me doy de alta como profesional?", a: "Descarga la app, selecciona 'Soy profesional' y completa tu perfil. Puedes empezar con el plan gratuito y actualizar cuando quieras." },
     { q: "¿Puedo cancelar mi suscripción en cualquier momento?", a: "Sí, no hay compromiso de permanencia. Puedes cancelar tu plan cuando quieras y seguirás teniendo acceso hasta que termine tu ciclo de facturación actual." },
@@ -130,11 +130,14 @@ export default function Home() {
       <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
           <div className="max-w-xl lg:max-w-lg">
-            <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-6">
-              El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D]">de confianza,</span> ahora en una app
+            <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-8">
+              El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza,</span> ahora en una app
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 font-normal mb-8 leading-relaxed tracking-tight">
-              Descubre profesionales y servicios recomendados por tu gente.
+
+            <div className="w-12 h-1.5 bg-gradient-to-r from-[#FF6600] to-[#E83E4C] rounded-full mb-8 opacity-90"></div>
+
+            <p className="text-2xl md:text-3xl text-[#111827] mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
+              Encuentra profesionales y servicios recomendados por tu gente.
             </p>
 
             <div className="flex flex-col gap-3">
@@ -516,30 +519,55 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="como-funciona" className="bg-white pt-12 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
+      <div className="w-full bg-[#FFF9F0] py-20 md:py-32 px-6 text-center relative z-20 overflow-hidden">
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes moveGradient {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+          }
+          .animate-gradient-text {
+            background-image: linear-gradient(to right, #F05A28, #BE1E8D, #F05A28, #BE1E8D, #F05A28);
+            background-size: 200% auto;
+            animation: moveGradient 4s linear infinite;
+          }
+        `}} />
         <motion.div
-          className="flex justify-center mb-6"
+          className="relative z-10"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <div className="flex items-center justify-center">
+            <p className="text-3xl md:text-5xl lg:text-6xl font-black max-w-5xl mx-auto leading-tight md:leading-snug lg:leading-tight tracking-tight text-transparent bg-clip-text py-4 animate-gradient-text" style={{ fontFamily: '"Lora", serif' }}>
+              dconfy hace más fácil compartir y descubrir recomendaciones de confianza.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+
+      <section id="como-funciona" className="bg-white pt-16 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
+        <motion.div
+          className="text-center mb-6 relative flex flex-col items-center"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <div className="relative inline-block">
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">¿Cómo funciona dconfy?</h2>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="flex justify-center mb-16"
           whileInView="visible"
           initial="hidden"
           variants={fadeInUpVariants}
           viewport={{ once: true, amount: 1 }}
         >
           <ArrowDown className="w-10 h-10 text-[#FF6600] animate-bounce" />
-        </motion.div>
-
-        <motion.div
-          className="text-center mb-16 relative flex flex-col items-center"
-          whileInView="visible"
-          initial="hidden"
-          variants={fadeInUpVariants}
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          <div className="relative inline-block mb-6">
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">Cómo funciona dconfy</h2>
-          </div>
-          <p className="text-xl md:text-2xl text-[#111827] max-w-2xl mx-auto font-semibold leading-relaxed">
-            El boca a boca en la era digital hace más fácil compartir y descubrir recomendaciones de confianza.
-          </p>
         </motion.div>
 
         <div className="flex flex-col gap-20 max-w-4xl mx-auto">
@@ -617,7 +645,7 @@ export default function Home() {
             <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-orange-100 mx-auto lg:mx-0">
               <Bookmark className="w-8 h-8 text-[#FF6600]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D] [-webkit-text-stroke:1px]">de confianza</span>,<br /> siempre a mano</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tus servicios <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span>,<br /> siempre a mano</h2>
 
             <ul className="space-y-4 pt-8">
               <li className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-orange-100/50 hover:shadow-md transition-shadow">
@@ -936,8 +964,8 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
-            <p className="text-violet-200 mb-8 max-w-2xl mx-auto font-medium">Convierte las recomendaciones de tus clientes en un flujo constante de nuevos contactos… sin invertir en anuncios.</p>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
+            <p className="mt-4 text-xl text-violet-200 mb-8 max-w-2xl mx-auto font-medium">Convierte las recomendaciones de tus clientes en un flujo constante de nuevos contactos.</p>
           </motion.div>
 
           <motion.div
@@ -1015,7 +1043,7 @@ export default function Home() {
 
             <motion.div variants={fadeInUpVariants} className="bg-slate-950 p-8 rounded-[2rem] border border-slate-800 shadow-2xl relative transform md:-translate-y-4 hover:-translate-y-5 transition-transform flex flex-col text-white">
               <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-2">Plan Empresa</h3>
-              <p className="text-slate-400 text-sm mb-6 h-10">Para equipos que gestionan varios profesionales y quieren genera más clientes.</p>
+              <p className="text-slate-400 text-sm mb-6 h-10">Para equipos que gestionan varios profesionales y quieren generar más clientes.</p>
               <div className="mb-2 flex items-baseline gap-1">
                 <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
                 <span className="text-slate-400 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
