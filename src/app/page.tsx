@@ -276,8 +276,15 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así son las recomendaciones en dconfy</h2>
-            <p className="mt-4 text-xl text-slate-500 font-medium">Cada recomendación viene de alguien de tu red.</p>
+            <div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto mb-8 overflow-hidden">
+              <img
+                src="/dconfy_icon.png"
+                alt="Logo dconfy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así se ve una recomendación en dconfy</h2>
+            <p className="mt-4 text-xl text-slate-500 font-medium">Siempre ves quién recomienda y cómo está conectado contigo</p>
           </motion.div>
 
           <motion.div
@@ -333,7 +340,7 @@ export default function Home() {
                     <span className="text-[#64748b] font-medium text-sm lg:text-base">Recomendado por <strong className="text-slate-900 font-black">Laura</strong></span>
                     <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#EFF6FF] text-[#3B82F6] text-[11px] tracking-wide font-bold border border-[#BFDBFE]">
                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                      de tu amiga Susana
+                      contacto de Susana
                     </span>
                   </div>
                   <div className="flex items-center gap-1.5 text-slate-400 font-medium text-xs">
@@ -556,23 +563,19 @@ export default function Home() {
               <Bookmark className="w-8 h-8 text-[#FF6600]" />
             </div>
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D] [-webkit-text-stroke:1px]">de confianza</span>,<br /> siempre a mano</h2>
-            <p className="text-xl font-semibold text-slate-700 mb-16
-             leading-relaxed text-center lg:text-left">
-              En dconfy las recomendaciones quedan guardadas automáticamente, para ti y los tuyos.
-            </p>
 
-            <ul className="space-y-4">
+            <ul className="space-y-4 pt-8">
               <li className="flex items-start gap-4">
                 <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
                 <span className="text-lg text-slate-700 font-medium">Lo que tú recomiendas, siempre visible en tu perfil</span>
               </li>
               <li className="flex items-start gap-4">
                 <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
-                <span className="text-lg text-slate-700 font-medium">Lo que recomienda tu gente, accesible cuando lo necesites</span>
+                <span className="text-lg text-slate-700 font-medium">Lo que recomienda tu gente está guardado para cuando lo necesites.</span>
               </li>
               <li className="flex items-start gap-4">
                 <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
-                <span className="text-lg text-slate-700 font-medium">Sin buscar, sin preguntar de nuevo — está ahí cuando lo necesitas</span>
+                <span className="text-lg text-slate-700 font-medium">Olvídate de volver a preguntar cada vez que necesites un servicio.</span>
               </li>
             </ul>
           </motion.div>
@@ -816,7 +819,7 @@ export default function Home() {
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
         <p className="text-slate-500 font-medium mb-12 max-w-xl mx-auto">
-          Empieza a encontrar profesionales y servicios recomendados por tu red.
+          Empieza a encontrar profesionales y servicios recomendados por tu gente de confianza.
         </p>
 
         <div className="flex justify-center mb-8">
@@ -860,7 +863,7 @@ export default function Home() {
           viewport={{ once: true, amount: 0.5 }}
         >
           <h2 className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
-          <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Elige tu plan y convierte las recomendaciones en nuevos clientes.</p>
+          <p className="text-slate-500 mb-8 max-w-2xl mx-auto font-medium">Convierte las recomendaciones de tus clientes en un flujo constante de nuevos contactos… sin invertir en anuncios.</p>
         </motion.div>
 
         <motion.div
@@ -910,7 +913,7 @@ export default function Home() {
         >
           <motion.div variants={fadeInUpVariants} className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-2">Plan Profesional</h3>
-            <p className="text-slate-500 text-sm mb-6 h-10">Ideal para profesionales, autónomos y pequeños negocios que quieren destacar.</p>
+            <p className="text-slate-500 text-sm mb-6 h-10">Ideal para autónomos y pequeños negocios que quieren destacar.</p>
             <div className="mb-2 flex items-baseline gap-1">
               <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '29,99€' : '2.99€'}</span>
               <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
@@ -938,7 +941,7 @@ export default function Home() {
 
           <motion.div variants={fadeInUpVariants} className="bg-[#171A21] p-8 rounded-[2rem] border border-slate-800 shadow-2xl relative transform md:-translate-y-4 hover:-translate-y-5 transition-transform flex flex-col text-white">
             <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-2">Plan Empresa</h3>
-            <p className="text-slate-400 text-sm mb-6 h-10">Para equipos y negocios que buscan máxima visibilidad.</p>
+            <p className="text-slate-400 text-sm mb-6 h-10">Para equipos que gestionan varios profesionales y quieren genera más clientes.</p>
             <div className="mb-2 flex items-baseline gap-1">
               <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
               <span className="text-slate-400 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
