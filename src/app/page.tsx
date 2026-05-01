@@ -413,7 +413,7 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
                     <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">Elena Gómez</h3>
-                    <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">FISIOTERÁPIA</p>
+                    <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">FISIOTERAPIA</p>
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Traumatológica</span>
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Deportiva</span>
@@ -914,7 +914,7 @@ export default function Home() {
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
         <p className="text-slate-500 font-medium mb-12 max-w-xl mx-auto">
-          Empieza a encontrar profesionales y servicios recomendados por tu gente de confianza.
+          Empieza a encontrar profesionales y servicios recomendados por tu gente.
         </p>
 
         <div className="flex justify-center mb-8">
@@ -1036,8 +1036,8 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Link href="#descargar" onClick={() => trackGAEvent('Clic_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all">
-                Descargar app
+              <Link href="/profesionales" onClick={() => trackGAEvent('Clic_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all">
+                Únete a la lista de espera
               </Link>
             </motion.div>
 
