@@ -1,7 +1,7 @@
 import React from 'react';
 import { Users, Network, Briefcase, Share2, Heart, MessageCircle, Send, TrendingUp, BarChart3, Star, Trophy, AlertCircle } from 'lucide-react';
 
-export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, interestsData, topRecommendedPros, recsByUserRange, customSpecialties }: any) {
+export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, interestsData, topRecommendedPros, recsByUserRange, customSpecialties, customInterests }: any) {
 
     // 🚀 NUEVO: Calculamos el total de intereses sumando los conteos
     const totalInterests = interestsData?.reduce((acc: number, curr: any) => acc + (curr.count || 0), 0) || 0;
@@ -154,7 +154,6 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {topRecommendedPros.map((pro: any, idx: number) => (
                                 <div key={idx} className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 flex items-center gap-4 hover:bg-slate-800 transition-colors shadow-sm">
-                                    {/* 🚀 NUEVO: Utilizamos professional_logo_url, con fallback a avatar o imagen por defecto */}
                                     <img src={pro.professional_logo_url || pro.avatar || '/default-avatar.png'} className="w-12 h-12 rounded-full object-cover bg-slate-900 border border-slate-700 shrink-0" alt={pro.name} />
                                     <div className="flex-1 min-w-0">
                                         <p className="text-white font-black text-[15px] leading-tight truncate mb-0.5">{pro.specialty}</p>
@@ -205,7 +204,7 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                 </div>
             </div>
 
-            {/* 5. RADAR CUSTOM */}
+            {/* 5. RADAR CUSTOM DE PROFESIONES */}
             <div className="bg-[#FF6600]/5 p-6 md:p-8 rounded-[1rem] border border-orange-500/20 shadow-xl shadow-black/10 w-full mt-10">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div>
@@ -229,6 +228,41 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-0.5">Usuarios:</span>
                                     {spec.users.map((u: any) => (
                                         <div key={u.id} className="text-xs text-slate-400 flex items-center gap-2"><div className="w-1.5 h-1.5 bg-slate-700 rounded-full shrink-0" /><span className="truncate">{u.name}</span></div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))
+                    )}
+                </div>
+            </div>
+
+            {/* 6. RADAR CUSTOM DE INTERESES */}
+            <div className="bg-yellow-500/5 p-6 md:p-8 rounded-[1rem] border border-yellow-500/20 shadow-xl shadow-black/10 w-full mt-8">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                            <Star className="w-6 h-6 text-yellow-500" /> Radar de Nuevos Intereses
+                        </h3>
+                        <p className="text-slate-400 text-sm mt-1 font-medium">Intereses escritos a mano que están pendientes de añadir oficialmente.</p>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    {!customInterests || customInterests.length === 0 ? (
+                        <p className="text-sm text-slate-500 w-full text-center py-6 bg-slate-900/50 rounded-2xl border border-dashed border-slate-700 font-bold sm:col-span-2 lg:col-span-3 xl:col-span-4">No hay intereses manuales pendientes.</p>
+                    ) : (
+                        customInterests.map((interest: any, idx: number) => (
+                            <div key={idx} className="flex flex-col bg-slate-900 border border-slate-700 rounded-xl overflow-hidden hover:border-yellow-500/50 transition-colors shadow-sm">
+                                <div className="flex items-center justify-between px-4 py-3 bg-slate-800/50">
+                                    <span className="font-bold text-slate-200 text-sm">{interest.name}</span>
+                                    <span className="bg-yellow-500/10 text-yellow-500 text-xs font-black px-2.5 py-1 rounded-lg ml-3 shrink-0">{interest.count}</span>
+                                </div>
+                                <div className="px-4 py-3 bg-slate-900/30 flex flex-col gap-2 border-t border-slate-800/50 max-h-32 overflow-y-auto custom-scrollbar">
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-0.5">Usuarios:</span>
+                                    {interest.users.map((u: any, i: number) => (
+                                        <div key={`${u.id}-${i}`} className="text-xs text-slate-400 flex items-center gap-2">
+                                            <div className="w-1.5 h-1.5 bg-slate-700 rounded-full shrink-0" />
+                                            <span className="truncate">{u.name}</span>
+                                        </div>
                                     ))}
                                 </div>
                             </div>

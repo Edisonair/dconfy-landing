@@ -61,6 +61,7 @@ export default function AdminDashboard() {
     const [unifiedSpecialties, setUnifiedSpecialties] = useState<any[]>([]);
     const [topRecommendedPros, setTopRecommendedPros] = useState<any[]>([]);
     const [customSpecialties, setCustomSpecialties] = useState<any[]>([]);
+    const [customInterests, setCustomInterests] = useState<any[]>([]);
     const [recsByUserRange, setRecsByUserRange] = useState<any[]>([]);
 
     const [invitations, setInvitations] = useState<any[]>([]);
@@ -231,13 +232,11 @@ export default function AdminDashboard() {
         if (!newEmail || !newName) return;
         setIsInviting(true);
         try {
-            // 🚀 LÓGICA AUTOMÁTICA: Convertir CP en Población y Provincia
             let city = '';
-            let province = getProvinceName(newZipCode); // Asignamos la provincia por defecto con nuestro diccionario
+            let province = getProvinceName(newZipCode);
 
             if (newZipCode && newZipCode.length === 5) {
                 try {
-                    // Llamamos a la API gratuita para sacar la ciudad exacta
                     const zipRes = await fetch(`https://api.zippopotam.us/es/${newZipCode}`);
                     if (zipRes.ok) {
                         const zipData = await zipRes.json();
@@ -376,10 +375,9 @@ export default function AdminDashboard() {
         const officialNames = new Set(categoryMap.keys());
 
         let uCount = 0, pCount = 0;
-        const intCounts: Record<string, number> = {}, specCounts: Record<string, number> = {}, customMap: Record<string, { id: string, name: string }[]> = {};
+        const intCounts: Record<string, number> = {}, specCounts: Record<string, number> = {}, customMap: Record<string, { id: string, name: string }[]> = {}, customInterestsMap: Record<string, { id: string, name: string }[]> = {};
         const profileSpecMap = new Map<string, string>();
 
-        // PRIMER BUCLE: Conteo general
         filteredProfiles.forEach(p => {
             if (p.role === 'user') uCount++;
             if (p.specialty) {
@@ -395,19 +393,23 @@ export default function AdminDashboard() {
             if (p.interests && Array.isArray(p.interests)) {
                 p.interests.forEach((interest: string) => {
                     const clean = interest.trim();
-                    if (clean) intCounts[clean] = (intCounts[clean] || 0) + 1;
+                    if (clean) {
+                        intCounts[clean] = (intCounts[clean] || 0) + 1;
+                        if (!officialNames.has(clean.toLowerCase())) {
+                            if (!customInterestsMap[clean]) customInterestsMap[clean] = [];
+                            customInterestsMap[clean].push({ id: p.id, name: p.professional_name || p.full_name || 'Usuario' });
+                        }
+                    }
                 });
             }
         });
 
-        // 1. PRIMERO declaramos las variables
         const proRecsCount: Record<string, number> = {};
         const recsSpecCount: Record<string, number> = {};
         const userRecsCount: Record<string, number> = {};
 
         const topProsBySpec: Record<string, { name: string, recs: number, avatar: string, professional_logo_url?: string }> = {};
 
-        // 2. LUEGO rellenamos los conteos
         filteredRecommendations.forEach(r => {
             proRecsCount[r.profile_id] = (proRecsCount[r.profile_id] || 0) + 1;
             const spec = profileSpecMap.get(r.profile_id) || 'Desconocido';
@@ -436,7 +438,6 @@ export default function AdminDashboard() {
             { range: '+ de 40', count: ranges['+40'], percentage: (ranges['+40'] / maxRange) * 100, color: 'bg-[#FF6600]' }
         ]);
 
-        // 3. SEGUNDO BUCLE: Y AHORA calculamos el top, porque proRecsCount ya existe
         filteredProfiles.forEach(p => {
             if (p.specialty) {
                 const cleanSpec = p.specialty.trim();
@@ -457,9 +458,13 @@ export default function AdminDashboard() {
             avgChats: pCount > 0 ? (filteredChats.length / pCount).toFixed(1) : '0', shared: filteredShared.length, connections: filteredConnections.length
         });
 
-        const sortedInterests = Object.entries(intCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count).slice(0, 24);
+        const sortedInterests = Object.entries(intCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count).slice(0, 50);
         const maxInterest = sortedInterests.length > 0 ? sortedInterests[0].count : 1;
         setInterestsData(sortedInterests.map(i => ({ ...i, percentage: (i.count / maxInterest) * 100, color: categoryMap.get(i.name.toLowerCase()) || getDynamicColor(i.name), isCustom: !officialNames.has(i.name.toLowerCase()) })));
+
+        const customIntList: { name: string, count: number, users: { id: string, name: string }[] }[] = [];
+        Object.entries(customInterestsMap).forEach(([name, users]) => customIntList.push({ name, count: users.length, users }));
+        setCustomInterests(customIntList.sort((a, b) => b.count - a.count));
 
         const unifiedMap = new Map<string, { proCount: number, recsCount: number, color: string }>();
         Object.entries(specCounts).forEach(([name, count]) => { if (officialNames.has(name.toLowerCase())) unifiedMap.set(name, { proCount: count, recsCount: 0, color: categoryMap.get(name.toLowerCase()) || 'bg-blue-500' }); });
@@ -504,6 +509,7 @@ export default function AdminDashboard() {
                         topRecommendedPros={topRecommendedPros}
                         recsByUserRange={recsByUserRange}
                         customSpecialties={customSpecialties}
+                        customInterests={customInterests}
                     />
                 );
             case 'communications':
