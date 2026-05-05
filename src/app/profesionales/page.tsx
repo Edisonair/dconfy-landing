@@ -221,7 +221,7 @@ export default function VIPInvitationPage() {
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-violet-900 to-violet-950">
             <Header />
 
-            <main className="flex-grow flex items-center justify-center pt-32 pb-20 px-6">
+            <main className="flex-grow flex items-center justify-center pt-20 pb-20 px-6">
                 <div className="w-full max-w-lg bg-slate-950 rounded-3xl p-8 md:p-12 rounded-[2rem] border border-slate-800 shadow-2xl">
 
                     {/* 🚀 NUEVO: Comprobaciones previas al formulario */}
