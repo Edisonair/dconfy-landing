@@ -174,7 +174,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                     rel="noopener noreferrer"
                     className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95 border border-slate-200"
                 >
-                    Profesional en <span className="text-orange-600">dconfy.app</span>
+                    Profesionales y servicios <span className="text-orange-600">de confianza</span>
                 </a>
             </header>
 
@@ -249,7 +249,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                             ))}
                         </div>
                         <div className="text-[14px] text-slate-600 font-medium">
-                            Recomendado por <span className="font-bold text-slate-900">{reviews?.[0]?.profiles?.full_name?.split(' ')[0]}</span>
+                            dconfy de <span className="font-bold text-slate-900">{reviews?.[0]?.profiles?.full_name?.split(' ')[0]}</span>
                             {count > 1 && reviews?.[1] && (
                                 <>
                                     {count === 2 ? ' y ' : ', '}
