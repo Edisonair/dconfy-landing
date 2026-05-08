@@ -3,6 +3,7 @@ import * as LucideIcons from 'lucide-react';
 import ActionButtons from './ActionButtons';
 import PublicGallery from './PublicGallery';
 import ContactButtons from './ContactButtons';
+import ZoomableAvatar from './ZoomableAvatar';
 
 export const dynamic = 'force-dynamic';
 
@@ -24,7 +25,7 @@ const PROVINCES: Record<string, string> = {
     '36': 'Pontevedra', '37': 'Salamanca', '38': 'Santa Cruz de Tenerife', '39': 'Cantabria', '40': 'Segovia',
     '41': 'Sevilla', '42': 'Soria', '43': 'Tarragona', '44': 'Teruel', '45': 'Toledo',
     '46': 'Valencia', '47': 'Valladolid', '48': 'Vizcaya', '49': 'Zamora', '50': 'Zaragoza',
-    '51': 'Ceuta', '52': 'Melilla'
+    '51': 'Ceuta', '52': 'Melilla', 'AD': 'Andorra'
 };
 
 const getIconForCategoryFallback = (category: string) => {
@@ -57,6 +58,7 @@ const getIconForCategoryFallback = (category: string) => {
     if (cat.includes('restauran') || cat.includes('comida') || cat.includes('chef') || cat.includes('catering') || cat.includes('pasteler') || cat.includes('hosteleria') || cat.includes('bar') || cat.includes('cafeteria') || cat.includes('reposteria')) return <LucideIcons.Utensils className="w-4 h-4" />;
     if (cat.includes('cuidador') || cat.includes('ninera') || cat.includes('canguro') || cat.includes('mayores') || cat.includes('infantil')) return <LucideIcons.Users className="w-4 h-4" />;
     if (cat.includes('hogar') || cat.includes('casa')) return <LucideIcons.Home className="w-4 h-4" />;
+    if (cat.includes('nautic') || cat.includes('barco') || cat.includes('embarcacion')) return <LucideIcons.Anchor className="w-4 h-4" />;
 
     return <LucideIcons.Briefcase className="w-4 h-4" />;
 };
@@ -154,7 +156,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         .order('created_at', { ascending: false })
         .limit(3);
 
-    const provinceFromZip = profile.zip_code && profile.zip_code.length === 5 ? PROVINCES[profile.zip_code.substring(0, 2)] : '';
+    const provinceFromZip = profile.zip_code && profile.zip_code.length === 5 ? PROVINCES[profile.zip_code.substring(0, 2).toUpperCase()] : '';
     const finalProvince = profile.province || provinceFromZip || '';
     const displayLocation = `${profile.location || 'España'}${finalProvince ? `, ${finalProvince}` : ''}`;
 
@@ -182,10 +184,10 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
                 {/* 1. SECCIÓN CABECERA DEL PROFESIONAL */}
                 <div className="flex items-center gap-4 text-left w-full mt-2">
-                    <img
+                    <ZoomableAvatar
                         src={profile.professional_logo_url || profile.avatar_url}
-                        alt={profile.professional_name}
-                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0"
+                        alt={profile.professional_name || profile.full_name || 'Avatar'}
+                        className="w-24 h-24 sm:w-28 sm:h-28 shrink-0"
                     />
                     <div className="flex-1 min-w-0">
                         <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight mb-2 truncate">
@@ -194,7 +196,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
                         <div className="flex items-center gap-1.5 bg-violet-50 text-violet-700 px-3 py-1.5 rounded-xl w-fit mb-2 border border-violet-100">
                             {renderIcon(dbIconName, profile.specialty || profile.category)}
-                            <span className="font-bold text-sm tracking-tight">{profile.specialty || profile.category}</span>
+                            <span className="font-bold text-sm tracking-tight uppercase">{profile.specialty || profile.category}</span>
                         </div>
 
                         {/* 🚀 EL TEXTO AHORA ES UN ENLACE CLICABLE */}
@@ -223,9 +225,9 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                                 <span className="text-slate-500 font-medium ml-1 text-lg">/h</span>
                             </>
                         ) : (
-                            <div className="flex flex-col text-xs font-black text-slate-400 uppercase tracking-widest leading-snug">
-                                <span>Precio a</span>
-                                <span>Consultar</span>
+                            <div className="flex flex-col text-xs font-black text-slate-400 uppercase tracking-wider leading-snug">
+                                <span>Opciones</span>
+                                <span>de Contacto</span>
                             </div>
                         )}
                     </div>

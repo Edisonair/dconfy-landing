@@ -130,13 +130,12 @@ export default function Home() {
       <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
           <div className="max-w-xl lg:max-w-lg">
-            <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-8">
+            <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
               El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza,</span> ahora en una app
             </h1>
 
-            <div className="w-12 h-1.5 bg-gradient-to-r from-[#FF6600] to-[#E83E4C] rounded-full mb-8 opacity-90"></div>
 
-            <p className="text-2xl md:text-3xl text-[#111827] mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <p className="text-2xl md:text-3xl text-slate-500 mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
               Encuentra profesionales y servicios recomendados por tu gente.
             </p>
 
