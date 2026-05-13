@@ -39,13 +39,13 @@ export default function ContactButtons({ profile, slug }: ContactButtonsProps) {
                     {/* En PC se muestran normales al principio */}
                     <div className="hidden sm:flex gap-2 sm:gap-3 shrink-0">
                         {hasWeb && (
-                            <a href={profile.website.startsWith('http') ? profile.website : `https://${profile.website}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-blue-800 text-white rounded-full flex items-center justify-center shadow-md shrink-0 active:scale-95 transition-transform">
-                                <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
+                            <a href={profile.website.startsWith('http') ? profile.website : `https://${profile.website}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-800 text-white rounded-full flex items-center justify-center shadow-md shrink-0 active:scale-95 transition-transform">
+                                <Globe className="w-5 h-5" />
                             </a>
                         )}
                         {hasEmail && (
-                            <a href={`mailto:${profile.email_professional}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shrink-0 transition-colors active:scale-95">
-                                <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                            <a href={`mailto:${profile.email_professional}`} className="w-12 h-12 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shrink-0 transition-colors active:scale-95">
+                                <Mail className="w-5 h-5" />
                             </a>
                         )}
                     </div>
@@ -55,7 +55,7 @@ export default function ContactButtons({ profile, slug }: ContactButtonsProps) {
                         <div className="sm:hidden relative shrink-0">
                             <button
                                 onClick={() => setIsContactMenuOpen(!isContactMenuOpen)}
-                                className={`w-10 h-10 rounded-full flex items-center justify-center shadow-sm border-2 border-white active:scale-95 transition-colors ${isContactMenuOpen ? 'bg-slate-800 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
+                                className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm border-2 border-white active:scale-95 transition-colors ${isContactMenuOpen ? 'bg-slate-800 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
                             >
                                 <span className="font-black text-[13px]">+{hiddenCount}</span>
                             </button>
@@ -90,37 +90,37 @@ export default function ContactButtons({ profile, slug }: ContactButtonsProps) {
                 // Si NO hay sobrecarga, se muestran normales al principio
                 <>
                     {hasWeb && (
-                        <a href={profile.website.startsWith('http') ? profile.website : `https://${profile.website}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-blue-800 text-white rounded-full flex items-center justify-center shadow-md shrink-0 active:scale-95 transition-transform">
-                            <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <a href={profile.website.startsWith('http') ? profile.website : `https://${profile.website}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-800 text-white rounded-full flex items-center justify-center shadow-md shrink-0 active:scale-95 transition-transform">
+                            <Globe className="w-5 h-5" />
                         </a>
                     )}
                     {hasEmail && (
-                        <a href={`mailto:${profile.email_professional}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shrink-0 transition-colors active:scale-95">
-                            <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <a href={`mailto:${profile.email_professional}`} className="w-12 h-12 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shrink-0 transition-colors active:scale-95">
+                            <Mail className="w-5 h-5" />
                         </a>
                     )}
                 </>
             )}
 
             {hasTikTok && (
-                <a href={`https://tiktok.com/@${profile.tiktok_url.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-md shrink-0 active:scale-95 transition-transform">
-                    <TikTokIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                <a href={`https://tiktok.com/@${profile.tiktok_url.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-md shrink-0 active:scale-95 transition-transform">
+                    <TikTokIcon className="w-5 h-5" />
                 </a>
             )}
             {hasInsta && (
-                <a href={`https://instagram.com/${profile.instagram_url.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-red-500 text-white rounded-full flex items-center justify-center shadow-md shadow-red-200 shrink-0 active:scale-95 transition-transform">
-                    <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
+                <a href={`https://instagram.com/${profile.instagram_url.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center shadow-md shadow-red-200 shrink-0 active:scale-95 transition-transform">
+                    <Instagram className="w-5 h-5" />
                 </a>
             )}
             {hasWa && (
-                <a href={`tel:${profile.whatsapp_number.replace(/\s+/g, '')}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-green-500 text-white rounded-full flex items-center justify-center shadow-md shadow-green-200 shrink-0 active:scale-95 transition-transform">
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                <a href={`tel:${profile.whatsapp_number.replace(/\\s+/g, '')}`} className="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-md shadow-green-200 shrink-0 active:scale-95 transition-transform">
+                    <Phone className="w-5 h-5" />
                 </a>
             )}
 
             {/* EL CHAT SIEMPRE VISIBLE AL FINAL */}
-            <a href={`https://app.dconfy.io/#/pro/${slug}`} className="w-10 h-10 sm:w-11 sm:h-11 bg-violet-600 text-white rounded-full flex shrink-0 items-center justify-center shadow-md shadow-violet-200 active:scale-95 transition-transform">
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+            <a href={`https://app.dconfy.io/#/pro/${slug}`} className="w-12 h-12 bg-violet-600 text-white rounded-full flex shrink-0 items-center justify-center shadow-md shadow-violet-200 active:scale-95 transition-transform">
+                <MessageCircle className="w-5 h-5" />
             </a>
         </div>
     );

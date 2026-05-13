@@ -95,7 +95,7 @@ export default function DirectoryClient() {
                 // Fetch profiles (with slugs, so they are public)
                 const { data: profData, error: profError } = await supabase
                     .from('profiles')
-                    .select('id, full_name, professional_name, slug, specialty, category, location, zip_code, avatar_url, professional_logo_url, services_tags, subscription_status, is_vip')
+                    .select('id, full_name, professional_name, slug, specialty, category, location, zip_code, avatar_url, professional_logo_url, services_tags, subscription_status, is_vip, price_per_hour, recommendations!recommendations_profile_id_fkey(id, author_name, profiles!recommendations_user_id_fkey(id, full_name, avatar_url))')
                     .not('slug', 'is', null);
 
                 if (profError) {
@@ -362,28 +362,28 @@ export default function DirectoryClient() {
                             onClick={() => setSelectedProSlug(slugToUse)}
                             className="group bg-white rounded-3xl p-6 border border-slate-200 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-500/10 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer"
                         >
-                            <div className="flex items-start gap-4 mb-5 relative z-10">
-                                <img src={avatar} alt={profile.professional_name || profile.full_name} className="w-[72px] h-[72px] rounded-2xl object-cover shrink-0 border border-slate-100 shadow-sm group-hover:scale-105 transition-transform duration-300" />
-                                <div className="flex-1 min-w-0 mt-1">
+                            <div className="flex items-end justify-between gap-4 mb-3 relative z-10">
+                                <div className="flex-1 min-w-0">
+                                    {profile.price_per_hour > 0 && (
+                                        <div className="inline-flex items-center bg-slate-50 text-slate-700 px-2.5 py-0.5 rounded-md text-[11px] font-black tracking-tight mb-2 border border-slate-200">
+                                            {profile.price_per_hour}€<span className="text-slate-400 font-bold ml-0.5">/h</span>
+                                        </div>
+                                    )}
                                     <h3 className="font-extrabold text-[19px] text-slate-900 truncate leading-tight mb-1 group-hover:text-violet-700 transition-colors">
                                         {profile.professional_name || profile.full_name}
                                     </h3>
-                                    <p className="text-violet-600 text-sm font-bold truncate">
+                                    <p className="text-violet-600 text-sm font-bold truncate uppercase tracking-wide">
                                         {profile.specialty || profile.category}
                                     </p>
                                 </div>
+                                <img src={avatar} alt={profile.professional_name || profile.full_name} className="w-[72px] h-[72px] rounded-2xl object-cover shrink-0 border border-slate-100 shadow-sm group-hover:scale-105 transition-transform duration-300" />
                             </div>
 
-                            <div className="flex items-center gap-2 text-slate-500 text-sm font-semibold mb-6 bg-slate-50 w-fit px-3 py-1.5 rounded-lg relative z-10">
-                                <span>📍</span>
-                                <span className="truncate">{locationDisplay}</span>
-                            </div>
-
-                            <div className="mt-auto relative z-10 pr-10">
+                            <div className="mt-auto flex flex-col w-full relative z-10">
                                 {Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
-                                    <div className="flex flex-nowrap items-center gap-1.5 w-full">
+                                    <div className="flex flex-nowrap items-center gap-1.5 w-full mb-3 pr-10">
                                         {profile.services_tags.slice(0, 2).map((tag: string, i: number) => (
-                                            <span key={i} title={tag} className="bg-violet-50 text-violet-700 border border-violet-100 px-2 py-1 rounded text-[11px] font-bold uppercase tracking-wide truncate shrink">
+                                            <span key={i} title={tag} className="bg-violet-50 text-violet-700 border border-violet-100 px-2 py-1 rounded text-[11px] font-bold capitalize truncate shrink">
                                                 {tag}
                                             </span>
                                         ))}
@@ -394,6 +394,49 @@ export default function DirectoryClient() {
                                         )}
                                     </div>
                                 )}
+
+                                <div className="flex items-center gap-1.5 text-slate-500 text-sm font-semibold mb-4">
+                                    <span>📍</span>
+                                    <span className="truncate">{locationDisplay}</span>
+                                </div>
+
+                                <div className="pt-4 border-t border-slate-100 pr-10">
+                                    {profile.recommendations && profile.recommendations.length > 0 ? (
+                                        <div className="flex items-center gap-2.5">
+                                            <div className="flex -space-x-2 shrink-0">
+                                                {profile.recommendations.slice(0, 3).map((review: any, i: number) => (
+                                                    <img
+                                                        key={i}
+                                                        src={review.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(review.profiles?.full_name || review.author_name || 'U')}&background=random&color=fff`}
+                                                        alt={review.profiles?.full_name || review.author_name}
+                                                        className={`w-6 h-6 rounded-full border-2 border-[#FAFAFA] object-cover relative ${i === 0 ? 'z-10' : i === 1 ? 'z-[9]' : 'z-[8]'}`}
+                                                    />
+                                                ))}
+                                            </div>
+                                            <div className="text-[12px] text-slate-600 font-medium leading-tight truncate">
+                                                dconfy de <span className="font-bold text-slate-900">{profile.recommendations[0]?.profiles?.full_name?.split(' ')[0] || profile.recommendations[0]?.author_name?.split(' ')[0]}</span>
+                                                {profile.recommendations.length > 1 && profile.recommendations[1] && (
+                                                    <>
+                                                        {profile.recommendations.length === 2 ? ' y ' : ', '}
+                                                        <span className="font-bold text-slate-900">{profile.recommendations[1]?.profiles?.full_name?.split(' ')[0] || profile.recommendations[1]?.author_name?.split(' ')[0]}</span>
+                                                    </>
+                                                )}
+                                                {profile.recommendations.length > 2 && (
+                                                    <> y <span className="font-bold text-slate-900">{profile.recommendations.length - 2} más</span></>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className="flex items-center gap-2.5">
+                                            <div className="w-6 h-6 rounded-full bg-slate-50 border-2 border-[#FAFAFA] flex items-center justify-center shrink-0 z-10 shadow-sm">
+                                                <LucideIcons.User className="w-3 h-3 text-slate-300" />
+                                            </div>
+                                            <div className="text-[12px] text-slate-400 font-medium leading-tight truncate">
+                                                Sin recomendaciones
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
                             <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0 z-20">
@@ -427,20 +470,13 @@ export default function DirectoryClient() {
                         className="fixed inset-0 bg-slate-900/60 z-[100] animate-fade-in"
                         onClick={() => setSelectedProSlug(null)}
                     />
-                    <div className="fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-white z-[110] shadow-2xl animate-slide-in-right flex flex-col">
-                        <div className="flex justify-between items-center p-4 shrink-0 bg-white z-10 relative">
+                    <div className="fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-[#FAFAFA] z-[110] animate-slide-in-right flex flex-col">
+                        <div className="flex justify-between items-center p-4 shrink-0 z-10 relative">
                             <h3 className="font-bold text-slate-900 flex items-center gap-2">
-                                Perfil Profesional
+
                             </h3>
                             <div className="flex items-center gap-2">
-                                <Link
-                                    href={`/pro/${selectedProSlug}`}
-                                    target="_blank"
-                                    className="p-2 text-slate-400 hover:text-violet-600 hover:bg-violet-50 rounded-full transition-colors flex items-center justify-center"
-                                    title="Abrir en nueva pestaña"
-                                >
-                                    <LucideIcons.ExternalLink className="w-4 h-4" />
-                                </Link>
+
                                 <button
                                     onClick={() => setSelectedProSlug(null)}
                                     className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors"
