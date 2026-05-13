@@ -265,29 +265,27 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                     </div>
                 ) : null}
 
-                {/* 4. TARJETA COMBINADA DE BIOGRAFÍA Y ETIQUETAS */}
-                {(profile.bio || (profile.services_tags && profile.services_tags.length > 0)) && (
-                    <div className="bg-white rounded-2xl p-5 border border-slate-100">
+                {/* 4. ETIQUETAS */}
+                {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-2">
+                        {profile.services_tags.map((tag: string, index: number) => (
+                            <span
+                                key={index}
+                                className="bg-violet-50 text-violet-700 border border-violet-100 px-3 py-1.5 rounded-lg text-xs font-bold"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                )}
 
-                        {profile.bio && (
-                            <p className="text-slate-700 leading-relaxed text-[15px]">
-                                {profile.bio}
-                            </p>
-                        )}
-
-                        {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
-                            <div className={`flex flex-wrap gap-2 ${profile.bio ? 'mt-4 pt-4 border-t border-slate-100' : ''}`}>
-                                {profile.services_tags.map((tag: string, index: number) => (
-                                    <span
-                                        key={index}
-                                        className="bg-violet-50 text-violet-700 border border-violet-100 px-3 py-1.5 rounded-lg text-xs font-bold"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                        )}
-
+                {/* 5. BIOGRAFÍA */}
+                {profile.bio && (
+                    <div className="flex flex-col gap-2 mt-4 px-1">
+                        <h3 className="text-xl font-bold text-slate-900">Descripción</h3>
+                        <p className="text-slate-700 leading-relaxed text-[15px] whitespace-pre-line">
+                            {profile.bio}
+                        </p>
                     </div>
                 )}
 
