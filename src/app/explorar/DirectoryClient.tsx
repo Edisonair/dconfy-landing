@@ -332,7 +332,7 @@ export default function DirectoryClient() {
                 <div className="flex flex-wrap gap-2 pt-0 animate-in fade-in slide-in-from-top-2 duration-300 max-w-3xl mx-auto justify-center mb-10 px-4">
                     <button
                         onClick={() => setSelectedTag(null)}
-                        className={`px-5 py-2 rounded-full text-[15px] font-bold transition-all ${!selectedTag ? 'bg-[#FF6600] text-white shadow-md shadow-[#FF6600]/20' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                        className={`px-5 py-2 rounded-full text-[15px] font-bold transition-all ${!selectedTag ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                     >
                         Todas
                     </button>
@@ -340,7 +340,7 @@ export default function DirectoryClient() {
                         <button
                             key={tag}
                             onClick={() => setSelectedTag(tag)}
-                            className={`px-5 py-2 rounded-full text-[15px] font-bold transition-all ${selectedTag === tag ? 'bg-[#FF6600] text-white shadow-md shadow-[#FF6600]/20' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                            className={`px-5 py-2 rounded-full text-[15px] font-bold transition-all ${selectedTag === tag ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                         >
                             {tag}
                         </button>
