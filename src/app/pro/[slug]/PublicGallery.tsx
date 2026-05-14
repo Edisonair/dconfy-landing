@@ -147,7 +147,7 @@ export default function PublicGallery({ images }: { images: string[] }) {
     return (
         <>
             <div className="mt-8 pt-6 border-t border-slate-100">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Galería</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">Galería</h3>
                 {renderGrid()}
             </div>
 

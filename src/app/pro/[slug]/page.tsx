@@ -190,13 +190,13 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         className="w-24 h-24 sm:w-28 sm:h-28 shrink-0"
                     />
                     <div className="flex-1 min-w-0">
-                        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight mb-2 truncate">
+                        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 mb-1 truncate">
                             {profile.professional_name || profile.full_name}
                         </h1>
 
-                        <div className="flex items-center gap-1.5 bg-violet-50 text-violet-700 px-3 py-1.5 rounded-xl w-fit mb-2 border border-violet-100">
+                        <div className="flex items-center text-violet-700 gap-2 mb-2">
                             {renderIcon(dbIconName, profile.specialty || profile.category)}
-                            <span className="font-bold text-sm tracking-tight uppercase">{profile.specialty || profile.category}</span>
+                            <span className="font-bold text-md uppercase">{profile.specialty || profile.category}</span>
                         </div>
 
                         {/* 🚀 EL TEXTO AHORA ES UN ENLACE CLICABLE */}
@@ -267,22 +267,25 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
 
                 {/* 4. ETIQUETAS */}
                 {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-2">
-                        {profile.services_tags.map((tag: string, index: number) => (
-                            <span
-                                key={index}
-                                className="bg-violet-50 text-violet-700 border border-violet-400 px-3 py-1.5 rounded-lg text-xs font-bold"
-                            >
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
+                    <section className="mt-4 px-1">
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Especialidad</h3>
+                        <div className="flex flex-wrap gap-2">
+                            {profile.services_tags.map((tag: string, index: number) => (
+                                <span
+                                    key={index}
+                                    className="bg-violet-50 text-violet-700 border border-violet-400 px-3 py-1.5 rounded-full text-xs font-bold"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </section>
                 )}
 
                 {/* 5. BIOGRAFÍA */}
                 {profile.bio && (
                     <div className="flex flex-col gap-2 mt-4 px-1">
-                        <h3 className="text-xl font-bold text-slate-900">Descripción</h3>
+                        <h3 className="text-xl font-bold text-slate-900 tracking-tight">Descripción</h3>
                         <p className="text-slate-700 leading-relaxed text-[15px] whitespace-pre-line">
                             {profile.bio}
                         </p>

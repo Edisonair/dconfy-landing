@@ -382,14 +382,14 @@ export default function DirectoryClient() {
                             <div className="mt-auto flex flex-col w-full relative z-10">
                                 {Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
                                     <div className="flex flex-nowrap items-center gap-1.5 w-full mb-3 pr-10">
-                                        {profile.services_tags.slice(0, 2).map((tag: string, i: number) => (
-                                            <span key={i} title={tag} className="bg-violet-50 text-violet-700 border border-violet-100 px-2 py-1 rounded text-[11px] font-bold capitalize truncate shrink">
+                                        {profile.services_tags.slice(0, 3).map((tag: string, i: number) => (
+                                            <span key={i} title={tag} className="bg-violet-50 text-violet-700 border border-violet-100 px-2 py-1 rounded-xl text-[11px] font-bold capitalize truncate shrink">
                                                 {tag}
                                             </span>
                                         ))}
-                                        {profile.services_tags.length > 2 && (
-                                            <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[11px] font-bold shrink-0">
-                                                +{profile.services_tags.length - 2}
+                                        {profile.services_tags.length > 3 && (
+                                            <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded-xl text-[11px] font-bold shrink-0">
+                                                +{profile.services_tags.length - 3}
                                             </span>
                                         )}
                                     </div>

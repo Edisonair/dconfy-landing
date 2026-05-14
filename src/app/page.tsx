@@ -1014,7 +1014,7 @@ export default function Home() {
           >
             <motion.div variants={fadeInUpVariants} className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
               <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-2">Plan Profesional</h3>
-              <p className="text-slate-500 text-sm mb-6 h-10">Ideal para autónomos y pequeños negocios que quieren destacar.</p>
+              <p className="text-slate-500 text-sm mb-6 h-10">Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.</p>
               <div className="mb-2 flex items-baseline gap-1">
                 <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '29,99€' : '2.99€'}</span>
                 <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
