@@ -964,7 +964,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
           >
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
-            <p className="mt-4 text-xl text-violet-200 mb-8 max-w-2xl mx-auto font-medium">Convierte las recomendaciones de tus clientes en un flujo constante de nuevos contactos.</p>
+            <p className="mt-4 text-xl text-violet-200 mb-8 max-w-2xl mx-auto font-medium">Convierte las recomendaciones de tus clientes en un flujo de nuevos contactos.</p>
           </motion.div>
 
           <motion.div
