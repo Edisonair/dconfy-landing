@@ -271,7 +271,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                         {profile.services_tags.map((tag: string, index: number) => (
                             <span
                                 key={index}
-                                className="bg-violet-50 text-violet-700 border border-violet-100 px-3 py-1.5 rounded-lg text-xs font-bold"
+                                className="bg-violet-50 text-violet-700 border border-violet-400 px-3 py-1.5 rounded-lg text-xs font-bold"
                             >
                                 {tag}
                             </span>
