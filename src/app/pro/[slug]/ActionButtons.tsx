@@ -1,6 +1,6 @@
 'use client';
 
-import { Heart, Share } from 'lucide-react';
+import { Bookmark, Share } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ActionButtons({ slug }: { slug: string }) {
@@ -52,7 +52,7 @@ export default function ActionButtons({ slug }: { slug: string }) {
                 onClick={handleDeepLink}
                 className="flex-1 max-w-[200px] bg-[#FF6600] text-white font-bold h-[52px] rounded-full shadow-lg shadow-[#FF6600]/30 flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors active:scale-95 text-[15px]"
             >
-                <Heart className="w-5 h-5 fill-current" /> Recomendar
+                <Bookmark className="w-5 h-5 fill-current" /> Guardar
             </button>
         </div>
     );
