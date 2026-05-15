@@ -11,11 +11,11 @@ export default function ActionButtons({ slug }: { slug: string }) {
         const iosStoreUrl = "https://apps.apple.com/app/id6759350115";
         const androidStoreUrl = "https://play.google.com/store/apps/details?id=io.dconfy.app";
 
-        window.location.href = appUrl;
+        window.open(appUrl, '_top');
 
         setTimeout(() => {
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            window.location.href = isIOS ? iosStoreUrl : androidStoreUrl;
+            window.open(isIOS ? iosStoreUrl : androidStoreUrl, '_top');
         }, 2500);
     };
 

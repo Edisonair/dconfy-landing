@@ -119,7 +119,7 @@ export default function ContactButtons({ profile, slug }: ContactButtonsProps) {
             )}
 
             {/* EL CHAT SIEMPRE VISIBLE AL FINAL */}
-            <a href={`https://app.dconfy.io/#/professional/${slug}?action=chat`} className="w-12 h-12 bg-violet-600 text-white rounded-full flex shrink-0 items-center justify-center shadow-md shadow-violet-200 active:scale-95 transition-transform">
+            <a href={`https://app.dconfy.io/#/professional/${slug}?action=chat`} target="_top" className="w-12 h-12 bg-violet-600 text-white rounded-full flex shrink-0 items-center justify-center shadow-md shadow-violet-200 active:scale-95 transition-transform">
                 <MessageCircle className="w-5 h-5" />
             </a>
         </div>
