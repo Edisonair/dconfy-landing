@@ -44,7 +44,7 @@ export default function ContactButtons({ profile, slug }: ContactButtonsProps) {
                             </a>
                         )}
                         {hasEmail && (
-                            <a href={`mailto:${profile.email_professional}`} className="w-12 h-12 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shrink-0 transition-colors active:scale-95">
+                            <a href={`mailto:${profile.email_professional}`} target="_top" className="w-12 h-12 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shrink-0 transition-colors active:scale-95">
                                 <Mail className="w-5 h-5" />
                             </a>
                         )}
@@ -73,7 +73,7 @@ export default function ContactButtons({ profile, slug }: ContactButtonsProps) {
                                             </a>
                                         )}
                                         {hasEmail && (
-                                            <a href={`mailto:${profile.email_professional}`} className="flex items-center gap-3 p-2 hover:bg-slate-50 rounded-xl transition-colors text-sm font-bold text-slate-700">
+                                            <a href={`mailto:${profile.email_professional}`} target="_top" className="flex items-center gap-3 p-2 hover:bg-slate-50 rounded-xl transition-colors text-sm font-bold text-slate-700">
                                                 <div className="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center shrink-0">
                                                     <Mail className="w-4 h-4" />
                                                 </div>
@@ -95,7 +95,7 @@ export default function ContactButtons({ profile, slug }: ContactButtonsProps) {
                         </a>
                     )}
                     {hasEmail && (
-                        <a href={`mailto:${profile.email_professional}`} className="w-12 h-12 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shrink-0 transition-colors active:scale-95">
+                        <a href={`mailto:${profile.email_professional}`} target="_top" className="w-12 h-12 bg-slate-800 text-white hover:bg-slate-900 rounded-full flex items-center justify-center shadow-md shrink-0 transition-colors active:scale-95">
                             <Mail className="w-5 h-5" />
                         </a>
                     )}
@@ -113,7 +113,7 @@ export default function ContactButtons({ profile, slug }: ContactButtonsProps) {
                 </a>
             )}
             {hasWa && (
-                <a href={`tel:${profile.whatsapp_number.replace(/\\s+/g, '')}`} className="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-md shadow-green-200 shrink-0 active:scale-95 transition-transform">
+                <a href={`tel:${profile.whatsapp_number.replace(/\\s+/g, '')}`} target="_top" className="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-md shadow-green-200 shrink-0 active:scale-95 transition-transform">
                     <Phone className="w-5 h-5" />
                 </a>
             )}
