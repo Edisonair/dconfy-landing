@@ -135,7 +135,7 @@ export default function Home() {
             </h1>
 
 
-            <p className="text-2xl md:text-3xl text-slate-500 mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <p className="text-2xl md:text-3xl text-slate-700 mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
               Encuentra profesionales y servicios recomendados por tu gente.
             </p>
 
@@ -964,7 +964,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
           >
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
-            <p className="mt-4 text-xl text-violet-200 mb-8 max-w-2xl mx-auto font-medium">Convierte las recomendaciones de tus clientes en un flujo de nuevos contactos.</p>
+            <p className="mt-4 text-xl text-violet-200 mb-8 max-w-2xl mx-auto font-medium">Convierte el boca a boca de siempre en un flujo de nuevos clientes</p>
           </motion.div>
 
           <motion.div

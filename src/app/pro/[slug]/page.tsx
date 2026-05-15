@@ -139,14 +139,19 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
     }
 
     let dbIconName = null;
+    let tagsHeading = 'Especialidad';
     if (profile.categories) {
         const catArray = Array.isArray(profile.categories) ? profile.categories[0] : profile.categories;
         dbIconName = catArray?.icon_name || null;
+        tagsHeading = catArray?.tags_heading || 'Especialidad';
     }
 
-    if (!dbIconName && profile.category) {
-        const { data: catData } = await supabase.from('categories').select('icon_name').eq('name', profile.category).maybeSingle();
-        if (catData) dbIconName = catData.icon_name;
+    if ((!dbIconName || tagsHeading === 'Especialidad') && profile.category) {
+        const { data: catData } = await supabase.from('categories').select('icon_name, tags_heading').eq('name', profile.category).maybeSingle();
+        if (catData) {
+            if (!dbIconName) dbIconName = catData.icon_name;
+            if (catData.tags_heading) tagsHeading = catData.tags_heading;
+        }
     }
 
     const { data: reviews, count } = await supabase
@@ -268,7 +273,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                 {/* 4. ETIQUETAS */}
                 {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
                     <section className="mt-4 px-1">
-                        <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Especialidad</h3>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">{tagsHeading}</h3>
                         <div className="flex flex-wrap gap-2">
                             {profile.services_tags.map((tag: string, index: number) => (
                                 <span
