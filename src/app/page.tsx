@@ -145,7 +145,7 @@ export default function Home() {
                   Descargar app
                 </Link>
                 <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
-                  ¿Ofreces algún servicio?
+                  ¿Ofreces algún Servicio?
                 </Link>
               </div>
 
@@ -470,7 +470,7 @@ export default function Home() {
           variants={fadeInUpVariants}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-slate-800 tracking-tight">Historias reales de dconfy</h3>
+          <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-slate-800 ">Historias reales de dconfy</h3>
         </motion.div>
 
         <div className="flex flex-col gap-4 max-w-4xl mx-auto">
@@ -512,7 +512,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-slate-600 italic sm:text-lg font-medium leading-relaxed flex-1">
-              "Buscaba un fisio deportivo de confianza. dconfy le mostró a Elena Gómez, recomendada por 23 contactos."
+              "Buscaba un fisio deportivo de confianza. dconfy le mostró a Elena Gómez, recomendada por 17 personas y 8 amigos."
             </p>
           </motion.div>
         </div>
