@@ -131,12 +131,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
           <div className="max-w-xl lg:max-w-lg">
             <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
-              El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza,</span> ahora en una app
+              El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
             </h1>
 
 
             <p className="text-2xl md:text-3xl text-slate-700 mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
-              Encuentra profesionales y servicios recomendados por tu gente.
+              Descubre Profesionales y Servicios de confianza.
             </p>
 
             <div className="flex flex-col gap-3">
@@ -912,8 +912,8 @@ export default function Home() {
 
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
-        <p className="text-slate-500 font-medium mb-12 max-w-xl mx-auto">
-          Empieza a encontrar profesionales y servicios recomendados por tu gente.
+        <p className="text-lg text-slate-500 font-medium mb-12 max-w-xl mx-auto">
+          Descubre Profesionales y Servicios recomendados por tu gente.
         </p>
 
         <div className="flex justify-center mb-8">
