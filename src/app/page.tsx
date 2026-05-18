@@ -135,8 +135,8 @@ export default function Home() {
             </h1>
 
 
-            <p className="text-2xl md:text-3xl text-slate-700 mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
-              Descubre Profesionales y Servicios de confianza.
+            <p className="text-xl md:text-2xl text-slate-700 mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
+              Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
             </p>
 
             <div className="flex flex-col gap-3">
@@ -285,8 +285,8 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así se ve una recomendación en dconfy</h2>
-            <p className="mt-4 text-xl text-slate-500 font-medium">Siempre ves quién recomienda y cómo está conectado contigo</p>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así son las recomendaciones en dconfy</h2>
+            <p className="mt-4 text-xl text-slate-500 font-medium">Siempre verás quién recomienda y cómo está conectado contigo</p>
           </motion.div>
 
           <motion.div
@@ -461,63 +461,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Historias reales de dconfy */}
-      <section className="bg-white pb-16 lg:pb-24 px-6 max-w-[1000px] mx-auto relative z-20">
-        <motion.div
-          className="text-center mb-8"
-          whileInView="visible"
-          initial="hidden"
-          variants={fadeInUpVariants}
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-slate-800 ">Historias reales de dconfy</h3>
-        </motion.div>
-
-        <div className="flex flex-col gap-4 max-w-4xl mx-auto">
-          <motion.div
-            className="bg-slate-50/50 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 border border-slate-100 shadow-sm"
-            whileInView="visible"
-            initial="hidden"
-            variants={fadeInUpVariants}
-            viewport={{ once: true, amount: 0.5 }}
-          >
-            <div className="flex items-center gap-3 shrink-0 sm:w-44">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0 bg-slate-100">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Lucía" className="w-full h-full object-cover" />
-              </div>
-              <div>
-                <p className="font-black text-slate-900 text-sm leading-tight">Laura</p>
-                <p className="text-[#FF6600] text-[11px] font-bold uppercase tracking-wider mt-0.5">Madrid</p>
-              </div>
-            </div>
-            <p className="text-slate-600 italic sm:text-lg font-medium leading-relaxed flex-1">
-              "Necesitaba una reforma integral. En vez de preguntar en cuatro grupos de WhatsApp, abrió dconfy y encontró PlusHome, recomendado por 14 personas de su red."
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="bg-slate-50/50 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 border border-slate-100 shadow-sm"
-            whileInView="visible"
-            initial="hidden"
-            variants={fadeInUpVariants}
-            viewport={{ once: true, amount: 0.5 }}
-          >
-            <div className="flex items-center gap-3 shrink-0 sm:w-44">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0 bg-slate-100">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Marta" className="w-full h-full object-cover" />
-              </div>
-              <div>
-                <p className="font-black text-slate-900 text-sm leading-tight">Edgar</p>
-                <p className="text-[#FF6600] text-[11px] font-bold uppercase tracking-wider mt-0.5">Barcelona</p>
-              </div>
-            </div>
-            <p className="text-slate-600 italic sm:text-lg font-medium leading-relaxed flex-1">
-              "Buscaba un fisio deportivo de confianza. dconfy le mostró a Elena Gómez, recomendada por 17 personas y 8 amigos."
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       <div className="w-full bg-[#FFF9F0] py-20 md:py-32 px-6 text-center relative z-20 overflow-hidden">
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -581,8 +524,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Heart className="w-8 h-8 text-[#FF6600]" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda en quien de verdad confías</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Tus recomendaciones ayudan a tus amigos cuando necesiten un servicio de confianza.</p>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda y Ayuda</h3>
+              <p className="text-lg text-slate-700 leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando recomendaciones sobre profesionales y servicios de tu confianza.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/recomendaciones.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
@@ -603,8 +546,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Encuentra servicios y profesionales recomendados por tu red</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">No ves opiniones anónimas: ves a quién conoce tu gente.</p>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Busca en tu Red</h3>
+              <p className="text-lg text-slate-700 leading-relaxed">Nuestros resultados priorizan a los profesionales y servicios que tu gente ha recomendado.</p>
             </div>
           </motion.div>
 
@@ -619,8 +562,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
                 <MessageCircle className="w-8 h-8 text-[#FF6600]" />
               </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Contacta con más confianza</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Habla directamente con el profesional desde la app.</p>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Elige con tranquilidad</h3>
+              <p className="text-lg text-slate-700 leading-relaxed">Accede al chat directo de profesionales verificados. Sin intermediarios, sin comisiones ocultas.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
               <img src="/habla-confianza.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
@@ -641,10 +584,14 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-orange-100 mx-auto lg:mx-0">
-              <Bookmark className="w-8 h-8 text-[#FF6600]" />
+            <div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mb-6 mx-auto lg:mx-0 overflow-hidden">
+              <img
+                src="/dconfy_icon.png"
+                alt="Logo dconfy"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tus servicios <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span>,<br /> siempre a mano</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano.</h2>
 
             <ul className="space-y-4 pt-8">
               <li className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-orange-100/50 hover:shadow-md transition-shadow">
@@ -652,7 +599,7 @@ export default function Home() {
                   <CheckCircle2 className="w-5 h-5 text-[#FF6600]" />
                 </div>
                 <span className="text-lg text-slate-700 font-medium leading-snug">
-                  <strong className="text-slate-900 font-black">Lo que tú recomiendas</strong>, siempre visible en tu perfil.
+                  <strong className="text-slate-900 font-black">Lo que tú recomiendas</strong>, en tu perfil, para ti y los tuyos.
                 </span>
               </li>
               <li className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-orange-100/50 hover:shadow-md transition-shadow">
@@ -660,17 +607,10 @@ export default function Home() {
                   <CheckCircle2 className="w-5 h-5 text-[#FF6600]" />
                 </div>
                 <span className="text-lg text-slate-700 font-medium leading-snug">
-                  <strong className="text-slate-900 font-black">Lo que recomienda tu gente</strong> está guardado para cuando lo necesites.
+                  <strong className="text-slate-900 font-black">Lo que recomienda tu gente</strong> guardado para cuando lo necesites.
                 </span>
               </li>
-              <li className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-orange-100/50 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-5 h-5 text-[#FF6600]" />
-                </div>
-                <span className="text-lg text-slate-700 font-medium leading-snug">
-                  <strong className="text-slate-900 font-black">Olvídate de volver a preguntar</strong> cada vez que necesites un servicio.
-                </span>
-              </li>
+
             </ul>
           </motion.div>
 
@@ -819,6 +759,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Historias reales de dconfy */}
+      <section className="hidden bg-white pb-16 lg:pb-24 px-6 max-w-[1000px] mx-auto relative z-20">
+        <motion.div
+          className="text-center mb-8"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <h3 className="text-2xl font-black [-webkit-text-stroke:1px_currentColor] text-slate-800 ">Historias reales de dconfy</h3>
+        </motion.div>
+
+        <div className="flex flex-col gap-4 max-w-4xl mx-auto">
+          <motion.div
+            className="bg-slate-50/50 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 border border-slate-100 shadow-sm"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <div className="flex items-center gap-3 shrink-0 sm:w-44">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0 bg-slate-100">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Lucía" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <p className="font-black text-slate-900 text-sm leading-tight">Laura</p>
+                <p className="text-[#FF6600] text-[11px] font-bold uppercase tracking-wider mt-0.5">Madrid</p>
+              </div>
+            </div>
+            <p className="text-slate-600 italic sm:text-lg font-medium leading-relaxed flex-1">
+              "Necesitaba una reforma integral. En vez de preguntar en cuatro grupos de WhatsApp, abrió dconfy y encontró PlusHome, recomendado por 14 personas de su red."
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="bg-slate-50/50 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 border border-slate-100 shadow-sm"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <div className="flex items-center gap-3 shrink-0 sm:w-44">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0 bg-slate-100">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Marta" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <p className="font-black text-slate-900 text-sm leading-tight">Edgar</p>
+                <p className="text-[#FF6600] text-[11px] font-bold uppercase tracking-wider mt-0.5">Barcelona</p>
+              </div>
+            </div>
+            <p className="text-slate-600 italic sm:text-lg font-medium leading-relaxed flex-1">
+              "Buscaba un fisio deportivo de confianza. dconfy le mostró a Elena Gómez, recomendada por 17 personas y 8 amigos."
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="bg-white py-24 px-6 max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -913,7 +910,7 @@ export default function Home() {
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
         <p className="text-lg text-slate-500 font-medium mb-12 max-w-xl mx-auto">
-          Descubre Profesionales y Servicios recomendados por tu gente.
+          Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
         </p>
 
         <div className="flex justify-center mb-8">
