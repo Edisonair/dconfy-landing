@@ -326,7 +326,7 @@ export default function Home() {
             className="mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text animate-gradient-text tracking-tight leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
-              dconfy nace para ayudarte a descubrir y guardar las recomendaciones de confianza de tu red.
+              dconfy nace para ayudarte a descubrir y guardar los servicios de confianza de tu red.
             </h2>
           </motion.div>
         </div>
