@@ -135,9 +135,44 @@ export default function Home() {
             </h1>
 
 
-            <p className="text-xl md:text-2xl text-slate-700 mb-12 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <p className="text-xl md:text-2xl text-slate-700 mb-8 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
               Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
             </p>
+
+            <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 mb-12 pl-2">
+              <div className="flex flex-col items-center gap-1.5">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Tú" className="w-full h-full object-cover" />
+                </div>
+                <span className="text-[10px] font-black text-slate-900 leading-none">Tú</span>
+              </div>
+
+              <div className="text-[#FF6600] mb-4">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </div>
+
+              <div className="flex flex-col items-center gap-1.5">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
+                  <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Carlos" className="w-full h-full object-cover" />
+                </div>
+                <span className="text-[10px] font-black text-slate-900 leading-none">Carlos</span>
+              </div>
+
+              <div className="text-[#FF6600] mb-4">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </div>
+
+              <div className="flex flex-col items-center gap-1.5">
+                <div className="w-12 h-10 sm:w-14 sm:h-11 rounded-xl overflow-hidden shadow-sm shrink-0 bg-orange-50">
+                  <img src="/fisio.jpg" alt="Elena" className="w-full h-full object-cover" />
+                </div>
+                <span className="text-[10px] font-black text-slate-900 leading-none">Fisio Elena</span>
+              </div>
+            </div>
 
             <div className="flex flex-col gap-3">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -147,41 +182,6 @@ export default function Home() {
                 <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
                   ¿Ofreces algún Servicio?
                 </Link>
-              </div>
-
-              <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 mt-6 pl-2">
-                <div className="flex flex-col items-center gap-1.5">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Tú" className="w-full h-full object-cover" />
-                  </div>
-                  <span className="text-[10px] font-black text-slate-900 leading-none">Tú</span>
-                </div>
-
-                <div className="text-[#FF6600] mb-4">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </div>
-
-                <div className="flex flex-col items-center gap-1.5">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Carlos" className="w-full h-full object-cover" />
-                  </div>
-                  <span className="text-[10px] font-black text-slate-900 leading-none">Carlos</span>
-                </div>
-
-                <div className="text-[#FF6600] mb-4">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </div>
-
-                <div className="flex flex-col items-center gap-1.5">
-                  <div className="w-12 h-10 sm:w-14 sm:h-11 rounded-xl overflow-hidden shadow-sm shrink-0 bg-orange-50">
-                    <img src="/fisio.jpg" alt="Elena" className="w-full h-full object-cover" />
-                  </div>
-                  <span className="text-[10px] font-black text-slate-900 leading-none">Fisio Elena</span>
-                </div>
               </div>
             </div>
           </div>
@@ -266,6 +266,18 @@ export default function Home() {
       </section>
 
       {/* Nuevo Banner: Por qué nace dconfy */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes moveGradient {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+          }
+          .animate-gradient-text {
+            background-image: linear-gradient(to right, #F05A28, #BE1E8D, #F05A28, #BE1E8D, #F05A28);
+            background-size: 200% auto;
+            animation: moveGradient 4s linear infinite;
+          }
+        `}} />
       <section className="py-20 px-6 max-w-6xl mx-auto rounded-[3rem] my-12 relative overflow-hidden">
         <div className="relative z-10 text-center max-w-4xl mx-auto pt-8 pb-16">
 
@@ -277,7 +289,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-32 md:mb-48"
           >
-            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               Muchas veces no sabemos todo lo que nuestra gente conoce o recomienda.
             </h2>
           </motion.div>
@@ -289,7 +301,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-32 md:mb-48"
           >
-            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               Cada vez que necesitamos un servicio o profesional, acabamos preguntando a amigos, familia o conocidos.
             </h2>
           </motion.div>
@@ -301,7 +313,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-32 md:mb-48 max-w-2xl mx-auto"
           >
-            <h2 className="font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] text-3xl md:text-5xl leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               un fisio, un restaurante, un seguro, un masajista...
             </h2>
           </motion.div>
@@ -313,7 +325,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight">
+            <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text animate-gradient-text tracking-tight leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
               dconfy nace para ayudarte a descubrir y guardar las recomendaciones de confianza de tu red.
             </h2>
           </motion.div>
@@ -340,8 +352,10 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight">Así son las recomendaciones en dconfy</h2>
-            <p className="mt-4 text-xl text-slate-500 font-medium">Siempre verás quién recomienda y cómo está conectado contigo</p>
+            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+              Verás quién recomienda y cómo está conectado contigo
+            </h2>
+
           </motion.div>
 
           <motion.div
@@ -516,7 +530,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="w-full bg-[#FFF9F0] py-20 md:py-32 px-6 text-center relative z-20 overflow-hidden">
+      {/*<div className="w-full bg-[#FFF9F0] py-20 md:py-32 px-6 text-center relative z-20 overflow-hidden">
         <style dangerouslySetInnerHTML={{
           __html: `
           @keyframes moveGradient {
@@ -542,7 +556,8 @@ export default function Home() {
             </p>
           </div>
         </motion.div>
-      </div>
+      </div>*/}
+
 
       <section id="como-funciona" className="bg-white pt-16 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
         <motion.div
@@ -553,7 +568,8 @@ export default function Home() {
           viewport={{ once: true, amount: 0.5 }}
         >
           <div className="relative inline-block">
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight relative z-10">¿Cómo funciona dconfy?</h2>
+            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+              ¿Cómo funciona dconfy?</h2>
           </div>
         </motion.div>
 
@@ -879,7 +895,8 @@ export default function Home() {
           variants={fadeInUpVariants}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">¿Por qué dconfy es diferente?</h2>
+          <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            ¿Por qué dconfy es diferente?</h2>
         </motion.div>
 
         <motion.div
