@@ -135,7 +135,7 @@ export default function Home() {
             </h1>
 
 
-            <p className="text-xl md:text-2xl text-slate-700 mb-8 font-bold leading-snug tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <p className="text-2xl md:text-3xl text-slate-800 mb-8 font-bold leading-tight tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
               Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
             </p>
 
@@ -289,7 +289,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-32 md:mb-48"
           >
-            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               Muchas veces no sabemos todo lo que nuestra gente conoce o recomienda.
             </h2>
           </motion.div>
@@ -301,8 +301,8 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-32 md:mb-48"
           >
-            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
-              Cada vez que necesitamos un servicio o profesional, acabamos preguntando a amigos, familia o conocidos.
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+              Cada vez que necesitamos un servicio o profesional de confianza, acabamos preguntando a amigos, familia o conocidos.
             </h2>
           </motion.div>
 
@@ -313,7 +313,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-32 md:mb-48 max-w-2xl mx-auto"
           >
-            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               un fisio, un restaurante, un seguro, un masajista...
             </h2>
           </motion.div>
@@ -325,8 +325,8 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text animate-gradient-text tracking-tight leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
-              dconfy nace para ayudarte a descubrir y guardar los servicios de confianza de tu red.
+            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text animate-gradient-text leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
+              dconfy nace para ayudarte a descubrir y guardar los servicios que recomienda tu gente.
             </h2>
           </motion.div>
         </div>
@@ -352,7 +352,7 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               Verás quién recomienda y cómo está conectado contigo
             </h2>
 
@@ -366,12 +366,12 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] justify-self-center md:justify-self-end flex flex-col items-center sm:items-stretch">
-              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600] overflow-hidden w-full">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600] via-[#FF6600] to-transparent"></div>
 
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
-                    <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">PlusHome</h3>
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-none mb-1.5 tracking-tight">PlusHome</h3>
                     <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">REFORMAS INTEGRALES</p>
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Lampistería</span>
@@ -423,12 +423,12 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] justify-self-center md:justify-self-start flex flex-col items-center sm:items-stretch">
-              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600] overflow-hidden w-full">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600] via-[#FF6600] to-transparent"></div>
 
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
-                    <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">Bella Donna</h3>
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-none mb-1.5 tracking-tight">Bella Donna</h3>
                     <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">MODA MUJER</p>
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Vestidos</span>
@@ -475,12 +475,12 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] md:col-span-2 justify-self-center flex flex-col items-center sm:items-stretch mx-auto">
-              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600]/30 overflow-hidden w-full">
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600]/80 via-[#FF6600]/20 to-transparent"></div>
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600] overflow-hidden w-full">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600] via-[#FF6600] to-transparent"></div>
 
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
-                    <h3 className="text-xl lg:text-2xl font-bold text-slate-800 leading-none mb-1.5 tracking-tight">Elena Gómez</h3>
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-none mb-1.5 tracking-tight">Elena Gómez</h3>
                     <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">FISIOTERAPIA</p>
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
                       <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Traumatológica</span>
@@ -568,7 +568,7 @@ export default function Home() {
           viewport={{ once: true, amount: 0.5 }}
         >
           <div className="relative inline-block">
-            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               ¿Cómo funciona dconfy?</h2>
           </div>
         </motion.div>
@@ -596,7 +596,7 @@ export default function Home() {
                 <Heart className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda y Ayuda</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Tu opinión cuenta. Ayuda a tu círculo dejando recomendaciones sobre profesionales y servicios de tu confianza.</p>
+              <p className="text-lg text-slate-700 leading-relaxed">Tu opinión cuenta. Recomienda a tu fontanero, osteópata, gestor o cualquier profesional que te haya gustado.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
               <img src="/recomendaciones.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
@@ -618,7 +618,7 @@ export default function Home() {
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Busca en tu Red</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Nuestros resultados priorizan a los profesionales y servicios que tu gente ha recomendado.</p>
+              <p className="text-lg text-slate-700 leading-relaxed">Nuestros resultados priorizan a los profesionales y servicios que tus contactos o su círculo ha recomendado.</p>
             </div>
           </motion.div>
 
@@ -634,7 +634,7 @@ export default function Home() {
                 <MessageCircle className="w-8 h-8 text-[#FF6600]" />
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Elige con tranquilidad</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Accede al chat directo de profesionales verificados. Sin intermediarios, sin comisiones ocultas.</p>
+              <p className="text-lg text-slate-700 leading-relaxed">Accede al chat directo de profesionales verificados y pregunta lo que necesites saber.</p>
             </div>
             <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
               <img src="/habla-confianza.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
@@ -895,7 +895,7 @@ export default function Home() {
           variants={fadeInUpVariants}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+          <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
             ¿Por qué dconfy es diferente?</h2>
         </motion.div>
 
@@ -981,7 +981,7 @@ export default function Home() {
 
         <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
 
-        <p className="text-lg text-slate-500 font-medium mb-12 max-w-xl mx-auto">
+        <p className="text-xl text-slate-500 font-medium mb-12 max-w-xl mx-auto">
           Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
         </p>
 
@@ -1032,8 +1032,9 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 tracking-tight">¿Ofreces algún servicio?</h2>
-            <p className="mt-4 text-xl text-violet-200 mb-8 max-w-2xl mx-auto font-medium">Convierte el boca a boca de siempre en un flujo de nuevos clientes</p>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+              ¿Ofreces algún servicio?</h2>
+            <p className="mt-4 text-xl text-violet-100 mb-8 max-w-2xl mx-auto font-medium">Convierte el boca a boca de siempre en un flujo de nuevos contactos</p>
           </motion.div>
 
           <motion.div
@@ -1043,7 +1044,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <span className="text-sm font-bold text-white bg-[#FF6600] px-4 py-1.5 rounded-full shadow-md max-sm:mb-2 tracking-wide">3 meses gratis por lanzamiento</span>
+            <span className="text-sm font-bold text-[#111827] uppercase bg-[#FF6600] px-4 py-2.5 rounded-full shadow-md max-sm:mb-2 tracking-wide">3 meses gratis por lanzamiento</span>
 
             <div className="relative flex items-center bg-violet-950/40 p-1.5 rounded-full w-[260px] h-[52px] border border-violet-800/50 shadow-inner">
               <div
