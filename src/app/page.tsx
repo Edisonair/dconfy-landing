@@ -265,6 +265,61 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Nuevo Banner: Por qué nace dconfy */}
+      <section className="py-20 px-6 max-w-6xl mx-auto rounded-[3rem] my-12 relative overflow-hidden">
+        <div className="relative z-10 text-center max-w-4xl mx-auto pt-8 pb-16">
+
+
+          <motion.div
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mb-32 md:mb-48"
+          >
+            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight">
+              Muchas veces no sabemos todo lo que nuestra gente conoce o recomienda.
+            </h2>
+          </motion.div>
+
+          <motion.div
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mb-32 md:mb-48"
+          >
+            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight">
+              Cada vez que necesitamos un servicio o profesional, acabamos preguntando a amigos, familia o conocidos.
+            </h2>
+          </motion.div>
+
+          <motion.div
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mb-32 md:mb-48 max-w-2xl mx-auto"
+          >
+            <h2 className="font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] text-3xl md:text-5xl leading-tight">
+              un fisio, un restaurante, un seguro, un masajista...
+            </h2>
+          </motion.div>
+
+          <motion.div
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight">
+              dconfy nace para ayudarte a descubrir y guardar las recomendaciones de confianza de tu red.
+            </h2>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Degradado radial restaurado */}
       <section
         className="py-24 px-6 overflow-hidden relative"
