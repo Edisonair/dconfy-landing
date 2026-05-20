@@ -280,19 +280,6 @@ export default function Home() {
       <section className="py-20 px-6 max-w-6xl mx-auto rounded-[3rem] my-12 relative overflow-hidden">
         <div className="relative z-10 text-center max-w-4xl mx-auto pt-8 pb-16">
 
-
-          <motion.div
-            whileInView="visible"
-            initial="hidden"
-            variants={fadeInUpVariants}
-            viewport={{ once: true, amount: 0.5 }}
-            className="mb-32 md:mb-48"
-          >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
-              Muchas veces no sabemos todo lo que nuestra gente conoce o recomienda.
-            </h2>
-          </motion.div>
-
           <motion.div
             whileInView="visible"
             initial="hidden"
@@ -322,10 +309,22 @@ export default function Home() {
             initial="hidden"
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
-            className="mb-16"
+            className="mb-32 md:mb-48"
+          >
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+              Porque confiamos más en nuestra gente que en cualquier anuncio o reseña.
+            </h2>
+          </motion.div>
+
+          <motion.div
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mb-16 bg-[#FFF9F0] px-8 py-12 md:px-16 md:py-20 rounded-[2.5rem] border border-orange-100/40 shadow-sm shadow-orange-100/30"
           >
             <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text animate-gradient-text leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
-              dconfy nace para ayudarte a descubrir y guardar los servicios que recomienda tu gente.
+              dconfy nace para ayudarte a descubrir y guardar esas recomendaciones de confianza
             </h2>
           </motion.div>
         </div>

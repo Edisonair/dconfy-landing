@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CheckCircle, Loader2, Sparkles, MapPin } from 'lucide-react';
+import { CheckCircle, Loader2, Sparkles, MapPin, TrendingUp, Coins, Award, Share } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 
 // Ajusta estas rutas según la estructura real de tu proyecto
@@ -218,218 +218,281 @@ export default function VIPInvitationPage() {
         !emailError;
 
     return (
-        <div className="flex flex-col min-h-screen bg-gradient-to-b from-violet-900 to-violet-950">
+        <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-950 to-slate-950">
             <Header />
 
-            <main className="flex-grow flex items-center justify-center pt-20 pb-20 px-6">
-                <div className="w-full max-w-lg bg-slate-950 rounded-3xl p-8 md:p-12 rounded-[2rem] border border-slate-800 shadow-2xl">
+            <main className="flex-grow flex items-center justify-center pt-28 pb-20 px-6 max-w-7xl mx-auto w-full">
+                <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center">
 
-                    {/* 🚀 NUEVO: Comprobaciones previas al formulario */}
-                    {isLoadingLimit ? (
-                        <div className="flex flex-col items-center justify-center py-20 animate-in fade-in">
-                            <Loader2 className="w-10 h-10 animate-spin text-[#FF6600] mb-4" />
-                            <p className="text-neutral-400 font-medium">Comprobando plazas disponibles...</p>
-                        </div>
-                    ) : isLimitReached ? (
-                        <div className="text-center py-10 animate-in fade-in zoom-in duration-500">
-                            <div className="mx-auto w-20 h-20 bg-[#FF6600]/10 rounded-full flex items-center justify-center mb-6">
-                                <Sparkles className="w-10 h-10 text-[#FF6600]" />
-                            </div>
-                            <h2 className="text-3xl font-black text-neutral-200 mb-4 tracking-tight">
-                                ¡Plazas agotadas! 🚀
-                            </h2>
-                            <p className="text-lg text-neutral-400 mb-6">
-                                Ya hemos alcanzado los 50 primeros profesionales fundadores. ¡Ha sido visto y no visto!
-                            </p>
-                            <p className="text-sm text-neutral-500">
-                                Mantente atento a nuestras redes, muy pronto abriremos el acceso para todo el mundo.
-                            </p>
-                        </div>
-                    ) : status === 'success' ? (
-                        <div className="text-center py-10 animate-in fade-in zoom-in duration-500">
-                            <div className="mx-auto w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
-                                <CheckCircle className="w-10 h-10 text-green-400" />
-                            </div>
-                            <h2 className="text-3xl font-black text-neutral-200 mb-4 tracking-tight">
-                                ¡Genial! Ya estás en la lista.
-                            </h2>
-                            <p className="text-lg text-neutral-400">
-                                Revisa tu email, te contactamos muy pronto con los siguientes pasos para estrenar dconfy.
-                            </p>
-                        </div>
-                    ) : (
-                        <>
-                            <div className="text-center mb-10">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF6600]/10 text-[#FF6600] font-bold text-sm mb-6 border border-[#FF6600]/20">
-                                    <Sparkles className="w-4 h-4" />
-                                    Acceso Anticipado
+                    {/* Columna Izquierda: Explicación de Beneficios */}
+                    <div className="lg:col-span-7 flex flex-col justify-center text-left">
+                        {/*<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-bold text-xs tracking-wider uppercase mb-6 border border-white/20 w-fit">
+                            <Sparkles className="w-4 h-4 animate-pulse" />
+                            Registro 100% gratis hasta el lanzamiento el 1 de junio.
+                        </div>*/}
+
+                        <h1 className="text-5xl md:text-4xl lg:text-6xl font-black text-white leading-tight mb-6" style={{ fontFamily: '"Lora", serif' }}>
+                            ¿Ofreces algún Servicio?
+                        </h1>
+                        <h2 className="text-slate-200 text-3xl md:text-4xl mb-10 leading-tight font-bold">
+                            El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] text-bold">de siempre,</span> ahora en una app
+                        </h2>
+
+                        <div className="space-y-8">
+                            <div className="flex gap-4 items-start">
+                                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
+                                    <TrendingUp className="w-6 h-6 text-[#FF6600]" />
                                 </div>
-                                <h1 className="text-3xl md:text-4xl font-black text-neutral-200 mb-4 tracking-tight leading-tight">
-                                    Buscamos a los <span className="text-[#FF6600]">50 primeros</span> profesionales para estrenar dconfy <span className="text-[#FF6600]">Gratis</span>.
-                                </h1>
-                                <p className="text-neutral-400 text-lg mb-6">
-                                    Únete a dconfy y deja que el boca a boca digital haga crecer tu negocio.
-                                </p>
-                                <p className="text-[#FF6600] font-bold text-[13px] uppercase tracking-wider">
-                                    Ideal para profesionales, autónomos y pequeños negocios que quieren destacar.
-                                </p>
-                            </div>
-
-                            <form onSubmit={handleSubmit} className="space-y-5">
                                 <div>
-                                    <label htmlFor="nombre" className="block text-sm font-bold text-neutral-400 mb-1.5">
-                                        Tu nombre
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="nombre"
-                                        name="nombre"
-                                        required
-                                        value={formData.nombre}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
-                                        placeholder="Ej. Laura Gómez"
-                                    />
+                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Multiplica tus recomendaciones</h3>
+                                    <p className="text-neutral-300 text-base leading-relaxed">
+                                        Cuando un cliente te recomienda en dconfy, tu perfil se destaca automáticamente ante sus amigos, familiares, contactos directos y de su circulo.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 items-start">
+                                <div className="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0">
+                                    <Coins className="w-6 h-6 text-violet-400" />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Sin intermediarios ni comisiones</h3>
+                                    <p className="text-neutral-300 text-base leading-relaxed">
+                                        Tus clientes son tuyos. Habla directamente con ellos a través de nuestro chat interno. No cobramos comisiones por cliente ni tarifas por contacto.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 items-start">
+                                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                                    <Share className="w-6 h-6 text-blue-400" />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Perfil público para compartir</h3>
+                                    <p className="text-neutral-300 text-base leading-relaxed">
+                                        Tendrás un enlace público para compartirlo y que tus clientes te recomienden. Con acceso desde la app móvil y el portal web.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex gap-4 items-start">
+                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                                    <Award className="w-6 h-6 text-emerald-400" />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Promoción de Lanzamiento. <span className="text-orange-500 text-md font-semibold">*Hasta 1 de junio</span></h3>
+                                    <p className="text-neutral-300 text-base leading-relaxed">
+                                        Al estar entre los 50 primeros profesionales, tendrás acceso gratuito de por vida a todas nuestras funciones.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Columna Derecha: Tarjeta con Formulario */}
+                    <div className="lg:col-span-5 w-full bg-slate-900 rounded-3xl p-8 md:p-10 border border-slate-800 shadow-2xl">
+                        {isLoadingLimit ? (
+                            <div className="flex flex-col items-center justify-center py-20 animate-in fade-in">
+                                <Loader2 className="w-10 h-10 animate-spin text-[#FF6600] mb-4" />
+                                <p className="text-neutral-400 font-medium">Comprobando plazas disponibles...</p>
+                            </div>
+                        ) : isLimitReached ? (
+                            <div className="text-center py-10 animate-in fade-in zoom-in duration-500">
+                                <div className="mx-auto w-20 h-20 bg-[#FF6600]/10 rounded-full flex items-center justify-center mb-6">
+                                    <Sparkles className="w-10 h-10 text-[#FF6600]" />
+                                </div>
+                                <h2 className="text-3xl font-black text-neutral-200 mb-4 tracking-tight">
+                                    ¡Plazas agotadas! 🚀
+                                </h2>
+                                <p className="text-lg text-neutral-400 mb-6">
+                                    Ya hemos alcanzado los 50 primeros profesionales fundadores. ¡Ha sido visto y no visto!
+                                </p>
+                                <p className="text-sm text-neutral-500">
+                                    Mantente atento a nuestras redes, muy pronto abriremos el acceso para todo el mundo.
+                                </p>
+                            </div>
+                        ) : status === 'success' ? (
+                            <div className="text-center py-10 animate-in fade-in zoom-in duration-500">
+                                <div className="mx-auto w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
+                                    <CheckCircle className="w-10 h-10 text-green-400" />
+                                </div>
+                                <h2 className="text-3xl font-black text-neutral-200 mb-4 tracking-tight">
+                                    ¡Genial! Ya estás en la lista.
+                                </h2>
+                                <p className="text-lg text-neutral-400">
+                                    Revisa tu email, te contactamos muy pronto con los siguientes pasos para estrenar dconfy.
+                                </p>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="text-center mb-10">
+                                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 text-[#FF6600] font-bold text-xs tracking-wider uppercase mb-6 border border-[#FF6600]/20 w-fit">
+                                        <Sparkles className="w-4 h-4 animate-pulse" />
+                                        Gratis para los 50 primeros
+                                    </div>
+                                    <h1 className="text-3xl md:text-4xl font-black text-neutral-200 mb-6 tracking-relaxed leading-tight" >
+                                        Buscamos a los <span className="text-[#FF6600]">50 primeros</span> profesionales para lanzar dconfy.
+                                    </h1>
+                                    <p className="text-slate-200 font-bold text-[13px] uppercase tracking-wider">
+                                        Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.
+                                    </p>
                                 </div>
 
-                                <div className="flex gap-4">
-                                    <div className="w-2/3">
-                                        <label htmlFor="profesion" className="block text-sm font-bold text-neutral-400 mb-1.5">
-                                            ¿A qué te dedicas?
-                                        </label>
-
-                                        {/* Selector de profesiones con OptGroups */}
-                                        <select
-                                            id="profesion"
-                                            name="profesion"
-                                            required
-                                            value={formData.profesion}
-                                            onChange={handleChange}
-                                            disabled={isLoadingCategories}
-                                            className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none appearance-none disabled:opacity-50"
-                                        >
-                                            <option value="" disabled>
-                                                {isLoadingCategories ? 'Cargando profesiones...' : 'Selecciona una profesión'}
-                                            </option>
-
-                                            {Object.entries(groupedCategories).map(([sector, profesiones]) => (
-                                                <optgroup key={sector} label={sector} className="bg-slate-900 text-neutral-400 font-bold">
-                                                    {profesiones.map(p => (
-                                                        <option key={p} value={p} className="text-neutral-200 font-normal">
-                                                            {p}
-                                                        </option>
-                                                    ))}
-                                                </optgroup>
-                                            ))}
-
-                                            <option value="Otra" className="font-bold text-[#FF6600]">
-                                                Otra profesión...
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                    <div className="w-1/3">
-                                        <label htmlFor="codigoPostal" className="block text-sm font-bold text-neutral-400 mb-1.5">
-                                            C. Postal
-                                        </label>
-                                        <div className="relative">
-                                            <input
-                                                type="text"
-                                                id="codigoPostal"
-                                                name="codigoPostal"
-                                                required
-                                                maxLength={5}
-                                                value={formData.codigoPostal}
-                                                onChange={handleZipChange}
-                                                onBlur={handleZipBlur}
-                                                className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none text-center ${zipError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
-                                                placeholder="28001"
-                                            />
-                                            {isZipLoading && (
-                                                <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                                                    <Loader2 className="w-4 h-4 animate-spin text-[#FF6600]" />
-                                                </div>
-                                            )}
-                                        </div>
-                                        {zipError ? (
-                                            <p className="text-[10px] font-bold text-red-500 mt-1.5 text-center">
-                                                {zipError}
-                                            </p>
-                                        ) : formData.ciudad ? (
-                                            <p className="text-[10px] font-bold text-neutral-400 mt-1.5 flex items-center justify-center gap-1 truncate">
-                                                <MapPin className="w-3 h-3 text-[#FF6600]" />
-                                                {formData.ciudad}
-                                            </p>
-                                        ) : null}
-                                    </div>
-                                </div>
-
-                                {/* Input condicional que solo aparece si se selecciona "Otra" */}
-                                {formData.profesion === 'Otra' && (
-                                    <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                                        <label htmlFor="customProfesion" className="block text-sm font-bold text-[#FF6600] mb-1.5">
-                                            Escribe tu profesión
+                                <form onSubmit={handleSubmit} className="space-y-5">
+                                    <div>
+                                        <label htmlFor="nombre" className="block text-sm font-bold text-neutral-400 mb-1.5">
+                                            Tu nombre
                                         </label>
                                         <input
                                             type="text"
-                                            id="customProfesion"
-                                            name="customProfesion"
+                                            id="nombre"
+                                            name="nombre"
                                             required
-                                            value={formData.customProfesion}
+                                            value={formData.nombre}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 rounded-xl border border-[#FF6600]/50 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
-                                            placeholder="Ej. Tatuador, Entrenador Personal..."
+                                            className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
+                                            placeholder="Ej. Laura Gómez"
                                         />
                                     </div>
-                                )}
 
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-bold text-neutral-400 mb-1.5">
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        required
-                                        value={formData.email}
-                                        onChange={handleEmailChange}
-                                        className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none ${emailError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
-                                        placeholder="hola@tmail.com"
-                                    />
-                                    {emailError && (
-                                        <p className="text-[10px] font-bold text-red-500 mt-1.5">
-                                            {emailError}
+                                    <div className="flex gap-4">
+                                        <div className="w-2/3">
+                                            <label htmlFor="profesion" className="block text-sm font-bold text-neutral-400 mb-1.5">
+                                                ¿A qué te dedicas?
+                                            </label>
+
+                                            {/* Selector de profesiones con OptGroups */}
+                                            <select
+                                                id="profesion"
+                                                name="profesion"
+                                                required
+                                                value={formData.profesion}
+                                                onChange={handleChange}
+                                                disabled={isLoadingCategories}
+                                                className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none appearance-none disabled:opacity-50"
+                                            >
+                                                <option value="" disabled>
+                                                    {isLoadingCategories ? 'Cargando profesiones...' : 'Selecciona una profesión'}
+                                                </option>
+
+                                                {Object.entries(groupedCategories).map(([sector, profesiones]) => (
+                                                    <optgroup key={sector} label={sector} className="bg-slate-900 text-neutral-400 font-bold">
+                                                        {profesiones.map(p => (
+                                                            <option key={p} value={p} className="text-neutral-200 font-normal">
+                                                                {p}
+                                                            </option>
+                                                        ))}
+                                                    </optgroup>
+                                                ))}
+
+                                                <option value="Otra" className="font-bold text-[#FF6600]">
+                                                    Otra profesión...
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                        <div className="w-1/3">
+                                            <label htmlFor="codigoPostal" className="block text-sm font-bold text-neutral-400 mb-1.5">
+                                                C. Postal
+                                            </label>
+                                            <div className="relative">
+                                                <input
+                                                    type="text"
+                                                    id="codigoPostal"
+                                                    name="codigoPostal"
+                                                    required
+                                                    maxLength={5}
+                                                    value={formData.codigoPostal}
+                                                    onChange={handleZipChange}
+                                                    onBlur={handleZipBlur}
+                                                    className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none text-center ${zipError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
+                                                    placeholder="28001"
+                                                />
+                                                {isZipLoading && (
+                                                    <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                                                        <Loader2 className="w-4 h-4 animate-spin text-[#FF6600]" />
+                                                    </div>
+                                                )}
+                                            </div>
+                                            {zipError ? (
+                                                <p className="text-[10px] font-bold text-red-500 mt-1.5 text-center">
+                                                    {zipError}
+                                                </p>
+                                            ) : formData.ciudad ? (
+                                                <p className="text-[10px] font-bold text-neutral-400 mt-1.5 flex items-center justify-center gap-1 truncate">
+                                                    <MapPin className="w-3 h-3 text-[#FF6600]" />
+                                                    {formData.ciudad}
+                                                </p>
+                                            ) : null}
+                                        </div>
+                                    </div>
+
+                                    {/* Input condicional que solo aparece si se selecciona "Otra" */}
+                                    {formData.profesion === 'Otra' && (
+                                        <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                                            <label htmlFor="customProfesion" className="block text-sm font-bold text-[#FF6600] mb-1.5">
+                                                Escribe tu profesión
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="customProfesion"
+                                                name="customProfesion"
+                                                required
+                                                value={formData.customProfesion}
+                                                onChange={handleChange}
+                                                className="w-full px-4 py-3 rounded-xl border border-[#FF6600]/50 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
+                                                placeholder="Ej. Tatuador, Entrenador Personal..."
+                                            />
+                                        </div>
+                                    )}
+
+                                    <div>
+                                        <label htmlFor="email" className="block text-sm font-bold text-neutral-400 mb-1.5">
+                                            Email
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            required
+                                            value={formData.email}
+                                            onChange={handleEmailChange}
+                                            className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none ${emailError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
+                                            placeholder="hola@tmail.com"
+                                        />
+                                        {emailError && (
+                                            <p className="text-[10px] font-bold text-red-500 mt-1.5">
+                                                {emailError}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {status === 'error' && (
+                                        <p className="text-red-500 text-sm font-medium text-center">
+                                            Hubo un error al guardar tus datos. Por favor, inténtalo de nuevo.
                                         </p>
                                     )}
-                                </div>
 
-                                {status === 'error' && (
-                                    <p className="text-red-500 text-sm font-medium text-center">
-                                        Hubo un error al guardar tus datos. Por favor, inténtalo de nuevo.
+                                    <button
+                                        type="submit"
+                                        disabled={status === 'loading' || !isFormValid}
+                                        className="w-full bg-gradient-to-r from-[#F05A28] to-[#E83E4C] text-white font-bold text-lg py-4 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all active:scale-[0.98] flex justify-center items-center gap-2 mt-6 disabled:opacity-50 disabled:pointer-events-none"
+                                    >
+                                        {status === 'loading' ? (
+                                            <>
+                                                <Loader2 className="w-5 h-5 animate-spin" />
+                                                Guardando sitio...
+                                            </>
+                                        ) : (
+                                            'Quiero ser de los primeros'
+                                        )}
+                                    </button>
+                                    <p className="text-center text-xs text-neutral-600 mt-4">
+                                        Prometemos no enviar spam. Solo información sobre tu acceso.
                                     </p>
-                                )}
-
-                                <button
-                                    type="submit"
-                                    disabled={status === 'loading' || !isFormValid}
-                                    className="w-full bg-gradient-to-r from-[#F05A28] to-[#E83E4C] text-white font-bold text-lg py-4 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all active:scale-[0.98] flex justify-center items-center gap-2 mt-6 disabled:opacity-50 disabled:pointer-events-none"
-                                >
-                                    {status === 'loading' ? (
-                                        <>
-                                            <Loader2 className="w-5 h-5 animate-spin" />
-                                            Guardando sitio...
-                                        </>
-                                    ) : (
-                                        'Quiero ser de los primeros'
-                                    )}
-                                </button>
-                                <p className="text-center text-xs text-neutral-600 mt-4">
-                                    Prometemos no enviar spam. Solo información sobre tu acceso.
-                                </p>
-                            </form>
-                        </>
-                    )}
+                                </form>
+                            </>
+                        )}
+                    </div>
                 </div>
             </main>
 
