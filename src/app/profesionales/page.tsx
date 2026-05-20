@@ -218,7 +218,7 @@ export default function VIPInvitationPage() {
         !emailError;
 
     return (
-        <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-950 to-slate-950">
+        <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#240A64] to-[#240A64]">
             <Header />
 
             <main className="flex-grow flex items-center justify-center pt-28 pb-20 px-6 max-w-7xl mx-auto w-full">
@@ -289,7 +289,7 @@ export default function VIPInvitationPage() {
                     </div>
 
                     {/* Columna Derecha: Tarjeta con Formulario */}
-                    <div className="lg:col-span-5 w-full bg-slate-900 rounded-3xl p-8 md:p-10 border border-slate-800 shadow-2xl">
+                    <div className="lg:col-span-5 w-full bg-slate-950 rounded-3xl p-8 md:p-10 border border-slate-800 shadow-2xl">
                         {isLoadingLimit ? (
                             <div className="flex flex-col items-center justify-center py-20 animate-in fade-in">
                                 <Loader2 className="w-10 h-10 animate-spin text-[#FF6600] mb-4" />
@@ -330,7 +330,7 @@ export default function VIPInvitationPage() {
                                         Gratis para los 50 primeros
                                     </div>
                                     <h1 className="text-3xl md:text-4xl font-black text-neutral-200 mb-6 tracking-relaxed leading-tight" >
-                                        Buscamos a los <span className="text-[#FF6600]">50 primeros</span> profesionales para lanzar dconfy.
+                                        Únete a los <span className="text-[#FF6600]">50 primeros</span> profesionales para lanzar dconfy.
                                     </h1>
                                     <p className="text-slate-200 font-bold text-[13px] uppercase tracking-wider">
                                         Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.
