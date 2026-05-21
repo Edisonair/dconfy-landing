@@ -315,9 +315,9 @@ export default function Home() {
             initial="hidden"
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
-            className="my-48 md:my-64 max-w-3xl mx-auto bg-violet-800 py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem] shadow-xl shadow-violet-900/10 border border-violet-700/30"
+            className="my-48 md:my-64 max-w-3xl mx-auto bg-white py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem]"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-white leading-tight [-webkit-text-stroke:0]" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-3xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]" style={{ fontFamily: '"Lora", serif' }}>
               un fisio, un restaurante, un seguro, un masajista...
             </h2>
           </motion.div>
@@ -336,7 +336,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-[#FF6600] py-24 md:py-48 px-6 relative z-10 mb-24">
+      <section className="w-full bg-orange-500 py-24 md:py-48 px-6 relative z-10 mb-24">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             whileInView="visible"
