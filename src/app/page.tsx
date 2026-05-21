@@ -125,10 +125,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white selection:bg-violet-200">
 
-      <div className="min-h-screen flex flex-col bg-[#F4E5D3]">
+      <div className="min-h-screen flex flex-col bg-[#FFF9F0]">
         <Header />
 
-        <section className="flex-1 flex items-center bg-[#F4E5D3] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
+        <section className="flex-1 flex items-center bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative w-full">
             <div className="max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
               <h1 className="text-5xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
@@ -136,7 +136,8 @@ export default function Home() {
               </h1>
 
               <p className="text-2xl md:text-3xl text-[#111827] mb-12 font-bold leading-tight tracking-tight">
-                Descubre Profesionales y Servicios <span className="text-[#111827] font-black decoration-[#111827] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.
+                {/*Descubre Profesionales y Servicios <span className="text-[#111827] font-black decoration-[#111827] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.*/}
+                dconfy te conecta con los mejores servicios a través de las recomendaciones de tu red
               </p>
 
               {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
