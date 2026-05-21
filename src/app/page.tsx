@@ -125,10 +125,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white selection:bg-violet-200">
 
-      <Header />
+      <div className="min-h-screen flex flex-col bg-[#FFF9F0]">
+        <Header />
 
-      <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
+        <section className="flex-1 flex items-center bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative w-full">
           <div className="max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
             <h1 className="text-5xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
               El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
@@ -263,6 +264,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* Nuevo Banner: Por qué nace dconfy */}
       <style dangerouslySetInnerHTML={{
