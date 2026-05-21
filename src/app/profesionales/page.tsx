@@ -231,10 +231,10 @@ export default function VIPInvitationPage() {
                             Registro 100% gratis hasta el lanzamiento el 1 de junio.
                         </div>*/}
 
-                        <h1 className="text-5xl md:text-4xl lg:text-6xl font-black text-white leading-tight mb-6" style={{ fontFamily: '"Lora", serif' }}>
+                        <h1 className="text-5xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6" >
                             ¿Ofreces algún Servicio?
                         </h1>
-                        <h2 className="text-slate-200 text-3xl md:text-4xl mb-10 leading-tight font-bold">
+                        <h2 className="text-white text-3xl md:text-4xl mb-10 leading-tight font-bold">
                             El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] text-bold">de siempre,</span> ahora en una app
                         </h2>
 
@@ -279,7 +279,7 @@ export default function VIPInvitationPage() {
                                     <Award className="w-6 h-6 text-emerald-400" />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Promoción de Lanzamiento. <span className="text-orange-500 text-md font-semibold">*Hasta 1 de junio</span></h3>
+                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Promoción de Lanzamiento. <span className="text-orange-500 text-md font-semibold">*Hasta el 1 de junio</span></h3>
                                     <p className="text-neutral-300 text-base leading-relaxed">
                                         Al estar entre los 50 primeros profesionales, tendrás acceso gratuito de por vida a todas nuestras funciones.
                                     </p>

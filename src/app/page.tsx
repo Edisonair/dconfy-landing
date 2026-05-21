@@ -125,18 +125,18 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white selection:bg-violet-200">
 
-      <div className="min-h-screen flex flex-col bg-[#FFF9F0]">
+      <div className="min-h-screen flex flex-col bg-[#F4E5D3]">
         <Header />
 
-        <section className="flex-1 flex items-center bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
+        <section className="flex-1 flex items-center bg-[#F4E5D3] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative w-full">
             <div className="max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
               <h1 className="text-5xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
                 El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
               </h1>
 
-              <p className="text-2xl md:text-3xl text-slate-800 mb-12 font-bold leading-tight tracking-tight">
-                Descubre Profesionales y Servicios <span className="text-[#FF6600] font-black underline decoration-[#FF6600] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.
+              <p className="text-2xl md:text-3xl text-[#111827] mb-12 font-bold leading-tight tracking-tight">
+                Descubre Profesionales y Servicios <span className="text-[#111827] font-black decoration-[#111827] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.
               </p>
 
               {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
@@ -342,6 +342,30 @@ export default function Home() {
           .animate-morph-3 {
             animation: morphBlob3 20s infinite ease-in-out;
           }
+          @keyframes waveMotion1 {
+            0%, 100% { transform: translateY(0px) scaleY(1); }
+            50% { transform: translateY(-10px) scaleY(1.03); }
+          }
+          @keyframes waveMotion2 {
+            0%, 100% { transform: translateY(0px) scaleY(1); }
+            50% { transform: translateY(12px) scaleY(0.97); }
+          }
+          @keyframes waveMotion3 {
+            0%, 100% { transform: translateY(0px) scaleY(1); }
+            50% { transform: translateY(-8px) scaleY(1.02); }
+          }
+          .animate-wave-1 {
+            animation: waveMotion1 18s infinite ease-in-out;
+            transform-origin: center bottom;
+          }
+          .animate-wave-2 {
+            animation: waveMotion2 22s infinite ease-in-out;
+            transform-origin: center bottom;
+          }
+          .animate-wave-3 {
+            animation: waveMotion3 26s infinite ease-in-out;
+            transform-origin: center bottom;
+          }
         `}} />
       <section className="py-20 px-6 max-w-6xl mx-auto rounded-[3rem] my-12 relative overflow-hidden">
         <div className="relative z-10 text-center max-w-4xl mx-auto pt-8 pb-16">
@@ -378,7 +402,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="my-48 md:my-64 max-w-3xl mx-auto bg-white py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem]"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]" style={{ fontFamily: '"Lora", serif' }}>
               un fisio, un restaurante, un seguro, un masajista...
             </h2>
           </motion.div>
@@ -397,12 +421,33 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-gradient-to-br from-[#4F1A9C] via-[#3B0764] to-[#2E1065] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
-        {/* Degradado irregular con formas (tonos del logo: #FF6601, #E83E4C, #CD1F8B, #FF9F0A) */}
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-[#FF6601]/55 blur-[100px] md:blur-[130px] pointer-events-none animate-morph-1"></div>
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[#E83E4C]/50 blur-[110px] md:blur-[140px] pointer-events-none animate-morph-2"></div>
-        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-[#CD1F8B]/60 blur-[100px] md:blur-[130px] pointer-events-none animate-morph-3"></div>
-        <div className="absolute top-1/2 left-1/3 w-[550px] h-[550px] md:w-[750px] md:h-[750px] bg-[#FF9F0A]/45 blur-[120px] md:blur-[150px] pointer-events-none animate-morph-1" style={{ animationDelay: '-6s' }}></div>
+      <section className="w-full bg-[#491A92] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
+        {/* Wavy layered organic gradient background matching the reference style */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0 scale-105 blur-[60px] md:blur-[85px] opacity-95">
+          <svg className="w-full h-full" viewBox="0 0 1440 600" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="blueWave" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="10%" stopColor="#AF33A5" />
+                <stop offset="80%" stopColor="#1E3A8A" />
+                <stop offset="80%" stopColor="#2563EB" />
+              </linearGradient>
+              <linearGradient id="magentaWave" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#AF33A5" />
+                <stop offset="80%" stopColor="#CD1F8B" />
+                <stop offset="100%" stopColor="#E83E4C" />
+              </linearGradient>
+              <linearGradient id="orangeWave" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="70%" stopColor="#E83E4C" />
+                <stop offset="60%" stopColor="#FF6601" />
+                <stop offset="100%" stopColor="#FF9F0A" />
+              </linearGradient>
+            </defs>
+            {/* Horizontal curves dipping in the middle to create the valley layout */}
+            <path d="M0,100 Q720,320 1440,100 L1440,600 L0,600 Z" fill="url(#blueWave)" className="animate-wave-1" />
+            <path d="M0,200 Q720,420 1440,200 L1440,600 L0,600 Z" fill="url(#magentaWave)" className="animate-wave-2" />
+            <path d="M0,300 Q720,500 1440,300 L1440,600 L0,600 Z" fill="url(#orangeWave)" className="animate-wave-3" />
+          </svg>
+        </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-20">
           <motion.div
@@ -411,7 +456,14 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight py-2 drop-shadow-md" style={{ fontFamily: '"Lora", serif' }}>
+            <div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto mb-8 overflow-hidden">
+              <img
+                src="/dconfy_icon.png"
+                alt="Logo dconfy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h2 className="text-5xl md:text-5xl lg:text-6xl font-black text-white leading-tight py-2 drop-shadow-md" style={{ fontFamily: '"Lora", serif' }}>
               dconfy nace para ayudarte a descubrir y guardar esas recomendaciones de confianza
             </h2>
           </motion.div>
@@ -431,13 +483,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto mb-8 overflow-hidden">
-              <img
-                src="/dconfy_icon.png"
-                alt="Logo dconfy"
-                className="w-full h-full object-cover"
-              />
-            </div>
+
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               Ve lo que tu gente recomienda y cómo está conectado contigo
             </h2>
@@ -634,26 +680,35 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tus servicios<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano.</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano.</h2>
 
             <ul className="space-y-4 pt-8">
-              <li className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-orange-100/50 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-5 h-5 text-[#FF6600]" />
+              <li className="flex items-start gap-5 bg-white p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.05),0_2px_10px_rgba(255,102,0,0.02)] border border-[#FF6601]/15 hover:border-[#FF6601]/40 hover:shadow-[0_15px_35px_rgba(255,102,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
+                <div className="w-12 h-12 bg-[#FF6601]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <Heart className="w-6 h-6 text-[#FF6601] fill-[#FF6601]" />
                 </div>
-                <span className="text-lg text-slate-700 font-medium leading-snug">
-                  <strong className="text-slate-900 font-black">Lo que tú recomiendas</strong>, en tu perfil, para ti y los tuyos.
-                </span>
-              </li>
-              <li className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-orange-100/50 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-5 h-5 text-[#FF6600]" />
+                <div className="flex flex-col gap-1">
+                  <h3 className="text-xl md:text-xl font-bold text-slate-900 leading-tight">
+                    Lo que tú recomiendas
+                  </h3>
+                  <p className="text-base md:text-lg text-slate-600 font-medium leading-relaxed">
+                    En tu perfil, para ti y los tuyos.
+                  </p>
                 </div>
-                <span className="text-lg text-slate-700 font-medium leading-snug">
-                  <strong className="text-slate-900 font-black">Lo que recomienda tu gente</strong> guardado para cuando lo necesites.
-                </span>
               </li>
-
+              <li className="flex items-start gap-5 bg-white p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.05),0_2px_10px_rgba(255,102,0,0.02)] border border-[#FF6601]/15 hover:border-[#FF6601]/40 hover:shadow-[0_15px_35px_rgba(255,102,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
+                <div className="w-12 h-12 bg-[#FF6601]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <Heart className="w-6 h-6 text-[#FF6601] fill-[#FF6601]" />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h3 className="text-xl md:text-xl font-bold text-slate-900 leading-tight">
+                    Lo que recomienda tu gente
+                  </h3>
+                  <p className="text-base md:text-lg text-slate-600 font-medium leading-relaxed">
+                    Guardado para cuando lo necesites.
+                  </p>
+                </div>
+              </li>
             </ul>
           </motion.div>
 
@@ -835,8 +890,13 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <Heart className="w-8 h-8 text-[#FF6600]" />
+              <div className="relative w-24 h-24 bg-white border border-slate-100/80 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0 shadow-[0_12px_30px_rgba(79,70,229,0.08)]">
+                <div className="w-16 h-16 bg-[#FFF5EB] rounded-full flex items-center justify-center">
+                  <Heart className="w-8 h-8 text-[#FF6600]" strokeWidth={2.2} />
+                </div>
+                <div className="absolute -top-1.5 -right-1.5 w-8 h-8 bg-[#0F172A] text-white text-base font-bold rounded-full flex items-center justify-center shadow-md">
+                  1
+                </div>
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda y Ayuda</h3>
               <p className="text-lg text-slate-700 leading-relaxed">Tu opinión cuenta. Recomienda a tu fontanero, osteópata, gestor o cualquier profesional que te haya gustado.</p>
@@ -857,8 +917,13 @@ export default function Home() {
               <img src="/profesionales-servicios.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
             </div>
             <div className="order-1 md:order-2 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <Search className="w-8 h-8 text-violet-600" />
+              <div className="relative w-24 h-24 bg-white border border-slate-100/80 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0 shadow-[0_12px_30px_rgba(79,70,229,0.08)]">
+                <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center">
+                  <Search className="w-8 h-8 text-violet-600" strokeWidth={2.2} />
+                </div>
+                <div className="absolute -top-1.5 -right-1.5 w-8 h-8 bg-[#0F172A] text-white text-base font-bold rounded-full flex items-center justify-center shadow-md">
+                  2
+                </div>
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Busca en tu Red</h3>
               <p className="text-lg text-slate-700 leading-relaxed">Nuestros resultados priorizan a los profesionales y servicios que tus contactos o su círculo han recomendado.</p>
@@ -873,8 +938,13 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <MessageCircle className="w-8 h-8 text-[#FF6600]" />
+              <div className="relative w-24 h-24 bg-white border border-slate-100/80 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0 shadow-[0_12px_30px_rgba(79,70,229,0.08)]">
+                <div className="w-16 h-16 bg-[#FFF5EB] rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-8 h-8 text-[#FF6600]" strokeWidth={2.2} />
+                </div>
+                <div className="absolute -top-1.5 -right-1.5 w-8 h-8 bg-[#0F172A] text-white text-base font-bold rounded-full flex items-center justify-center shadow-md">
+                  3
+                </div>
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Elige con tranquilidad</h3>
               <p className="text-lg text-slate-700 leading-relaxed">Accede al chat directo de profesionales verificados y pregunta lo que necesites saber.</p>
@@ -1035,7 +1105,8 @@ export default function Home() {
           />
         </div>
 
-        <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">Descarga la app</h2>
+        <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-6 tracking-tight">
+          Descarga la app</h2>
 
         <p className="text-xl text-slate-500 font-medium mb-12 max-w-xl mx-auto">
           Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
@@ -1088,7 +1159,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 leading-tight">
               ¿Ofreces algún servicio?</h2>
             <p className="mt-4 text-xl text-violet-100 mb-8 max-w-2xl mx-auto font-medium">Convierte el boca a boca de siempre en un flujo de nuevos contactos</p>
           </motion.div>
