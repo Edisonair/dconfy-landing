@@ -299,7 +299,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-32 md:mb-48 max-w-2xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-violet-800 leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               un fisio, un restaurante, un seguro, un masajista...
             </h2>
           </motion.div>
