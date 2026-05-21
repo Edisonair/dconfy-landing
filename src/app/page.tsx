@@ -130,7 +130,7 @@ export default function Home() {
       <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
           <div className="max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-            <h1 className="text-6xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
+            <h1 className="text-5xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
               El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
             </h1>
 
@@ -315,15 +315,18 @@ export default function Home() {
               Porque confiamos más en nuestra gente que en cualquier anuncio o reseña.
             </h2>
           </motion.div>
+        </div>
+      </section>
 
+      <section className="w-full bg-[#FFF9F0] py-24 md:py-48 px-6 relative z-10 mb-24">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
             whileInView="visible"
             initial="hidden"
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
-            className="mb-16 bg-[#FFF9F0] px-8 py-12 md:px-16 md:py-20 rounded-[2.5rem] border border-orange-100/40 shadow-sm shadow-orange-100/30"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text animate-gradient-text leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text animate-gradient-text leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
               dconfy nace para ayudarte a descubrir y guardar esas recomendaciones de confianza
             </h2>
           </motion.div>
