@@ -397,11 +397,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-[#FFF9F0] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
-        {/* Degradado irregular con formas (tonos del header: #FF6601, #E83E4C, #CD1F8B) */}
-        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[#FF6601]/30 blur-[80px] md:blur-[100px] pointer-events-none animate-morph-1"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-[#E83E4C]/25 blur-[90px] md:blur-[110px] pointer-events-none animate-morph-2"></div>
-        <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[#CD1F8B]/30 blur-[80px] md:blur-[100px] pointer-events-none animate-morph-3"></div>
+      <section className="w-full bg-gradient-to-br from-[#1C0517] via-[#0E020A] to-[#150212] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
+        {/* Degradado irregular con formas (tonos del header: #FF6601, #E83E4C, #CD1F8B, y más oscuro #4C0519) */}
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-[#FF6601]/45 blur-[100px] md:blur-[130px] pointer-events-none animate-morph-1"></div>
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[#E83E4C]/40 blur-[110px] md:blur-[140px] pointer-events-none animate-morph-2"></div>
+        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-[#CD1F8B]/50 blur-[100px] md:blur-[130px] pointer-events-none animate-morph-3"></div>
+        <div className="absolute top-1/2 left-1/3 w-[550px] h-[550px] md:w-[750px] md:h-[750px] bg-[#4C0519]/55 blur-[120px] md:blur-[150px] pointer-events-none animate-morph-1" style={{ animationDelay: '-6s' }}></div>
 
         <div className="max-w-4xl mx-auto text-center relative z-20">
           <motion.div
@@ -410,7 +411,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text animate-dark-purple-gradient-text leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight py-2 drop-shadow-md" style={{ fontFamily: '"Lora", serif' }}>
               dconfy nace para ayudarte a descubrir y guardar esas recomendaciones de confianza
             </h2>
           </motion.div>
