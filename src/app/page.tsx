@@ -130,16 +130,16 @@ export default function Home() {
 
         <section className="flex-1 flex items-center bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative w-full">
-          <div className="max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-            <h1 className="text-5xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
-              El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
-            </h1>
+            <div className="max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+              <h1 className="text-5xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
+                El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
+              </h1>
 
-            <p className="text-2xl md:text-3xl text-slate-800 mb-12 font-bold leading-tight tracking-tight">
-              Descubre Profesionales y Servicios <span className="text-[#FF6600] font-black underline decoration-[#FF6600] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.
-            </p>
+              <p className="text-2xl md:text-3xl text-slate-800 mb-12 font-bold leading-tight tracking-tight">
+                Descubre Profesionales y Servicios <span className="text-[#FF6600] font-black underline decoration-[#FF6600] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.
+              </p>
 
-            {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
+              {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
               <div className="flex flex-col items-center gap-1.5">
                 <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
                   <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Tú" className="w-full h-full object-cover" />
@@ -174,96 +174,96 @@ export default function Home() {
               </div>
             </div>*/}
 
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-4 w-full">
-                <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="w-full max-w-xs sm:w-auto border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
-                  Descargar app
-                </Link>
-                <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="w-full max-w-xs sm:w-auto border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
-                  ¿Ofreces algún Servicio?
-                </Link>
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-4 w-full">
+                  <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="w-full max-w-xs sm:w-auto border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+                    Descargar app
+                  </Link>
+                  <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="w-full max-w-xs sm:w-auto border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
+                    ¿Ofreces algún Servicio?
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-2 lg:mt-0 relative w-full flex flex-col items-center">
+              <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative pt-16 pb-4 -mt-4">
+                <div className="flex w-fit animate-marquee items-center hover:[animation-play-state:paused] active:[animation-play-state:paused] cursor-grab active:cursor-grabbing mb-12">
+                  {heroProfessionals.map((item, i) => (
+                    <div key={`group1-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
+                      <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
+                        <img src={item.src} alt={item.alt} draggable="false" className="w-full h-auto scale-[1.35] origin-center pointer-events-none select-none [-webkit-touch-callout:none] [-webkit-user-drag:none]" />
+                      </div>
+                    </div>
+                  ))}
+                  {heroProfessionals.map((item, i) => (
+                    <div key={`group2-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
+                      <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
+                        <img src={item.src} alt={item.alt} draggable="false" className="w-full h-auto scale-[1.35] origin-center pointer-events-none select-none [-webkit-touch-callout:none] [-webkit-user-drag:none]" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex justify-center px-4">
+                  <div className="bg-white border border-slate-200/60 shadow-md shadow-violet-100/50 px-5 py-2.5 rounded-full flex items-center gap-2 max-w-full">
+                    <span className="text-slate-500 font-medium text-sm shrink-0">Recomendaciones de</span>
+                    <div className="flex items-center overflow-hidden">
+                      <span className="font-bold text-violet-600 text-sm whitespace-nowrap">{displayedText}</span>
+                      <span className="w-[2px] h-4 bg-violet-500 ml-0.5 animate-[pulse_0.8s_infinite]"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="hidden md:flex flex-col items-center justify-end relative lg:translate-x-8 xl:translate-x-16 origin-center w-full">
+                <div className="flex justify-end items-center relative w-full">
+                  <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-28 lg:mt-36 z-10 relative">
+                    <div className="animate-float relative" style={{ animationDelay: '0s' }}>
+                      {heroProfessionals.map((pro, idx) => (
+                        <img
+                          key={`desktop-left-${idx}`}
+                          src={pro.src}
+                          alt={pro.alt}
+                          className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === leftIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                            }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-8 lg:mb-12 z-30 -ml-16 lg:-ml-24 relative">
+                    <div className="animate-float relative" style={{ animationDelay: '1.5s' }}>
+                      {heroProfessionals.map((pro, idx) => (
+                        <img
+                          key={`desktop-center-${idx}`}
+                          src={pro.src}
+                          alt={pro.alt}
+                          className={`w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-1000 ${idx === centerIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                            }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-16 lg:mt-20 z-20 -ml-16 lg:-ml-24 relative">
+                    <div className="animate-float relative" style={{ animationDelay: '3s' }}>
+                      {heroProfessionals.map((pro, idx) => (
+                        <img
+                          key={`desktop-right-${idx}`}
+                          src={pro.src}
+                          alt={pro.alt}
+                          className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === rightIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
+                            }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          <div className="mt-2 lg:mt-0 relative w-full flex flex-col items-center">
-            <div className="block md:hidden w-[calc(100%+3rem)] -mx-6 overflow-hidden relative pt-16 pb-4 -mt-4">
-              <div className="flex w-fit animate-marquee items-center hover:[animation-play-state:paused] active:[animation-play-state:paused] cursor-grab active:cursor-grabbing mb-12">
-                {heroProfessionals.map((item, i) => (
-                  <div key={`group1-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
-                    <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
-                      <img src={item.src} alt={item.alt} draggable="false" className="w-full h-auto scale-[1.35] origin-center pointer-events-none select-none [-webkit-touch-callout:none] [-webkit-user-drag:none]" />
-                    </div>
-                  </div>
-                ))}
-                {heroProfessionals.map((item, i) => (
-                  <div key={`group2-${i}`} className="w-[180px] sm:w-[170px] shrink-0 px-1">
-                    <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
-                      <img src={item.src} alt={item.alt} draggable="false" className="w-full h-auto scale-[1.35] origin-center pointer-events-none select-none [-webkit-touch-callout:none] [-webkit-user-drag:none]" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex justify-center px-4">
-                <div className="bg-white border border-slate-200/60 shadow-md shadow-violet-100/50 px-5 py-2.5 rounded-full flex items-center gap-2 max-w-full">
-                  <span className="text-slate-500 font-medium text-sm shrink-0">Recomendaciones de</span>
-                  <div className="flex items-center overflow-hidden">
-                    <span className="font-bold text-violet-600 text-sm whitespace-nowrap">{displayedText}</span>
-                    <span className="w-[2px] h-4 bg-violet-500 ml-0.5 animate-[pulse_0.8s_infinite]"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden md:flex flex-col items-center justify-end relative lg:translate-x-8 xl:translate-x-16 origin-center w-full">
-              <div className="flex justify-end items-center relative w-full">
-                <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-28 lg:mt-36 z-10 relative">
-                  <div className="animate-float relative" style={{ animationDelay: '0s' }}>
-                    {heroProfessionals.map((pro, idx) => (
-                      <img
-                        key={`desktop-left-${idx}`}
-                        src={pro.src}
-                        alt={pro.alt}
-                        className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === leftIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
-                          }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="w-[280px] lg:w-[380px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mb-8 lg:mb-12 z-30 -ml-16 lg:-ml-24 relative">
-                  <div className="animate-float relative" style={{ animationDelay: '1.5s' }}>
-                    {heroProfessionals.map((pro, idx) => (
-                      <img
-                        key={`desktop-center-${idx}`}
-                        src={pro.src}
-                        alt={pro.alt}
-                        className={`w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_30px_50px_rgba(0,0,0,0.25)] transition-all duration-1000 ${idx === centerIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
-                          }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="w-[230px] lg:w-[320px] transition-transform duration-700 hover:-translate-y-4 shrink-0 mt-16 lg:mt-20 z-20 -ml-16 lg:-ml-24 relative">
-                  <div className="animate-float relative" style={{ animationDelay: '3s' }}>
-                    {heroProfessionals.map((pro, idx) => (
-                      <img
-                        key={`desktop-right-${idx}`}
-                        src={pro.src}
-                        alt={pro.alt}
-                        className={`w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] hover:drop-shadow-[0_25px_40px_rgba(0,0,0,0.2)] transition-all duration-1000 ${idx === rightIdx ? 'opacity-100 relative' : 'opacity-0 absolute top-0 left-0 pointer-events-none scale-95'
-                          }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
       </div>
 
       {/* Nuevo Banner: Por qué nace dconfy */}
@@ -282,6 +282,65 @@ export default function Home() {
             background-image: linear-gradient(to right, #2E1065, #4C1D95, #1E1B4B, #4C1D95, #2E1065);
             background-size: 200% auto;
             animation: moveGradient 4s linear infinite;
+          }
+          @keyframes morphBlob1 {
+            0% {
+              border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+              transform: translate(0px, 0px) rotate(0deg) scale(1);
+            }
+            33% {
+              border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
+              transform: translate(40px, -60px) rotate(120deg) scale(1.15);
+            }
+            66% {
+              border-radius: 50% 50% 30% 70% / 40% 60% 40% 60%;
+              transform: translate(-40px, 40px) rotate(240deg) scale(0.95);
+            }
+            100% {
+              border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+              transform: translate(0px, 0px) rotate(360deg) scale(1);
+            }
+          }
+          @keyframes morphBlob2 {
+            0% {
+              border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
+              transform: translate(0px, 0px) rotate(0deg) scale(1);
+            }
+            33% {
+              border-radius: 30% 70% 70% 30% / 50% 30% 70% 50%;
+              transform: translate(-50px, 50px) rotate(-120deg) scale(1.1);
+            }
+            66% {
+              border-radius: 70% 30% 40% 60% / 60% 50% 50% 40%;
+              transform: translate(50px, -40px) rotate(-240deg) scale(0.95);
+            }
+            100% {
+              border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
+              transform: translate(0px, 0px) rotate(-360deg) scale(1);
+            }
+          }
+          @keyframes morphBlob3 {
+            0% {
+              border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+              transform: translate(0px, 0px) rotate(0deg) scale(1);
+            }
+            50% {
+              border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+              transform: translate(60px, 60px) rotate(180deg) scale(1.2);
+            }
+            100% {
+              border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+              transform: translate(0px, 0px) rotate(360deg) scale(1);
+            }
+          }
+          .animate-morph-1 {
+            animation: morphBlob1 18s infinite ease-in-out;
+          }
+          .animate-morph-2 {
+            animation: morphBlob2 22s infinite ease-in-out;
+          }
+          .animate-morph-3 {
+            animation: morphBlob3 20s infinite ease-in-out;
           }
         `}} />
       <section className="py-20 px-6 max-w-6xl mx-auto rounded-[3rem] my-12 relative overflow-hidden">
@@ -338,8 +397,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-orange-500 py-24 md:py-48 px-6 relative z-10 mb-24">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="w-full bg-[#FFF9F0] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
+        {/* Degradado irregular con formas (tonos del header: #FF6601, #E83E4C, #CD1F8B) */}
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[#FF6601]/30 blur-[80px] md:blur-[100px] pointer-events-none animate-morph-1"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-[#E83E4C]/25 blur-[90px] md:blur-[110px] pointer-events-none animate-morph-2"></div>
+        <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[#CD1F8B]/30 blur-[80px] md:blur-[100px] pointer-events-none animate-morph-3"></div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-20">
           <motion.div
             whileInView="visible"
             initial="hidden"
@@ -796,7 +860,7 @@ export default function Home() {
                 <Search className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Busca en tu Red</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Nuestros resultados priorizan a los profesionales and servicios que tus contactos o su círculo han recomendado.</p>
+              <p className="text-lg text-slate-700 leading-relaxed">Nuestros resultados priorizan a los profesionales y servicios que tus contactos o su círculo han recomendado.</p>
             </div>
           </motion.div>
 
