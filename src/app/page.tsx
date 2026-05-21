@@ -130,15 +130,15 @@ export default function Home() {
       <section className="bg-[#FFF9F0] pt-12 pb-12 lg:pb-24 px-6 overflow-hidden relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
           <div className="max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-            <h1 className="text-5xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
+            <h1 className="text-6xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
               El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
             </h1>
 
-            <p className="text-2xl md:text-3xl text-slate-800 mb-8 font-bold leading-tight tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <p className="text-2xl md:text-3xl text-slate-800 mb-12 font-bold leading-tight tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
               Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
             </p>
 
-            <div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
+            {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
               <div className="flex flex-col items-center gap-1.5">
                 <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm shrink-0 bg-slate-100">
                   <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Tú" className="w-full h-full object-cover" />
@@ -171,14 +171,14 @@ export default function Home() {
                 </div>
                 <span className="text-[10px] font-black text-slate-900 leading-none">Fisio Elena</span>
               </div>
-            </div>
+            </div>*/}
 
             <div className="flex flex-col gap-3">
-              <div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-4">
-                <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+              <div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-4 w-full">
+                <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="w-full max-w-xs sm:w-auto border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
                   Descargar app
                 </Link>
-                <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
+                <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="w-full max-w-xs sm:w-auto border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
                   ¿Ofreces algún Servicio?
                 </Link>
               </div>
