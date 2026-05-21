@@ -134,8 +134,8 @@ export default function Home() {
               El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
             </h1>
 
-            <p className="text-2xl md:text-3xl text-slate-800 mb-12 font-bold leading-tight tracking-tight" style={{ fontFamily: '"Lora", serif' }}>
-              Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
+            <p className="text-2xl md:text-3xl text-slate-800 mb-12 font-bold leading-tight tracking-tight">
+              Descubre Profesionales y Servicios <span className="text-[#FF6600] font-black underline decoration-[#FF6600] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.
             </p>
 
             {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
@@ -276,9 +276,27 @@ export default function Home() {
             background-size: 200% auto;
             animation: moveGradient 4s linear infinite;
           }
+          .animate-dark-purple-gradient-text {
+            background-image: linear-gradient(to right, #2E1065, #4C1D95, #1E1B4B, #4C1D95, #2E1065);
+            background-size: 200% auto;
+            animation: moveGradient 4s linear infinite;
+          }
         `}} />
       <section className="py-20 px-6 max-w-6xl mx-auto rounded-[3rem] my-12 relative overflow-hidden">
         <div className="relative z-10 text-center max-w-4xl mx-auto pt-8 pb-16">
+
+          <motion.div
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mb-10 flex justify-center"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200/60 text-[#FF6600] text-xs font-bold tracking-wider uppercase shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6600] animate-pulse"></span>
+              Por qué nace dconfy
+            </span>
+          </motion.div>
 
           <motion.div
             whileInView="visible"
@@ -297,9 +315,9 @@ export default function Home() {
             initial="hidden"
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
-            className="mb-32 md:mb-48 max-w-2xl mx-auto"
+            className="my-48 md:my-64 max-w-3xl mx-auto bg-violet-800 py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem] shadow-xl shadow-violet-900/10 border border-violet-700/30"
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-violet-800 leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-3xl md:text-5xl font-black text-white leading-tight [-webkit-text-stroke:0]" style={{ fontFamily: '"Lora", serif' }}>
               un fisio, un restaurante, un seguro, un masajista...
             </h2>
           </motion.div>
@@ -309,7 +327,7 @@ export default function Home() {
             initial="hidden"
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
-            className="mb-32 md:mb-48"
+            className="mb-0"
           >
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
               Porque confiamos más en nuestra gente que en cualquier anuncio o reseña.
@@ -318,7 +336,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-[#FFF9F0] py-24 md:py-48 px-6 relative z-10 mb-24">
+      <section className="w-full bg-[#FF6600] py-24 md:py-48 px-6 relative z-10 mb-24">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             whileInView="visible"
@@ -326,7 +344,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text animate-gradient-text leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text animate-dark-purple-gradient-text leading-tight py-2" style={{ fontFamily: '"Lora", serif' }}>
               dconfy nace para ayudarte a descubrir y guardar esas recomendaciones de confianza
             </h2>
           </motion.div>
@@ -354,7 +372,7 @@ export default function Home() {
               />
             </div>
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
-              Verás quién recomienda y cómo está conectado contigo
+              Ve lo que tu gente recomienda y cómo está conectado contigo
             </h2>
 
           </motion.div>
@@ -531,120 +549,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/*<div className="w-full bg-[#FFF9F0] py-20 md:py-32 px-6 text-center relative z-20 overflow-hidden">
-        <style dangerouslySetInnerHTML={{
-          __html: `
-          @keyframes moveGradient {
-            0% { background-position: 0% center; }
-            100% { background-position: -200% center; }
-          }
-          .animate-gradient-text {
-            background-image: linear-gradient(to right, #F05A28, #BE1E8D, #F05A28, #BE1E8D, #F05A28);
-            background-size: 200% auto;
-            animation: moveGradient 4s linear infinite;
-          }
-        `}} />
-        <motion.div
-          className="relative z-10"
-          whileInView="visible"
-          initial="hidden"
-          variants={fadeInUpVariants}
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          <div className="flex items-center justify-center">
-            <p className="text-3xl md:text-5xl lg:text-6xl font-black max-w-5xl mx-auto leading-tight md:leading-snug lg:leading-tight tracking-tight text-transparent bg-clip-text py-4 animate-gradient-text" style={{ fontFamily: '"Lora", serif' }}>
-              dconfy hace más fácil compartir y descubrir recomendaciones de confianza.
-            </p>
-          </div>
-        </motion.div>
-      </div>*/}
-
-
-      <section id="como-funciona" className="bg-white pt-16 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
-        <motion.div
-          className="text-center mb-6 relative flex flex-col items-center"
-          whileInView="visible"
-          initial="hidden"
-          variants={fadeInUpVariants}
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          <div className="relative inline-block">
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
-              ¿Cómo funciona dconfy?</h2>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="flex justify-center mb-16"
-          whileInView="visible"
-          initial="hidden"
-          variants={fadeInUpVariants}
-          viewport={{ once: true, amount: 1 }}
-        >
-          <ArrowDown className="w-10 h-10 text-[#FF6600] animate-bounce" />
-        </motion.div>
-
-        <div className="flex flex-col gap-20 max-w-4xl mx-auto">
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-            whileInView="visible"
-            initial="hidden"
-            variants={fadeInUpVariants}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <Heart className="w-8 h-8 text-[#FF6600]" />
-              </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda y Ayuda</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Tu opinión cuenta. Recomienda a tu fontanero, osteópata, gestor o cualquier profesional que te haya gustado.</p>
-            </div>
-            <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
-              <img src="/recomendaciones.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-            whileInView="visible"
-            initial="hidden"
-            variants={fadeInUpVariants}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="order-2 md:order-1 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
-              <img src="/profesionales-servicios.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
-            </div>
-            <div className="order-1 md:order-2 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <Search className="w-8 h-8 text-violet-600" />
-              </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Busca en tu Red</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Nuestros resultados priorizan a los profesionales y servicios que tus contactos o su círculo han recomendado.</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-            whileInView="visible"
-            initial="hidden"
-            variants={fadeInUpVariants}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                <MessageCircle className="w-8 h-8 text-[#FF6600]" />
-              </div>
-              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Elige con tranquilidad</h3>
-              <p className="text-lg text-slate-700 leading-relaxed">Accede al chat directo de profesionales verificados y pregunta lo que necesites saber.</p>
-            </div>
-            <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
-              <img src="/habla-confianza.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Nueva sección: Agenda de confianza (diseño píxel a píxel) */}
       <section className="bg-[#FFF9F0] py-24 px-6 max-w-7xl mx-auto rounded-[3rem] my-12 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-violet-200/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-200/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
@@ -656,14 +560,14 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mb-6 mx-auto lg:mx-0 overflow-hidden">
+            <div className="w-[84px] h-[84px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[1.75rem] flex items-center justify-center mx-auto lg:mx-0 mb-8 overflow-hidden">
               <img
                 src="/dconfy_icon.png"
                 alt="Logo dconfy"
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano.</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tus servicios<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano.</h2>
 
             <ul className="space-y-4 pt-8">
               <li className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-orange-100/50 hover:shadow-md transition-shadow">
@@ -694,7 +598,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
           >
             {/* Recreación exacta del teléfono en HTML/Tailwind */}
-            <div className="bg-white rounded-[2.5rem] border-[8px] border-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative overflow-hidden h-[750px] flex flex-col transform hover:-translate-y-2 transition-transform duration-500">
+            <div className="bg-white rounded-[2.5rem] border-[8px] border-slate-950 shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative overflow-hidden h-[750px] flex flex-col transform hover:-translate-y-2 transition-transform duration-500">
 
               {/* Notch del móvil eliminado */}
 
@@ -826,6 +730,90 @@ export default function Home() {
                 </div>
               </div>
 
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="como-funciona" className="bg-white pt-16 pb-24 lg:py-24 px-6 max-w-7xl mx-auto">
+        <motion.div
+          className="text-center mb-6 relative flex flex-col items-center"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <div className="relative inline-block">
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+              ¿Cómo funciona dconfy?</h2>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="flex justify-center mb-16"
+          whileInView="visible"
+          initial="hidden"
+          variants={fadeInUpVariants}
+          viewport={{ once: true, amount: 1 }}
+        >
+          <ArrowDown className="w-10 h-10 text-[#FF6600] animate-bounce" />
+        </motion.div>
+
+        <div className="flex flex-col gap-20 max-w-4xl mx-auto">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
+                <Heart className="w-8 h-8 text-[#FF6600]" />
+              </div>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Recomienda y Ayuda</h3>
+              <p className="text-lg text-slate-700 leading-relaxed">Tu opinión cuenta. Recomienda a tu fontanero, osteópata, gestor o cualquier profesional que te haya gustado.</p>
+            </div>
+            <div className="order-2 md:order-2 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+              <img src="/recomendaciones.png" alt="Recomienda y Ayuda - Forma Pebble Comic" className="w-full h-auto object-contain" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <div className="order-2 md:order-1 max-w-[320px] mx-auto mix-blend-multiply hover:-translate-y-2 transition-transform duration-500">
+              <img src="/profesionales-servicios.png" alt="Busca en tu red - Forma Orgánica Comic" className="w-full h-auto object-contain" />
+            </div>
+            <div className="order-1 md:order-2 max-w-sm mx-auto text-center md:text-left">
+              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
+                <Search className="w-8 h-8 text-violet-600" />
+              </div>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Busca en tu Red</h3>
+              <p className="text-lg text-slate-700 leading-relaxed">Nuestros resultados priorizan a los profesionales and servicios que tus contactos o su círculo han recomendado.</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+            whileInView="visible"
+            initial="hidden"
+            variants={fadeInUpVariants}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
+                <MessageCircle className="w-8 h-8 text-[#FF6600]" />
+              </div>
+              <h3 className="text-3xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] mb-4">Elige con tranquilidad</h3>
+              <p className="text-lg text-slate-700 leading-relaxed">Accede al chat directo de profesionales verificados y pregunta lo que necesites saber.</p>
+            </div>
+            <div className="order-2 md:order-2 max-w-[320px] mx-auto hover:-translate-y-2 transition-transform duration-500">
+              <img src="/habla-confianza.png" alt="Confianza Directa - Forma Corazón Comic" className="w-full h-auto object-contain" />
             </div>
           </motion.div>
         </div>
