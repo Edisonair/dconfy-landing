@@ -397,12 +397,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-gradient-to-br from-[#1C0517] via-[#0E020A] to-[#150212] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
-        {/* Degradado irregular con formas (tonos del header: #FF6601, #E83E4C, #CD1F8B, y más oscuro #4C0519) */}
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-[#FF6601]/45 blur-[100px] md:blur-[130px] pointer-events-none animate-morph-1"></div>
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[#E83E4C]/40 blur-[110px] md:blur-[140px] pointer-events-none animate-morph-2"></div>
-        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-[#CD1F8B]/50 blur-[100px] md:blur-[130px] pointer-events-none animate-morph-3"></div>
-        <div className="absolute top-1/2 left-1/3 w-[550px] h-[550px] md:w-[750px] md:h-[750px] bg-[#4C0519]/55 blur-[120px] md:blur-[150px] pointer-events-none animate-morph-1" style={{ animationDelay: '-6s' }}></div>
+      <section className="w-full bg-gradient-to-br from-[#4F1A9C] via-[#3B0764] to-[#2E1065] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
+        {/* Degradado irregular con formas (tonos del logo: #FF6601, #E83E4C, #CD1F8B, #FF9F0A) */}
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-[#FF6601]/55 blur-[100px] md:blur-[130px] pointer-events-none animate-morph-1"></div>
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[#E83E4C]/50 blur-[110px] md:blur-[140px] pointer-events-none animate-morph-2"></div>
+        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-[#CD1F8B]/60 blur-[100px] md:blur-[130px] pointer-events-none animate-morph-3"></div>
+        <div className="absolute top-1/2 left-1/3 w-[550px] h-[550px] md:w-[750px] md:h-[750px] bg-[#FF9F0A]/45 blur-[120px] md:blur-[150px] pointer-events-none animate-morph-1" style={{ animationDelay: '-6s' }}></div>
 
         <div className="max-w-4xl mx-auto text-center relative z-20">
           <motion.div
