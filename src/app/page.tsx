@@ -414,7 +414,7 @@ export default function Home() {
             className="my-48 md:my-64 max-w-3xl mx-auto bg-white py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem]"
           >
             <h2 className="text-4xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]">
-              un fisio, un restaurante, un seguro, un masajista...
+              Recomiéndame un fisio, un restaurante, un seguro, un masajista...
             </h2>
           </motion.div>
 
@@ -432,32 +432,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-[#491A92] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
-        {/* Wavy layered organic gradient background matching the reference style */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0 scale-105 blur-[60px] md:blur-[85px] opacity-95">
-          <svg className="w-full h-full" viewBox="0 0 1440 600" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="blueWave" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="90%" stopColor="#e05606ff" />
-                <stop offset="80%" stopColor="#1E3A8A" />
-                <stop offset="10%" stopColor="#2563EB" />
-              </linearGradient>
-              <linearGradient id="magentaWave" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="10%" stopColor="#AF33A5" />
-                <stop offset="10%" stopColor="#CD1F8B" />
-                <stop offset="100%" stopColor="#E83E4C" />
-              </linearGradient>
-              <linearGradient id="orangeWave" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="100%" stopColor="#ed8002ff" />
-                <stop offset="70%" stopColor="#FF6601" />
-                <stop offset="100%" stopColor="#FF9F0A" />
-              </linearGradient>
-            </defs>
-            {/* Horizontal curves dipping in the middle to create the valley layout */}
-            <path d="M0,100 Q720,320 1440,100 L1440,600 L0,600 Z" fill="url(#blueWave)" className="animate-wave-1" />
-            <path d="M0,200 Q720,420 1440,200 L1440,600 L0,600 Z" fill="url(#magentaWave)" className="animate-wave-2" />
-            <path d="M0,300 Q720,500 1440,300 L1440,600 L0,600 Z" fill="url(#orangeWave)" className="animate-wave-3" />
-          </svg>
+      <section className="w-full bg-[#FFF9F0] py-24 md:py-48 px-6 relative z-10 mb-24 overflow-hidden">
+        {/* Soft organic blobs with violet and orange tones */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0 opacity-60">
+          <div className="absolute top-[-30%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#8B5CF6]/15 blur-[100px] animate-morph-1"></div>
+          <div className="absolute bottom-[-30%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#FF6600]/10 blur-[120px] animate-morph-2"></div>
+          <div className="absolute top-[20%] right-[10%] w-[350px] h-[350px] rounded-full bg-[#8B5CF6]/10 blur-[80px] animate-morph-3"></div>
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-20">
@@ -474,8 +454,8 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight py-2">
-              dconfy te ayuda a descubrir y guardar esas recomendaciones de confianza
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#111827] leading-tight py-2">
+              dconfy te ayuda a descubrir y guardar esas recomendaciones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza</span>
             </h2>
           </motion.div>
         </div>
