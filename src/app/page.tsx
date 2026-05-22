@@ -137,7 +137,7 @@ export default function Home() {
 
               <p className="text-2xl md:text-3xl text-[#111827] mb-12 font-bold leading-tight tracking-tight">
                 {/*Descubre Profesionales y Servicios <span className="text-[#111827] font-black decoration-[#111827] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.*/}
-                dconfy te conecta con los mejores servicios a través de las recomendaciones de tu red
+                dconfy te conecta con los mejores servicios a través de las recomendaciones de tu gente
               </p>
 
               {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
@@ -261,6 +261,16 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+
+                <div className="mt-8 flex justify-center w-full -translate-x-12 lg:-translate-x-24">
+                  <div className="bg-white border border-slate-200/60 shadow-md shadow-violet-100/50 px-6 py-3 rounded-full flex items-center gap-2.5 max-w-full">
+                    <span className="text-slate-500 font-medium text-sm lg:text-base shrink-0">Recomendaciones de</span>
+                    <div className="flex items-center overflow-hidden">
+                      <span className="font-bold text-violet-600 text-sm lg:text-base whitespace-nowrap">{displayedText}</span>
+                      <span className="w-[2px] h-4 lg:h-5 bg-violet-500 ml-0.5 animate-[pulse_0.8s_infinite]"></span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -378,8 +388,8 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-10 flex justify-center"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200/60 text-[#FF6600] text-xs font-bold tracking-wider uppercase shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6600] animate-pulse"></span>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF9F0] border border-[#FF6600] text-[#FF6600] text-xs font-bold tracking-wider uppercase shadow-sm">
+
               Por qué nace dconfy
             </span>
           </motion.div>
@@ -391,7 +401,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-32 md:mb-48"
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" >
               Cada vez que necesitamos un servicio o profesional de confianza, acabamos preguntando a amigos, familia o conocidos.
             </h2>
           </motion.div>
@@ -403,7 +413,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="my-48 md:my-64 max-w-3xl mx-auto bg-white py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem]"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]">
               un fisio, un restaurante, un seguro, un masajista...
             </h2>
           </motion.div>
@@ -415,7 +425,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-0"
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight">
               Porque confiamos más en nuestra gente que en cualquier anuncio o reseña.
             </h2>
           </motion.div>
@@ -428,18 +438,18 @@ export default function Home() {
           <svg className="w-full h-full" viewBox="0 0 1440 600" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="blueWave" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="10%" stopColor="#AF33A5" />
+                <stop offset="90%" stopColor="#e05606ff" />
                 <stop offset="80%" stopColor="#1E3A8A" />
-                <stop offset="80%" stopColor="#2563EB" />
+                <stop offset="10%" stopColor="#2563EB" />
               </linearGradient>
               <linearGradient id="magentaWave" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#AF33A5" />
-                <stop offset="80%" stopColor="#CD1F8B" />
+                <stop offset="10%" stopColor="#AF33A5" />
+                <stop offset="10%" stopColor="#CD1F8B" />
                 <stop offset="100%" stopColor="#E83E4C" />
               </linearGradient>
               <linearGradient id="orangeWave" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="70%" stopColor="#E83E4C" />
-                <stop offset="60%" stopColor="#FF6601" />
+                <stop offset="100%" stopColor="#ed8002ff" />
+                <stop offset="70%" stopColor="#FF6601" />
                 <stop offset="100%" stopColor="#FF9F0A" />
               </linearGradient>
             </defs>
@@ -464,8 +474,8 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-5xl md:text-5xl lg:text-6xl font-black text-white leading-tight py-2 drop-shadow-md" style={{ fontFamily: '"Lora", serif' }}>
-              dconfy nace para ayudarte a descubrir y guardar esas recomendaciones de confianza
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight py-2">
+              dconfy te ayuda a descubrir y guardar esas recomendaciones de confianza
             </h2>
           </motion.div>
         </div>
@@ -485,7 +495,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
           >
 
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight">
               Ve lo que tu gente recomienda y cómo está conectado contigo
             </h2>
 
@@ -681,7 +691,7 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Tu agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano.</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Una agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano.</h2>
 
             <ul className="space-y-4 pt-8">
               <li className="flex items-start gap-5 bg-white p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.05),0_2px_10px_rgba(255,102,0,0.02)] border border-[#FF6601]/15 hover:border-[#FF6601]/40 hover:shadow-[0_15px_35px_rgba(255,102,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
@@ -867,7 +877,7 @@ export default function Home() {
           viewport={{ once: true, amount: 0.5 }}
         >
           <div className="relative inline-block">
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight">
               ¿Cómo funciona dconfy?</h2>
           </div>
         </motion.div>
@@ -1022,7 +1032,7 @@ export default function Home() {
           variants={fadeInUpVariants}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" style={{ fontFamily: '"Lora", serif' }}>
+          <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight">
             ¿Por qué dconfy es diferente?</h2>
         </motion.div>
 
@@ -1160,7 +1170,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-4xl md:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 leading-tight">
               ¿Ofreces algún servicio?</h2>
             <p className="mt-4 text-xl text-violet-100 mb-8 max-w-2xl mx-auto font-medium">Convierte el boca a boca de siempre en un flujo de nuevos contactos</p>
           </motion.div>
