@@ -30,10 +30,10 @@ const heroProfessionals = [
 
 const placeholderRoles = [
   "Abogado", "Fisioterapeuta", "Fontanero", "Psicólogo", "Tatuador",
-  "Electricista", "Mecánico", "Salón de Peluquería", "Entrenador Personal",
+  "Electricista", "Mecánico", "Salón de Belleza", "Entrenador Personal",
   "Fotógrafo", "Veterinario", "Clínica Estética", "Jardinero",
-  "Experto en Redes", "Asesor Fiscal", "Masajista", "Agente de Seguros",
-  "Tienda de Ropa", "Boutique", "Bodega"
+  "Gestor", "Masajista", "Seguros",
+  "Moda", "Boutique", "Restaurant"
 ];
 
 // Tipado explícito Variants para evitar errores de TypeScript
@@ -137,7 +137,7 @@ export default function Home() {
 
               <p className="text-2xl md:text-3xl text-[#111827] mb-12 font-bold leading-tight tracking-tight">
                 {/*Descubre Profesionales y Servicios <span className="text-[#111827] font-black decoration-[#111827] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.*/}
-                dconfy te conecta con los mejores servicios a través de las recomendaciones de tu gente
+                dconfy te conecta con profesionales y servicios a través de las recomendaciones de tu gente.
               </p>
 
               {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
@@ -671,7 +671,7 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Una agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano.</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Una agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano</h2>
 
             <ul className="space-y-4 pt-8">
               <li className="flex items-start gap-5 bg-white p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.05),0_2px_10px_rgba(255,102,0,0.02)] border border-[#FF6601]/15 hover:border-[#FF6601]/40 hover:shadow-[0_15px_35px_rgba(255,102,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
@@ -1224,7 +1224,7 @@ export default function Home() {
                 ))}
               </ul>
               <Link href="/profesionales" onClick={() => trackGAEvent('Clic_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all">
-                Únete a la lista de espera
+                Apúntate en la lista VIP
               </Link>
             </motion.div>
 

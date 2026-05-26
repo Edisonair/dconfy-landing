@@ -218,7 +218,7 @@ export default function VIPInvitationPage() {
         !emailError;
 
     return (
-        <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#240A64] to-[#240A64]">
+        <div className="flex flex-col min-h-screen bg-gradient-to-b from-violet-800 to-[#240A64]">
             <Header />
 
             <main className="flex-grow flex items-center justify-center pt-28 pb-20 px-6 max-w-7xl mx-auto w-full">
@@ -234,7 +234,7 @@ export default function VIPInvitationPage() {
                         <h1 className="text-5xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6" >
                             ¿Ofreces algún Servicio?
                         </h1>
-                        <h2 className="text-white text-3xl md:text-4xl mb-10 leading-tight font-bold">
+                        <h2 className="text-white text-3xl md:text-3xl mb-10 leading-tight font-bold">
                             El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] text-bold">de siempre,</span> ahora en una app
                         </h2>
 

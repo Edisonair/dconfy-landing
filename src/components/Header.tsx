@@ -31,7 +31,7 @@ export function Header() {
                     <Link href="/blog" className="hover:text-violet-600 transition-colors">Blog</Link>
                 </div>
                 <Link href="/" onClick={() => trackGAEvent('Clic_Descargar_nav', 'Descargar')} className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
-                    Llega el 1 de Junio
+                    Llega en Junio
                 </Link>
             </nav>
         </header>
