@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 // Importaciones restauradas y añadidas Menu y Mail
-import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle, ArrowDown, Bookmark, Menu, Mail } from 'lucide-react';
+import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle, ArrowDown, Bookmark, Menu, Mail, Sparkles, Star, ArrowRight } from 'lucide-react';
 import { motion, Variants } from "framer-motion";
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -137,7 +137,7 @@ export default function Home() {
 
               <p className="text-2xl md:text-3xl text-[#111827] mb-12 font-bold leading-tight tracking-tight">
                 {/*Descubre Profesionales y Servicios <span className="text-[#111827] font-black decoration-[#111827] decoration-6 underline-offset-2">de confianza</span>, recomendados por tu gente.*/}
-                dconfy te conecta con profesionales y servicios a través de las recomendaciones de tu gente.
+                Recomienda a tus profesionales y servicios de confianza y descubre los de tu gente.
               </p>
 
               {/*<div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-12 pl-2">
@@ -1100,7 +1100,7 @@ export default function Home() {
           Descarga la app</h2>
 
         <p className="text-xl text-slate-500 font-medium mb-12 max-w-xl mx-auto">
-          Descubre Profesionales y Servicios de confianza, recomendados por tu gente.
+          Recomienda a tus profesionales y servicios de confianza y descubre los de tu gente.
         </p>
 
         <div className="flex justify-center mb-8">
@@ -1136,26 +1136,96 @@ export default function Home() {
 
       </section>
 
-      <section id="planes" className="bg-gradient-to-b from-violet-900 to-violet-950 py-24 px-6 text-center relative overflow-hidden">
-        {/* Fondos decorativos */}
+      <section id="planes" className="bg-gradient-to-b from-violet-950 via-[#1b0d3a] to-violet-900 py-28 px-6 text-center relative overflow-hidden">
+        {/* Fondos decorativos mejorados con orbes brillantes y rejilla */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:24px_24px] opacity-60 pointer-events-none"></div>
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-violet-800 rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#FF6600] rounded-full blur-3xl opacity-10"></div>
+          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-violet-600 rounded-full blur-[130px] opacity-25"></div>
+          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-indigo-700 rounded-full blur-[130px] opacity-20"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-fuchsia-600 rounded-full blur-[120px] opacity-15"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 min-h-[400px] flex items-center justify-center">
+
+          {/* Tarjeta Flotante Izquierda - Solo Desktop */}
+          <div className="hidden lg:flex flex-col items-start gap-4 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-2xl absolute left-4 xl:left-12 top-1/2 -translate-y-1/2 w-[280px] text-left rotate-[-3deg] hover:rotate-0 hover:scale-105 hover:bg-white/10 transition-all duration-500 transform-gpu pointer-events-auto">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full overflow-hidden border border-white/20 shrink-0">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Laura Gómez" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h4 className="font-bold text-white text-base leading-tight">Elena Gómez</h4>
+                <div className="flex items-center gap-1.5 text-[11px] text-[#FF6600] font-bold mt-0.5">
+                  <Heart className="w-3.5 h-3.5 fill-current text-[#FF6600]" />
+                  <span>dconfy de Edgar y 23 más</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2 w-full">
+              <span className="text-[10px] bg-violet-600/30 text-violet-200 border border-violet-500/20 px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Fisioterapia</span>
+              <span className="text-[10px] bg-emerald-500/25 text-emerald-200 border border-emerald-500/20 px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Verificado</span>
+            </div>
+            <div className="border-t border-white/10 w-full pt-3 mt-1">
+              <p className="text-xs text-slate-300 italic font-medium">"Elena es una fisio increíble. En solo dos sesiones alivió mi dolor de espalda."</p>
+            </div>
+          </div>
+
+          {/* Bloque Central de CTA */}
           <motion.div
             whileInView="visible"
             initial="hidden"
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
+            className="max-w-2xl mx-auto flex flex-col items-center"
           >
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-4 leading-tight">
-              ¿Ofreces algún servicio?</h2>
-            <p className="mt-4 text-xl text-violet-100 mb-8 max-w-2xl mx-auto font-medium">Convierte el boca a boca de siempre en un flujo de nuevos contactos</p>
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white font-bold text-xs tracking-wider uppercase mb-8 border border-white/15 shadow-inner">
+              <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
+              <span>Plan Profesional</span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black [-webkit-text-stroke:1px_currentColor] text-white mb-6 leading-tight tracking-tight">
+              ¿Ofreces algún servicio?
+            </h2>
+
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight">
+              Descubre el <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">Plan Profesional</span>
+            </h3>
+
+            <p className="text-base md:text-lg text-slate-300 mb-10 max-w-xl mx-auto font-medium leading-relaxed">
+              Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.
+            </p>
+
+            <div className="flex justify-center">
+              <Link href="/profesionales" onClick={() => trackGAEvent('Clic_SaberMas_planes', 'Planes')} className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-[#FF6600] to-[#E65C00] hover:from-[#FF751A] hover:to-[#F56E0A] text-white px-9 py-4 rounded-full font-[system-ui] font-black tracking-wide transition-all shadow-lg shadow-[#FF6600]/30 hover:shadow-[#FF6600]/50 hover:scale-105 active:scale-[0.98] duration-300 text-center">
+                <span>Saber más</span>
+                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
           </motion.div>
 
-          <motion.div
+          {/* Tarjeta Flotante Derecha - Solo Desktop */}
+          <div className="hidden lg:flex flex-col items-start gap-3.5 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-2xl absolute right-4 xl:right-12 top-1/2 -translate-y-1/2 w-[280px] text-left rotate-[3deg] hover:rotate-0 hover:scale-105 hover:bg-white/10 transition-all duration-500 transform-gpu pointer-events-auto">
+            <h4 className="font-bold text-white text-base leading-tight">Ventajas Perfil Profesional</h4>
+            <ul className="space-y-2.5 w-full">
+              {[
+                'Sin intermediarios ni comisiones',
+                'Perfil público para compartir',
+                'Multiplica tus recomendaciones',
+                'Chat directo habilitado'
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-center gap-2.5 text-xs text-slate-300 font-semibold">
+                  <span className="w-4 h-4 rounded-full bg-[#FF6600]/20 flex items-center justify-center text-[#FF6600] shrink-0 font-bold">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      {/* <motion.div
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
             whileInView="visible"
             initial="hidden"
@@ -1264,9 +1334,9 @@ export default function Home() {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
-      <div className="bg-violet-200 py-24">
+      {/* <div className="bg-violet-200 py-24">
 
         <motion.section
           className="px-6 max-w-4xl mx-auto mb-24"
@@ -1306,9 +1376,9 @@ export default function Home() {
           </div>
         </motion.section>
 
-      </div>
+      </div> */}
 
-      <div className="bg-white py-24">
+      {/* <div className="bg-white py-24">
         <section id="faq" className="px-6 max-w-3xl mx-auto">
           <motion.h2
             className="text-4xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] text-center mb-12 tracking-tight"
@@ -1343,7 +1413,7 @@ export default function Home() {
             ))}
           </motion.div>
         </section>
-      </div>
+      </div> */}
 
       <Footer />
 

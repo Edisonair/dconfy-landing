@@ -18,7 +18,7 @@ export function Footer() {
         <footer className="bg-slate-950 text-white pt-16 pb-10 px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-2xl font-medium text-slate-300 mb-10">Estamos construyendo la red de servicios más confiable,<br></br> y queremos que seas parte de nuestro lanzamiento.</h2>
+                    <h2 className="text-2xl font-medium text-slate-300 mb-10">Estamos construyendo la red de servicios más confiable.</h2>
                     {<Link href="/" className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20">
                         Llega en Junio
                     </Link>}
@@ -42,7 +42,7 @@ export function Footer() {
                     <div className="flex flex-col gap-4">
                         <Link href="/#como-funciona" className="text-slate-400 hover:text-white text-sm transition-colors">Cómo funciona</Link>
                         <Link href="/#planes" className="text-slate-400 hover:text-white text-sm transition-colors">Planes</Link>
-                        <Link href="/#faq" className="text-slate-400 hover:text-white text-sm transition-colors">FAQ</Link>
+                        {/* <Link href="/#faq" className="text-slate-400 hover:text-white text-sm transition-colors">FAQ</Link> */}
                         <Link href="/blog" className="text-slate-400 hover:text-white text-sm transition-colors">Blog</Link>
                         <Link href="/admin" className="text-slate-400 hover:text-white text-sm transition-colors">Acceso Empresas</Link>
 

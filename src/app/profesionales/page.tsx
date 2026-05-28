@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CheckCircle, Loader2, Sparkles, MapPin, TrendingUp, Coins, Award, Share } from 'lucide-react';
+import { CheckCircle, Loader2, Sparkles, MapPin, TrendingUp, Coins, Award, Share, Check, Minus } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
+import Link from 'next/link';
 
 // Ajusta estas rutas según la estructura real de tu proyecto
 import { Header } from '../../components/Header';
@@ -29,6 +30,7 @@ const PROVINCES: Record<string, string> = {
 };
 
 export default function VIPInvitationPage() {
+    const [isAnnual, setIsAnnual] = useState(false);
     const [formData, setFormData] = useState({
         nombre: '',
         email: '',
@@ -218,78 +220,147 @@ export default function VIPInvitationPage() {
         !emailError;
 
     return (
-        <div className="flex flex-col min-h-screen bg-gradient-to-b from-violet-800 to-[#240A64]">
+        <div className="flex flex-col min-h-screen bg-gradient-to-b from-violet-950 via-[#1b0d3a] to-violet-900 relative overflow-hidden">
+            {/* Fondos decorativos mejorados con orbes brillantes y rejilla */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:24px_24px] opacity-60 pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-violet-600 rounded-full blur-[130px] opacity-25"></div>
+                <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-indigo-700 rounded-full blur-[130px] opacity-20"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-fuchsia-600 rounded-full blur-[120px] opacity-15"></div>
+            </div>
             <Header />
 
-            <main className="flex-grow flex items-center justify-center pt-28 pb-20 px-6 max-w-7xl mx-auto w-full">
-                <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center">
+            <main className="flex-grow pt-32 pb-24 px-6 w-full relative z-10">
+                {/* 1. Hero Section */}
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                    <h1 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+                        ¿Ofreces algún servicio?
+                    </h1>
+                    <p className="text-xl md:text-2xl text-violet-100/90 font-medium max-w-2xl mx-auto leading-relaxed">
+                        Convierte el boca a boca de siempre en un flujo de nuevos contactos
+                    </p>
+                </div>
 
-                    {/* Columna Izquierda: Explicación de Beneficios */}
-                    <div className="lg:col-span-7 flex flex-col justify-center text-left">
-                        {/*<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-bold text-xs tracking-wider uppercase mb-6 border border-white/20 w-fit">
-                            <Sparkles className="w-4 h-4 animate-pulse" />
-                            Registro 100% gratis hasta el lanzamiento el 1 de junio.
-                        </div>*/}
+                {/* 2. Sección Plan Profesional */}
+                <div className="max-w-4xl mx-auto text-center mb-24">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/15 text-[#FF6600] font-bold text-xs tracking-wider uppercase mb-8 border border-[#FF6600]/20 w-fit mx-auto">
+                        <Sparkles className="w-4 h-4 animate-pulse" />
+                        3 meses gratis por lanzamiento
+                    </div>
 
-                        <h1 className="text-5xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6" >
-                            ¿Ofreces algún Servicio?
-                        </h1>
-                        <h2 className="text-white text-3xl md:text-3xl mb-10 leading-tight font-bold">
-                            El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] text-bold">de siempre,</span> ahora en una app
-                        </h2>
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">Plan Profesional</h2>
 
-                        <div className="space-y-8">
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
-                                    <TrendingUp className="w-6 h-6 text-[#FF6600]" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Multiplica tus recomendaciones</h3>
-                                    <p className="text-neutral-300 text-base leading-relaxed">
-                                        Cuando un cliente te recomienda en dconfy, tu perfil se destaca automáticamente ante sus amigos, familiares, contactos directos y de su circulo.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0">
-                                    <Coins className="w-6 h-6 text-violet-400" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Sin intermediarios ni comisiones</h3>
-                                    <p className="text-neutral-300 text-base leading-relaxed">
-                                        Tus clientes son tuyos. Habla directamente con ellos a través de nuestro chat interno. No cobramos comisiones por cliente ni tarifas por contacto.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                                    <Share className="w-6 h-6 text-blue-400" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Perfil público para compartir</h3>
-                                    <p className="text-neutral-300 text-base leading-relaxed">
-                                        Tendrás un enlace público para compartirlo y que tus clientes te recomienden. Con acceso desde la app móvil y el portal web.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
-                                    <Award className="w-6 h-6 text-emerald-400" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Promoción de Lanzamiento. <span className="text-orange-500 text-md font-semibold">*Hasta el 1 de junio</span></h3>
-                                    <p className="text-neutral-300 text-base leading-relaxed">
-                                        Al estar entre los 50 primeros profesionales, tendrás acceso gratuito de por vida a todas nuestras funciones.
-                                    </p>
-                                </div>
-                            </div>
+                    {/* Toggle Mensual/Anual */}
+                    <div className="flex justify-center mb-10">
+                        <div className="relative flex items-center bg-violet-950/40 p-1.5 rounded-full w-[260px] h-[52px] border border-violet-800/50 shadow-inner">
+                            <div
+                                className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-violet-600 rounded-full shadow-md transition-transform duration-300 left-1.5 ${isAnnual ? 'translate-x-full' : 'translate-x-0'}`}
+                            ></div>
+                            <button
+                                onClick={() => setIsAnnual(false)}
+                                className={`relative z-10 w-1/2 h-full flex items-center justify-center text-[15px] font-bold transition-colors select-none ${!isAnnual ? 'text-white' : 'text-violet-300 hover:text-white'}`}
+                            >
+                                Mensual
+                            </button>
+                            <button
+                                onClick={() => setIsAnnual(true)}
+                                className={`relative z-10 w-1/2 h-full flex items-center justify-center text-[15px] font-bold transition-colors select-none ${isAnnual ? 'text-white' : 'text-violet-300 hover:text-white'}`}
+                            >
+                                Anual
+                            </button>
                         </div>
                     </div>
 
-                    {/* Columna Derecha: Tarjeta con Formulario */}
-                    <div className="lg:col-span-5 w-full bg-slate-950 rounded-3xl p-8 md:p-10 border border-slate-800 shadow-2xl">
+                    {/* Tarjeta Plan Profesional */}
+                    <div className="max-w-md mx-auto bg-white p-8 rounded-[2rem] border border-slate-200 shadow-xl text-left text-slate-900">
+                        <h3 className="text-2xl font-black text-slate-900 mb-2">Plan Profesional</h3>
+                        <p className="text-slate-500 text-sm mb-6 h-10">Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.</p>
+                        <div className="mb-2 flex items-baseline gap-1">
+                            <span className="text-5xl font-black text-slate-950">{isAnnual ? '29,99€' : '2,99€'}</span>
+                            <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
+                        </div>
+                        <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '2,49€ al mes (ahorras 2 meses)' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
+
+                        <ul className="space-y-4 mb-8">
+                            {[
+                                'Perfil Profesional verificado',
+                                'Perfil web público para compartir',
+                                'Recibe recomendaciones',
+                                'Aparece en búsquedas de tu zona',
+                                'Chat con clientes habilitado',
+                                'Estadísticas de tu perfil'
+                            ].map((feature, i) => (
+                                <li key={i} className="flex items-center gap-3 text-sm text-slate-700 font-medium">
+                                    <Check className="w-5 h-5 text-[#FF6600] shrink-0" /> {feature}
+                                </li>
+                            ))}
+                        </ul>
+                        <a href="#registro-vip" className="block w-full text-center bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20">
+                            Apúntate en la lista VIP
+                        </a>
+                    </div>
+                </div>
+
+                {/* 3. Sección Puntos/Beneficios */}
+                <div className="max-w-5xl mx-auto mb-24">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white text-center mb-12">
+                        ¿Por qué unirte hoy?
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="flex gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-left">
+                            <div className="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
+                                <TrendingUp className="w-6 h-6 text-[#FF6600]" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Multiplica tus recomendaciones</h3>
+                                <p className="text-neutral-300 text-base leading-relaxed">
+                                    Cuando un cliente te recomienda en dconfy, tu perfil se destaca automáticamente ante sus amigos, familiares, contactos directos y de su círculo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-left">
+                            <div className="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0">
+                                <Coins className="w-6 h-6 text-violet-400" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Sin intermediarios ni comisiones</h3>
+                                <p className="text-neutral-300 text-base leading-relaxed">
+                                    Tus clientes son tuyos. Habla directamente con ellos a través de nuestro chat interno. No cobramos comisiones por cliente ni tarifas por contacto.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-left">
+                            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                                <Share className="w-6 h-6 text-blue-400" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Perfil público para compartir</h3>
+                                <p className="text-neutral-300 text-base leading-relaxed">
+                                    Tendrás un enlace público para compartirlo y que tus clientes te recomienden. Con acceso desde la app móvil y el portal web.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-left">
+                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                                <Award className="w-6 h-6 text-emerald-400" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-neutral-100 mb-1.5">Promoción de Lanzamiento</h3>
+                                <p className="text-neutral-300 text-base leading-relaxed">
+                                    Al estar entre los primeros profesionales, tendrás acceso gratuito de por vida a todas nuestras funciones.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 4. Formulario (Registro VIP) */}
+                <div id="registro-vip" className="max-w-xl mx-auto scroll-mt-28">
+                    <div className="w-full bg-slate-950 rounded-3xl p-8 md:p-10 border border-slate-800 shadow-2xl text-left">
                         {isLoadingLimit ? (
                             <div className="flex flex-col items-center justify-center py-20 animate-in fade-in">
                                 <Loader2 className="w-10 h-10 animate-spin text-[#FF6600] mb-4" />
@@ -327,12 +398,12 @@ export default function VIPInvitationPage() {
                                 <div className="text-center mb-10">
                                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 text-[#FF6600] font-bold text-xs tracking-wider uppercase mb-6 border border-[#FF6600]/20 w-fit">
                                         <Sparkles className="w-4 h-4 animate-pulse" />
-                                        Gratis para los 50 primeros
+                                        Gratis para los primeros
                                     </div>
-                                    <h1 className="text-3xl md:text-4xl font-black text-neutral-200 mb-6 tracking-relaxed leading-tight" >
-                                        Únete a los <span className="text-[#FF6600]">50 primeros</span> profesionales para lanzar dconfy.
-                                    </h1>
-                                    <p className="text-slate-200 font-bold text-[13px] uppercase tracking-wider">
+                                    <h2 className="text-3xl font-black text-neutral-200 mb-6 tracking-relaxed leading-tight" >
+                                        Únete a los <span className="text-[#FF6600]">primeros</span> profesionales para lanzar dconfy.
+                                    </h2>
+                                    <p className="text-slate-400 font-bold text-[13px] uppercase tracking-wider">
                                         Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.
                                     </p>
                                 </div>
@@ -368,9 +439,9 @@ export default function VIPInvitationPage() {
                                                 value={formData.profesion}
                                                 onChange={handleChange}
                                                 disabled={isLoadingCategories}
-                                                className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none appearance-none disabled:opacity-50"
+                                                className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none appearance-none disabled:opacity-50 text-slate-200"
                                             >
-                                                <option value="" disabled>
+                                                <option value="" disabled className="text-neutral-600">
                                                     {isLoadingCategories ? 'Cargando profesiones...' : 'Selecciona una profesión'}
                                                 </option>
 
