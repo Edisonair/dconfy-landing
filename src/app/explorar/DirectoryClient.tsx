@@ -95,7 +95,7 @@ export default function DirectoryClient() {
                 // Fetch profiles (with slugs, so they are public)
                 const { data: profData, error: profError } = await supabase
                     .from('profiles')
-                    .select('id, full_name, professional_name, slug, specialty, category, location, zip_code, avatar_url, professional_logo_url, services_tags, subscription_status, is_vip, price_per_hour, recommendations!recommendations_profile_id_fkey(id, author_name, profiles!recommendations_user_id_fkey(id, full_name, avatar_url))')
+                    .select('id, full_name, professional_name, slug, specialty, category, location, zip_code, avatar_url, professional_logo_url, services_tags, subscription_status, is_vip, price_per_hour, managed_by_business, recommendations!recommendations_profile_id_fkey(id, author_name, profiles!recommendations_user_id_fkey(id, full_name, avatar_url))')
                     .not('slug', 'is', null);
 
                 if (profError) {
@@ -103,9 +103,9 @@ export default function DirectoryClient() {
                 }
 
                 if (profData) {
-                    // Filter out expired professionals unless they are VIP
+                    // Filter out expired professionals unless they are VIP or managed by a business
                     const activeProfiles = profData.filter(p => {
-                        if (p.subscription_status === 'expired' && p.is_vip !== true) {
+                        if (p.subscription_status === 'expired' && p.is_vip !== true && p.managed_by_business !== true) {
                             return false;
                         }
                         return true;
