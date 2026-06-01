@@ -1,6 +1,6 @@
 'use client';
 
-import { Bookmark, Share } from 'lucide-react';
+import { Bookmark, Share, Heart } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ActionButtons({ slug }: { slug: string }) {
@@ -40,19 +40,33 @@ export default function ActionButtons({ slug }: { slug: string }) {
     };
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-slate-200 z-50 flex gap-3 justify-center pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-slate-200 z-50 flex gap-3 justify-center items-center pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+            {/* Botón de Compartir (Icono a la izquierda) */}
             <button
                 onClick={handleShare}
                 disabled={isSharing}
-                className="flex-1 max-w-[200px] bg-white border border-slate-200 text-slate-700 font-bold h-[52px] rounded-full flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors active:scale-95 disabled:opacity-50 text-[15px] shadow-sm"
+                title="Compartir"
+                className="w-[52px] h-[52px] rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center hover:bg-slate-50 transition-all active:scale-95 disabled:opacity-50 shadow-sm shrink-0"
             >
-                <Share className="w-5 h-5" /> Compartir
+                <Share className="w-5 h-5" />
             </button>
+
+            {/* Botón de Recomendar (Icono Corazón + Texto en el medio) */}
             <button
                 onClick={handleDeepLink}
-                className="flex-1 max-w-[200px] bg-[#FF6600] text-white font-bold h-[52px] rounded-full shadow-lg shadow-[#FF6600]/30 flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors active:scale-95 text-[15px]"
+                className="flex-grow max-w-[240px] bg-[#FF6600] text-white font-bold h-[52px] rounded-full shadow-lg shadow-[#FF6600]/30 flex items-center justify-center gap-2 hover:bg-orange-600 transition-all active:scale-95 text-[15px]"
             >
-                <Bookmark className="w-5 h-5 fill-current" /> Guardar
+                <Heart className="w-5 h-5 fill-current text-white" />
+                <span>Recomendar</span>
+            </button>
+
+            {/* Botón de Guardar (Icono a la derecha) */}
+            <button
+                onClick={handleDeepLink}
+                title="Guardar"
+                className="w-[52px] h-[52px] rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center hover:bg-slate-50 transition-all active:scale-95 shadow-sm shrink-0"
+            >
+                <Bookmark className="w-5 h-5" />
             </button>
         </div>
     );
