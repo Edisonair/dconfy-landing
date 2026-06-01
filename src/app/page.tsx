@@ -2,11 +2,17 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-// Importaciones restauradas y añadidas Menu y Mail
-import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle, ArrowDown, Bookmark, Menu, Mail, Sparkles, Star, ArrowRight } from 'lucide-react';
+// Importaciones restauradas y añadidas Menu y Mail, y Calendar y Clock para el blog
+import { Search, Users, Heart, CheckCircle2, Smartphone, Apple, Play, Check, Minus, ChevronDown, X, Instagram, MessageCircle, ArrowDown, Bookmark, Menu, Mail, Sparkles, Star, ArrowRight, Calendar, Clock, FileText } from 'lucide-react';
 import { motion, Variants } from "framer-motion";
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 const heroProfessionals = [
   { src: "/hero_vector_yoga_mat.png", alt: "Yoga" },
@@ -62,6 +68,29 @@ export default function Home() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [latestPosts, setLatestPosts] = useState<any[]>([]);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const { data } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('is_published', true)
+          .order('created_at', { ascending: false })
+          .limit(2);
+        if (data) {
+          setLatestPosts(data);
+        }
+      } catch (err) {
+        console.error('Error fetching blog posts:', err);
+      } finally {
+        setHasLoaded(true);
+      }
+    }
+    fetchPosts();
+  }, []);
 
   // Corregido el error de clearInterval
   useEffect(() => {
@@ -402,7 +431,7 @@ export default function Home() {
             className="mb-32 md:mb-48"
           >
             <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] leading-tight" >
-              Cada vez que necesitamos un servicio o profesional de confianza, acabamos preguntando a amigos, familia o conocidos.
+              Cuando necesitamos un servicio o profesional de confianza, acabamos preguntando a amigos, familia o conocidos.
             </h2>
           </motion.div>
 
@@ -414,7 +443,7 @@ export default function Home() {
             className="my-48 md:my-64 max-w-3xl mx-auto bg-white py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem]"
           >
             <h2 className="text-4xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]">
-              Recomiéndame un fisio, un restaurante, un seguro, un masajista...
+              Recomiéndame un fisio, un restaurante, un masajista... <br></br><br></br>"Te paso el teléfono de mi fontanero", "Hay una peluquería que te va a gustar"...
             </h2>
           </motion.div>
 
@@ -1145,10 +1174,10 @@ export default function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-fuchsia-600 rounded-full blur-[120px] opacity-15"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 min-h-[400px] flex items-center justify-center">
+        <div className="max-w-7xl mx-auto relative z-10 min-h-[400px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0">
 
-          {/* Tarjeta Flotante Izquierda - Solo Desktop */}
-          <div className="hidden lg:flex flex-col items-start gap-4 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-2xl absolute left-4 xl:left-12 top-1/2 -translate-y-1/2 w-[280px] text-left rotate-[-3deg] hover:rotate-0 hover:scale-105 hover:bg-white/10 transition-all duration-500 transform-gpu pointer-events-auto">
+          {/* Tarjeta Flotante Izquierda */}
+          <div className="flex flex-col items-start gap-4 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-2xl relative lg:absolute left-auto lg:left-4 xl:left-12 top-auto lg:top-1/2 -translate-y-0 lg:-translate-y-1/2 w-[280px] text-left rotate-[-3deg] hover:rotate-0 hover:scale-105 hover:bg-white/10 transition-all duration-500 transform-gpu pointer-events-auto mb-8 lg:mb-0">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full overflow-hidden border border-white/20 shrink-0">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Laura Gómez" className="w-full h-full object-cover" />
@@ -1176,7 +1205,7 @@ export default function Home() {
             initial="hidden"
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
-            className="max-w-2xl mx-auto flex flex-col items-center"
+            className="max-w-2xl mx-auto flex flex-col items-center z-20"
           >
             {/* Pill Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white font-bold text-xs tracking-wider uppercase mb-8 border border-white/15 shadow-inner">
@@ -1192,20 +1221,44 @@ export default function Home() {
               Descubre el <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">Plan Profesional</span>
             </h3>
 
+            {/* Pastilla 0€/mes */}
+            <div className="mb-6 flex justify-center">
+              <span className="inline-flex items-center gap-1.5 px-4.5 py-1.5 rounded-full bg-orange-500/15 text-[#FF6600] font-bold text-sm tracking-wider uppercase border border-[#FF6600]/25 shadow-sm">
+                0€/mes
+              </span>
+            </div>
+
             <p className="text-base md:text-lg text-slate-300 mb-10 max-w-xl mx-auto font-medium leading-relaxed">
               Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.
             </p>
 
             <div className="flex justify-center">
-              <Link href="/profesionales" onClick={() => trackGAEvent('Clic_SaberMas_planes', 'Planes')} className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-[#FF6600] to-[#E65C00] hover:from-[#FF751A] hover:to-[#F56E0A] text-white px-9 py-4 rounded-full font-[system-ui] font-black tracking-wide transition-all shadow-lg shadow-[#FF6600]/30 hover:shadow-[#FF6600]/50 hover:scale-105 active:scale-[0.98] duration-300 text-center">
-                <span>Saber más</span>
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              <motion.div
+                animate={{
+                  scale: [1, 1.04, 1],
+                  boxShadow: [
+                    "0 10px 30px -10px rgba(255, 102, 0, 0.3)",
+                    "0 15px 40px -5px rgba(255, 102, 0, 0.6)",
+                    "0 10px 30px -10px rgba(255, 102, 0, 0.3)"
+                  ]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "easeInOut"
+                }}
+                className="rounded-full"
+              >
+                <Link href="/profesionales" onClick={() => trackGAEvent('Clic_SaberMas_planes', 'Planes')} className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-[#FF6600] to-[#E65C00] hover:from-[#FF751A] hover:to-[#F56E0A] text-white px-9 py-4 rounded-full font-[system-ui] font-black tracking-wide transition-all duration-300 text-center">
+                  <span>Saber más</span>
+                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
 
-          {/* Tarjeta Flotante Derecha - Solo Desktop */}
-          <div className="hidden lg:flex flex-col items-start gap-3.5 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-2xl absolute right-4 xl:right-12 top-1/2 -translate-y-1/2 w-[280px] text-left rotate-[3deg] hover:rotate-0 hover:scale-105 hover:bg-white/10 transition-all duration-500 transform-gpu pointer-events-auto">
+          {/* Tarjeta Flotante Derecha */}
+          <div className="flex flex-col items-start gap-3.5 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-2xl relative lg:absolute right-auto lg:right-4 xl:right-12 top-auto lg:top-1/2 -translate-y-0 lg:-translate-y-1/2 w-[280px] text-left rotate-[3deg] hover:rotate-0 hover:scale-105 hover:bg-white/10 transition-all duration-500 transform-gpu pointer-events-auto mt-8 lg:mt-0">
             <h4 className="font-bold text-white text-base leading-tight">Ventajas Perfil Profesional</h4>
             <ul className="space-y-2.5 w-full">
               {[
@@ -1224,6 +1277,72 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* Sección Novedades y Blog */}
+      {(!hasLoaded || latestPosts.length > 0) && (
+        <section className="bg-[#f5f5f7] py-24 px-6 relative z-10 border-t border-slate-200">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-black text-[#111827] mb-4 tracking-tight">
+                Novedades y Blog
+              </h2>
+
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {!hasLoaded ? (
+                [1, 2].map((i) => (
+                  <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-slate-100 shadow-lg p-6 flex flex-col animate-pulse">
+                    <div className="aspect-[16/9] w-full bg-slate-100 rounded-2xl mb-6"></div>
+                    <div className="h-4 bg-slate-200 rounded w-1/3 mb-4"></div>
+                    <div className="h-6 bg-slate-200 rounded w-3/4 mb-3"></div>
+                    <div className="h-4 bg-slate-200 rounded w-full mb-2"></div>
+                    <div className="h-4 bg-slate-200 rounded w-5/6"></div>
+                  </div>
+                ))
+              ) : (
+                latestPosts.map((post) => (
+                  <Link key={post.id} href={`/blog/${post.slug}`} onClick={() => trackGAEvent(`Clic_BlogCard_${post.slug}`, 'Blog')} className="group bg-white rounded-3xl overflow-hidden shadow-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                    <div className="aspect-[16/9] w-full overflow-hidden relative bg-slate-100">
+                      <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-[#FF6600] shadow-sm">
+                        {post.category}
+                      </div>
+                      {post.image ? (
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-slate-50 text-slate-300">
+                          <FileText className="w-12 h-12" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-8 flex-1 flex flex-col text-left">
+                      <div className="flex items-center gap-4 text-xs font-bold text-slate-400 mb-3 uppercase tracking-wider">
+                        <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {new Date(post.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                        <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {post.read_time}</span>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#FF6600] transition-colors leading-tight">
+                        {post.title}
+                      </h3>
+                      <p className="text-slate-500 text-sm md:text-base mb-6 flex-1 leading-relaxed line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center text-violet-600 font-bold gap-2 group-hover:gap-3 transition-all">
+                        Leer artículo <ArrowRight className="w-5 h-5" />
+                      </div>
+                    </div>
+                  </Link>
+                ))
+              )}
+            </div>
+
+
+          </div>
+        </section>
+      )}
 
       {/* <motion.div
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"

@@ -44,7 +44,7 @@ export function Footer() {
                         <Link href="/#planes" className="text-slate-400 hover:text-white text-sm transition-colors">Planes</Link>
                         {/* <Link href="/#faq" className="text-slate-400 hover:text-white text-sm transition-colors">FAQ</Link> */}
                         <Link href="/blog" className="text-slate-400 hover:text-white text-sm transition-colors">Blog</Link>
-                        <Link href="/admin" className="text-slate-400 hover:text-white text-sm transition-colors">Acceso Empresas</Link>
+                        <Link href="/business" className="text-slate-400 hover:text-white text-sm transition-colors">Acceso Empresas</Link>
 
                     </div>
                     <div className="flex flex-col gap-4">
