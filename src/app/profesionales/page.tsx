@@ -375,9 +375,9 @@ export default function VIPInvitationPage() {
                                     <path d="M12 18h.01" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-neutral-100 mb-3">1. Instálate la App</h3>
+                            <h3 className="text-xl font-bold text-neutral-100 mb-3">1. Descarga la app</h3>
                             <p className="text-neutral-300 text-sm leading-relaxed">
-                                Descarga la aplicación de dconfy en tu dispositivo iOS o Android de forma rápida y sencilla.
+                                Instálate la aplicación de dconfy en tu dispositivo iOS o Android de forma rápida y sencilla.
                             </p>
                         </div>
 
