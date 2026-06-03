@@ -97,7 +97,7 @@ export default function VIPInvitationPage() {
         return () => clearInterval(interval);
     }, []);
 
-    const currentService = ROTATING_SERVICES[currentIndex];
+    const currentService = ROTATING_SERVICES[currentIndex] || ROTATING_SERVICES[0] || { name: '', iconName: '' };
     const serviceColor = getCategoryColor(currentService.name);
     const badgeBgColor = hexToRgba(serviceColor, 0.08);
     const badgeBorderColor = hexToRgba(serviceColor, 0.18);

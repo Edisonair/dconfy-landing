@@ -98,12 +98,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const currentWord = placeholderRoles[currentRoleIndex];
+    if (currentRoleIndex >= placeholderRoles.length) {
+      setCurrentRoleIndex(0);
+      setDisplayedText("");
+      setIsDeleting(false);
+      return;
+    }
+    const currentWord = placeholderRoles[currentRoleIndex] || placeholderRoles[0] || "";
     let timeout: NodeJS.Timeout;
 
     if (isDeleting) {
       timeout = setTimeout(() => {
-        setDisplayedText(currentWord.substring(0, displayedText.length - 1));
+        setDisplayedText(currentWord.substring(0, Math.max(0, Math.min(displayedText.length, currentWord.length) - 1)));
         if (displayedText.length === 0) {
           setIsDeleting(false);
           setCurrentRoleIndex((prev) => (prev + 1) % placeholderRoles.length);
