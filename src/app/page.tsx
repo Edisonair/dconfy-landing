@@ -583,16 +583,16 @@ export default function Home() {
 
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
-                    <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-none mb-1.5 tracking-tight">Bella Donna</h3>
-                    <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">MODA MUJER</p>
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-none mb-1.5 tracking-tight">BellaClinic</h3>
+                    <p className="text-violet-600 font-bold tracking-widest uppercase text-[11px] lg:text-[12px] mb-2.5">CLÍNICA ESTÉTICA</p>
                     <div className="flex gap-1.5 mb-3 overflow-hidden whitespace-nowrap">
-                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Vestidos</span>
-                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Complementos</span>
-                      <span className="bg-[#F3F0FF] text-[#8B5CF6] px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-bold border border-[#E9D5FF] shrink-0">+4</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Medicina Estética</span>
+                      <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-semibold border border-slate-200 truncate">Facial</span>
+                      <span className="bg-[#F3F0FF] text-[#8B5CF6] px-2 py-0.5 rounded-lg text-[10px] lg:text-[11px] font-bold border border-[#E9D5FF] shrink-0">+3</span>
                     </div>
                   </div>
                   <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] rounded-2xl overflow-hidden shrink-0 shadow-sm border border-slate-100 bg-pink-50">
-                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Vestidos" className="w-full h-full object-cover" />
+                    <img src="/bellaclinic.png" alt="BellaClinic" className="w-full h-full object-cover" />
                   </div>
                 </div>
 
