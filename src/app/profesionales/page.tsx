@@ -13,7 +13,7 @@ const ROTATING_SERVICES = [
     { name: 'Peluquería y Estética', iconName: 'Scissors' },
     { name: 'Veterinario', iconName: 'Stethoscope' },
     { name: 'Jardinería', iconName: 'Sprout' },
-    { name: 'Actividades Náuticas', iconName: 'Anchor' },
+    { name: 'Limpieza Profesional', iconName: 'Sparkles' },
     { name: 'Clases Particulares', iconName: 'GraduationCap' },
     { name: 'Entrenador Personal', iconName: 'Dumbbell' },
     { name: 'Fotografía y Vídeo', iconName: 'Camera' }

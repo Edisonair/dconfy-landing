@@ -867,9 +867,9 @@ export default function Home() {
 
               {/* Bottom Navigation Bar */}
               <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-100 flex justify-around items-center pt-3 pb-6 px-2 z-20">
-                <Heart className="w-6 h-6 text-slate-300" />
-                <Users className="w-6 h-6 text-slate-300" />
-                <MessageCircle className="w-6 h-6 text-slate-300" />
+                <Heart className="w-6 h-6 text-slate-600" />
+                <Users className="w-6 h-6 text-slate-600" />
+                <MessageCircle className="w-6 h-6 text-slate-600" />
                 <div className="w-7 h-7 rounded-full overflow-hidden ring-2 ring-violet-600 ring-offset-2">
                   <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" className="w-full h-full object-cover" alt="Perfil" />
                 </div>
@@ -1253,7 +1253,7 @@ export default function Home() {
                 className="rounded-full"
               >
                 <Link href="/profesionales" onClick={() => trackGAEvent('Clic_SaberMas_planes', 'Planes')} className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-[#FF6600] to-[#E65C00] hover:from-[#FF751A] hover:to-[#F56E0A] text-white px-9 py-4 rounded-full font-[system-ui] font-black tracking-wide transition-all duration-300 text-center">
-                  <span>Saber más</span>
+                  <span>Empieza Gratis</span>
                   <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </motion.div>
