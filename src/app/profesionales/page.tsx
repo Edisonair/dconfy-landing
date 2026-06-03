@@ -304,7 +304,7 @@ export default function VIPInvitationPage() {
                             {/* Tarjeta 1 */}
                             <div className="flex flex-col gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10 text-left hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
                                 <div className="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
-                                    <TrendingUp className="w-6 h-6 text-[#FF6600]" />
+                                    <Heart className="w-6 h-6 text-[#FF6600]" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Multiplica tus recomendaciones</h3>
@@ -447,7 +447,7 @@ export default function VIPInvitationPage() {
                                 </svg>
                             </div>
                             <h3 className="text-xl font-bold text-neutral-100 mb-3">1. Descarga la app</h3>
-                            <p className="text-neutral-300 text-sm leading-relaxed">
+                            <p className="text-neutral-300 text-md leading-relaxed">
                                 Instálate la aplicación de dconfy en tu dispositivo iOS o Android de forma rápida y sencilla.
                             </p>
                         </div>
@@ -464,7 +464,7 @@ export default function VIPInvitationPage() {
                                 </svg>
                             </div>
                             <h3 className="text-xl font-bold text-neutral-100 mb-3">2. Cuenta Personal</h3>
-                            <p className="text-neutral-300 text-sm leading-relaxed">
+                            <p className="text-neutral-300 text-md leading-relaxed">
                                 Crea tu cuenta personal para poder ver y hacer recomendaciones de tus profesionales de confianza.
                             </p>
                         </div>
@@ -478,7 +478,7 @@ export default function VIPInvitationPage() {
                                 <Briefcase className="w-8 h-8" />
                             </div>
                             <h3 className="text-xl font-bold text-neutral-100 mb-3">3. Perfil Profesional</h3>
-                            <p className="text-neutral-300 text-sm leading-relaxed">
+                            <p className="text-neutral-300 text-md leading-relaxed">
                                 Una vez dentro, la app te preguntará si <strong>"¿Ofreces algún servicio?"</strong>. Crea tu perfil profesional gratuitamente.
                             </p>
                         </div>
