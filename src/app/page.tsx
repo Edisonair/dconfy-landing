@@ -835,7 +835,7 @@ export default function Home() {
                   {/* Card 5: Limpieza */}
                   <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
                     <div className="h-[100px] bg-slate-200 relative">
-                      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Carla López" />
+                      <img src="/carla_lopez.png" className="w-full h-full object-cover" alt="Carla López" />
                     </div>
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
