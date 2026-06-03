@@ -2,6 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import { CheckCircle, Loader2, Sparkles, MapPin, TrendingUp, Coins, Award, Share, Check, Minus, Heart, Briefcase } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { getCategoryIcon } from '../../utils/categoryIcons';
+
+const ROTATING_SERVICES = [
+    { name: 'Fisioterapia', iconName: 'Fisioterapia' },
+    { name: 'Entrenador Personal', iconName: 'Dumbbell' },
+    { name: 'Peluquería', iconName: 'Peluqueria' },
+    { name: 'Fontanería', iconName: 'Fontanero' },
+    { name: 'Clases Particulares', iconName: 'GraduationCap' },
+    { name: 'Psicología', iconName: 'Psicologia' },
+    { name: 'Mudanzas', iconName: 'Mudanzas' },
+    { name: 'Electricista', iconName: 'Electricista' }
+];
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
 
@@ -55,6 +68,17 @@ export default function VIPInvitationPage() {
     // 🚀 NUEVO: Estados para controlar el límite de 50 usuarios
     const [isLimitReached, setIsLimitReached] = useState(false);
     const [isLoadingLimit, setIsLoadingLimit] = useState(true);
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % ROTATING_SERVICES.length);
+        }, 2500);
+        return () => clearInterval(interval);
+    }, []);
+
+    const currentService = ROTATING_SERVICES[currentIndex];
 
     // Cargar categorías desde Supabase al iniciar
     useEffect(() => {
@@ -262,7 +286,7 @@ export default function VIPInvitationPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Multiplica tus recomendaciones</h3>
-                                    <p className="text-neutral-300 text-sm leading-relaxed">
+                                    <p className="text-neutral-300 text-md leading-relaxed">
                                         Cuando un cliente te recomienda en dconfy, tu perfil se destaca automáticamente ante sus amigos, familiares y contactos de su círculo.
                                     </p>
                                 </div>
@@ -275,7 +299,7 @@ export default function VIPInvitationPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Sin comisiones ni intermediarios</h3>
-                                    <p className="text-neutral-300 text-sm leading-relaxed">
+                                    <p className="text-neutral-300 text-md leading-relaxed">
                                         Tus clientes son tuyos. Habla directamente con ellos a través del chat interno. No cobramos comisiones por cliente ni tarifas por contacto.
                                     </p>
                                 </div>
@@ -288,7 +312,7 @@ export default function VIPInvitationPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Perfil público profesional</h3>
-                                    <p className="text-neutral-300 text-sm leading-relaxed">
+                                    <p className="text-neutral-300 text-md leading-relaxed">
                                         Comparte tu enlace público para que tus clientes te recomienden fácilmente con acceso directo desde la app y la web.
                                     </p>
                                 </div>
@@ -301,7 +325,7 @@ export default function VIPInvitationPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Destaca en tu zona</h3>
-                                    <p className="text-neutral-300 text-sm leading-relaxed">
+                                    <p className="text-neutral-300 text-md leading-relaxed">
                                         Aparece de forma prioritaria en las búsquedas locales cuando los usuarios necesiten profesionales recomendados por sus conocidos.
                                     </p>
                                 </div>
@@ -317,9 +341,29 @@ export default function VIPInvitationPage() {
                                     <h3 className="text-2xl font-black text-slate-900">Plan Profesional</h3>
                                 </div>
 
-                                <p className="text-slate-500 text-sm mb-6 leading-relaxed">
+                                <p className="text-slate-600 text-md mb-6 leading-relaxed">
                                     Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.
                                 </p>
+
+                                <div className="flex items-center gap-3 mb-6 select-none h-12">
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={currentIndex}
+                                            initial={{ x: -12, opacity: 0 }}
+                                            animate={{ x: 0, opacity: 1 }}
+                                            exit={{ x: 12, opacity: 0 }}
+                                            transition={{ duration: 0.22, ease: 'easeInOut' }}
+                                            className="inline-flex items-center gap-2.5 bg-orange-50 border border-orange-100/70 shadow-sm rounded-2xl px-4 h-12"
+                                        >
+                                            <div className="flex items-center justify-center text-[#FF6600] shrink-0">
+                                                {getCategoryIcon(currentService.iconName, "w-5 h-5")}
+                                            </div>
+                                            <span className="text-[#FF6600] font-extrabold text-[11px] tracking-wider uppercase">
+                                                {currentService.name}
+                                            </span>
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </div>
 
                                 <div className="mb-6 flex items-baseline gap-1">
                                     <span className="text-5xl font-black text-slate-950">0€</span>
@@ -335,7 +379,7 @@ export default function VIPInvitationPage() {
                                         'Chat con clientes habilitado',
                                         'Estadísticas de tu perfil'
                                     ].map((feature, i) => (
-                                        <li key={i} className="flex items-center gap-3 text-sm text-slate-700 font-medium">
+                                        <li key={i} className="flex items-center gap-3 text-md text-slate-700 font-medium">
                                             <Check className="w-5 h-5 text-[#FF6600] shrink-0" /> {feature}
                                         </li>
                                     ))}
