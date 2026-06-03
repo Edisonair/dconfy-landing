@@ -7,14 +7,16 @@ import { getCategoryIcon } from '../../utils/categoryIcons';
 import { getCategoryColor } from '../../utils/categoryColors';
 
 const ROTATING_SERVICES = [
-    { name: 'Fisioterapia', iconName: 'Fisioterapia' },
-    { name: 'Entrenador Personal', iconName: 'Dumbbell' },
-    { name: 'Peluquería', iconName: 'Peluqueria' },
-    { name: 'Fontanería', iconName: 'Fontanero' },
+    { name: 'Reformas y Mantenimiento', iconName: 'Hammer' },
+    { name: 'Fisioterapia', iconName: 'Activity' },
+    { name: 'Electricista', iconName: 'Zap' },
+    { name: 'Peluquería y Estética', iconName: 'Scissors' },
+    { name: 'Veterinario', iconName: 'Stethoscope' },
+    { name: 'Jardinería', iconName: 'Sprout' },
+    { name: 'Actividades Náuticas', iconName: 'Anchor' },
     { name: 'Clases Particulares', iconName: 'GraduationCap' },
-    { name: 'Psicología', iconName: 'Psicologia' },
-    { name: 'Mudanzas', iconName: 'Mudanzas' },
-    { name: 'Electricista', iconName: 'Electricista' }
+    { name: 'Entrenador Personal', iconName: 'Dumbbell' },
+    { name: 'Fotografía y Vídeo', iconName: 'Camera' }
 ];
 
 const hexToRgba = (hex: string, alpha: number): string => {
@@ -91,7 +93,7 @@ export default function VIPInvitationPage() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % ROTATING_SERVICES.length);
-        }, 2500);
+        }, 1800);
         return () => clearInterval(interval);
     }, []);
 
@@ -372,7 +374,7 @@ export default function VIPInvitationPage() {
                                             initial={{ x: -12, opacity: 0 }}
                                             animate={{ x: 0, opacity: 1 }}
                                             exit={{ x: 12, opacity: 0 }}
-                                            transition={{ duration: 0.22, ease: 'easeInOut' }}
+                                            transition={{ duration: 0.15, ease: 'easeInOut' }}
                                             style={{
                                                 backgroundColor: badgeBgColor,
                                                 borderColor: badgeBorderColor,
