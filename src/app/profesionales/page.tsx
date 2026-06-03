@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { CheckCircle, Loader2, Sparkles, MapPin, TrendingUp, Coins, Award, Share, Check, Minus, Heart, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getCategoryIcon } from '../../utils/categoryIcons';
+import { getCategoryColor } from '../../utils/categoryColors';
 
 const ROTATING_SERVICES = [
     { name: 'Fisioterapia', iconName: 'Fisioterapia' },
@@ -15,6 +16,22 @@ const ROTATING_SERVICES = [
     { name: 'Mudanzas', iconName: 'Mudanzas' },
     { name: 'Electricista', iconName: 'Electricista' }
 ];
+
+const hexToRgba = (hex: string, alpha: number): string => {
+    if (!/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(hex)) return `rgba(148, 163, 184, ${alpha})`;
+    let r, g, b;
+    if (hex.length === 4) {
+        r = parseInt(hex[1] + hex[1], 16);
+        g = parseInt(hex[2] + hex[2], 16);
+        b = parseInt(hex[3] + hex[3], 16);
+    } else {
+        r = parseInt(hex.slice(1, 3), 16);
+        g = parseInt(hex.slice(3, 5), 16);
+        b = parseInt(hex.slice(5, 7), 16);
+    }
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
 
@@ -79,6 +96,9 @@ export default function VIPInvitationPage() {
     }, []);
 
     const currentService = ROTATING_SERVICES[currentIndex];
+    const serviceColor = getCategoryColor(currentService.name);
+    const badgeBgColor = hexToRgba(serviceColor, 0.08);
+    const badgeBorderColor = hexToRgba(serviceColor, 0.18);
 
     // Cargar categorías desde Supabase al iniciar
     useEffect(() => {
@@ -345,7 +365,7 @@ export default function VIPInvitationPage() {
                                     Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.
                                 </p>
 
-                                <div className="flex items-center gap-3 mb-6 select-none h-12">
+                                <div className="flex items-center gap-3 mb-6 select-none h-14">
                                     <AnimatePresence mode="wait">
                                         <motion.div
                                             key={currentIndex}
@@ -353,12 +373,17 @@ export default function VIPInvitationPage() {
                                             animate={{ x: 0, opacity: 1 }}
                                             exit={{ x: 12, opacity: 0 }}
                                             transition={{ duration: 0.22, ease: 'easeInOut' }}
-                                            className="inline-flex items-center gap-2.5 bg-orange-50 border border-orange-100/70 shadow-sm rounded-2xl px-4 h-12"
+                                            style={{
+                                                backgroundColor: badgeBgColor,
+                                                borderColor: badgeBorderColor,
+                                                color: serviceColor
+                                            }}
+                                            className="inline-flex items-center gap-3 border shadow-sm rounded-2xl px-5 h-14"
                                         >
-                                            <div className="flex items-center justify-center text-[#FF6600] shrink-0">
-                                                {getCategoryIcon(currentService.iconName, "w-5 h-5")}
+                                            <div className="flex items-center justify-center shrink-0">
+                                                {getCategoryIcon(currentService.iconName, "w-6 h-6")}
                                             </div>
-                                            <span className="text-[#FF6600] font-extrabold text-[11px] tracking-wider uppercase">
+                                            <span className="font-extrabold text-xs tracking-wider uppercase">
                                                 {currentService.name}
                                             </span>
                                         </motion.div>
