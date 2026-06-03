@@ -867,7 +867,7 @@ export default function Home() {
 
               {/* Bottom Navigation Bar */}
               <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-100 flex justify-around items-center pt-3 pb-6 px-2 z-20">
-                <Search className="w-6 h-6 text-slate-300" />
+                <Heart className="w-6 h-6 text-slate-300" />
                 <Users className="w-6 h-6 text-slate-300" />
                 <MessageCircle className="w-6 h-6 text-slate-300" />
                 <div className="w-7 h-7 rounded-full overflow-hidden ring-2 ring-violet-600 ring-offset-2">
