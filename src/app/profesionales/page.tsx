@@ -16,7 +16,7 @@ const ROTATING_SERVICES = [
     { name: 'Limpieza Profesional', iconName: 'Sparkles' },
     { name: 'Clases Particulares', iconName: 'GraduationCap' },
     { name: 'Entrenador Personal', iconName: 'Dumbbell' },
-    { name: 'Fotografía y Vídeo', iconName: 'Camera' }
+    { name: 'Nutricionista', iconName: 'Leaf' }
 ];
 
 const hexToRgba = (hex: string, alpha: number): string => {
