@@ -93,7 +93,7 @@ export default function VIPInvitationPage() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % ROTATING_SERVICES.length);
-        }, 1000);
+        }, 1500);
         return () => clearInterval(interval);
     }, []);
 
