@@ -828,21 +828,21 @@ export default function Home() {
                         <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">AKA Studio</div>
                         <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">121 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
-                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Interiorismo</div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Reformas Integrales</div>
                     </div>
                   </div>
 
-                  {/* Card 5: Reformas */}
+                  {/* Card 5: Limpieza */}
                   <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
                     <div className="h-[100px] bg-slate-200 relative">
-                      <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="PlusHome" />
+                      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Carla López" />
                     </div>
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
-                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">PlusHome</div>
-                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Carla López</div>
+                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">14 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
-                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Reformas Integrales</div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Limpieza Profesional</div>
                     </div>
                   </div>
 
@@ -853,10 +853,10 @@ export default function Home() {
                     </div>
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
-                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Nutricionista</div>
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Martín Costa</div>
                         <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
-                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Nutrición</div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Nutricionista</div>
                     </div>
                   </div>
                 </div>
