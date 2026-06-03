@@ -832,31 +832,31 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Card 5: Moda */}
+                  {/* Card 5: Reformas */}
                   <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
                     <div className="h-[100px] bg-slate-200 relative">
-                      <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Nosso Boutique" />
+                      <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="PlusHome" />
                     </div>
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
-                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Nosso Boutique</div>
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">PlusHome</div>
                         <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
-                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Moda Mujer</div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Reformas Integrales</div>
                     </div>
                   </div>
 
-                  {/* Card 6: Inmobiliaria */}
+                  {/* Card 6: Nutricionista */}
                   <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col">
                     <div className="h-[100px] bg-slate-200 relative">
-                      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Grupo SIL" />
+                      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80" className="w-full h-full object-cover" alt="Nutricionista" />
                     </div>
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
-                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Grupo SIL</div>
+                        <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Nutricionista</div>
                         <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
-                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Inmobiliaria</div>
+                      <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Nutrición</div>
                     </div>
                   </div>
                 </div>
