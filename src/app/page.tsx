@@ -35,11 +35,8 @@ const heroProfessionals = [
 ];
 
 const placeholderRoles = [
-  "Abogado", "Fisioterapeuta", "Fontanero", "Psicólogo", "Tatuador",
-  "Electricista", "Mecánico", "Salón de Belleza", "Entrenador Personal",
-  "Fotógrafo", "Veterinario", "Clínica Estética", "Jardinero",
-  "Gestor", "Masajista", "Seguros",
-  "Moda", "Boutique", "Restaurant"
+  "Fisioterapia", "Fontanero", "Electricista", "Salón de Belleza", "Entrenador Personal",
+  "Veterinario", "Clínica Estética", "Jardinero", "Masajista"
 ];
 
 // Tipado explícito Variants para evitar errores de TypeScript

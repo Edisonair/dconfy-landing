@@ -93,7 +93,7 @@ export default function VIPInvitationPage() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % ROTATING_SERVICES.length);
-        }, 1800);
+        }, 1000);
         return () => clearInterval(interval);
     }, []);
 
@@ -423,10 +423,10 @@ export default function VIPInvitationPage() {
                 {/* 3. Sección Cómo crear tu perfil profesional */}
                 <div id="como-crear" className="max-w-5xl mx-auto mb-24 scroll-mt-28 relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
                             Cómo crear tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">Perfil Profesional</span>
                         </h2>
-                        <p className="text-lg text-violet-200/80 font-medium max-w-xl mx-auto">
+                        <p className="text-xl text-violet-200/80 font-medium max-w-xl mx-auto">
                             Sigue estos sencillos pasos para activar tu perfil en menos de 2 minutos
                         </p>
                     </div>
