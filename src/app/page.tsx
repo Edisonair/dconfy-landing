@@ -446,7 +446,7 @@ export default function Home() {
             className="my-48 md:my-64 max-w-3xl mx-auto bg-white py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem]"
           >
             <h2 className="text-4xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]">
-              Recomiéndame un fisio, un restaurante, un masajista... <br></br><br></br>"Te paso el teléfono de mi fontanero", "Hay una peluquería que te va a gustar"...
+              Recomiéndame un fisio, un nutricionista, un masajista... <br></br><br></br>"Te paso el teléfono de mi fontanero", "Hay una peluquería que te va a gustar"...
             </h2>
           </motion.div>
 
@@ -487,7 +487,7 @@ export default function Home() {
               />
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#111827] leading-tight py-2">
-              dconfy te ayuda a descubrir y guardar esas recomendaciones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza</span>
+              dconfy te ayuda a compartir y guardar esas recomendaciones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza</span>
             </h2>
           </motion.div>
         </div>
