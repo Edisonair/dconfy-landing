@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Script from 'next/script'; // 🚀 IMPORTANTE: Importamos Script de next
 
 export const metadata: Metadata = {
-  title: 'dconfy | El boca a boca de confianza',
-  description: 'Encuentra profesionales recomendados por tu red de confianza.',
+  title: 'dconfy | El boca a boca de siempre',
+  description: 'Descubre profesionales y servicios recomendados por tu red de confianza.',
 };
 
 export default function RootLayout({
