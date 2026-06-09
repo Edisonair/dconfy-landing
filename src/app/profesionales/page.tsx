@@ -283,7 +283,7 @@ export default function VIPInvitationPage() {
                         ¿Ofreces algún servicio?
                     </span>
                     <p className="text-xl md:text-2xl text-white font-bold max-w-2xl mx-auto leading-relaxed mb-6">
-                        Únete a dconfy y deja que el boca a boca digital haga crecer tu negocio.
+                        Únete a dconfy y deja que el <span className="underline decoration-4 decoration-white/40 underline-offset-4">boca a boca digital</span> haga crecer tu negocio.
                     </p>
                     <h1 className="text-5xl md:text-7xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">
                         Plan Profesional
