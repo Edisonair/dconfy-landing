@@ -278,33 +278,28 @@ export default function VIPInvitationPage() {
 
             <main className="flex-grow pt-32 pb-24 px-6 w-full relative z-10">
                 {/* 1. Hero Section */}
-                <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
-                    <h1 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+                <div className="max-w-4xl mx-auto text-center mb-20 relative z-10 flex flex-col items-center">
+                    <span className="inline-block bg-violet-600/30 text-white border border-violet-500/30 rounded-full px-6 py-2.5 text-md md:text-base font-bold font-lora mb-6">
                         ¿Ofreces algún servicio?
-                    </h1>
-                    <p className="text-xl md:text-2xl text-violet-100/90 font-medium max-w-2xl mx-auto leading-relaxed">
-                        Convierte el boca a boca de siempre en un flujo de nuevos contactos
+                    </span>
+                    <p className="text-xl md:text-2xl text-white font-bold max-w-2xl mx-auto leading-relaxed mb-6">
+                        Únete a dconfy y deja que el boca a boca digital haga crecer tu negocio.
                     </p>
+                    <h1 className="text-5xl md:text-7xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">
+                        Plan Profesional
+                    </h1>
                 </div>
 
                 {/* 2. Sección Plan Profesional */}
                 <div className="max-w-5xl mx-auto mb-40 relative z-10">
-                    {/* Heading con degradado de la landing */}
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-black tracking-tight">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">
-                                Plan Profesional
-                            </span>
-                        </h2>
-                    </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                         {/* Cajas a la izquierda: iconos arriba, texto abajo */}
                         <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Tarjeta 1 */}
-                            <div className="flex flex-col gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10 text-left hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
-                                    <Heart className="w-6 h-6 text-[#FF6600]" />
+                            <div className="flex flex-col gap-4 items-start bg-[#FF6600]/10 backdrop-blur-sm p-6 rounded-3xl border border-[#FF6600]/20 text-left hover:bg-[#FF6600]/15 hover:border-[#FF6600]/30 hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-[#FF6600] flex items-center justify-center shrink-0 shadow-lg shadow-[#FF6600]/20">
+                                    <Heart className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Multiplica tus recomendaciones</h3>
@@ -315,9 +310,9 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 2 */}
-                            <div className="flex flex-col gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10 text-left hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0">
-                                    <Coins className="w-6 h-6 text-violet-400" />
+                            <div className="flex flex-col gap-4 items-start bg-violet-500/10 backdrop-blur-sm p-6 rounded-3xl border border-violet-500/20 text-left hover:bg-violet-500/15 hover:border-violet-500/30 hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-violet-500 flex items-center justify-center shrink-0 shadow-lg shadow-violet-500/20">
+                                    <Coins className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Sin comisiones ni intermediarios</h3>
@@ -328,9 +323,9 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 3 */}
-                            <div className="flex flex-col gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10 text-left hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                                    <Share className="w-6 h-6 text-blue-400" />
+                            <div className="flex flex-col gap-4 items-start bg-blue-500/10 backdrop-blur-sm p-6 rounded-3xl border border-blue-500/20 text-left hover:bg-blue-500/15 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-blue-500 flex items-center justify-center shrink-0 shadow-lg shadow-blue-500/20">
+                                    <Share className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Perfil público profesional</h3>
@@ -341,9 +336,9 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 4 */}
-                            <div className="flex flex-col gap-4 items-start bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10 text-left hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
-                                    <Award className="w-6 h-6 text-emerald-400" />
+                            <div className="flex flex-col gap-4 items-start bg-emerald-500/10 backdrop-blur-sm p-6 rounded-3xl border border-emerald-500/20 text-left hover:bg-emerald-500/15 hover:border-emerald-500/30 hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/20">
+                                    <Award className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-neutral-100 mb-1.5">Destaca en tu zona</h3>
@@ -423,7 +418,7 @@ export default function VIPInvitationPage() {
                 {/* 3. Sección Cómo crear tu perfil profesional */}
                 <div id="como-crear" className="max-w-5xl mx-auto mb-24 scroll-mt-28 relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+                        <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
                             Cómo crear tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">Perfil Profesional</span>
                         </h2>
                         <p className="text-xl text-violet-200/80 font-medium max-w-xl mx-auto">
@@ -436,11 +431,11 @@ export default function VIPInvitationPage() {
                         <div className="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-orange-500/30 via-violet-500/30 to-fuchsia-500/30 -translate-y-12 -z-10"></div>
 
                         {/* Paso 1 */}
-                        <div className="flex flex-col items-center text-center bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 relative group">
+                        <div className="flex flex-col items-center text-center bg-[#FF6600]/10 backdrop-blur-sm p-8 rounded-3xl border border-[#FF6600]/20 hover:bg-[#FF6600]/15 hover:border-[#FF6600]/30 hover:-translate-y-1 transition-all duration-300 relative group">
                             <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-r from-[#FF6601] to-[#E83E4C] text-white flex items-center justify-center font-black text-sm shadow-lg shadow-orange-500/25">
                                 1
                             </div>
-                            <div className="w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-6 mt-2 text-[#FF6600] group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-16 h-16 rounded-2xl bg-[#FF6600] flex items-center justify-center mb-6 mt-2 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#FF6600]/20">
                                 <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                     <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
                                     <path d="M12 18h.01" />
@@ -453,11 +448,11 @@ export default function VIPInvitationPage() {
                         </div>
 
                         {/* Paso 2 */}
-                        <div className="flex flex-col items-center text-center bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 relative group">
+                        <div className="flex flex-col items-center text-center bg-fuchsia-500/10 backdrop-blur-sm p-8 rounded-3xl border border-fuchsia-500/20 hover:bg-fuchsia-500/15 hover:border-fuchsia-500/30 hover:-translate-y-1 transition-all duration-300 relative group">
                             <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-r from-[#E83E4C] to-[#CD1F8B] text-white flex items-center justify-center font-black text-sm shadow-lg shadow-fuchsia-500/25">
                                 2
                             </div>
-                            <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 mt-2 text-emerald-400 group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-16 h-16 rounded-2xl bg-fuchsia-500 flex items-center justify-center mb-6 mt-2 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-fuchsia-500/20">
                                 <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                                     <circle cx="12" cy="7" r="4" />
@@ -470,11 +465,11 @@ export default function VIPInvitationPage() {
                         </div>
 
                         {/* Paso 3 */}
-                        <div className="flex flex-col items-center text-center bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 relative group">
+                        <div className="flex flex-col items-center text-center bg-violet-500/10 backdrop-blur-sm p-8 rounded-3xl border border-violet-500/20 hover:bg-violet-500/15 hover:border-violet-500/30 hover:-translate-y-1 transition-all duration-300 relative group">
                             <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-r from-[#CD1F8B] to-violet-600 text-white flex items-center justify-center font-black text-sm shadow-lg shadow-violet-500/25">
                                 3
                             </div>
-                            <div className="w-16 h-16 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-6 mt-2 text-violet-400 group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-16 h-16 rounded-2xl bg-violet-500 flex items-center justify-center mb-6 mt-2 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-500/20">
                                 <Briefcase className="w-8 h-8" />
                             </div>
                             <h3 className="text-xl font-bold text-neutral-100 mb-3">3. Perfil Profesional</h3>

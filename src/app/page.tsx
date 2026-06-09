@@ -487,7 +487,7 @@ export default function Home() {
               />
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#111827] leading-tight py-2">
-              dconfy te ayuda a compartir y guardar esas recomendaciones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza</span>
+              dconfy te ayuda a compartir y descubrir esas recomendaciones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza</span>
             </h2>
           </motion.div>
         </div>
