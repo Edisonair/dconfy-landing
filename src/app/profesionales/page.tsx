@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CheckCircle, Loader2, Sparkles, MapPin, TrendingUp, Coins, Award, Share, Check, Minus, Heart, Briefcase } from 'lucide-react';
+import { CheckCircle, Loader2, Sparkles, MapPin, TrendingUp, Coins, Award, Share, Check, Minus, Heart, Briefcase, Rocket } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getCategoryIcon } from '../../utils/categoryIcons';
 import { getCategoryColor } from '../../utils/categoryColors';
@@ -279,7 +279,7 @@ export default function VIPInvitationPage() {
             <main className="flex-grow pt-32 pb-24 px-6 w-full relative z-10">
                 {/* 1. Hero Section */}
                 <div className="max-w-4xl mx-auto text-center mb-20 relative z-10 flex flex-col items-center">
-                    <span className="inline-block bg-violet-600/30 text-white border border-violet-500/30 rounded-full px-6 py-2.5 text-md md:text-base font-bold font-lora mb-6">
+                    <span className="inline-block bg-violet-600/30 text-white border border-violet-500/30 rounded-full px-6 py-2.5 text-md md:text-base font-bold mb-6">
                         ¿Ofreces algún servicio?
                     </span>
                     <p className="text-xl md:text-2xl text-white font-bold max-w-2xl mx-auto leading-relaxed mb-6">
@@ -470,7 +470,7 @@ export default function VIPInvitationPage() {
                                 3
                             </div>
                             <div className="w-16 h-16 rounded-2xl bg-violet-500 flex items-center justify-center mb-6 mt-2 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-500/20">
-                                <Briefcase className="w-8 h-8" />
+                                <Rocket className="w-8 h-8" />
                             </div>
                             <h3 className="text-xl font-bold text-neutral-100 mb-3">3. Perfil Profesional</h3>
                             <p className="text-neutral-300 text-md leading-relaxed">
