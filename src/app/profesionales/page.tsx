@@ -278,11 +278,11 @@ export default function VIPInvitationPage() {
 
             <main className="flex-grow pt-32 pb-24 px-6 w-full relative z-10">
                 {/* 1. Hero Section */}
-                <div className="max-w-4xl mx-auto text-center mb-20 relative z-10 flex flex-col items-center">
+                <div className="max-w-4xl mx-auto text-center mb-10 relative z-10 flex flex-col items-center">
                     <span className="inline-block bg-violet-600/30 text-white border border-violet-500/30 rounded-full px-6 py-2.5 text-md md:text-base font-bold mb-6">
                         ¿Ofreces algún servicio?
                     </span>
-                    <p className="text-xl md:text-2xl text-white font-bold max-w-2xl mx-auto leading-relaxed mb-6">
+                    <p className="text-xl md:text-2xl text-violet-200/90 font-bold max-w-2xl mx-auto leading-relaxed mb-6">
                         Únete a dconfy y deja que el <span className="underline decoration-4 decoration-white/40 underline-offset-4">boca a boca digital</span> haga crecer tu negocio.
                     </p>
                     <h1 className="text-5xl md:text-7xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">
@@ -310,8 +310,8 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 2 */}
-                            <div className="flex flex-col gap-4 items-start bg-violet-500/10 backdrop-blur-sm p-6 rounded-3xl border border-violet-500/20 text-left hover:bg-violet-500/15 hover:border-violet-500/30 hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-violet-500 flex items-center justify-center shrink-0 shadow-lg shadow-violet-500/20">
+                            <div className="flex flex-col gap-4 items-start bg-[#E83E4C]/10 backdrop-blur-sm p-6 rounded-3xl border border-[#E83E4C]/20 text-left hover:bg-[#E83E4C]/15 hover:border-[#E83E4C]/30 hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-[#E83E4C] flex items-center justify-center shrink-0 shadow-lg shadow-[#E83E4C]/20">
                                     <Coins className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
@@ -323,8 +323,8 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 3 */}
-                            <div className="flex flex-col gap-4 items-start bg-blue-500/10 backdrop-blur-sm p-6 rounded-3xl border border-blue-500/20 text-left hover:bg-blue-500/15 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-blue-500 flex items-center justify-center shrink-0 shadow-lg shadow-blue-500/20">
+                            <div className="flex flex-col gap-4 items-start bg-[#CD1F8B]/10 backdrop-blur-sm p-6 rounded-3xl border border-[#CD1F8B]/20 text-left hover:bg-[#CD1F8B]/15 hover:border-[#CD1F8B]/30 hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-[#CD1F8B] flex items-center justify-center shrink-0 shadow-lg shadow-[#CD1F8B]/20">
                                     <Share className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
@@ -336,8 +336,8 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 4 */}
-                            <div className="flex flex-col gap-4 items-start bg-emerald-500/10 backdrop-blur-sm p-6 rounded-3xl border border-emerald-500/20 text-left hover:bg-emerald-500/15 hover:border-emerald-500/30 hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/20">
+                            <div className="flex flex-col gap-4 items-start bg-amber-500/10 backdrop-blur-sm p-6 rounded-3xl border border-amber-500/20 text-left hover:bg-amber-500/15 hover:border-amber-500/30 hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-amber-500 flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/20">
                                     <Award className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
@@ -421,7 +421,7 @@ export default function VIPInvitationPage() {
                         <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
                             Cómo crear tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">Perfil Profesional</span>
                         </h2>
-                        <p className="text-xl text-violet-200/80 font-medium max-w-xl mx-auto">
+                        <p className="text-xl md:text-2xl text-violet-200/90 font-bold max-w-xl mx-auto">
                             Sigue estos sencillos pasos para activar tu perfil en menos de 2 minutos
                         </p>
                     </div>
@@ -442,8 +442,8 @@ export default function VIPInvitationPage() {
                         </div>
 
                         {/* Paso 2 */}
-                        <div className="flex flex-col items-center text-center bg-fuchsia-500/10 backdrop-blur-sm p-8 rounded-3xl border border-fuchsia-500/20 hover:bg-fuchsia-500/15 hover:border-fuchsia-500/30 hover:-translate-y-1 transition-all duration-300 relative group">
-                            <div className="w-16 h-16 rounded-2xl bg-fuchsia-500 flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-fuchsia-500/20">
+                        <div className="flex flex-col items-center text-center bg-[#E83E4C]/10 backdrop-blur-sm p-8 rounded-3xl border border-[#E83E4C]/20 hover:bg-[#E83E4C]/15 hover:border-[#E83E4C]/30 hover:-translate-y-1 transition-all duration-300 relative group">
+                            <div className="w-16 h-16 rounded-2xl bg-[#E83E4C] flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#E83E4C]/20">
                                 <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                                     <circle cx="12" cy="7" r="4" />
@@ -456,8 +456,8 @@ export default function VIPInvitationPage() {
                         </div>
 
                         {/* Paso 3 */}
-                        <div className="flex flex-col items-center text-center bg-violet-500/10 backdrop-blur-sm p-8 rounded-3xl border border-violet-500/20 hover:bg-violet-500/15 hover:border-violet-500/30 hover:-translate-y-1 transition-all duration-300 relative group">
-                            <div className="w-16 h-16 rounded-2xl bg-violet-500 flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-500/20">
+                        <div className="flex flex-col items-center text-center bg-[#CD1F8B]/10 backdrop-blur-sm p-8 rounded-3xl border border-[#CD1F8B]/20 hover:bg-[#CD1F8B]/15 hover:border-[#CD1F8B]/30 hover:-translate-y-1 transition-all duration-300 relative group">
+                            <div className="w-16 h-16 rounded-2xl bg-[#CD1F8B] flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#CD1F8B]/20">
                                 <Rocket className="w-8 h-8" />
                             </div>
                             <h3 className="text-xl font-bold text-neutral-100 mb-3">3. Perfil Profesional</h3>
