@@ -137,12 +137,7 @@ export default function BusinessLogin() {
                         </button>
                     </form>
                     
-                    <div className="mt-6 text-center text-sm border-t border-slate-850 pt-5">
-                        <span className="text-slate-400">¿No tienes cuenta de empresa? </span>
-                        <Link href="/business/register" className="text-[#FF6600] hover:text-[#E65C00] font-bold hover:underline transition-all">
-                            Regístrate aquí
-                        </Link>
-                    </div>
+
                 </div>
 
                 <div className="text-center mt-8">
