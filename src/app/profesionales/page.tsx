@@ -285,7 +285,7 @@ export default function VIPInvitationPage() {
                     <p className="text-xl md:text-2xl text-violet-200/90 font-bold max-w-2xl mx-auto leading-relaxed mb-6">
                         Únete a dconfy y deja que el <span className="underline decoration-4 decoration-white/40 underline-offset-4">boca a boca digital</span> haga crecer tu negocio.
                     </p>
-                    <h1 className="text-5xl md:text-7xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">
+                    <h1 className="text-4xl md:text-6xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">
                         Plan Profesional
                     </h1>
                 </div>
@@ -297,7 +297,7 @@ export default function VIPInvitationPage() {
                         {/* Cajas a la izquierda: iconos arriba, texto abajo */}
                         <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Tarjeta 1 */}
-                            <div className="flex flex-col gap-4 items-start bg-[#FF6600]/10 backdrop-blur-sm p-6 rounded-3xl border border-[#FF6600]/20 text-left hover:bg-[#FF6600]/15 hover:border-[#FF6600]/30 hover:-translate-y-1 transition-all duration-300">
+                            <div className="flex flex-col gap-4 items-start bg-[#FF6600]/10 backdrop-blur-sm p-6 rounded-3xl text-left hover:bg-[#FF6600]/15 hover:border-[#FF6600]/30 hover:-translate-y-1 transition-all duration-300">
                                 <div className="w-12 h-12 rounded-2xl bg-[#FF6600] flex items-center justify-center shrink-0 shadow-lg shadow-[#FF6600]/20">
                                     <Heart className="w-6 h-6 text-white" />
                                 </div>
@@ -310,7 +310,7 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 2 */}
-                            <div className="flex flex-col gap-4 items-start bg-[#E83E4C]/10 backdrop-blur-sm p-6 rounded-3xl border border-[#E83E4C]/20 text-left hover:bg-[#E83E4C]/15 hover:border-[#E83E4C]/30 hover:-translate-y-1 transition-all duration-300">
+                            <div className="flex flex-col gap-4 items-start bg-[#E83E4C]/10 backdrop-blur-sm p-6 rounded-3xl  text-left hover:bg-[#E83E4C]/15 hover:border-[#E83E4C]/30 hover:-translate-y-1 transition-all duration-300">
                                 <div className="w-12 h-12 rounded-2xl bg-[#E83E4C] flex items-center justify-center shrink-0 shadow-lg shadow-[#E83E4C]/20">
                                     <Coins className="w-6 h-6 text-white" />
                                 </div>
@@ -323,7 +323,7 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 3 */}
-                            <div className="flex flex-col gap-4 items-start bg-[#CD1F8B]/10 backdrop-blur-sm p-6 rounded-3xl border border-[#CD1F8B]/20 text-left hover:bg-[#CD1F8B]/15 hover:border-[#CD1F8B]/30 hover:-translate-y-1 transition-all duration-300">
+                            <div className="flex flex-col gap-4 items-start bg-[#CD1F8B]/10 backdrop-blur-sm p-6 rounded-3xl text-left hover:bg-[#CD1F8B]/15 hover:border-[#CD1F8B]/30 hover:-translate-y-1 transition-all duration-300">
                                 <div className="w-12 h-12 rounded-2xl bg-[#CD1F8B] flex items-center justify-center shrink-0 shadow-lg shadow-[#CD1F8B]/20">
                                     <Share className="w-6 h-6 text-white" />
                                 </div>
@@ -336,7 +336,7 @@ export default function VIPInvitationPage() {
                             </div>
 
                             {/* Tarjeta 4 */}
-                            <div className="flex flex-col gap-4 items-start bg-amber-500/10 backdrop-blur-sm p-6 rounded-3xl border border-amber-500/20 text-left hover:bg-amber-500/15 hover:border-amber-500/30 hover:-translate-y-1 transition-all duration-300">
+                            <div className="flex flex-col gap-4 items-start bg-amber-500/10 backdrop-blur-sm p-6 rounded-3xl  text-left hover:bg-amber-500/15 hover:border-amber-500/30 hover:-translate-y-1 transition-all duration-300">
                                 <div className="w-12 h-12 rounded-2xl bg-amber-500 flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/20">
                                     <Award className="w-6 h-6 text-white" />
                                 </div>
@@ -350,7 +350,7 @@ export default function VIPInvitationPage() {
                         </div>
 
                         {/* Tarjeta de Suscripción a la derecha */}
-                        <div className="lg:col-span-5 bg-white p-8 rounded-[2rem] border border-slate-200 shadow-2xl text-left text-slate-900 hover:scale-[1.01] transition-transform duration-300 relative overflow-hidden flex flex-col justify-between h-full">
+                        <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-2xl text-left text-slate-900 hover:scale-[1.01] transition-transform duration-300 relative overflow-hidden flex flex-col justify-between h-full">
                             <div className="absolute top-0 right-0 w-24 h-24 bg-[#FF6600]/10 rounded-full blur-2xl"></div>
 
                             <div>
@@ -408,7 +408,7 @@ export default function VIPInvitationPage() {
                                 </ul>
                             </div>
 
-                            <a href="#como-crear" className="block w-full text-center bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20">
+                            <a href="#como-crear" className="block w-full text-center bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-full flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20">
                                 Cómo empezar
                             </a>
                         </div>
@@ -428,7 +428,7 @@ export default function VIPInvitationPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
                         {/* Paso 1 */}
-                        <div className="flex flex-col items-center text-center bg-[#FF6600]/10 backdrop-blur-sm p-8 rounded-3xl border border-[#FF6600]/20 hover:bg-[#FF6600]/15 hover:border-[#FF6600]/30 hover:-translate-y-1 transition-all duration-300 relative group">
+                        <div className="flex flex-col items-center text-center bg-[#FF6600]/10 backdrop-blur-sm p-8 rounded-3xl hover:bg-[#FF6600]/15 hover:border-[#FF6600]/30 hover:-translate-y-1 transition-all duration-300 relative group">
                             <div className="w-16 h-16 rounded-2xl bg-[#FF6600] flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#FF6600]/20">
                                 <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                     <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
@@ -442,7 +442,7 @@ export default function VIPInvitationPage() {
                         </div>
 
                         {/* Paso 2 */}
-                        <div className="flex flex-col items-center text-center bg-[#E83E4C]/10 backdrop-blur-sm p-8 rounded-3xl border border-[#E83E4C]/20 hover:bg-[#E83E4C]/15 hover:border-[#E83E4C]/30 hover:-translate-y-1 transition-all duration-300 relative group">
+                        <div className="flex flex-col items-center text-center bg-[#E83E4C]/10 backdrop-blur-sm p-8 rounded-3xl  hover:bg-[#E83E4C]/15 hover:border-[#E83E4C]/30 hover:-translate-y-1 transition-all duration-300 relative group">
                             <div className="w-16 h-16 rounded-2xl bg-[#E83E4C] flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#E83E4C]/20">
                                 <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
@@ -456,7 +456,7 @@ export default function VIPInvitationPage() {
                         </div>
 
                         {/* Paso 3 */}
-                        <div className="flex flex-col items-center text-center bg-[#CD1F8B]/10 backdrop-blur-sm p-8 rounded-3xl border border-[#CD1F8B]/20 hover:bg-[#CD1F8B]/15 hover:border-[#CD1F8B]/30 hover:-translate-y-1 transition-all duration-300 relative group">
+                        <div className="flex flex-col items-center text-center bg-[#CD1F8B]/10 backdrop-blur-sm p-8 rounded-3xl  hover:bg-[#CD1F8B]/15 hover:border-[#CD1F8B]/30 hover:-translate-y-1 transition-all duration-300 relative group">
                             <div className="w-16 h-16 rounded-2xl bg-[#CD1F8B] flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#CD1F8B]/20">
                                 <Rocket className="w-8 h-8" />
                             </div>
