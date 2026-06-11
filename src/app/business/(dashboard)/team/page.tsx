@@ -142,21 +142,57 @@ export default function BusinessTeamPage() {
   };
 
   // Link professional to this business
-  const handleLink = async (profileId: string) => {
+  const handleLink = async (profileId: string, memberFullName: string) => {
     if (!businessId) return;
     setActionInProgress(profileId);
     setErrorMsg(null);
     setSuccessMsg(null);
 
     try {
+      // 1. Obtener la ubicación actual desde la tabla business_profiles del negocio
+      const { data: businessData, error: businessError } = await supabase
+        .from('business_profiles')
+        .select('city, zip_code')
+        .eq('id', businessId)
+        .single();
+
+      if (businessError) {
+        console.error("Error al obtener la ubicación del negocio de business_profiles:", businessError);
+      }
+
+      // 2. Obtener el perfil actual del miembro a vincular
+      const { data: memberProfile, error: memberError } = await supabase
+        .from('profiles')
+        .select('is_professional, professional_name, slug')
+        .eq('id', profileId)
+        .single();
+
+      if (memberError) throw memberError;
+
+      // 3. Determinar si ya es profesional activo
+      const isAlreadyProfessional = memberProfile?.is_professional && memberProfile?.professional_name;
+
+      // 4. Preparar payload de actualización
+      const updatePayload: any = {
+        business_id: businessId,
+        managed_by_business: true,
+        is_professional: true,
+        subscription_status: 'active',
+        // Heredamos la localización desde business_profiles a la tabla profiles del miembro
+        location: businessData?.city || null,
+        zip_code: businessData?.zip_code || null
+      };
+
+      // Si NO es un profesional activo, le asignamos el nombre profesional para que el trigger de BD genere el slug
+      if (!isAlreadyProfessional) {
+        updatePayload.professional_name = memberFullName;
+        // Dejamos el slug en null para que el trigger trigger_update_slug lo autogenere de forma segura
+        updatePayload.slug = null;
+      }
+
       const { data: linkedData, error } = await supabase
         .from('profiles')
-        .update({
-          business_id: businessId,
-          managed_by_business: true,
-          is_professional: true,
-          subscription_status: 'active'
-        })
+        .update(updatePayload)
         .eq('id', profileId)
         .select();
 
@@ -290,7 +326,7 @@ export default function BusinessTeamPage() {
                 </div>
 
                 <button
-                  onClick={() => handleLink(result.id)}
+                  onClick={() => handleLink(result.id, result.full_name)}
                   disabled={actionInProgress !== null}
                   className="bg-[#FF6600]/10 hover:bg-[#FF6600]/20 active:scale-95 text-[#FF6600] font-bold px-4 py-2 rounded-xl transition-all text-xs flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                 >

@@ -4,6 +4,7 @@ import ActionButtons from './ActionButtons';
 import PublicGallery from './PublicGallery';
 import ContactButtons from './ContactButtons';
 import ZoomableAvatar from './ZoomableAvatar';
+import ProfileBackground from './ProfileBackground';
 
 export const dynamic = 'force-dynamic';
 
@@ -113,8 +114,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
 }
 
-export default async function PublicProfilePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function PublicProfilePage({
+    params,
+    searchParams
+}: {
+    params: Promise<{ slug: string }>,
+    searchParams: Promise<{ embed?: string }>
+}) {
     const { slug } = await params;
+    const { embed } = await searchParams;
+    const isEmbed = embed === 'true';
     const isUUID = checkIfUUID(slug);
 
     const { data: profile, error } = await supabase
@@ -171,74 +180,73 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${profile.location || ''}, ${finalProvince || ''}, España`)}`;
 
     return (
-        <div className="min-h-screen bg-[#FAFAFA] pb-36 font-sans selection:bg-violet-200">
+        <div className="min-h-screen bg-[#FAFAFA] pb-36 font-sans selection:bg-violet-200 relative overflow-hidden">
+            <ProfileBackground
+                logoUrl={profile.professional_logo_url || profile.avatar_url}
+                category={profile.category}
+                specialty={profile.specialty}
+            />
 
-            <header className="flex justify-between items-center py-6 max-w-xl mx-auto px-4">
-                <img src="/icon.png" alt="dconfy" className="h-11 sm:h-11 object-contain" />
+            <header className={`flex justify-between items-center max-w-xl mx-auto px-4 z-10 relative ${isEmbed ? 'pt-16 pb-2' : 'py-6'}`}>
+                <div className="w-11 h-11 bg-white rounded-2xl flex items-center justify-center shrink-0">
+                    <img src="/dconfy_icon.png" alt="dconfy" className="h-9 object-contain" />
+                </div>
                 <a
                     href="https://dconfy.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95 border border-slate-200"
+                    className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95"
                 >
-                    Profesionales y servicios <span className="text-orange-600">de confianza</span>
+                    Profesional en <span className="text-orange-600 font-extrabold">dconfy</span>
                 </a>
             </header>
 
             <main className="max-w-xl mx-auto px-4 space-y-6">
 
                 {/* 1. SECCIÓN CABECERA DEL PROFESIONAL */}
-                <div className="flex items-center gap-4 text-left w-full mt-2">
+                <div
+                    className={`rounded-3xl pt-6 px-6 shadow-xl shadow-slate-200/50 flex flex-col items-center text-center gap-4 mb-6 sm:mb-8 relative pb-6 z-10 ${isEmbed ? 'mt-28' : 'mt-16'}`}
+                    style={{
+                        background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.55) 0%, #FAFAFA 100%)'
+                    }}
+                >
                     <ZoomableAvatar
                         src={profile.professional_logo_url || profile.avatar_url}
                         alt={profile.professional_name || profile.full_name || 'Avatar'}
-                        className="w-24 h-24 sm:w-28 sm:h-28 shrink-0"
+                        className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 -mt-20 z-10 shadow-md rounded-2xl bg-white"
                     />
-                    <div className="flex-1 min-w-0">
-                        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 mb-1 truncate">
+
+                    <div className="flex-1 min-w-0 w-full flex flex-col items-center">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-tight mb-2 truncate max-w-full">
                             {profile.professional_name || profile.full_name}
                         </h1>
 
-                        <div className="flex items-center text-violet-700 gap-2 mb-2">
-                            {renderIcon(dbIconName, profile.specialty || profile.category)}
-                            <span className="font-bold text-md uppercase">{profile.specialty || profile.category}</span>
+                        <div className="flex flex-col items-center justify-center gap-2 text-sm font-medium mb-2 w-full">
+                            {/* Specialty Badge */}
+                            {(profile.specialty || profile.category) && (
+                                <span className="bg-violet-50 text-violet-700 px-3 py-1 rounded-full text-sm font-bold border border-violet-100 flex items-center gap-1.5 w-fit">
+                                    <div className="w-4 h-4 flex justify-center items-center shrink-0">
+                                        {renderIcon(dbIconName, profile.specialty || profile.category)}
+                                    </div>
+                                    <span className="uppercase text-xs tracking-wider">{profile.specialty || profile.category}</span>
+                                </span>
+                            )}
+
+                            {/* Location Link */}
+                            {displayLocation && (
+                                <a
+                                    href={mapUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center text-slate-500 hover:text-violet-600 text-sm font-bold w-fit transition-colors group mt-1"
+                                    title="Ver en Google Maps"
+                                >
+                                    <span className="mr-1.5 text-sm">📍</span>
+                                    <span>{displayLocation}</span>
+                                    <LucideIcons.ExternalLink className="w-3.5 h-3.5 ml-1.5 opacity-50 group-hover:opacity-100 shrink-0" />
+                                </a>
+                            )}
                         </div>
-
-                        {/* 🚀 EL TEXTO AHORA ES UN ENLACE CLICABLE */}
-                        {displayLocation && (
-                            <a
-                                href={mapUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center text-slate-500 hover:text-violet-600 text-sm font-bold w-fit group transition-colors"
-                                title="Ver en Google Maps"
-                            >
-                                <span className="mr-1.5 text-sm">📍</span>
-                                <span className="truncate">{displayLocation}</span>
-                                <LucideIcons.ExternalLink className="w-3 h-3 ml-1.5 opacity-50 group-hover:opacity-100 shrink-0" />
-                            </a>
-                        )}
-                    </div>
-                </div>
-
-                {/* 2. TARJETA DE ACCIONES (Precio y Contacto) */}
-                <div className="flex items-center justify-between bg-white p-4 sm:p-5 rounded-2xl gap-2 sm:gap-4 border border-slate-100">
-                    <div className="flex-none flex items-baseline shrink-0">
-                        {profile.price_per_hour > 0 ? (
-                            <>
-                                <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{profile.price_per_hour}€</span>
-                                <span className="text-slate-500 font-medium ml-1 text-lg">/h</span>
-                            </>
-                        ) : (
-                            <div className="flex flex-col text-xs font-black text-slate-400 uppercase tracking-wider leading-snug">
-                                <span>Opciones</span>
-                                <span>de Contacto</span>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="flex-1">
-                        <ContactButtons profile={profile} slug={slug} />
                     </div>
                 </div>
 
@@ -270,10 +278,37 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                     </div>
                 ) : null}
 
+                {/* 2. TARJETA DE ACCIONES (Precio y Contacto) */}
+                <div className="flex items-center justify-between p-4 sm:p-5 rounded-3xl gap-2 sm:gap-4 relative z-10 shadow-xl shadow-slate-200/50">
+                    <div className="flex-none flex items-baseline shrink-0">
+                        {profile.price_per_hour > 0 ? (
+                            <>
+                                <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{profile.price_per_hour}€</span>
+                                <span className="text-slate-500 font-medium ml-1 text-lg">/h</span>
+                            </>
+                        ) : (
+                            <div className="flex flex-col text-xs font-black text-slate-400 uppercase tracking-wider leading-snug">
+                                <span>Contacto</span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="flex-1">
+                        <ContactButtons profile={profile} slug={slug} />
+                    </div>
+                </div>
+
+                {/* 5. GALERÍA DE FOTOS */}
+                {profile.gallery && profile.gallery.length > 0 && (
+                    <div>
+                        <PublicGallery images={profile.gallery} />
+                    </div>
+                )}
+
                 {/* 4. ETIQUETAS */}
                 {profile.services_tags && Array.isArray(profile.services_tags) && profile.services_tags.length > 0 && (
                     <section className="mt-4 px-1">
-                        <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">{tagsHeading}</h3>
+                        <h2 className="text-xs uppercase font-bold text-slate-900 tracking-wider mb-3">{tagsHeading}</h2>
                         <div className="flex flex-wrap gap-2">
                             {profile.services_tags.map((tag: string, index: number) => (
                                 <span
@@ -290,43 +325,52 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                 {/* 5. BIOGRAFÍA */}
                 {profile.bio && (
                     <div className="flex flex-col gap-2 mt-4 px-1">
-                        <h3 className="text-xl font-bold text-slate-900 tracking-tight">Descripción</h3>
-                        <p className="text-slate-700 leading-relaxed text-[15px] whitespace-pre-line">
-                            {profile.bio}
-                        </p>
-                    </div>
-                )}
-
-                {/* 5. GALERÍA DE FOTOS */}
-                {profile.gallery && profile.gallery.length > 0 && (
-                    <div>
-                        <PublicGallery images={profile.gallery} />
+                        <h2 className="text-xs uppercase font-bold text-slate-900 tracking-wider mb-2">Descripción</h2>
+                        <div className="bg-white rounded-2xl p-4 shadow-sm">
+                            <p className="text-slate-700 leading-relaxed text-[15px] whitespace-pre-line">
+                                {profile.bio}
+                            </p>
+                        </div>
                     </div>
                 )}
 
                 {/* 6. TARJETAS DE OPINIONES */}
                 {reviews && reviews.length > 0 && (
-                    <div className="space-y-4 pt-4">
-                        {reviews?.map((review) => (
-                            <div key={review.id} className="bg-white p-5 rounded-2xl border border-slate-200">
-                                <div className="flex items-center gap-3 mb-3">
-                                    <img
-                                        src={review.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${review.profiles?.full_name}`}
-                                        className="w-11 h-11 rounded-full object-cover shadow-sm border border-slate-100"
-                                        alt="Avatar"
-                                    />
-                                    <div>
-                                        <p className="font-bold text-slate-900 text-[15px] leading-tight">{review.profiles?.full_name}</p>
-                                        <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mt-0.5 flex items-center gap-1">
-                                            <LucideIcons.CheckCircle2 className="w-3 h-3 text-green-500" /> Verificada
-                                        </p>
+                    <div className="flex flex-col gap-2 mt-4 px-1">
+                        <h2 className="text-xs uppercase font-bold text-slate-900 tracking-wider mb-2">Recomendaciones</h2>
+                        <div className="space-y-4">
+                            {reviews?.map((review) => (
+                                <div key={review.id} className="bg-white p-5 rounded-2xl shadow-sm shadow-orange-200 border border-orange-200">
+                                    <div className="flex items-center justify-between w-full mb-3 gap-3">
+                                        <div className="flex items-center gap-3">
+                                            <img
+                                                src={review.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${review.profiles?.full_name}`}
+                                                className="w-9 h-9 rounded-full object-cover shadow-sm border border-slate-100"
+                                                alt="Avatar"
+                                            />
+                                            <div>
+                                                <p className="font-bold text-slate-900 text-[15px] leading-tight">{review.profiles?.full_name}</p>
+                                                <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mt-0.5 flex items-center gap-1">
+                                                    <LucideIcons.CheckCircle2 className="w-3 h-3 text-green-500" /> Verificada
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {review.created_at && (
+                                            <span className="text-xs text-slate-400 font-medium shrink-0 self-start mt-0.5">
+                                                {new Date(review.created_at).toLocaleDateString('es-ES', {
+                                                    day: '2-digit',
+                                                    month: '2-digit',
+                                                    year: 'numeric'
+                                                })}
+                                            </span>
+                                        )}
                                     </div>
+                                    <p className="text-slate-700 text-[15px] leading-relaxed">
+                                        "{review.content}"
+                                    </p>
                                 </div>
-                                <p className="text-slate-700 text-[15px] leading-relaxed">
-                                    "{review.content}"
-                                </p>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 )}
 

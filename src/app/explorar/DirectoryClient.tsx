@@ -81,6 +81,8 @@ export default function DirectoryClient() {
     const [selectedTag, setSelectedTag] = useState<string | null>(null);
     const [locationQuery, setLocationQuery] = useState('');
     const [selectedProSlug, setSelectedProSlug] = useState<string | null>(null);
+    const [isDrawerScrolled, setIsDrawerScrolled] = useState(false);
+    const [selectedProName, setSelectedProName] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -126,6 +128,8 @@ export default function DirectoryClient() {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';
+            setIsDrawerScrolled(false);
+            setSelectedProName('');
         }
         return () => {
             document.body.style.overflow = '';
@@ -468,27 +472,66 @@ export default function DirectoryClient() {
                 <>
                     <div
                         className="fixed inset-0 bg-slate-900/60 z-[100] animate-fade-in"
-                        onClick={() => setSelectedProSlug(null)}
+                        onClick={() => {
+                            setSelectedProSlug(null);
+                            setIsDrawerScrolled(false);
+                            setSelectedProName('');
+                        }}
                     />
-                    <div className="fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-[#FAFAFA] z-[110] animate-slide-in-right flex flex-col">
-                        <div className="flex justify-between items-center p-4 shrink-0 z-10 relative">
+                    <div className="fixed top-0 right-0 bottom-0 w-full sm:w-[480px] bg-[#FAFAFA] z-[110] animate-slide-in-right flex flex-col h-screen shadow-2xl">
+                        {/* Transparent Blur Header */}
+                        <div 
+                            className={`absolute top-0 left-0 right-0 z-30 transition-all duration-300 flex justify-between items-center p-4 ${
+                                isDrawerScrolled 
+                                    ? 'bg-[#FAFAFA]/80 backdrop-blur-md border-b border-slate-200/50 shadow-sm' 
+                                    : 'bg-transparent'
+                            }`}
+                        >
                             <h3 className="font-bold text-slate-900 flex items-center gap-2">
-
+                                {isDrawerScrolled && selectedProName && (
+                                    <span className="text-sm font-bold text-slate-700 animate-in fade-in duration-300">
+                                        {selectedProName}
+                                    </span>
+                                )}
                             </h3>
-                            <div className="flex items-center gap-2">
-
-                                <button
-                                    onClick={() => setSelectedProSlug(null)}
-                                    className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors"
-                                    title="Cerrar"
-                                >
-                                    <LucideIcons.X className="w-5 h-5" />
-                                </button>
-                            </div>
+                            <button
+                                onClick={() => {
+                                    setSelectedProSlug(null);
+                                    setIsDrawerScrolled(false);
+                                    setSelectedProName('');
+                                }}
+                                className="w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm text-slate-500 hover:bg-slate-200 shadow-sm transition-colors border border-slate-200/50"
+                                title="Cerrar"
+                            >
+                                <LucideIcons.X className="w-5 h-5" />
+                            </button>
                         </div>
                         <iframe
-                            src={`/pro/${selectedProSlug}`}
-                            className="w-full flex-1 border-none bg-slate-50"
+                            id="pro-profile-iframe"
+                            src={`/pro/${selectedProSlug}?embed=true`}
+                            className="w-full h-full flex-1 border-none bg-[#FAFAFA]"
+                            onLoad={(e) => {
+                                const iframe = e.currentTarget;
+                                try {
+                                    const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+                                    if (iframeDoc) {
+                                        const h1 = iframeDoc.querySelector('h1');
+                                        if (h1) {
+                                            setSelectedProName(h1.textContent || '');
+                                        }
+
+                                        const handleScroll = () => {
+                                            const scrollTop = iframeDoc.documentElement.scrollTop || iframeDoc.body.scrollTop;
+                                            setIsDrawerScrolled(scrollTop > 20);
+                                        };
+
+                                        iframe.contentWindow?.addEventListener('scroll', handleScroll, { passive: true });
+                                        handleScroll();
+                                    }
+                                } catch (error) {
+                                    console.error("Iframe scroll tracking restricted:", error);
+                                }
+                            }}
                         />
                     </div>
                 </>

@@ -40,7 +40,7 @@ export default function ActionButtons({ slug }: { slug: string }) {
     };
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-slate-200 z-50 flex gap-3 justify-center items-center pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-b from-[#FAFAFA]/95 to-white/95 backdrop-blur-md border-t border-slate-200 z-50 flex gap-3 justify-center items-center pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
             {/* Botón de Compartir (Icono a la izquierda) */}
             <button
                 onClick={handleShare}
@@ -54,7 +54,7 @@ export default function ActionButtons({ slug }: { slug: string }) {
             {/* Botón de Recomendar (Icono Corazón + Texto en el medio) */}
             <button
                 onClick={handleDeepLink}
-                className="flex-grow max-w-[240px] bg-[#FF6600] text-white font-bold h-[52px] rounded-full shadow-lg shadow-[#FF6600]/30 flex items-center justify-center gap-2 hover:bg-orange-600 transition-all active:scale-95 text-[15px]"
+                className="flex-grow max-w-[240px] bg-gradient-to-r from-[#FF6600] to-violet-600 text-white font-bold h-[52px] rounded-full shadow-lg shadow-violet-200/30 flex items-center justify-center gap-2 hover:opacity-95 transition-all active:scale-95 text-[15px]"
             >
                 <Heart className="w-5 h-5 fill-current text-white" />
                 <span>Recomendar</span>
