@@ -54,7 +54,7 @@ export async function POST(request: Request) {
                     
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 32px; background-color: #fff7ed; border-radius: 12px;">
                       <tr>
-                        <td style="padding: 20px; border-left: 4px solid #FF6600;">
+                        <td style="padding: 20px; border-left: 4px solid #FE5518;">
                           <p style="color: #c2410c; font-size: 14px; margin: 0; font-weight: 500;">
                             ¿Tienes alguna duda urgente? Responde directamente a este correo y te atenderemos enseguida.
                           </p>

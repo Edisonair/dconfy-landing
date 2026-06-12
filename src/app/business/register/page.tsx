@@ -160,7 +160,7 @@ export default function BusinessRegister() {
                         />
                     </div>
                     <h1 className="text-3xl font-black tracking-tight text-white">
-                        Registrar <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] to-[#CD1F8B]">Empresa</span>
+                        Registrar <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] to-[#CD1F8B]">Empresa</span>
                     </h1>
                     <p className="text-slate-400 font-medium mt-2">Crea tu portal de empresa en dconfy</p>
                 </div>
@@ -182,7 +182,7 @@ export default function BusinessRegister() {
                                         required
                                         value={fullName}
                                         onChange={(e) => setFullName(e.target.value)}
-                                        className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all font-medium text-white text-sm"
+                                        className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all font-medium text-white text-sm"
                                         placeholder="Nombre completo"
                                     />
                                 </div>
@@ -200,7 +200,7 @@ export default function BusinessRegister() {
                                         required
                                         value={businessName}
                                         onChange={(e) => setBusinessName(e.target.value)}
-                                        className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all font-medium text-white text-sm"
+                                        className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all font-medium text-white text-sm"
                                         placeholder="Nombre comercial"
                                     />
                                 </div>
@@ -218,7 +218,7 @@ export default function BusinessRegister() {
                                     required
                                     value={sector}
                                     onChange={(e) => setSector(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all font-medium text-white text-sm cursor-pointer"
+                                    className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all font-medium text-white text-sm cursor-pointer"
                                 >
                                     <option value="" className="bg-slate-950 text-slate-500">Selecciona sector corporativo...</option>
                                     {sectorsList.map((sectName) => (
@@ -242,7 +242,7 @@ export default function BusinessRegister() {
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all font-medium text-white text-sm"
+                                    className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all font-medium text-white text-sm"
                                     placeholder="admin@empresa.com"
                                 />
                             </div>
@@ -261,7 +261,7 @@ export default function BusinessRegister() {
                                     minLength={6}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all font-medium text-white text-sm"
+                                    className="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all font-medium text-white text-sm"
                                     placeholder="Mínimo 6 caracteres"
                                 />
                             </div>
@@ -285,7 +285,7 @@ export default function BusinessRegister() {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/10 mt-4 active:scale-95 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+                            className="w-full bg-[#FE5518] hover:bg-[#E44911] text-white py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FE5518]/10 mt-4 active:scale-95 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
                         >
                             {isLoading ? (
                                 <>
@@ -303,7 +303,7 @@ export default function BusinessRegister() {
 
                     <div className="mt-6 text-center text-sm border-t border-slate-850 pt-5">
                         <span className="text-slate-400">¿Ya tienes cuenta de empresa? </span>
-                        <Link href="/business/login" className="text-[#FF6600] hover:text-[#E65C00] font-bold hover:underline transition-all">
+                        <Link href="/business/login" className="text-[#FE5518] hover:text-[#E44911] font-bold hover:underline transition-all">
                             Inicia sesión
                         </Link>
                     </div>

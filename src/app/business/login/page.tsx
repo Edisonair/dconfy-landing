@@ -72,7 +72,7 @@ export default function BusinessLogin() {
                         />
                     </div>
                     <h1 className="text-3xl font-black tracking-tight text-white">
-                        dconfy <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] to-[#CD1F8B]">Business</span>
+                        dconfy <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] to-[#CD1F8B]">Business</span>
                     </h1>
                     <p className="text-slate-400 font-medium mt-2">Portal de administración para empresas</p>
                 </div>
@@ -91,7 +91,7 @@ export default function BusinessLogin() {
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all font-medium text-white"
+                                    className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all font-medium text-white"
                                     placeholder="contacto@empresa.com"
                                 />
                             </div>
@@ -108,7 +108,7 @@ export default function BusinessLogin() {
                                     required
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all font-medium text-white"
+                                    className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all font-medium text-white"
                                     placeholder="••••••••"
                                 />
                             </div>
@@ -124,7 +124,7 @@ export default function BusinessLogin() {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FF6600]/10 mt-4 active:scale-95 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+                            className="w-full bg-[#FE5518] hover:bg-[#E44911] text-white py-3.5 rounded-full font-bold transition-all shadow-lg shadow-[#FE5518]/10 mt-4 active:scale-95 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
                         >
                             {isLoading ? (
                                 <>

@@ -235,13 +235,13 @@ export default function BusinessGalleryPage() {
         className={`
           bg-slate-900/90 rounded-3xl p-8 border-2 border-dashed text-center transition-all duration-300 relative
           ${isDragging 
-            ? 'border-[#FF6600] bg-[#FF6600]/5 scale-[0.99]' 
+            ? 'border-[#FE5518] bg-[#FE5518]/5 scale-[0.99]' 
             : 'border-slate-800 hover:border-slate-700'}
         `}
       >
         <div className="max-w-md mx-auto space-y-4">
           <div className="w-12 h-12 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center mx-auto shadow-inner">
-            <Upload className={`w-6 h-6 ${isDragging ? 'text-[#FF6600] animate-bounce' : 'text-slate-400'}`} />
+            <Upload className={`w-6 h-6 ${isDragging ? 'text-[#FE5518] animate-bounce' : 'text-slate-400'}`} />
           </div>
           <div className="space-y-1">
             <h4 className="text-sm font-bold text-white">Arrastra tus fotos aquí</h4>
@@ -249,7 +249,7 @@ export default function BusinessGalleryPage() {
               o haz clic para buscar en tu dispositivo. Admite JPG, PNG y WEBP (Máx. 5MB).
             </p>
           </div>
-          <label className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF6600] hover:bg-[#E65C00] active:scale-95 text-white text-xs font-bold rounded-full transition-all cursor-pointer shadow-lg shadow-[#FF6600]/10">
+          <label className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FE5518] hover:bg-[#E44911] active:scale-95 text-white text-xs font-bold rounded-full transition-all cursor-pointer shadow-lg shadow-[#FE5518]/10">
             <span>Seleccionar imágenes</span>
             <input 
               type="file" 
@@ -267,7 +267,7 @@ export default function BusinessGalleryPage() {
       {isUploading && (
         <div className="bg-slate-900/80 rounded-2xl p-4 border border-slate-800 flex items-center justify-between gap-4 animate-pulse">
           <div className="flex items-center gap-3">
-            <Loader2 className="w-5 h-5 text-[#FF6600] animate-spin" />
+            <Loader2 className="w-5 h-5 text-[#FE5518] animate-spin" />
             <span className="text-xs font-bold text-slate-300">Subiendo {Object.keys(uploadingFiles).length} imagen(es)...</span>
           </div>
           <div className="flex gap-2">
@@ -294,7 +294,7 @@ export default function BusinessGalleryPage() {
 
         {loadingList ? (
           <div className="py-16 flex items-center justify-center">
-            <Loader2 className="w-8 h-8 text-[#FF6600] animate-spin" />
+            <Loader2 className="w-8 h-8 text-[#FE5518] animate-spin" />
           </div>
         ) : gallery.length === 0 ? (
           <div className="text-center py-16 border border-dashed border-slate-800 rounded-2xl bg-slate-950/20">

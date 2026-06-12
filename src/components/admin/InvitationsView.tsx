@@ -34,7 +34,7 @@ export function InvitationsView({
                             value={newName}
                             onChange={(e) => setNewName(e.target.value)}
                             placeholder="Nombre"
-                            className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-[#FF6600] outline-none text-sm"
+                            className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-[#FE5518] outline-none text-sm"
                         />
                     </div>
 
@@ -45,7 +45,7 @@ export function InvitationsView({
                             value={newProfession}
                             onChange={(e) => setNewProfession(e.target.value)}
                             placeholder="Profesión"
-                            className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-[#FF6600] outline-none text-sm"
+                            className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-[#FE5518] outline-none text-sm"
                         />
                     </div>
 
@@ -62,7 +62,7 @@ export function InvitationsView({
                                 setNewZipCode(val);
                             }}
                             placeholder="C. Postal"
-                            className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-[#FF6600] outline-none text-sm"
+                            className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-[#FE5518] outline-none text-sm"
                         />
                     </div>
 
@@ -74,11 +74,11 @@ export function InvitationsView({
                             value={newEmail}
                             onChange={(e) => setNewEmail(e.target.value)}
                             placeholder="ejemplo@email.com"
-                            className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-[#FF6600] outline-none text-sm"
+                            className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-[#FE5518] outline-none text-sm"
                         />
                     </div>
 
-                    <button type="submit" disabled={isInviting} className="bg-[#FF6600] hover:bg-[#E65C00] text-white px-6 py-3.5 rounded-xl font-bold transition-all disabled:opacity-70 flex items-center gap-2 justify-center w-full md:w-auto shrink-0">
+                    <button type="submit" disabled={isInviting} className="bg-[#FE5518] hover:bg-[#E44911] text-white px-6 py-3.5 rounded-xl font-bold transition-all disabled:opacity-70 flex items-center gap-2 justify-center w-full md:w-auto shrink-0">
                         {isInviting ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <><Plus className="w-5 h-5" /> Invitar</>}
                     </button>
                 </form>

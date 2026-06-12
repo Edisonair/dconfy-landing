@@ -229,7 +229,7 @@ export default function BusinessProfilePage() {
             
             {isUploading && (
               <div className="absolute inset-0 bg-slate-950/80 flex items-center justify-center">
-                <Loader2 className="w-8 h-8 text-[#FF6600] animate-spin" />
+                <Loader2 className="w-8 h-8 text-[#FE5518] animate-spin" />
               </div>
             )}
           </div>
@@ -270,7 +270,7 @@ export default function BusinessProfilePage() {
                 required
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all text-white font-medium"
+                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all text-white font-medium"
                 placeholder="Mi Clínica Estética"
               />
             </div>
@@ -285,7 +285,7 @@ export default function BusinessProfilePage() {
                 required
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all text-white font-medium"
+                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all text-white font-medium"
                 placeholder="Ej. Clínica Dental, Asesoría Fiscal"
               />
             </div>
@@ -299,7 +299,7 @@ export default function BusinessProfilePage() {
                 required
                 value={sector}
                 onChange={(e) => setSector(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all text-white font-medium cursor-pointer"
+                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all text-white font-medium cursor-pointer"
               >
                 <option value="">Selecciona un sector...</option>
                 {sectorsList.map((sectName) => (
@@ -319,7 +319,7 @@ export default function BusinessProfilePage() {
                 type="tel" 
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all text-white font-medium"
+                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all text-white font-medium"
                 placeholder="+34 600 000 000"
               />
             </div>
@@ -334,7 +334,7 @@ export default function BusinessProfilePage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all text-white font-medium"
+                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all text-white font-medium"
                 placeholder="administracion@empresa.com"
               />
             </div>
@@ -348,7 +348,7 @@ export default function BusinessProfilePage() {
                 type="text" 
                 value={website}
                 onChange={(e) => setWebsite(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all text-white font-medium"
+                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all text-white font-medium"
                 placeholder="https://miweb.com"
               />
             </div>
@@ -362,7 +362,7 @@ export default function BusinessProfilePage() {
                 type="text" 
                 value={instagram}
                 onChange={(e) => setInstagram(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all text-white font-medium"
+                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all text-white font-medium"
                 placeholder="@mi_empresa"
               />
             </div>
@@ -377,7 +377,7 @@ export default function BusinessProfilePage() {
               rows={4}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all text-white font-medium resize-y"
+              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all text-white font-medium resize-y"
               placeholder="Explica qué servicios ofreces, la trayectoria de tu clínica o centro, etc."
             />
           </div>
@@ -407,7 +407,7 @@ export default function BusinessProfilePage() {
               className={`
                 relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent 
                 transition-colors duration-200 ease-in-out outline-none
-                ${showLocation ? 'bg-[#FF6600]' : 'bg-slate-800'}
+                ${showLocation ? 'bg-[#FE5518]' : 'bg-slate-800'}
               `}
             >
               <span
@@ -426,7 +426,7 @@ export default function BusinessProfilePage() {
           <button
             type="submit"
             disabled={isSaving}
-            className="flex items-center justify-center gap-2 bg-[#FF6600] hover:bg-[#E65C00] active:scale-95 text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-[#FF6600]/15 transition-all disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+            className="flex items-center justify-center gap-2 bg-[#FE5518] hover:bg-[#E44911] active:scale-95 text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-[#FE5518]/15 transition-all disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
           >
             {isSaving ? (
               <>

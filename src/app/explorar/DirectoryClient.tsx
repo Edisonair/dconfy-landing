@@ -207,7 +207,7 @@ export default function DirectoryClient() {
     return (
         <div className="space-y-8 animate-in fade-in duration-500">
             <div className="text-center max-w-2xl mx-auto mb-10 pt-4">
-                <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">Explorar <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] to-[#CD1F8B]">Profesionales</span></h1>
+                <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">Explorar <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] to-[#CD1F8B]">Profesionales</span></h1>
                 <p className="text-slate-600 text-lg md:text-xl font-medium">Busca, filtra y encuentra servicios de confianza cerca de ti.</p>
             </div>
 

@@ -197,7 +197,7 @@ export default async function PublicProfilePage({
                     rel="noopener noreferrer"
                     className="bg-white text-slate-600 text-[13px] font-bold px-4 py-1.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-all active:scale-95"
                 >
-                    Profesional en <span className="text-orange-600 font-extrabold">dconfy</span>
+                    <span className="text-orange-600 font-extrabold">dconfy.app</span>
                 </a>
             </header>
 

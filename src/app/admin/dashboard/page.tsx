@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@supabase/supabase-js';
-import { LayoutDashboard, Ticket, LogOut, Menu, X, ChevronLeft, ChevronRight, MapPin, Radio, FileText } from 'lucide-react';
+import { LayoutDashboard, Ticket, LogOut, Menu, X, ChevronLeft, ChevronRight, MapPin, Radio, FileText, ChevronDown, ChevronUp, Mail, Megaphone } from 'lucide-react';
 
 import { DashboardMetrics } from '@/components/admin/DashboardMetrics';
 import { CommunicationsView } from '@/components/admin/CommunicationsView';
@@ -48,6 +48,7 @@ export default function AdminDashboard() {
     const router = useRouter();
 
     const [activeView, setActiveView] = useState<'dashboard' | 'invitations' | 'communications' | 'blog'>('dashboard');
+    const [isCommExpanded, setIsCommExpanded] = useState(true);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -435,7 +436,7 @@ export default function AdminDashboard() {
             { range: '11 a 20', count: ranges['11-20'], percentage: (ranges['11-20'] / maxRange) * 100, color: 'bg-emerald-500' },
             { range: '21 a 30', count: ranges['21-30'], percentage: (ranges['21-30'] / maxRange) * 100, color: 'bg-amber-500' },
             { range: '31 a 40', count: ranges['31-40'], percentage: (ranges['31-40'] / maxRange) * 100, color: 'bg-purple-500' },
-            { range: '+ de 40', count: ranges['+40'], percentage: (ranges['+40'] / maxRange) * 100, color: 'bg-[#FF6600]' }
+            { range: '+ de 40', count: ranges['+40'], percentage: (ranges['+40'] / maxRange) * 100, color: 'bg-[#FE5518]' }
         ]);
 
         filteredProfiles.forEach(p => {
@@ -488,7 +489,7 @@ export default function AdminDashboard() {
 
     const handleLogout = async () => { await supabase.auth.signOut(); router.push('/admin'); };
 
-    if (isLoading) return <div className="min-h-screen flex items-center justify-center bg-slate-950"><div className="w-8 h-8 border-4 border-[#FF6600] border-t-transparent rounded-full animate-spin"></div></div>;
+    if (isLoading) return <div className="min-h-screen flex items-center justify-center bg-slate-950"><div className="w-8 h-8 border-4 border-[#FE5518] border-t-transparent rounded-full animate-spin"></div></div>;
 
     const navItems = [
         { id: 'dashboard', label: 'Dashboard BI', icon: LayoutDashboard },
@@ -594,11 +595,68 @@ export default function AdminDashboard() {
                     {!isSidebarCollapsed && <span className="bg-violet-500/20 text-violet-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-violet-500/20 mt-1">SuperAdmin</span>}
                 </div>
 
-                <nav className={`flex-1 px-4 py-6 md:py-2 space-y-2 mt-16 md:mt-0 ${isSidebarCollapsed ? 'items-center flex flex-col' : ''}`}>
+                <nav className={`flex-1 px-4 py-6 md:py-2 space-y-2 mt-16 md:mt-0 ${isSidebarCollapsed ? 'items-center flex flex-col' : 'w-full'}`}>
                     {navItems.map(item => {
                         const Icon = item.icon;
+
+                        // Tratamiento especial para la sección de Comunicaciones
+                        if (item.id === 'communications') {
+                            const isSelected = activeView === 'communications';
+                            return (
+                                <div key={item.id} className="w-full flex flex-col gap-1">
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setActiveView('communications');
+                                            setIsCommExpanded(!isCommExpanded);
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className={`flex items-center justify-between py-3.5 rounded-2xl font-bold transition-all ${isSidebarCollapsed ? 'w-12 justify-center px-0' : 'w-full px-4'} ${isSelected ? 'bg-slate-800 text-white border border-slate-700' : 'text-slate-400 hover:bg-slate-800 hover:text-white'}`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <Icon className="w-5 h-5 shrink-0" />
+                                            {!isSidebarCollapsed && <span>{item.label}</span>}
+                                        </div>
+                                        {!isSidebarCollapsed && (
+                                            isCommExpanded ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />
+                                        )}
+                                    </button>
+
+                                    {/* Sub-items del menú Comunicaciones */}
+                                    {((isCommExpanded && !isSidebarCollapsed) || (isSidebarCollapsed && isSelected)) && (
+                                        <div className={`flex flex-col gap-1 ${isSidebarCollapsed ? 'w-12' : 'pl-6 mt-1'}`}>
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setActiveView('communications');
+                                                    setCommTab('banners');
+                                                    setIsMobileMenuOpen(false);
+                                                }}
+                                                className={`flex items-center gap-3 py-2.5 rounded-xl font-bold transition-all ${isSidebarCollapsed ? 'w-10 justify-center px-0' : 'w-full px-4 text-sm'} ${isSelected && commTab === 'banners' ? 'bg-[#FE5518] text-white shadow-md shadow-[#FE5518]/20' : 'text-slate-400 hover:bg-slate-800/50 hover:text-white'}`}
+                                            >
+                                                <Megaphone className="w-4 h-4 shrink-0" />
+                                                {!isSidebarCollapsed && <span>Banners In-App</span>}
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setActiveView('communications');
+                                                    setCommTab('emails');
+                                                    setIsMobileMenuOpen(false);
+                                                }}
+                                                className={`flex items-center gap-3 py-2.5 rounded-xl font-bold transition-all ${isSidebarCollapsed ? 'w-10 justify-center px-0' : 'w-full px-4 text-sm'} ${isSelected && commTab === 'emails' ? 'bg-[#FE5518] text-white shadow-md shadow-[#FE5518]/20' : 'text-slate-400 hover:bg-slate-800/50 hover:text-white'}`}
+                                            >
+                                                <Mail className="w-4 h-4 shrink-0" />
+                                                {!isSidebarCollapsed && <span>Emails Masivos</span>}
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        }
+
                         return (
-                            <button key={item.id} onClick={() => { setActiveView(item.id as any); setIsMobileMenuOpen(false); }} className={`flex items-center gap-3 py-3.5 rounded-2xl font-bold transition-all ${isSidebarCollapsed ? 'w-12 justify-center px-0' : 'w-full px-4'} ${activeView === item.id ? 'bg-[#FF6600] text-white shadow-lg shadow-[#FF6600]/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white'}`}>
+                            <button key={item.id} onClick={() => { setActiveView(item.id as any); setIsMobileMenuOpen(false); }} className={`flex items-center gap-3 py-3.5 rounded-2xl font-bold transition-all ${isSidebarCollapsed ? 'w-12 justify-center px-0' : 'w-full px-4'} ${activeView === item.id ? 'bg-[#FE5518] text-white shadow-lg shadow-[#FE5518]/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white'}`}>
                                 <Icon className="w-5 h-5 shrink-0" /> {!isSidebarCollapsed && <span>{item.label}</span>}
                             </button>
                         );
@@ -615,12 +673,15 @@ export default function AdminDashboard() {
             <main className="flex-1 flex flex-col h-screen overflow-hidden pt-16 md:pt-0 bg-slate-950">
                 <header className="bg-slate-950/80 backdrop-blur-md border-b border-slate-800 px-6 py-4 shrink-0 flex flex-col sm:flex-row sm:items-center justify-between z-10 gap-4">
                     <h1 className="text-2xl font-black text-white">
-                        {activeView === 'dashboard' ? 'Dashboard & Analíticas' : activeView === 'communications' ? 'Centro de Comunicaciones' : activeView === 'invitations' ? 'Gestión de Invitaciones' : 'Gestor del Blog'}
+                        {activeView === 'dashboard' ? 'Dashboard & Analíticas' : 
+                         activeView === 'communications' 
+                            ? (commTab === 'banners' ? 'Comunicaciones: Banners In-App' : 'Comunicaciones: Emails Masivos') 
+                            : activeView === 'invitations' ? 'Gestión de Invitaciones' : 'Gestor del Blog'}
                     </h1>
 
                     {activeView === 'dashboard' && (
                         <div className="flex items-center gap-3 bg-slate-900 border border-slate-700 px-4 py-2.5 rounded-xl shadow-lg">
-                            <MapPin className="text-[#FF6600] w-5 h-5 shrink-0" />
+                            <MapPin className="text-[#FE5518] w-5 h-5 shrink-0" />
                             <select
                                 value={selectedProvince}
                                 onChange={(e) => setSelectedProvince(e.target.value)}

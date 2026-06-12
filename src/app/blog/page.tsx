@@ -42,7 +42,7 @@ export default async function NovedadesPage() {
 
                     <div className="text-center mb-16">
                         <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
-                            Lo último en <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] via-[#E83E4C] to-[#BE1E8D]">dconfy</span>
+                            Lo último en <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] via-[#E83E4C] to-[#BE1E8D]">dconfy</span>
                         </h1>
                         <p className="text-lg text-[#111827] max-w-2xl mx-auto">
                             Entérate de las nuevas funcionalidades, mejoras y noticias sobre nuestra plataforma.
@@ -59,7 +59,7 @@ export default async function NovedadesPage() {
                             novedades.map((post) => (
                                 <Link key={post.id} href={`/blog/${post.slug}`} className="group bg-white rounded-3xl overflow-hidden shadow-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
                                     <div className="aspect-[16/9] w-full overflow-hidden relative bg-slate-100">
-                                        <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-[#FF6600] shadow-sm">
+                                        <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-[#FE5518] shadow-sm">
                                             {post.category}
                                         </div>
                                         {post.image && (
@@ -75,7 +75,7 @@ export default async function NovedadesPage() {
                                             <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {new Date(post.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                                             <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {post.read_time}</span>
                                         </div>
-                                        <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#FF6600] transition-colors leading-tight">
+                                        <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#FE5518] transition-colors leading-tight">
                                             {post.title}
                                         </h2>
                                         <p className="text-slate-500 mb-6 flex-1 leading-relaxed">

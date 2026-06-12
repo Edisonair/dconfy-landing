@@ -271,7 +271,7 @@ export default function BusinessTeamPage() {
       <div className="bg-slate-900/90 rounded-3xl p-6 border border-slate-800/80 space-y-6">
         <div className="space-y-1">
           <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <UserPlus className="w-5 h-5 text-[#FF6600]" />
+            <UserPlus className="w-5 h-5 text-[#FE5518]" />
             Vincular Nuevo Profesional
           </h3>
           <p className="text-xs text-slate-500 font-medium">
@@ -288,7 +288,7 @@ export default function BusinessTeamPage() {
               type="text" 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 outline-none transition-all font-medium text-white text-sm"
+              className="w-full pl-11 pr-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/10 outline-none transition-all font-medium text-white text-sm"
               placeholder="Buscar por nombre o correo electrónico..."
             />
           </div>
@@ -328,7 +328,7 @@ export default function BusinessTeamPage() {
                 <button
                   onClick={() => handleLink(result.id, result.full_name)}
                   disabled={actionInProgress !== null}
-                  className="bg-[#FF6600]/10 hover:bg-[#FF6600]/20 active:scale-95 text-[#FF6600] font-bold px-4 py-2 rounded-xl transition-all text-xs flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  className="bg-[#FE5518]/10 hover:bg-[#FE5518]/20 active:scale-95 text-[#FE5518] font-bold px-4 py-2 rounded-xl transition-all text-xs flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                 >
                   {actionInProgress === result.id ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -359,7 +359,7 @@ export default function BusinessTeamPage() {
 
         {loadingList ? (
           <div className="py-12 flex items-center justify-center">
-            <Loader2 className="w-8 h-8 text-[#FF6600] animate-spin" />
+            <Loader2 className="w-8 h-8 text-[#FE5518] animate-spin" />
           </div>
         ) : employees.length === 0 ? (
           <div className="text-center py-12 border border-dashed border-slate-800 rounded-2xl bg-slate-950/20">
@@ -440,7 +440,7 @@ export default function BusinessTeamPage() {
                       className={`
                         relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent 
                         transition-colors duration-200 ease-in-out outline-none disabled:opacity-50
-                        ${emp.show_location ? 'bg-[#FF6600]' : 'bg-slate-800'}
+                        ${emp.show_location ? 'bg-[#FE5518]' : 'bg-slate-800'}
                       `}
                     >
                       <span
@@ -452,7 +452,7 @@ export default function BusinessTeamPage() {
                       />
                     </button>
                     <span className="text-xs text-slate-400 font-bold flex items-center gap-1 select-none">
-                      <MapPin className={`w-3.5 h-3.5 ${emp.show_location ? 'text-[#FF6600]' : 'text-slate-600'}`} />
+                      <MapPin className={`w-3.5 h-3.5 ${emp.show_location ? 'text-[#FE5518]' : 'text-slate-600'}`} />
                       Ubicación
                     </span>
                   </div>

@@ -88,7 +88,7 @@ export default function AdminLogin() {
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all font-medium text-slate-900"
+                                    className="w-full pl-11 pr-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/20 outline-none transition-all font-medium text-slate-900"
                                     placeholder="admin@dconfy.io"
                                 />
                             </div>
@@ -105,7 +105,7 @@ export default function AdminLogin() {
                                     required
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 rounded-xl focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all font-medium text-slate-900"
+                                    className="w-full pl-11 pr-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 rounded-xl focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/20 outline-none transition-all font-medium text-slate-900"
                                     placeholder="••••••••"
                                 />
                             </div>
@@ -121,7 +121,7 @@ export default function AdminLogin() {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20 mt-4 active:scale-95 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="w-full bg-[#FE5518] hover:bg-[#E44911] text-white py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FE5518]/20 mt-4 active:scale-95 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             {isLoading ? (
                                 <>

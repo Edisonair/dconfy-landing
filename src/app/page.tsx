@@ -164,7 +164,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative w-full">
             <div className="max-w-xl lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
               <h1 className="text-5xl md:text-7xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-[1.1] mb-12">
-                El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
+                El boca a boca <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] via-[#E83E4C] to-[#CD1F8B]">de siempre,</span> ahora en una app
               </h1>
 
               <p className="text-2xl md:text-3xl text-[#111827] mb-12 font-bold leading-tight tracking-tight">
@@ -180,7 +180,7 @@ export default function Home() {
                 <span className="text-[10px] font-black text-slate-900 leading-none">Tú</span>
               </div>
 
-              <div className="text-[#FF6600] mb-4">
+              <div className="text-[#FE5518] mb-4">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
                 </svg>
@@ -193,7 +193,7 @@ export default function Home() {
                 <span className="text-[10px] font-black text-slate-900 leading-none">Carlos</span>
               </div>
 
-              <div className="text-[#FF6600] mb-4">
+              <div className="text-[#FE5518] mb-4">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
                 </svg>
@@ -209,7 +209,7 @@ export default function Home() {
 
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-4 w-full">
-                  <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="w-full max-w-xs sm:w-auto border-2 border-transparent bg-[#FF6600] hover:bg-[#E65C00] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/30 text-center">
+                  <Link onClick={() => trackGAEvent('Clic_Descargar_hero', 'Descargar')} href="#descargar" className="w-full max-w-xs sm:w-auto border-2 border-transparent bg-[#FE5518] hover:bg-[#E44911] text-white px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all shadow-lg shadow-[#FE5518]/30 text-center">
                     Descargar app
                   </Link>
                   <Link onClick={() => trackGAEvent('Clic_Planes_hero', 'Planes')} href="#planes" className="w-full max-w-xs sm:w-auto border-2 border-violet-600 text-violet-700 hover:bg-violet-50 px-8 py-3.5 rounded-full font-[system-ui] font-bold transition-all text-center">
@@ -317,7 +317,7 @@ export default function Home() {
             100% { background-position: -200% center; }
           }
           .animate-gradient-text {
-            background-image: linear-gradient(to right, #F05A28, #BE1E8D, #F05A28, #BE1E8D, #F05A28);
+            background-image: linear-gradient(to right, #FE5518, #BE1E8D, #FE5518, #BE1E8D, #FE5518);
             background-size: 200% auto;
             animation: moveGradient 4s linear infinite;
           }
@@ -420,7 +420,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="mb-10 flex justify-center"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF9F0] border border-[#FF6600] text-[#FF6600] text-xs font-bold tracking-wider uppercase shadow-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FE5518] text-[#FE5518] text-xs font-bold tracking-wider uppercase shadow-sm">
 
               Por qué nace dconfy
             </span>
@@ -445,7 +445,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="my-48 md:my-64 max-w-3xl mx-auto bg-white py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem]"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-violet-800 leading-tight [-webkit-text-stroke:0]">
+            <h2 className="text-4xl md:text-5xl font-black text-fuchsia-700 leading-tight [-webkit-text-stroke:0]">
               Recomiéndame un fisio, un nutricionista, un masajista... <br></br><br></br>"Te paso el teléfono de mi fontanero", "Hay una peluquería que te va a gustar"...
             </h2>
           </motion.div>
@@ -468,7 +468,7 @@ export default function Home() {
         {/* Soft organic blobs with violet and orange tones */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0 opacity-60">
           <div className="absolute top-[-30%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#8B5CF6]/15 blur-[100px] animate-morph-1"></div>
-          <div className="absolute bottom-[-30%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#FF6600]/10 blur-[120px] animate-morph-2"></div>
+          <div className="absolute bottom-[-30%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#FE5518]/10 blur-[120px] animate-morph-2"></div>
           <div className="absolute top-[20%] right-[10%] w-[350px] h-[350px] rounded-full bg-[#8B5CF6]/10 blur-[80px] animate-morph-3"></div>
         </div>
 
@@ -487,7 +487,7 @@ export default function Home() {
               />
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#111827] leading-tight py-2">
-              dconfy te ayuda a compartir y descubrir esas recomendaciones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">de confianza</span>
+              dconfy te ayuda a compartir y descubrir esas recomendaciones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] via-[#E83E4C] to-[#CD1F8B]">de confianza</span>
             </h2>
           </motion.div>
         </div>
@@ -521,8 +521,8 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] justify-self-center md:justify-self-end flex flex-col items-center sm:items-stretch">
-              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600] overflow-hidden w-full">
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600] via-[#FF6600] to-transparent"></div>
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FE5518] overflow-hidden w-full">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FE5518] via-[#FE5518] to-transparent"></div>
 
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
@@ -541,7 +541,7 @@ export default function Home() {
 
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-sm text-[#FF6600]">📍</span>
+                    <span className="text-sm text-[#FE5518]">📍</span>
                     <span className="text-[#64748b] font-medium text-xs lg:text-sm">Madrid</span>
                   </div>
 
@@ -578,8 +578,8 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] justify-self-center md:justify-self-start flex flex-col items-center sm:items-stretch">
-              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600] overflow-hidden w-full">
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600] via-[#FF6600] to-transparent"></div>
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FE5518] overflow-hidden w-full">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FE5518] via-[#FE5518] to-transparent"></div>
 
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
@@ -598,7 +598,7 @@ export default function Home() {
 
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-sm text-[#FF6600]">📍</span>
+                    <span className="text-sm text-[#FE5518]">📍</span>
                     <span className="text-[#64748b] font-medium text-xs lg:text-sm">Valencia</span>
                   </div>
 
@@ -630,8 +630,8 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeInUpVariants} className="relative w-full max-w-[420px] md:col-span-2 justify-self-center flex flex-col items-center sm:items-stretch mx-auto">
-              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FF6600] overflow-hidden w-full">
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FF6600] via-[#FF6600] to-transparent"></div>
+              <div className="bg-white rounded-[2rem] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative border border-[#FE5518] overflow-hidden w-full">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#FE5518] via-[#FE5518] to-transparent"></div>
 
                 <div className="flex justify-between items-start mb-1.5">
                   <div className="flex-1 pr-3">
@@ -650,7 +650,7 @@ export default function Home() {
 
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-sm text-[#FF6600]">📍</span>
+                    <span className="text-sm text-[#FE5518]">📍</span>
                     <span className="text-[#64748b] font-medium text-xs lg:text-sm">Barcelona</span>
                   </div>
 
@@ -703,12 +703,12 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Una agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano</h2>
+            <h2 className="text-4xl md:text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827] tracking-tight leading-tight mb-6 text-center lg:text-left">Una agenda<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:1px]">de confianza</span> <br />siempre a mano</h2>
 
             <ul className="space-y-4 pt-8">
-              <li className="flex items-start gap-5 bg-white p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.05),0_2px_10px_rgba(255,102,0,0.02)] border border-[#FF6601]/15 hover:border-[#FF6601]/40 hover:shadow-[0_15px_35px_rgba(255,102,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
-                <div className="w-12 h-12 bg-[#FF6601]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                  <Heart className="w-6 h-6 text-[#FF6601] fill-[#FF6601]" />
+              <li className="flex items-start gap-5 bg-white p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.05),0_2px_10px_rgba(255,102,0,0.02)] border border-[#FE5518]/15 hover:border-[#FE5518]/40 hover:shadow-[0_15px_35px_rgba(255,102,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
+                <div className="w-12 h-12 bg-[#FE5518]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <Heart className="w-6 h-6 text-[#FE5518] fill-[#FE5518]" />
                 </div>
                 <div className="flex flex-col gap-1">
                   <h3 className="text-xl md:text-xl font-bold text-slate-900 leading-tight">
@@ -719,9 +719,9 @@ export default function Home() {
                   </p>
                 </div>
               </li>
-              <li className="flex items-start gap-5 bg-white p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.05),0_2px_10px_rgba(255,102,0,0.02)] border border-[#FF6601]/15 hover:border-[#FF6601]/40 hover:shadow-[0_15px_35px_rgba(255,102,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
-                <div className="w-12 h-12 bg-[#FF6601]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                  <Heart className="w-6 h-6 text-[#FF6601] fill-[#FF6601]" />
+              <li className="flex items-start gap-5 bg-white p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.05),0_2px_10px_rgba(255,102,0,0.02)] border border-[#FE5518]/15 hover:border-[#FE5518]/40 hover:shadow-[0_15px_35px_rgba(255,102,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
+                <div className="w-12 h-12 bg-[#FE5518]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <Heart className="w-6 h-6 text-[#FE5518] fill-[#FE5518]" />
                 </div>
                 <div className="flex flex-col gap-1">
                   <h3 className="text-xl md:text-xl font-bold text-slate-900 leading-tight">
@@ -784,7 +784,7 @@ export default function Home() {
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
                         <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Le Bonde</div>
-                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                        <div className="text-[#FE5518] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
                       <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Clínica Estética</div>
                     </div>
@@ -798,7 +798,7 @@ export default function Home() {
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
                         <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Erick Noel</div>
-                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">147 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                        <div className="text-[#FE5518] text-[9px] font-bold flex items-center gap-0.5 shrink-0">147 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
                       <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Tatuajes</div>
                     </div>
@@ -812,7 +812,7 @@ export default function Home() {
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
                         <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Elena Gómez</div>
-                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">31 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                        <div className="text-[#FE5518] text-[9px] font-bold flex items-center gap-0.5 shrink-0">31 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
                       <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Fisioterapia</div>
                     </div>
@@ -826,7 +826,7 @@ export default function Home() {
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
                         <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">AKA Studio</div>
-                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">121 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                        <div className="text-[#FE5518] text-[9px] font-bold flex items-center gap-0.5 shrink-0">121 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
                       <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Reformas Integrales</div>
                     </div>
@@ -840,7 +840,7 @@ export default function Home() {
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
                         <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Carla López</div>
-                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">14 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                        <div className="text-[#FE5518] text-[9px] font-bold flex items-center gap-0.5 shrink-0">14 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
                       <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Limpieza Profesional</div>
                     </div>
@@ -854,7 +854,7 @@ export default function Home() {
                     <div className="p-2.5">
                       <div className="flex justify-between items-start">
                         <div className="font-bold text-slate-900 text-[11px] leading-tight truncate pr-1">Martín Costa</div>
-                        <div className="text-[#FF6600] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
+                        <div className="text-[#FE5518] text-[9px] font-bold flex items-center gap-0.5 shrink-0">60 <Heart className="w-2.5 h-2.5 fill-current" /></div>
                       </div>
                       <div className="text-[8px] font-black text-violet-600 tracking-widest uppercase mt-0.5">Nutricionista</div>
                     </div>
@@ -901,7 +901,7 @@ export default function Home() {
           variants={fadeInUpVariants}
           viewport={{ once: true, amount: 1 }}
         >
-          <ArrowDown className="w-10 h-10 text-[#FF6600] animate-bounce" />
+          <ArrowDown className="w-10 h-10 text-[#FE5518] animate-bounce" />
         </motion.div>
 
         <div className="flex flex-col gap-20 max-w-4xl mx-auto">
@@ -915,7 +915,7 @@ export default function Home() {
             <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
               <div className="relative w-24 h-24 bg-white border border-slate-100/80 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0 shadow-[0_12px_30px_rgba(79,70,229,0.08)]">
                 <div className="w-16 h-16 bg-[#FFF5EB] rounded-full flex items-center justify-center">
-                  <Heart className="w-8 h-8 text-[#FF6600]" strokeWidth={2.2} />
+                  <Heart className="w-8 h-8 text-[#FE5518]" strokeWidth={2.2} />
                 </div>
                 <div className="absolute -top-1.5 -right-1.5 w-8 h-8 bg-[#0F172A] text-white text-base font-bold rounded-full flex items-center justify-center shadow-md">
                   1
@@ -963,7 +963,7 @@ export default function Home() {
             <div className="order-1 md:order-1 max-w-sm mx-auto text-center md:text-left">
               <div className="relative w-24 h-24 bg-white border border-slate-100/80 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0 shadow-[0_12px_30px_rgba(79,70,229,0.08)]">
                 <div className="w-16 h-16 bg-[#FFF5EB] rounded-full flex items-center justify-center">
-                  <MessageCircle className="w-8 h-8 text-[#FF6600]" strokeWidth={2.2} />
+                  <MessageCircle className="w-8 h-8 text-[#FE5518]" strokeWidth={2.2} />
                 </div>
                 <div className="absolute -top-1.5 -right-1.5 w-8 h-8 bg-[#0F172A] text-white text-base font-bold rounded-full flex items-center justify-center shadow-md">
                   3
@@ -1005,7 +1005,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="font-black text-slate-900 text-sm leading-tight">Laura</p>
-                <p className="text-[#FF6600] text-[11px] font-bold uppercase tracking-wider mt-0.5">Madrid</p>
+                <p className="text-[#FE5518] text-[11px] font-bold uppercase tracking-wider mt-0.5">Madrid</p>
               </div>
             </div>
             <p className="text-slate-600 italic sm:text-lg font-medium leading-relaxed flex-1">
@@ -1026,7 +1026,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="font-black text-slate-900 text-sm leading-tight">Edgar</p>
-                <p className="text-[#FF6600] text-[11px] font-bold uppercase tracking-wider mt-0.5">Barcelona</p>
+                <p className="text-[#FE5518] text-[11px] font-bold uppercase tracking-wider mt-0.5">Barcelona</p>
               </div>
             </div>
             <p className="text-slate-600 italic sm:text-lg font-medium leading-relaxed flex-1">
@@ -1084,33 +1084,33 @@ export default function Home() {
             </ul>
           </motion.div>
 
-          <motion.div variants={fadeInUpVariants} className="bg-[#FFF9F0] p-10 rounded-3xl border-2 border-[#FF6600] shadow-xl shadow-orange-100/50 relative overflow-hidden">
+          <motion.div variants={fadeInUpVariants} className="bg-[#FFF9F0] p-10 rounded-3xl border-2 border-[#FE5518] shadow-xl shadow-orange-100/50 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-200/40 to-violet-200/40 blur-3xl rounded-full"></div>
             <h3 className="text-2xl font-black text-[#111827] mb-8 flex items-center gap-3 relative z-10">
-              <span className="w-8 h-8 rounded-full bg-[#FF6600] flex items-center justify-center text-white">
+              <span className="w-8 h-8 rounded-full bg-[#FE5518] flex items-center justify-center text-white">
                 <Check className="w-5 h-5" />
               </span>
               dconfy
             </h3>
             <ul className="space-y-6 relative z-10">
               <li className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-6 h-6 text-[#FE5518] shrink-0 mt-0.5" />
                 <span className="text-lg text-[#111827] font-bold">Recomendaciones de tu gente</span>
               </li>
               <li className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-6 h-6 text-[#FE5518] shrink-0 mt-0.5" />
                 <span className="text-lg text-[#111827] font-bold">Sabes exactamente quién recomienda</span>
               </li>
               <li className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-6 h-6 text-[#FE5518] shrink-0 mt-0.5" />
                 <span className="text-lg text-[#111827] font-bold">Tu red primero, siempre</span>
               </li>
               <li className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-6 h-6 text-[#FE5518] shrink-0 mt-0.5" />
                 <span className="text-lg text-[#111827] font-bold">Todo queda guardado automáticamente en tu perfil</span>
               </li>
               <li className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-[#FF6600] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-6 h-6 text-[#FE5518] shrink-0 mt-0.5" />
                 <span className="text-lg text-[#111827] font-bold">Contacto directo desde la app</span>
               </li>
             </ul>
@@ -1136,8 +1136,8 @@ export default function Home() {
         </p>
 
         <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50/80 border border-orange-200/50 text-[#FF6600] text-[13px] font-bold tracking-wide uppercase shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#FF6600] animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50/80 border border-orange-200/50 text-[#FE5518] text-[13px] font-bold tracking-wide uppercase shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#FE5518] animate-pulse"></span>
             Disponible próximamente
           </div>
         </div>
@@ -1187,8 +1187,8 @@ export default function Home() {
               </div>
               <div>
                 <h4 className="font-bold text-white text-base leading-tight">Elena Gómez</h4>
-                <div className="flex items-center gap-1.5 text-[11px] text-[#FF6600] font-bold mt-0.5">
-                  <Heart className="w-3.5 h-3.5 fill-current text-[#FF6600]" />
+                <div className="flex items-center gap-1.5 text-[11px] text-[#FE5518] font-bold mt-0.5">
+                  <Heart className="w-3.5 h-3.5 fill-current text-[#FE5518]" />
                   <span>dconfy de Edgar y 23 más</span>
                 </div>
               </div>
@@ -1221,12 +1221,12 @@ export default function Home() {
             </h2>
 
             <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight">
-              Descubre el <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">Plan Profesional</span>
+              Descubre el <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">Plan Profesional</span>
             </h3>
 
             {/* Pastilla 0€/mes */}
             <div className="mb-6 flex justify-center">
-              <span className="inline-flex items-center gap-1.5 px-4.5 py-1.5 rounded-full bg-orange-500/15 text-[#FF6600] font-bold text-sm tracking-wider uppercase border border-[#FF6600]/25 shadow-sm">
+              <span className="inline-flex items-center gap-1.5 px-4.5 py-1.5 rounded-full bg-orange-500/15 text-[#FE5518] font-bold text-sm tracking-wider uppercase border border-[#FE5518]/25 shadow-sm">
                 0€/mes
               </span>
             </div>
@@ -1252,7 +1252,7 @@ export default function Home() {
                 }}
                 className="rounded-full"
               >
-                <Link href="/profesionales" onClick={() => trackGAEvent('Clic_SaberMas_planes', 'Planes')} className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-[#FF6600] to-[#E65C00] hover:from-[#FF751A] hover:to-[#F56E0A] text-white px-9 py-4 rounded-full font-[system-ui] font-black tracking-wide transition-all duration-300 text-center">
+                <Link href="/profesionales" onClick={() => trackGAEvent('Clic_SaberMas_planes', 'Planes')} className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-[#FE5518] to-[#E44911] hover:from-[#FE642B] hover:to-[#E04008] text-white px-9 py-4 rounded-full font-[system-ui] font-black tracking-wide transition-all duration-300 text-center">
                   <span>Empieza Gratis</span>
                   <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
@@ -1271,7 +1271,7 @@ export default function Home() {
                 'Chat directo habilitado'
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-2.5 text-xs text-slate-300 font-semibold">
-                  <span className="w-4 h-4 rounded-full bg-[#FF6600]/20 flex items-center justify-center text-[#FF6600] shrink-0 font-bold">✓</span>
+                  <span className="w-4 h-4 rounded-full bg-[#FE5518]/20 flex items-center justify-center text-[#FE5518] shrink-0 font-bold">✓</span>
                   {item}
                 </li>
               ))}
@@ -1307,7 +1307,7 @@ export default function Home() {
                 latestPosts.map((post) => (
                   <Link key={post.id} href={`/blog/${post.slug}`} onClick={() => trackGAEvent(`Clic_BlogCard_${post.slug}`, 'Blog')} className="group bg-white rounded-3xl overflow-hidden shadow-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
                     <div className="aspect-[16/9] w-full overflow-hidden relative bg-slate-100">
-                      <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-[#FF6600] shadow-sm">
+                      <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase font-bold text-[#FE5518] shadow-sm">
                         {post.category}
                       </div>
                       {post.image ? (
@@ -1327,7 +1327,7 @@ export default function Home() {
                         <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {new Date(post.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                         <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {post.read_time}</span>
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#FF6600] transition-colors leading-tight">
+                      <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#FE5518] transition-colors leading-tight">
                         {post.title}
                       </h3>
                       <p className="text-slate-500 text-sm md:text-base mb-6 flex-1 leading-relaxed line-clamp-3">
@@ -1354,7 +1354,7 @@ export default function Home() {
             variants={fadeInUpVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <span className="text-sm font-bold text-[#111827] uppercase bg-[#FF6600] px-4 py-2.5 rounded-full shadow-md max-sm:mb-2 tracking-wide">3 meses gratis por lanzamiento</span>
+            <span className="text-sm font-bold text-[#111827] uppercase bg-[#FE5518] px-4 py-2.5 rounded-full shadow-md max-sm:mb-2 tracking-wide">3 meses gratis por lanzamiento</span>
 
             <div className="relative flex items-center bg-violet-950/40 p-1.5 rounded-full w-[260px] h-[52px] border border-violet-800/50 shadow-inner">
               <div
@@ -1399,7 +1399,7 @@ export default function Home() {
                 <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-[#111827]">{isAnnual ? '29,99€' : '2.99€'}</span>
                 <span className="text-slate-500 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
               </div>
-              <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '2,49€ al mes (ahorras 2 meses)' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
+              <p className="text-sm font-bold text-[#FE5518] mb-8 h-5">{isAnnual ? '2,49€ al mes (ahorras 2 meses)' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
 
               <ul className="space-y-4 mb-8 flex-1">
                 {[
@@ -1411,11 +1411,11 @@ export default function Home() {
                   'Estadísticas de tu perfil'
                 ].map((feature, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-slate-700 font-medium">
-                    <Check className="w-5 h-5 text-[#FF6600] shrink-0" /> {feature}
+                    <Check className="w-5 h-5 text-[#FE5518] shrink-0" /> {feature}
                   </li>
                 ))}
               </ul>
-              <Link href="/profesionales" onClick={() => trackGAEvent('Clic_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FF6600] hover:text-[#FF6600] py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all">
+              <Link href="/profesionales" onClick={() => trackGAEvent('Clic_planPro', 'Planes')} className="block w-full text-center border-2 border-slate-200 text-slate-700 hover:border-[#FE5518] hover:text-[#FE5518] py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all">
                 Apúntate en la lista VIP
               </Link>
             </motion.div>
@@ -1427,7 +1427,7 @@ export default function Home() {
                 <span className="text-5xl font-black [-webkit-text-stroke:1px_currentColor] text-white">{isAnnual ? '129.99€' : '12.99€'}</span>
                 <span className="text-slate-400 font-medium">/{isAnnual ? 'año' : 'mes'}</span>
               </div>
-              <p className="text-sm font-bold text-[#FF6600] mb-8 h-5">{isAnnual ? '10,83 € al mes (ahorras 2 meses)' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
+              <p className="text-sm font-bold text-[#FE5518] mb-8 h-5">{isAnnual ? '10,83 € al mes (ahorras 2 meses)' : 'Facturado mensualmente. Cancela cuando quieras.'}</p>
 
               <ul className="space-y-4 mb-8 flex-1">
                 {[
@@ -1439,7 +1439,7 @@ export default function Home() {
                   '2,49 €/mes por perfil adicional'
                 ].map((feature, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-slate-300 font-medium">
-                    <Check className="w-5 h-5 text-[#FF6600] shrink-0" /> {feature}
+                    <Check className="w-5 h-5 text-[#FE5518] shrink-0" /> {feature}
                   </li>
                 ))}
               </ul>
@@ -1449,7 +1449,7 @@ export default function Home() {
                   setIsContactModalOpen(true);
                 }}
 
-                className="block w-full text-center bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20"
+                className="block w-full text-center bg-[#FE5518] hover:bg-[#E44911] text-white py-3.5 rounded-2xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FE5518]/20"
               >
                 Contactar
               </button>
@@ -1488,10 +1488,10 @@ export default function Home() {
               <div key={i} className="grid grid-cols-3 p-6 border-b border-slate-50 items-center hover:bg-slate-50 transition-colors">
                 <div className="text-sm font-medium text-slate-700">{row.name}</div>
                 <div className="flex justify-center">
-                  {row.p ? <div className="w-5 h-5 bg-[#FF6600] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 text-white" strokeWidth={3} /></div> : <Minus className="w-5 h-5 text-slate-300" />}
+                  {row.p ? <div className="w-5 h-5 bg-[#FE5518] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 text-white" strokeWidth={3} /></div> : <Minus className="w-5 h-5 text-slate-300" />}
                 </div>
                 <div className="flex justify-center">
-                  {row.e ? <div className="w-5 h-5 bg-[#FF6600] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 text-white" strokeWidth={3} /></div> : <Minus className="w-5 h-5 text-slate-300" />}
+                  {row.e ? <div className="w-5 h-5 bg-[#FE5518] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 text-white" strokeWidth={3} /></div> : <Minus className="w-5 h-5 text-slate-300" />}
                 </div>
               </div>
             ))}
@@ -1590,22 +1590,22 @@ export default function Home() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-bold text-slate-700 mb-1.5">Nombre de la empresa *</label>
-                        <input type="text" name="company" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Ej: Clínica Dental Madrid" />
+                        <input type="text" name="company" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Ej: Clínica Dental Madrid" />
                       </div>
                       <div>
                         <label className="block text-sm font-bold text-slate-700 mb-1.5">Persona de contacto *</label>
-                        <input type="text" name="name" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Tu nombre" />
+                        <input type="text" name="name" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Tu nombre" />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-bold text-slate-700 mb-1.5">Email corporativo *</label>
-                      <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="email@empresa.com" />
+                      <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/20 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="email@empresa.com" />
                     </div>
 
                     <div>
                       <label className="block text-sm font-bold text-slate-700 mb-1.5">Perfiles profesionales que necesitas *</label>
-                      <select name="profiles" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white text-slate-700 appearance-none bg-no-repeat pr-10" style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`, backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}>
+                      <select name="profiles" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/20 outline-none transition-all bg-slate-50 focus:bg-white text-slate-700 appearance-none bg-no-repeat pr-10" style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`, backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}>
                         <option value="">Selecciona una opción</option>
                         <option value="1-5">Entre 1 y 5 perfiles (Incluido en el plan)</option>
                         <option value="6-10">De 6 a 10 perfiles</option>
@@ -1616,10 +1616,10 @@ export default function Home() {
 
                     <div>
                       <label className="block text-sm font-bold text-slate-700 mb-1.5">Cuéntanos sobre tu necesidad (Opcional)</label>
-                      <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/20 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="¿Qué tipo de servicios ofrecéis? ¿Tenéis alguna necesidad especial?"></textarea>
+                      <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FE5518] focus:ring-2 focus:ring-[#FE5518]/20 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="¿Qué tipo de servicios ofrecéis? ¿Tenéis alguna necesidad especial?"></textarea>
                     </div>
 
-                    <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <button type="submit" disabled={formStatus === 'submitting'} className="w-full bg-[#FE5518] hover:bg-[#E44911] text-white py-3.5 rounded-xl flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FE5518]/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed">
                       {formStatus === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
                     </button>
                     <p className="text-center text-xs text-slate-400 mt-4">Tus datos están seguros.</p>

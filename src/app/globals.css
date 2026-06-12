@@ -3,6 +3,18 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
+    --color-orange-50: #FFF9F6;
+    --color-orange-100: #FFEFE7;
+    --color-orange-200: #FFDBCB;
+    --color-orange-300: #FFAE8E;
+    --color-orange-400: #FF8352;
+    --color-orange-500: #FE5518;
+    --color-orange-600: #E44911;
+    --color-orange-700: #C3390B;
+    --color-orange-800: #A12E07;
+    --color-orange-900: #802305;
+    --color-orange-950: #4B1001;
+
     --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
     --font-lora: "Lora", Georgia, serif;
     --animate-float: float 6s ease-in-out infinite;

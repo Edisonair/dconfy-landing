@@ -27,7 +27,7 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                     <div><p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-0.5">PRO Compartidos</p><p className="text-2xl font-black text-white">{stats.shared}</p></div>
                 </div>
                 <div className="bg-slate-900 p-6 rounded-[1rem] shadow-xl shadow-black/20 flex items-center gap-5">
-                    <div className="w-12 h-12 bg-[#FF6600]/10 text-[#FF6600] rounded-2xl flex items-center justify-center shrink-0"><Heart className="w-6 h-6 fill-current" /></div>
+                    <div className="w-12 h-12 bg-[#FE5518]/10 text-[#FE5518] rounded-2xl flex items-center justify-center shrink-0"><Heart className="w-6 h-6 fill-current" /></div>
                     <div><p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-0.5">Recomendaciones</p><p className="text-2xl font-black text-white">{stats.recs}</p></div>
                 </div>
 
@@ -50,14 +50,14 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
             <div className="bg-slate-900 p-6 md:p-8 rounded-[1rem] shadow-xl shadow-black/20 w-full mt-10">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 border-b border-slate-800 pb-6 gap-4">
                     <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                        <BarChart3 className="w-6 h-6 text-blue-400" /> Profesiones Activas vs Recomendaciones {selectedProvince !== 'Global' && <span className="text-[#FF6600] ml-1">en {selectedProvince}</span>}
+                        <BarChart3 className="w-6 h-6 text-blue-400" /> Profesiones Activas vs Recomendaciones {selectedProvince !== 'Global' && <span className="text-[#FE5518] ml-1">en {selectedProvince}</span>}
                     </h3>
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                         <div className="flex items-center gap-2">
                             <div className="w-3.5 h-3.5 rounded-sm bg-slate-500"></div><span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Profesionales Activos</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3.5 h-3.5 rounded-sm border border-[#FF6600]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,102,0,0.5) 2px, rgba(255,102,0,0.5) 4px)' }}></div><span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Recomendaciones</span>
+                            <div className="w-3.5 h-3.5 rounded-sm border border-[#FE5518]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,102,0,0.5) 2px, rgba(255,102,0,0.5) 4px)' }}></div><span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Recomendaciones</span>
                         </div>
                     </div>
                 </div>
@@ -77,14 +77,14 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                                                 <span className="text-white text-sm">{item.proCount}</span>
                                             </div>
                                             <div className="flex items-center justify-between gap-4">
-                                                <div className="flex items-center gap-2"><div className="w-2.5 h-2.5 rounded-full bg-[#FF6600]"></div><span className="text-slate-400 font-medium">Recomendaciones</span></div>
-                                                <span className="text-[#FF6600] text-sm">{item.recsCount}</span>
+                                                <div className="flex items-center gap-2"><div className="w-2.5 h-2.5 rounded-full bg-[#FE5518]"></div><span className="text-slate-400 font-medium">Recomendaciones</span></div>
+                                                <span className="text-[#FE5518] text-sm">{item.recsCount}</span>
                                             </div>
                                         </div>
                                         <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-slate-800 -mt-[1px]"></div>
                                     </div>
                                     <div className={`w-1/2 rounded-t-md transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(0,0,0,0.2)] ${item.color}`} style={{ height: `${Math.max(item.proPercentage, 2)}%` }}></div>
-                                    <div className="w-1/2 rounded-t-md transition-all duration-1000 ease-out border border-[#FF6600]" style={{ height: `${Math.max(item.recsPercentage, 2)}%`, backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,102,0,0.5) 4px, rgba(255,102,0,0.5) 8px)' }}></div>
+                                    <div className="w-1/2 rounded-t-md transition-all duration-1000 ease-out border border-[#FE5518]" style={{ height: `${Math.max(item.recsPercentage, 2)}%`, backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,102,0,0.5) 4px, rgba(255,102,0,0.5) 8px)' }}></div>
                                 </div>
                             ))}
                         </div>
@@ -108,7 +108,7 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                         <Star className="w-6 h-6 text-yellow-400 fill-current" />
                         Intereses
                         <span className="text-slate-400 font-medium ml-1">({totalInterests})</span>
-                        {selectedProvince !== 'Global' && <span className="text-[#FF6600] ml-1 text-base">en {selectedProvince}</span>}
+                        {selectedProvince !== 'Global' && <span className="text-[#FE5518] ml-1 text-base">en {selectedProvince}</span>}
                     </h3>
                 </div>
                 {interestsData.length === 0 ? (
@@ -121,7 +121,7 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                                     <div className="absolute bottom-full mb-3 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center z-50 pointer-events-none w-max">
                                         <div className="bg-slate-800 border border-slate-700 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2">
                                             <div className={`w-2.5 h-2.5 rounded-full ${item.color}`}></div>
-                                            <span className="text-sm">{item.name}:</span> <span className="text-[#FF6600] text-sm">{item.count}</span>
+                                            <span className="text-sm">{item.name}:</span> <span className="text-[#FE5518] text-sm">{item.count}</span>
                                             {item.isCustom && <span className="text-[10px] bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded ml-2 uppercase tracking-wider border border-slate-600">Manual</span>}
                                         </div>
                                         <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-slate-800 -mt-[1px]"></div>
@@ -146,7 +146,7 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-10">
                 <div className="bg-slate-900 p-6 md:p-8 rounded-[1rem] shadow-xl shadow-black/20 w-full">
                     <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                        <Trophy className="w-6 h-6 text-red-400" /> Top Recomendados por Profesión {selectedProvince !== 'Global' && <span className="text-[#FF6600] text-base">({selectedProvince})</span>}
+                        <Trophy className="w-6 h-6 text-red-400" /> Top Recomendados por Profesión {selectedProvince !== 'Global' && <span className="text-[#FE5518] text-base">({selectedProvince})</span>}
                     </h3>
                     {topRecommendedPros.length === 0 ? (
                         <p className="text-sm text-slate-500 font-medium py-4">Aún no hay profesionales recomendados aquí.</p>
@@ -183,7 +183,7 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                                         <div className="absolute bottom-full mb-3 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center z-50 pointer-events-none w-max">
                                             <div className="bg-slate-800 border border-slate-700 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2">
                                                 <div className={`w-2.5 h-2.5 rounded-full ${item.color}`}></div>
-                                                <span>Recomiendan a {item.range}:</span> <span className="text-[#FF6600]">{item.count} usuarios</span>
+                                                <span>Recomiendan a {item.range}:</span> <span className="text-[#FE5518]">{item.count} usuarios</span>
                                             </div>
                                             <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-slate-800 -mt-[1px]"></div>
                                         </div>
@@ -205,11 +205,11 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
             </div>
 
             {/* 5. RADAR CUSTOM DE PROFESIONES */}
-            <div className="bg-[#FF6600]/5 p-6 md:p-8 rounded-[1rem] border border-orange-500/20 shadow-xl shadow-black/10 w-full mt-10">
+            <div className="bg-[#FE5518]/5 p-6 md:p-8 rounded-[1rem] border border-orange-500/20 shadow-xl shadow-black/10 w-full mt-10">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div>
                         <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                            <AlertCircle className="w-6 h-6 text-[#FF6600]" /> Radar de Nuevas Profesiones
+                            <AlertCircle className="w-6 h-6 text-[#FE5518]" /> Radar de Nuevas Profesiones
                         </h3>
                         <p className="text-slate-400 text-sm mt-1 font-medium">Especialidades escritas a mano que están pendientes de añadir oficialmente.</p>
                     </div>
@@ -219,10 +219,10 @@ export function DashboardMetrics({ stats, unifiedSpecialties, selectedProvince, 
                         <p className="text-sm text-slate-500 w-full text-center py-6 bg-slate-900/50 rounded-2xl border border-dashed border-slate-700 font-bold sm:col-span-2 lg:col-span-3 xl:col-span-4">¡Todo al día!</p>
                     ) : (
                         customSpecialties.map((spec: any, idx: number) => (
-                            <div key={idx} className="flex flex-col bg-slate-900 border border-slate-700 rounded-xl overflow-hidden hover:border-[#FF6600]/50 transition-colors shadow-sm">
+                            <div key={idx} className="flex flex-col bg-slate-900 border border-slate-700 rounded-xl overflow-hidden hover:border-[#FE5518]/50 transition-colors shadow-sm">
                                 <div className="flex items-center justify-between px-4 py-3 bg-slate-800/50">
                                     <span className="font-bold text-slate-200 text-sm">{spec.name}</span>
-                                    <span className="bg-[#FF6600]/10 text-[#FF6600] text-xs font-black px-2.5 py-1 rounded-lg ml-3 shrink-0">{spec.count}</span>
+                                    <span className="bg-[#FE5518]/10 text-[#FE5518] text-xs font-black px-2.5 py-1 rounded-lg ml-3 shrink-0">{spec.count}</span>
                                 </div>
                                 <div className="px-4 py-3 bg-slate-900/30 flex flex-col gap-2 border-t border-slate-800/50 max-h-32 overflow-y-auto custom-scrollbar">
                                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-0.5">Usuarios:</span>

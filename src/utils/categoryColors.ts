@@ -39,7 +39,7 @@ export const CATEGORY_COLORS: Record<string, string> = {
     'Mascotas': '#fbbf24', // Amber-400
     // MASCOTAS (Specifics)
     'Veterinarios': '#16a34a', // Green
-    'Peluquería Canina': '#ff6600', // Orange
+    'Peluquería Canina': '#FE5518', // Orange
 
     'Automoción': '#dc2626', // Red-600
     'Transporte': '#dc2626',

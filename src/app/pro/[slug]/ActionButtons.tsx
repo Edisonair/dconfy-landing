@@ -54,7 +54,7 @@ export default function ActionButtons({ slug }: { slug: string }) {
             {/* Botón de Recomendar (Icono Corazón + Texto en el medio) */}
             <button
                 onClick={handleDeepLink}
-                className="flex-grow max-w-[240px] bg-gradient-to-r from-[#FF6600] to-violet-600 text-white font-bold h-[52px] rounded-full shadow-lg shadow-violet-200/30 flex items-center justify-center gap-2 hover:opacity-95 transition-all active:scale-95 text-[15px]"
+                className="flex-grow max-w-[240px] bg-gradient-to-r from-[#FE5518] to-violet-600 text-white font-bold h-[52px] rounded-full shadow-lg shadow-violet-200/30 flex items-center justify-center gap-2 hover:opacity-95 transition-all active:scale-95 text-[15px]"
             >
                 <Heart className="w-5 h-5 fill-current text-white" />
                 <span>Recomendar</span>

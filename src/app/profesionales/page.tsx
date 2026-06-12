@@ -285,7 +285,7 @@ export default function VIPInvitationPage() {
                     <p className="text-xl md:text-2xl text-violet-200/90 font-bold max-w-2xl mx-auto leading-relaxed mb-6">
                         Únete a dconfy y deja que el <span className="underline decoration-4 decoration-white/40 underline-offset-4">boca a boca digital</span> haga crecer tu negocio.
                     </p>
-                    <h1 className="text-4xl md:text-6xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">
+                    <h1 className="text-4xl md:text-6xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] via-[#E83E4C] to-[#CD1F8B] [-webkit-text-stroke:0px]">
                         Plan Profesional
                     </h1>
                 </div>
@@ -297,8 +297,8 @@ export default function VIPInvitationPage() {
                         {/* Cajas a la izquierda: iconos arriba, texto abajo */}
                         <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Tarjeta 1 */}
-                            <div className="flex flex-col gap-4 items-start bg-[#FF6600]/10 backdrop-blur-sm p-6 rounded-3xl text-left hover:bg-[#FF6600]/15 hover:border-[#FF6600]/30 hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-[#FF6600] flex items-center justify-center shrink-0 shadow-lg shadow-[#FF6600]/20">
+                            <div className="flex flex-col gap-4 items-start bg-[#FE5518]/10 backdrop-blur-sm p-6 rounded-3xl text-left hover:bg-[#FE5518]/15 hover:border-[#FE5518]/30 hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-12 h-12 rounded-2xl bg-[#FE5518] flex items-center justify-center shrink-0 shadow-lg shadow-[#FE5518]/20">
                                     <Heart className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
@@ -351,7 +351,7 @@ export default function VIPInvitationPage() {
 
                         {/* Tarjeta de Suscripción a la derecha */}
                         <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-2xl text-left text-slate-900 hover:scale-[1.01] transition-transform duration-300 relative overflow-hidden flex flex-col justify-between h-full">
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-[#FF6600]/10 rounded-full blur-2xl"></div>
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-[#FE5518]/10 rounded-full blur-2xl"></div>
 
                             <div>
                                 <div className="flex justify-between items-start mb-4">
@@ -402,13 +402,13 @@ export default function VIPInvitationPage() {
                                         'Estadísticas de tu perfil'
                                     ].map((feature, i) => (
                                         <li key={i} className="flex items-center gap-3 text-md text-slate-700 font-medium">
-                                            <Check className="w-5 h-5 text-[#FF6600] shrink-0" /> {feature}
+                                            <Check className="w-5 h-5 text-[#FE5518] shrink-0" /> {feature}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
-                            <a href="#como-crear" className="block w-full text-center bg-[#FF6600] hover:bg-[#E65C00] text-white py-3.5 rounded-full flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FF6600]/20">
+                            <a href="#como-crear" className="block w-full text-center bg-[#FE5518] hover:bg-[#E44911] text-white py-3.5 rounded-full flex items-center justify-center font-[system-ui] font-bold transition-all shadow-lg shadow-[#FE5518]/20">
                                 Cómo empezar
                             </a>
                         </div>
@@ -419,7 +419,7 @@ export default function VIPInvitationPage() {
                 <div id="como-crear" className="max-w-5xl mx-auto mb-24 scroll-mt-28 relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-                            Cómo crear tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6601] via-[#E83E4C] to-[#CD1F8B]">Perfil Profesional</span>
+                            Cómo crear tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE5518] via-[#E83E4C] to-[#CD1F8B]">Perfil Profesional</span>
                         </h2>
                         <p className="text-xl md:text-2xl text-violet-200/90 font-bold max-w-xl mx-auto">
                             Sigue estos sencillos pasos para activar tu perfil en menos de 2 minutos
@@ -428,8 +428,8 @@ export default function VIPInvitationPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
                         {/* Paso 1 */}
-                        <div className="flex flex-col items-center text-center bg-[#FF6600]/10 backdrop-blur-sm p-8 rounded-3xl hover:bg-[#FF6600]/15 hover:border-[#FF6600]/30 hover:-translate-y-1 transition-all duration-300 relative group">
-                            <div className="w-16 h-16 rounded-2xl bg-[#FF6600] flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#FF6600]/20">
+                        <div className="flex flex-col items-center text-center bg-[#FE5518]/10 backdrop-blur-sm p-8 rounded-3xl hover:bg-[#FE5518]/15 hover:border-[#FE5518]/30 hover:-translate-y-1 transition-all duration-300 relative group">
+                            <div className="w-16 h-16 rounded-2xl bg-[#FE5518] flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#FE5518]/20">
                                 <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                     <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
                                     <path d="M12 18h.01" />
@@ -474,13 +474,13 @@ export default function VIPInvitationPage() {
                         <div className="w-full bg-slate-950 rounded-3xl p-8 md:p-10 border border-slate-800 shadow-2xl text-left">
                             {isLoadingLimit ? (
                                 <div className="flex flex-col items-center justify-center py-20 animate-in fade-in">
-                                    <Loader2 className="w-10 h-10 animate-spin text-[#FF6600] mb-4" />
+                                    <Loader2 className="w-10 h-10 animate-spin text-[#FE5518] mb-4" />
                                     <p className="text-neutral-400 font-medium">Comprobando plazas disponibles...</p>
                                 </div>
                             ) : isLimitReached ? (
                                 <div className="text-center py-10 animate-in fade-in zoom-in duration-500">
-                                    <div className="mx-auto w-20 h-20 bg-[#FF6600]/10 rounded-full flex items-center justify-center mb-6">
-                                        <Sparkles className="w-10 h-10 text-[#FF6600]" />
+                                    <div className="mx-auto w-20 h-20 bg-[#FE5518]/10 rounded-full flex items-center justify-center mb-6">
+                                        <Sparkles className="w-10 h-10 text-[#FE5518]" />
                                     </div>
                                     <h2 className="text-3xl font-black text-neutral-200 mb-4 tracking-tight">
                                         ¡Plazas agotadas! 🚀
@@ -507,12 +507,12 @@ export default function VIPInvitationPage() {
                             ) : (
                                 <>
                                     <div className="text-center mb-10">
-                                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 text-[#FF6600] font-bold text-xs tracking-wider uppercase mb-6 border border-[#FF6600]/20 w-fit">
+                                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 text-[#FE5518] font-bold text-xs tracking-wider uppercase mb-6 border border-[#FE5518]/20 w-fit">
                                             <Sparkles className="w-4 h-4 animate-pulse" />
                                             Gratis para los primeros
                                         </div>
                                         <h2 className="text-3xl font-black text-neutral-200 mb-6 tracking-relaxed leading-tight" >
-                                            Únete a los <span className="text-[#FF6600]">primeros</span> profesionales para lanzar dconfy.
+                                            Únete a los <span className="text-[#FE5518]">primeros</span> profesionales para lanzar dconfy.
                                         </h2>
                                         <p className="text-slate-400 font-bold text-[13px] uppercase tracking-wider">
                                             Ideal para cualquier persona o negocio que ofrezca servicios y quiera destacar.
@@ -531,7 +531,7 @@ export default function VIPInvitationPage() {
                                                 required
                                                 value={formData.nombre}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
+                                                className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FE5518] focus:border-transparent transition-all outline-none"
                                                 placeholder="Ej. Laura Gómez"
                                             />
                                         </div>
@@ -550,7 +550,7 @@ export default function VIPInvitationPage() {
                                                     value={formData.profesion}
                                                     onChange={handleChange}
                                                     disabled={isLoadingCategories}
-                                                    className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none appearance-none disabled:opacity-50 text-slate-200"
+                                                    className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-slate-950 text-neutral-200 focus:bg-[#161616] focus:ring-2 focus:ring-[#FE5518] focus:border-transparent transition-all outline-none appearance-none disabled:opacity-50 text-slate-200"
                                                 >
                                                     <option value="" disabled className="text-neutral-600">
                                                         {isLoadingCategories ? 'Cargando profesiones...' : 'Selecciona una profesión'}
@@ -566,7 +566,7 @@ export default function VIPInvitationPage() {
                                                         </optgroup>
                                                     ))}
 
-                                                    <option value="Otra" className="font-bold text-[#FF6600]">
+                                                    <option value="Otra" className="font-bold text-[#FE5518]">
                                                         Otra profesión...
                                                     </option>
                                                 </select>
@@ -586,12 +586,12 @@ export default function VIPInvitationPage() {
                                                         value={formData.codigoPostal}
                                                         onChange={handleZipChange}
                                                         onBlur={handleZipBlur}
-                                                        className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none text-center ${zipError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
+                                                        className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FE5518] focus:border-transparent transition-all outline-none text-center ${zipError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
                                                         placeholder="28001"
                                                     />
                                                     {isZipLoading && (
                                                         <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                                                            <Loader2 className="w-4 h-4 animate-spin text-[#FF6600]" />
+                                                            <Loader2 className="w-4 h-4 animate-spin text-[#FE5518]" />
                                                         </div>
                                                     )}
                                                 </div>
@@ -601,7 +601,7 @@ export default function VIPInvitationPage() {
                                                     </p>
                                                 ) : formData.ciudad ? (
                                                     <p className="text-[10px] font-bold text-neutral-400 mt-1.5 flex items-center justify-center gap-1 truncate">
-                                                        <MapPin className="w-3 h-3 text-[#FF6600]" />
+                                                        <MapPin className="w-3 h-3 text-[#FE5518]" />
                                                         {formData.ciudad}
                                                     </p>
                                                 ) : null}
@@ -611,7 +611,7 @@ export default function VIPInvitationPage() {
                                         {/* Input condicional que solo aparece si se selecciona "Otra" */}
                                         {formData.profesion === 'Otra' && (
                                             <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                                                <label htmlFor="customProfesion" className="block text-sm font-bold text-[#FF6600] mb-1.5">
+                                                <label htmlFor="customProfesion" className="block text-sm font-bold text-[#FE5518] mb-1.5">
                                                     Escribe tu profesión
                                                 </label>
                                                 <input
@@ -621,7 +621,7 @@ export default function VIPInvitationPage() {
                                                     required
                                                     value={formData.customProfesion}
                                                     onChange={handleChange}
-                                                    className="w-full px-4 py-3 rounded-xl border border-[#FF6600]/50 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none"
+                                                    className="w-full px-4 py-3 rounded-xl border border-[#FE5518]/50 bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FE5518] focus:border-transparent transition-all outline-none"
                                                     placeholder="Ej. Tatuador, Entrenador Personal..."
                                                 />
                                             </div>
@@ -638,7 +638,7 @@ export default function VIPInvitationPage() {
                                                 required
                                                 value={formData.email}
                                                 onChange={handleEmailChange}
-                                                className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FF6600] focus:border-transparent transition-all outline-none ${emailError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
+                                                className={`w-full px-4 py-3 rounded-xl border bg-slate-950 text-neutral-200 placeholder:text-neutral-600 focus:bg-[#161616] focus:ring-2 focus:ring-[#FE5518] focus:border-transparent transition-all outline-none ${emailError ? 'border-red-500 ring-1 ring-red-500/50' : 'border-neutral-800'}`}
                                                 placeholder="hola@tmail.com"
                                             />
                                             {emailError && (
@@ -657,7 +657,7 @@ export default function VIPInvitationPage() {
                                         <button
                                             type="submit"
                                             disabled={status === 'loading' || !isFormValid}
-                                            className="w-full bg-gradient-to-r from-[#F05A28] to-[#E83E4C] text-white font-bold text-lg py-4 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all active:scale-[0.98] flex justify-center items-center gap-2 mt-6 disabled:opacity-50 disabled:pointer-events-none"
+                                            className="w-full bg-gradient-to-r from-[#FE5518] to-[#E83E4C] text-white font-bold text-lg py-4 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all active:scale-[0.98] flex justify-center items-center gap-2 mt-6 disabled:opacity-50 disabled:pointer-events-none"
                                         >
                                             {status === 'loading' ? (
                                                 <>
@@ -698,8 +698,8 @@ export default function VIPInvitationPage() {
                 </p>
 
                 <div className="flex justify-center mb-8">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50/80 border border-orange-200/50 text-[#FF6600] text-[13px] font-bold tracking-wide uppercase shadow-sm">
-                        <span className="w-2 h-2 rounded-full bg-[#FF6600] animate-pulse"></span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50/80 border border-orange-200/50 text-[#FE5518] text-[13px] font-bold tracking-wide uppercase shadow-sm">
+                        <span className="w-2 h-2 rounded-full bg-[#FE5518] animate-pulse"></span>
                         Disponible próximamente
                     </div>
                 </div>

@@ -23,7 +23,7 @@ function BusinessDashboardLayoutInner({ children }: { children: React.ReactNode 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <div className="w-10 h-10 border-4 border-[#FF6600] border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-10 h-10 border-4 border-[#FE5518] border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -113,7 +113,7 @@ function BusinessDashboardLayoutInner({ children }: { children: React.ReactNode 
                 className={`
                   flex items-center gap-3 py-3 px-4 rounded-xl font-bold transition-all duration-200
                   ${isActive 
-                    ? 'bg-[#FF6600] text-white shadow-lg shadow-[#FF6600]/15' 
+                    ? 'bg-[#FE5518] text-white shadow-lg shadow-[#FE5518]/15' 
                     : 'text-slate-400 hover:bg-slate-800 hover:text-white'}
                 `}
               >

@@ -48,7 +48,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
                     <div className="mb-10">
                         <div className="flex items-center gap-2 mb-6">
-                            <span className="bg-[#FF6600] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            <span className="bg-[#FE5518] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                                 {post.category}
                             </span>
                         </div>
