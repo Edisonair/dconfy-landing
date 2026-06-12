@@ -445,7 +445,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.5 }}
             className="my-48 md:my-64 max-w-3xl mx-auto bg-white py-16 px-10 md:py-24 md:px-16 rounded-[2.5rem]"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-fuchsia-700 leading-tight [-webkit-text-stroke:0]">
+            <h2 className="text-4xl md:text-5xl font-black text-violet-700 leading-tight [-webkit-text-stroke:0]">
               Recomiéndame un fisio, un nutricionista, un masajista... <br></br><br></br>"Te paso el teléfono de mi fontanero", "Hay una peluquería que te va a gustar"...
             </h2>
           </motion.div>
